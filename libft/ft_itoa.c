@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 16:35:53 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 17:18:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/09 17:40:57 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char		*ft_itoa(int n)
 	i = 0;
 	while ((n / ft_power(10, i + 1)) > 9)
 	{
-		str[i] = '2';
+		str[i] = (char)((n / ft_power(10, i)) % 10);
 		i++;
 	}
 	return (str);
