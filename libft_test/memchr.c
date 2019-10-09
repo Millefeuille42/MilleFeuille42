@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   memchr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 14:59:31 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 13:00:02 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/08 14:28:02 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/10/08 17:33:18 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include "ft.h"
 
-# include <stdlib.h>
-# include <string.h>
-#endif
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*mem;
+
+	i = 0;
+	mem = (unsigned char *)s;
+	while (i < n)
+	{
+		if (mem[i] != (unsigned char)c)
+			return (mem + i);
+		i++;
+	}
+	return (NULL);
+}

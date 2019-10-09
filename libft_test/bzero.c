@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   bzero.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 14:59:31 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 13:00:02 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/07 11:40:11 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/10/08 15:07:47 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include "ft.h"
 
-# include <stdlib.h>
-# include <string.h>
-#endif
+void	ft_bzero(void *s, size_t n)
+{
+	size_t			i;
+	unsigned char	*mem;
+
+	mem = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		mem[i] = 0;
+		i++;
+	}
+}

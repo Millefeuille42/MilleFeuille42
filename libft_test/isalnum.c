@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   isalnum.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 14:59:31 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 13:00:02 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/08 13:45:53 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/10/08 15:07:44 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include "ft.h"
 
-# include <stdlib.h>
-# include <string.h>
-#endif
+int	ft_isalnum(int c)
+{
+	if ((char)c < 65 || (char)c > 90)
+	{
+		if ((char)c < 97 || (char)c > 122)
+		{
+			if ((char)c < 48 || (char)c > 57)
+				return (0);
+			return (3);
+		}
+		return (2);
+	}
+	return (1);
+}

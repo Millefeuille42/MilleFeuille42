@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   isprint.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 14:59:31 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 13:00:02 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/08 13:55:52 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/10/08 15:08:13 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include "ft.h"
 
-# include <stdlib.h>
-# include <string.h>
-#endif
+int	ft_isprint(int c)
+{
+	if ((char)c < 40 || (char)c > 126)
+		return (0);
+	return (1);
+}

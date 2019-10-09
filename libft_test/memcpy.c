@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   memcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 14:59:31 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 13:00:02 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/07 11:51:37 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/10/08 15:11:40 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include "ft.h"
 
-# include <stdlib.h>
-# include <string.h>
-#endif
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t			i;
+	unsigned char	*mem1;
+	unsigned char	*mem2;
+
+	i = 0;
+	mem1 = (unsigned char *)src;
+	mem2 = (unsigned char *)dst;
+	while (i < n)
+	{
+		mem2[i] = mem1[i];
+		i++;
+	}
+	return (mem2);
+}
