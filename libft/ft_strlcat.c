@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 16:29:58 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/08 17:39:12 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:37:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
-int			ft_strlen(const char *str)
+static int	ft_strlen(const char *str)
 {
 	size_t i;
 

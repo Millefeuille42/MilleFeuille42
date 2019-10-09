@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strrchr.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 15:13:34 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/08 17:41:04 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/09 16:45:38 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
-int		ft_strlen(const char *s)
+static int		ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -22,7 +22,7 @@ int		ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strrchr(const char *s, int c)
+char			*ft_strrchr(const char *s, int c)
 {
 	size_t	len;
 

@@ -6,19 +6,15 @@
 #    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 13:26:44 by mlabouri          #+#    #+#              #
-#    Updated: 2019/10/09 13:42:40 by mlabouri         ###   ########.fr        #
+#    Updated: 2019/10/09 15:34:50 by mlabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	./srcs/ft_putchar.c	\
-			./srcs/ft_swap.c	\
-			./srcs/ft_putstr.c	\
-			./srcs/ft_strlen.c	\
-			./srcs/ft_strcmp.c
+SRCS	=	ft_*.c
 
 OBJS	=	${SRCS:.c=.o}
 
-INCL	=	includes/ft.h
+INCL	=	ft.h
 
 NAME	=	libft.a
 
