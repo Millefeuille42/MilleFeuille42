@@ -6,12 +6,29 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 16:35:53 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 17:40:57 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/10 14:36:02 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+
+static char	*ft_writenbr(long int n, char *str, int len)
+{
+	if (n < 0)
+	{
+		n = -n;
+		str[0] = '-';
+	}
+	if (n > 9)
+	{
+		ft_writenbr(n / 10, str, len - 1);
+		n = n % 10;
+	}
+	n = n + 48;
+	str[len] = n;
+	return (str);
+}
 
 static int	ft_power(int nb, int power)
 {
@@ -27,28 +44,22 @@ static int	ft_power(int nb, int power)
 
 char		*ft_itoa(int n)
 {
-	int		i;
-	int		n2;
-	char	*str;
+	int			len;
+	long int	n2;
+	char		*str;
 
-	i = 1;
-	n2 = n;
-	while ((n / ft_power(10, i)) > 9)
-		i++;
-	str = malloc(sizeof(char) * (i + 1));
+	n2 = (long int)n;
+	if (n < 0)
+		n2 = -n2;
+	len = 1;
+	while ((n2 / ft_power(10, len - 1)) > 9)
+		len++;
+	if (n < 0)
+		len++;
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	i = 0;
-	while ((n / ft_power(10, i + 1)) > 9)
-	{
-		str[i] = (char)((n / ft_power(10, i)) % 10);
-		i++;
-	}
+	str[len] = '\0';
+	str = ft_writenbr((long int)n, str, len - 1);
 	return (str);
-}
-
-int main()
-{
-	printf("%s\n", ft_itoa(25));
-	return 0;
 }
