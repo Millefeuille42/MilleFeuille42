@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 17:48:10 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/12 15:52:18 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/12 16:12:35 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/10/12 16:59:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	if (n < 0)
-	{
-		n = -n;
-		write(fd, "-", 1);
-	}
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		n = n % 10;
-	}
-	n = n + 48;
-	write(fd, &n, 1);
+	t_list	*cur;
+
+	cur = *alst;
+	while (cur->next != NULL)
+		cur = cur->next;
+	cur->next = new;
+	new->next = NULL;
 }

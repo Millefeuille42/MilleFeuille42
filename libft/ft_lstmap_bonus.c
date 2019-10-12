@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 17:48:10 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/12 15:52:18 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/12 16:29:10 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/10/12 17:06:09 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *))
 {
-	if (n < 0)
+	t_list	*cur;
+	t_list	*firstlst;
+	t_list	*newlst;
+
+	cur = lst;
+	newlst = malloc(sizeof(t_list *));
+	firstlst = newlst;
+	while (cur->next != NULL)
 	{
-		n = -n;
-		write(fd, "-", 1);
+		newlst->content = (*f)(cur->content);
+		newlst->next = malloc(sizeof(t_list *));
+		newlst = newlst->next;
+		cur = cur->next;
 	}
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		n = n % 10;
-	}
-	n = n + 48;
-	write(fd, &n, 1);
+	newlst->content = (*f)(cur->content);
+	newlst->next = NULL;
+	return (firstlst);
 }

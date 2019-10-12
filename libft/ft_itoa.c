@@ -6,12 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 16:35:53 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/10 14:36:02 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/12 15:51:47 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	*ft_writenbr(long int n, char *str, int len)
 {

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 12:54:03 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/11 14:55:08 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/12 16:24:31 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,4 @@ char			**ft_split(char const *s, char c)
 	}
 	set[set_i] = NULL;
 	return (set);
-}
-
-int				main(int argc, char const *argv[])
-{
-	int i;
-
-	i = 0;
-	ft_split("111", '1');
-	return (0);
 }

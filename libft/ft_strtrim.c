@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:39:35 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/10 15:54:46 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/12 17:10:26 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ char	*ft_trim(char const *s1, char const *set, char *trim)
 	size_t	i;
 
 	start = ft_trimlen(s1, set, 0);
+	i = 0;
 	while (s1[i] != '\0')
 		i++;
 	end = i - ft_rtrimlen(s1, set, 0);

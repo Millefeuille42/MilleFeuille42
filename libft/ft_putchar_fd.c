@@ -6,9 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 16:15:45 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/11 17:42:35 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/12 15:52:11 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
