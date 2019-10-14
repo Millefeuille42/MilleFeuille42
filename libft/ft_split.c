@@ -6,12 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 12:54:03 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/12 16:24:31 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/14 17:09:11 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static	char	**ft_makestringset(char const *s, char c)
 {
@@ -20,11 +19,6 @@ static	char	**ft_makestringset(char const *s, char c)
 	char	**stringset;
 	char	check;
 
-	i = 0;
-	while (s[i] == c)
-		i++;
-	if (s[i] == '\0')
-		return (NULL);
 	i = 0;
 	size = 1;
 	check = 0;
@@ -36,6 +30,11 @@ static	char	**ft_makestringset(char const *s, char c)
 			check = 1;
 		i++;
 	}
+	i = 0;
+	while (s[i] == c)
+		i++;
+	if (s[i] == '\0')
+		size = 0;
 	if (!(stringset = malloc(sizeof(char *) * (size + 1))))
 		return (NULL);
 	return (stringset);

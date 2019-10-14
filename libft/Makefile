@@ -6,7 +6,7 @@
 #    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 13:26:44 by mlabouri          #+#    #+#              #
-#    Updated: 2019/10/12 17:20:34 by mlabouri         ###   ########.fr        #
+#    Updated: 2019/10/14 15:54:37 by mlabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ OBJS	=	${SRCS:.c=.o}
 
 OBJS_B	=	${SRCS_B:.c=.o}
 
-INCL	=	ft.h
+INCL	=	./libft.h
 
 NAME	=	libft.a
 
@@ -74,10 +74,10 @@ FLAGS	=	-Wall -Wextra -Werror -I ${INCL}
 .c.o	:
 			${COMPILE} ${FLAGS} -c $< -o ${<:.c=.o}
 
-${NAME} :	${OBJS}
+$(NAME) :	${OBJS}
 			${LIB} ${NAME} ${OBJS}
 
-all		:	${NAME}
+all		:	$(NAME)
 
 clean	:
 			${RM} ${OBJS}

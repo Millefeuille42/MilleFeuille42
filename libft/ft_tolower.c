@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:07:11 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 16:44:45 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/14 14:49:03 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_tolower(int c)
 {
-	if ((char)c < 97 || (char)c > 122)
+	if ((char)c < 65 || (char)c > 90)
 		return (c);
-	c = (char)c - 32;
+	c = (char)c + 32;
 	return (c);
 }

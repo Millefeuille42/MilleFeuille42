@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 17:48:10 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/12 15:52:18 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/14 15:51:47 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n < 0)
+	long int nb;
+
+	nb = (int)n;
+	if (nb < 0)
 	{
-		n = -n;
+		nb = -nb;
 		write(fd, "-", 1);
 	}
-	if (n > 9)
+	if (nb > 9)
 	{
-		ft_putnbr_fd(n / 10, fd);
-		n = n % 10;
+		ft_putnbr_fd(nb / 10, fd);
+		nb = nb % 10;
 	}
-	n = n + 48;
-	write(fd, &n, 1);
+	nb = nb + 48;
+	write(fd, &nb, 1);
 }

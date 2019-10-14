@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:39:35 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/12 17:10:26 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/14 15:25:47 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_trimlen(char const *s1, char const *set, size_t len)
+static size_t	ft_trimlen(char const *s1, char const *set, size_t len)
 {
 	size_t	i;
 	size_t	i2;
@@ -32,7 +32,7 @@ size_t	ft_trimlen(char const *s1, char const *set, size_t len)
 	return (len);
 }
 
-size_t	ft_rtrimlen(char const *s1, char const *set, size_t len)
+static size_t	ft_rtrimlen(char const *s1, char const *set, size_t len)
 {
 	size_t	i;
 	size_t	i2;
@@ -55,7 +55,7 @@ size_t	ft_rtrimlen(char const *s1, char const *set, size_t len)
 	return (len);
 }
 
-char	*ft_trim(char const *s1, char const *set, char *trim)
+static	char	*ft_trim(char const *s1, char const *set, char *trim)
 {
 	size_t	start;
 	size_t	end;
@@ -76,7 +76,7 @@ char	*ft_trim(char const *s1, char const *set, char *trim)
 	return (trim);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char			*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	len;
 	size_t	i;
@@ -87,7 +87,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	len = ft_rtrimlen(s1, set, len);
 	while (s1[i] != '\0')
 		i++;
+	if ((len + 1) > i)
+		return ("\0");
 	trim = malloc(sizeof(char) * (i - len + 1));
+	if (!trim)
+		return (NULL);
 	trim = ft_trim(s1, set, trim);
 	return (trim);
 }

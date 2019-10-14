@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 15:04:02 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 16:37:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/14 12:16:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)(s + i));
 		i++;
 	}
+	if (s[i] == (char)c)
+		return ((char *)(s + i));
 	return (NULL);
 }

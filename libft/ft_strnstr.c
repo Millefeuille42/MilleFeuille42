@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 17:02:10 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 16:44:40 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/14 13:49:04 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ char	*ft_strnstr(char *haystack, char *needle, size_t len)
 	i = 0;
 	if (needle[0] == '\0')
 		return (haystack);
-	while (1)
+	while (i < len)
 	{
 		if (haystack[i] == '\0')
-			return (NULL);
-		if (i >= len)
 			return (NULL);
 		j = 0;
 		i2 = i;
@@ -33,9 +31,12 @@ char	*ft_strnstr(char *haystack, char *needle, size_t len)
 		{
 			i2++;
 			j++;
+			if (i2 >= len)
+				return (NULL);
 			if (needle[j] == '\0')
 				return (&haystack[i]);
 		}
 		i++;
 	}
+	return (NULL);
 }

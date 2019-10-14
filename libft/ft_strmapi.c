@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 15:25:22 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/12 15:52:35 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/14 14:58:49 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		d[i] = (*f)(i, s[i]);
 		i++;
 	}
+	d[i] = '\0';
 	return (d);
 }
