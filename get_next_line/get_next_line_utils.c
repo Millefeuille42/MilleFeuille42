@@ -6,11 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:02:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/17 16:16:49 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/18 16:28:54 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(const char *s)
+#include "get_next_line.h"
+
+int		ft_strlen(char *s)
 {
 	size_t	i;
 
@@ -20,7 +22,7 @@ int		ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*sub;
@@ -38,11 +40,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 	}
 	sub[i] = '\0';
-	free(s);
 	return (sub);
 }
 
-char	*ft_strjoin_limit(char *s1, char const *s2, int len)
+char	*ft_strjoin_limit(char *s1, char *s2, size_t len)
 {
 	size_t	i;
 	size_t	i2;
@@ -63,6 +64,6 @@ char	*ft_strjoin_limit(char *s1, char const *s2, int len)
 		i2++;
 	}
 	join[i + i2] = '\0';
-	free(s1);
+	free((void *)s1);
 	return (join);
 }
