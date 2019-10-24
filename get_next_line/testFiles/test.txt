@@ -1,0 +1,41 @@
+a
+bb
+ccc
+dddd
+eeeee
+ffffff
+ggggggg
+hhhhhhhh
+iiiiiiiii
+jjjjjjjjjj
+kkkkkkkkkkk
+llllllllllll
+mmmmmmmmmmmmm
+nnnnnnnnnnnnnn
+ooooooooooooooo
+pppppppppppppppp
+qqqqqqqqqqqqqqqqq
+rrrrrrrrrrrrrrrrrr
+sssssssssssssssssss
+tttttttttttttttttttt
+uuuuuuuuuuuuuuuuuuuuu
+vvvvvvvvvvvvvvvvvvvvvv
+wwwwwwwwwwwwwwwwwwwwwww
+xxxxxxxxxxxxxxxxxxxxxxxx
+yyyyyyyyyyyyyyyyyyyyyyyyy
+zzzzzzzzzzzzzzzzzzzzzzzzzz
+
+fin all tests.
+coming next ?
+
+
+
+tricky tests !
+\0`	dddd
+
+bient
+o
+t fin de 
+file
+
+aye vvv
