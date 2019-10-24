@@ -1,6 +1,0 @@
-0	= Continue
-1	= End		(No Copy)
--1	= End		(Copy Buffer)
-2	= End		(EOF)
--11	= End		(Copy Memory)
-100	= End		(Err)
