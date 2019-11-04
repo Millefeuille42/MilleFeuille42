@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 16:12:35 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/14 10:08:19 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/08 13:50:41 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/10/09 16:37:16 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **alst, t_list *new)
+int	ft_isascii(int c)
 {
-	t_list	*cur;
-
-	cur = *alst;
-	while (cur->next != NULL)
-		cur = cur->next;
-	cur->next = new;
+	if ((char)c < 0 || (char)c > 127)
+		return (0);
+	return (1);
 }

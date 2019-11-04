@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 15:13:34 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/14 13:50:13 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/08 13:42:41 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/10/09 16:37:18 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_isdigit(int c)
 {
-	size_t	len;
-
-	len = ft_strlen(s);
-	while (s[len] != s[0])
-	{
-		if (s[len] == (char)c)
-			return ((char *)(s + len));
-		len--;
-	}
-	if (s[len] == (char)c)
-		return ((char *)(s + len));
-	return (NULL);
+	if ((char)c < 48 || (char)c > 57)
+		return (0);
+	return (1);
 }

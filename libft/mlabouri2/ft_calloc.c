@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 16:11:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/14 15:25:11 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/09 13:01:27 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/10/09 16:37:02 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
-	char	*sub;
+	size_t			i;
+	unsigned char	*memzone;
 
-	i = 0;
-	while (s[(size_t)start + i] != '\0' && i < len)
-		i++;
-	sub = malloc(sizeof(char) * i + 1);
-	if (!sub)
+	memzone = malloc(count * size);
+	if (!memzone)
 		return (NULL);
 	i = 0;
-	while (s[(size_t)start + i] != '\0' && i < len)
+	while (i < (count * size))
 	{
-		sub[i] = s[(size_t)start + i];
+		memzone[i] = 0;
 		i++;
 	}
-	sub[i] = '\0';
-	return (sub);
+	return ((void *)memzone);
 }

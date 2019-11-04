@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 15:39:06 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/24 10:48:04 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/10/24 11:46:13 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int		ft_gnl_line(size_t rsize, char *buf, char **str, size_t *i)
 	if (!*str)
 		return (100);
 	if (buf[*i] == '\n' && *i < rsize)
+	{
+		buf[rsize + 1] = '\0';
 		return (-1);
+	}
 	if (buf[*i] == '\n' && *i == rsize)
 		return (1);
 	return (0);
@@ -89,10 +92,10 @@ int		ft_gnl_end(char *buf, int status, char **memory, size_t i)
 
 int		get_next_line(int fd, char **line)
 {
-	char		buf[BUFFER_SIZE];
+	char		buf[BUFFER_SIZE + 1];
 	char		*str;
 	int			status;
-	size_t		i;
+	t_sizes		*cnt;
 	static char *memory;
 
 	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
@@ -101,13 +104,25 @@ int		get_next_line(int fd, char **line)
 	if (!FIRST_CALL)
 		memory = NULL;
 	if (memory)
-		status = ft_gnl_memory(&memory, &str, &i);
+		status = ft_gnl_memory(&memory, &str, cnt->pos);
 	else
-		status = ft_gnl_line(read(fd, buf, BUFFER_SIZE), buf, &str, &i);
+		status = ft_gnl_line(read(fd, buf, BUFFER_SIZE), buf, &str, cnt->&pos);
 	while (status == 0)
-		status = ft_gnl_line(read(fd, buf, BUFFER_SIZE), buf, &str, &i);
+		status = ft_gnl_line(read(fd, buf, BUFFER_SIZE), buf, &str, cnt->&pos);
 	if (status == 100)
 		return (-1);
 	(*line) = str;
-	return (ft_gnl_end(buf, status, &memory, i));
+	return (ft_gnl_end(buf, status, &memory, cnt->&pos));
+}
+
+int main()
+{
+	char **ligne;
+	if (!(ligne = malloc(sizeof(char *))))
+		return (3);
+	if (!(*ligne = malloc(BUFFER_SIZE)))
+		return (3);
+	int fd = open("./testFiles/oneLongLine.txt", O_RDONLY);
+	get_next_line(fd, ligne);
+	return 0;
 }

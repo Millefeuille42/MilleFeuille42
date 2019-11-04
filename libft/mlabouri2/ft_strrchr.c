@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 15:49:18 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/12 17:07:36 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/08 15:13:34 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/04 12:06:39 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+char	*ft_strrchr(const char *s, int c)
 {
-	t_list	*new;
+	size_t	len;
 
-	new = malloc(sizeof(t_list *));
-	if (!new->content)
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	len = ft_strlen(s);
+	while (s[len] != s[0])
+	{
+		if (s[len] == (char)c)
+			return ((char *)(s + len));
+		len--;
+	}
+	if (s[len] == (char)c)
+		return ((char *)(s + len));
+	return (NULL);
 }
