@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:59:31 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/18 16:28:08 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:42:59 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int				ft_strlen(const char *s);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
-char			*ft_strnstr(char *haystack, char *needle, size_t len);
+char			*ft_strnstr(const char *hay, const char *needle, size_t len);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int start, size_t len);

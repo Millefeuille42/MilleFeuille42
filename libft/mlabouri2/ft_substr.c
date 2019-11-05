@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 16:11:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/04 12:31:18 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:43:27 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char			*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	char	*sub;
 
-	if ((unsigned int)ft_strlen(s) < start || !s || len == 0)
+	if (!s || (unsigned int)ft_strlen(s) < start || len == 0)
 	{
 		sub = malloc(sizeof(char));
 		if (!sub)
