@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:26:10 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 16:37:24 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:53:06 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	i = 0;
 	mem1 = (unsigned char *)src;
 	mem2 = (unsigned char *)dst;
+	if (n == 0)
+		return (mem2);
 	while (i < n)
 	{
 		mem2[i] = mem1[i];

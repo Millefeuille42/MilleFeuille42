@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:39:35 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/14 15:25:47 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:48:36 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,10 @@ char			*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 	char	*trim;
 
+	if (!s1)
+		return (ft_strdup("\0"));
+	if (!set)
+		return (ft_strdup(s1));
 	i = 0;
 	len = ft_trimlen(s1, set, 0);
 	len = ft_rtrimlen(s1, set, len);

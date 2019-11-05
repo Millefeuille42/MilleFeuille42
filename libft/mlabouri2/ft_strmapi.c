@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 15:25:22 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/14 14:58:49 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:57:21 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	i;
 	char	*d;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	while (s[i] != '\0')
 		i++;

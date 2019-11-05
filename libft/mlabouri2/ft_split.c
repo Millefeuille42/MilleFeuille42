@@ -6,11 +6,23 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 12:54:03 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/14 17:09:11 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/05 15:15:27 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static	char	**ft_null_string(void)
+{
+	char **stringset;
+
+	if (!(stringset = malloc(sizeof(char *))))
+		return (NULL);
+	if (!(stringset[0] = malloc(sizeof(char))))
+		return (NULL);
+	stringset[0][0] = '\0';
+	return (stringset);
+}
 
 static	char	**ft_makestringset(char const *s, char c)
 {
@@ -76,6 +88,8 @@ char			**ft_split(char const *s, char c)
 	size_t	i;
 	size_t	set_i;
 
+	if (!s)
+		return (ft_null_string());
 	i = 0;
 	set_i = 0;
 	if (!(set = ft_makestringset(s, c)))
