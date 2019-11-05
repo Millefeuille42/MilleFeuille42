@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 16:16:11 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/12 17:04:56 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/05 18:52:09 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	(*del)(lst->content);
-	free(lst->content);
+	if (lst && del)
+	{
+		(*del)(lst->content);
+		free(lst);
+	}
 }

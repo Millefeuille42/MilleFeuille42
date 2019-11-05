@@ -6,7 +6,7 @@
 #    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 13:26:44 by mlabouri          #+#    #+#              #
-#    Updated: 2019/10/24 10:52:35 by mlabouri         ###   ########.fr        #
+#    Updated: 2019/11/05 17:38:11 by mlabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ OBJS	=	${SRCS:.c=.o}
 
 OBJS_B	=	${SRCS_B:.c=.o}
 
-INCL	=	./libft.h
+INCL	=	./
 
 NAME	=	libft.a
 

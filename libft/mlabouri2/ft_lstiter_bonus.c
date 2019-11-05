@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 16:26:16 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/12 17:00:17 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/05 18:53:56 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*cur;
 
-	cur = lst;
-	while (cur->next != NULL)
+	if (lst && f)
 	{
+		cur = lst;
+		while (cur->next != NULL)
+		{
+			(*f)(cur->content);
+			cur = cur->next;
+		}
 		(*f)(cur->content);
-		cur = cur->next;
 	}
-	(*f)(cur->content);
 }
