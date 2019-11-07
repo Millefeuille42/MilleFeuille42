@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 15:58:35 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/05 18:55:22 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:53:31 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,6 @@ void	ft_lstadd_front(t_list **alst, t_list *new)
 		new->next = *alst;
 		*alst = new;
 	}
+	if (!alst || !*alst)
+		*alst = new;
 }

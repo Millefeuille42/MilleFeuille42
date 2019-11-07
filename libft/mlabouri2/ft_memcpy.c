@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 11:51:37 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/05 14:53:11 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:39:53 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*mem2;
 
 	i = 0;
+	if (!dst && !src)
+		return (NULL);
 	mem1 = (unsigned char *)src;
 	mem2 = (unsigned char *)dst;
 	if (n == 0)
