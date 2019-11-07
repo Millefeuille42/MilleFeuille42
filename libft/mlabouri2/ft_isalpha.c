@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 13:05:43 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 16:37:14 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:36:49 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_isalpha(int c)
 {
-	if ((char)c < 65 || (char)c > 90)
+	if (c < 65 || c > 90)
 	{
-		if ((char)c < 97 || (char)c > 122)
+		if (c < 97 || c > 122)
 			return (0);
 		return (2);
 	}

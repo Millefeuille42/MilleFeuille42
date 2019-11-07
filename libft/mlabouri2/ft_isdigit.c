@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 13:42:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/05 18:57:56 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:36:51 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isdigit(int c)
 {
-	if ((char)c < 48 || (char)c > 57)
+	if (c < 48 || c > 57)
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 13:50:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 16:37:16 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:36:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isascii(int c)
 {
-	if ((char)c < 0 || (char)c > 127)
+	if (c < 0 || c > 127)
 		return (0);
 	return (1);
 }

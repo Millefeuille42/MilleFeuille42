@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 13:55:52 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/14 14:35:02 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:36:48 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isprint(int c)
 {
-	if ((char)c < 32 || (char)c > 126)
+	if (c < 32 || c > 126)
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 13:45:53 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 16:37:10 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:36:48 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	ft_isalnum(int c)
 {
-	if ((char)c < 65 || (char)c > 90)
+	if (c < 65 || c > 90)
 	{
-		if ((char)c < 97 || (char)c > 122)
+		if (c < 97 || c > 122)
 		{
-			if ((char)c < 48 || (char)c > 57)
+			if (c < 48 || c > 57)
 				return (0);
 			return (3);
 		}
