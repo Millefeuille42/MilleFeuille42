@@ -6,7 +6,7 @@
 #    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 13:26:44 by mlabouri          #+#    #+#              #
-#    Updated: 2019/11/05 17:38:11 by mlabouri         ###   ########.fr        #
+#    Updated: 2019/11/07 14:03:55 by mlabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS	=	./ft_atoi.c					\
 			./ft_strlcpy.c				\
 			./ft_strlen.c				\
 			./ft_strmapi.c				\
+			ft_strncmp.c				\
 			./ft_strnstr.c				\
 			./ft_strrchr.c				\
 			./ft_strtrim.c				\
