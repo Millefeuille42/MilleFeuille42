@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 13:01:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/09 16:37:02 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:16:21 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	size_t			i;
 	unsigned char	*memzone;
-
+	
 	memzone = malloc(count * size);
 	if (!memzone)
 		return (NULL);
