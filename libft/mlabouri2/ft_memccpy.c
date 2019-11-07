@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:26:10 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/07 13:47:49 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/07 14:02:02 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	size_t			i;
-	char		*mem1;
-	char		*mem2;
+	char			*mem1;
+	char			*mem2;
 
 	i = 0;
 	if ((!dst && !src) || n == 0)
