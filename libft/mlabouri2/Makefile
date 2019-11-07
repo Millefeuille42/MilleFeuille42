@@ -6,7 +6,7 @@
 #    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 13:26:44 by mlabouri          #+#    #+#              #
-#    Updated: 2019/11/07 14:03:55 by mlabouri         ###   ########.fr        #
+#    Updated: 2019/11/07 14:29:13 by mlabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ fclean	:	clean
 re		:	fclean all
 
 o		:	re
-			${MAKE} clean
+			${MAKE} fclean
 
 bonus	:	${OBJS_B}
 			${LIB} ${NAME} ${OBJS_B}
