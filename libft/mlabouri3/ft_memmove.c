@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:30:14 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/07 16:32:32 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/07 16:32:48 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t			i;
-	unsigned char	temp;
 	unsigned char	*mem1;
 	unsigned char	*mem2;
 

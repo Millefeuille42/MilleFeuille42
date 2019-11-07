@@ -89,7 +89,7 @@ fclean	:	clean
 re		:	fclean all
 
 o		:	re
-			${MAKE} clean
+			${MAKE} fclean
 
 bonus	:	${OBJS_B}
 			${LIB} ${NAME} ${OBJS_B}
