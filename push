@@ -1,0 +1,14 @@
+#!/bin/bash
+
+clear
+git add *
+git status
+echo ""
+echo "Push?"
+echo ""
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) git commit -m 'm'; git push; break;;
+		No ) clear; exit;;
+	esac
+done
