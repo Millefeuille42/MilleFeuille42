@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 16:29:10 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/05 18:54:17 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/12 16:05:57 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/05 18:56:10 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *l, void *(*f)(void *), void (*del)(void *))
+int	ft_lstsize(t_list *lst)
 {
 	t_list	*cur;
-	t_list	*firstlst;
-	t_list	*newlst;
+	size_t	i;
 
-	cur = l;
-	newlst = malloc(sizeof(t_list *));
-	if (!newlst || !l)
-		return (NULL);
-	firstlst = newlst;
+	if (!lst)
+		return (0);
+	i = 1;
+	cur = lst;
 	while (cur->next != NULL)
 	{
-		newlst->content = (*f)(cur->content);
-		newlst->next = malloc(sizeof(t_list *));
-		if (!newlst->next)
-		{
-			ft_lstclear(&firstlst, del);
-			return (NULL);
-		}
-		newlst = newlst->next;
 		cur = cur->next;
+		i++;
 	}
-	newlst->content = (*f)(cur->content);
-	newlst->next = NULL;
-	return (firstlst);
+	return (i);
 }
