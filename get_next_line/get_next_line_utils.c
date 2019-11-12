@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:02:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/04 16:13:49 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/12 19:43:34 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ char	*ft_strjoin_gnl(char *s1, char *s2, size_t len)
 		i2++;
 	}
 	join[i + i2] = '\0';
-	free((void *)s1);
 	return (join);
 }
