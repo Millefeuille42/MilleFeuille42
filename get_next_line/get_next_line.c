@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/12 20:01:09 by null             ###   ########.fr       */
+/*   Updated: 2019/11/12 20:02:00 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ int		ft_gnl_join(size_t rsize, char **buf, char **str)
 		i++;
 	if (!(*str = ft_strjoin_gnl(*str, *buf, i)))
 		return (-1);
-	printf("pong\n");
+	if ((*buf)[i] == '\n')
+		status = 1;
+	else
+		status = 2;
 	if (i < rsize)
 		*buf = *buf + i;
 	else
 		*buf = NULL;
-	printf("pong\n");
-	if ((*buf)[i] == '\n')
-		return (1);
-	else
-		return (2);
+	return (status);
 }
 
 int		ft_gnl_newline(size_t rsize, char **buf, char **str)
 {
 	int i;
+	int status;
 
 	if (rsize == 0)
 		return (0);
@@ -49,17 +49,16 @@ int		ft_gnl_newline(size_t rsize, char **buf, char **str)
 	while ((*buf)[i] != '\n' && i < rsize)
 		i++;
 	if (!(*str = ft_substr(*buf, 0, i)))
-			return (-1);
-	printf("ping\n");
+		return (-1);
+	if ((*buf)[i] == '\n')
+		status = 1;
+	else
+		status = 2;
 	if (i < rsize)
 		*buf = *buf + i;
 	else
 		*buf = NULL;
-	printf("ping2\n");
-	if ((*buf)[i] == '\n')
-		return (1);
-	else
-		return (2);
+	return (status);
 }
 
 int		get_next_line(int fd, char **line)
