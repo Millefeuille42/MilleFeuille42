@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/12 19:47:30 by null             ###   ########.fr       */
+/*   Updated: 2019/11/12 19:48:37 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ int		ft_gnl_join(size_t rsize, char **buf, char **str)
 	if (!(*str = ft_strjoin_gnl(*str, *buf, i)))
 		return (-1);
 	if (i < rsize)
-	{
 		*buf = *buf + i;
-		return (2);
-	}
 	else
-	{
 		*buf = NULL;
+	if ((*buf)[i] == '\n')
 		return (1);
-	}
+	else
+		return (2);
 }
 
 int		ft_gnl_newline(size_t rsize, char **buf, char **str)
