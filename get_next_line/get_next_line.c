@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/12 20:01:01 by null             ###   ########.fr       */
+/*   Updated: 2019/11/12 20:01:09 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		ft_gnl_newline(size_t rsize, char **buf, char **str)
 		*buf = *buf + i;
 	else
 		*buf = NULL;
-	printf("ping\n");
+	printf("ping2\n");
 	if ((*buf)[i] == '\n')
 		return (1);
 	else
