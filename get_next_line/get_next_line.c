@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/12 19:54:25 by null             ###   ########.fr       */
+/*   Updated: 2019/11/12 20:01:01 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ int		ft_gnl_join(size_t rsize, char **buf, char **str)
 		i++;
 	if (!(*str = ft_strjoin_gnl(*str, *buf, i)))
 		return (-1);
+	printf("pong\n");
 	if (i < rsize)
 		*buf = *buf + i;
 	else
 		*buf = NULL;
+	printf("pong\n");
 	if ((*buf)[i] == '\n')
 		return (1);
 	else
@@ -48,10 +50,12 @@ int		ft_gnl_newline(size_t rsize, char **buf, char **str)
 		i++;
 	if (!(*str = ft_substr(*buf, 0, i)))
 			return (-1);
+	printf("ping\n");
 	if (i < rsize)
 		*buf = *buf + i;
 	else
 		*buf = NULL;
+	printf("ping\n");
 	if ((*buf)[i] == '\n')
 		return (1);
 	else
@@ -69,6 +73,7 @@ int		get_next_line(int fd, char **line)
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	status = ft_gnl_newline(read(fd, buf, BUFFER_SIZE), &buf, &str);
+	printf("first read\n");
 	while (status == 2)
 		status = ft_gnl_join(read(fd, buf, BUFFER_SIZE), &buf, &str);
 	*line = str;
