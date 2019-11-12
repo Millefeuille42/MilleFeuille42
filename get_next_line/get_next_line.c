@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/12 20:11:20 by null             ###   ########.fr       */
+/*   Updated: 2019/11/12 20:17:21 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int		ft_gnl_join(size_t rsize, char **buf, char **str)
 		status = 2;
 	if (i < rsize)
 		*buf = *buf + i;
-	else
-		*buf = NULL;
 	printf("PONG2\n");
 	return (status);
 }
@@ -59,8 +57,6 @@ int		ft_gnl_newline(size_t rsize, char **buf, char **str)
 		status = 2;
 	if (i < rsize)
 		*buf = *buf + i;
-	else
-		*buf = NULL;
 	return (status);
 }
 
