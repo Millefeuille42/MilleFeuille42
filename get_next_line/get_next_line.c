@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/12 20:17:21 by null             ###   ########.fr       */
+/*   Updated: 2019/11/12 20:18:20 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		ft_gnl_join(size_t rsize, char **buf, char **str)
 	i = 0;
 	while ((*buf)[i] != '\n' && i < rsize)
 		i++;
-	printf("PONG\n");
 	if (!(*str = ft_strjoin_gnl(*str, *buf, i)))
 		return (-1);
 	if ((*buf)[i] == '\n')
@@ -33,7 +32,6 @@ int		ft_gnl_join(size_t rsize, char **buf, char **str)
 		status = 2;
 	if (i < rsize)
 		*buf = *buf + i;
-	printf("PONG2\n");
 	return (status);
 }
 
@@ -71,10 +69,8 @@ int		get_next_line(int fd, char **line)
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	status = ft_gnl_newline(read(fd, buf, BUFFER_SIZE), &buf, &str);
-	printf("first read\n");
 	while (status == 2)
 		status = ft_gnl_join(read(fd, buf, BUFFER_SIZE), &buf, &str);
-	printf("done\n");
 	*line = str;
 	return (status);
 }
