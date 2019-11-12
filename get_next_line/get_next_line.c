@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/12 18:59:49 by null             ###   ########.fr       */
+/*   Updated: 2019/11/12 19:25:12 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		get_next_line(int fd, char **line)
 
 	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
 		return (-1);
-	status = ft_gnl_line(read(fd, buf, BUFFER_SIZE), &buf, &str);
+	status = ft_gnl_newline(read(fd, buf, BUFFER_SIZE), &buf, &str);
 	while (status == 2)
 		status = ft_gnl_line(read(fd, buf, BUFFER_SIZE), buf, &str);
 	return (status);
