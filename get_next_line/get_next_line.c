@@ -6,33 +6,84 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/04 18:25:18 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:59:49 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		ft_gnl_line(size_t rsize, char *buf, char **str, size_t *i)
+int		ft_gnl_join(size_t rsize, char **buf, char **str)
 {
-	*i = 0;
+	int i;
+
 	if (rsize == 0)
-		return (2);
+		return (0);
 	if (rsize < 0)
-		return (100);
-	while (buf[*i] != '\n' && *i < rsize)
-		*i = *i + 1;
-	if (!*str)
-		*str = ft_substr(buf, 0, *i);
-	else
-		*str = ft_strjoin_gnl(*str, buf, *i);
-	if (!*str)
-		return (100);
-	if (buf[*i] == '\n' && *i < rsize)
-	{
-		buf[rsize + 1] = '\0';
 		return (-1);
+	i = 0;
+	while ((*buf)[i] != '\n' && i < rsize)
+		i++;
+	if (!(*str = ft_strjoin_gnl(*str, *buf, i)))
+		return (-1);
+	if (i < rsize)
+	{
+		*buf = *buf + i;
+		return (2);
 	}
-	if (buf[*i] == '\n' && *i == rsize)
+	else
+	{
+		*buf = NULL;
 		return (1);
-	return (0);
+	}
+}
+
+int		ft_gnl_newline(size_t rsize, char **buf, char **str)
+{
+	int i;
+
+	if (rsize == 0)
+		return (0);
+	if (rsize < 0)
+		return (-1);
+	i = 0;
+	while ((*buf)[i] != '\n' && i < rsize)
+		i++;
+	if (!(*str = ft_substr(*buf, 0, i))
+			return (-1);
+	if (i < rsize)
+	{
+		*buf = *buf + i;
+		return (2);
+	}
+	else
+	{
+		*buf = NULL;
+		return (1);
+	}
+}
+
+int		get_next_line(int fd, char **line)
+{
+	static char	*buf[BUFFER_SIZE + 1];
+	char		*str;
+	int			status;
+
+	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
+		return (-1);
+	status = ft_gnl_line(read(fd, buf, BUFFER_SIZE), &buf, &str);
+	while (status == 2)
+		status = ft_gnl_line(read(fd, buf, BUFFER_SIZE), buf, &str);
+	return (status);
+}
+
+int		main(void)
+{
+	char **line;
+	if (!(line = malloc(sizeof(char *))))
+		return (3);
+	if (!(*line = malloc(BUFFER_SIZE)))
+		return (3);
+	int fd = open("./test.txt", O_RDONLY);
+	get_next_line(fd, line);
+	printf("%s\n", line[0]);
 }

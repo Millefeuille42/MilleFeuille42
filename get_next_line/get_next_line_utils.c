@@ -67,23 +67,3 @@ char	*ft_strjoin_gnl(char *s1, char *s2, size_t len)
 	free((void *)s1);
 	return (join);
 }
-
-char	*ft_strdup(char *s1)
-{
-	int		i;
-	char	*dst;
-
-	i = 0;
-	while (s1[i] != '\0')
-		i++;
-	if (!(dst = malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	i = 0;
-	while (i != BUFFER_SIZE)
-	{
-		dst[i] = s1[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-}

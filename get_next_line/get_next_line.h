@@ -17,15 +17,9 @@
 # include <fcntl.h> /* remove */
 # include <stdio.h> /* remove */
 
-typedef struct	s_sizes
-{
-	size_t		pos;
-	size_t		rsize;
-}
-				t_sizes;
 int				ft_strlen(const char *s);
-char			*ft_strdup(char *s1);
 char			*ft_substr(char *s, unsigned int start, size_t len);
 char			*ft_strjoin_gnl(char *s1, char *s2, size_t len);
 int				get_next_line(int fd, char **line);
+
 #endif

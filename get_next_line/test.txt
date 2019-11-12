@@ -1,0 +1,10 @@
+Bonjour je m'appelle Mathieu
+Ceci est la seconde ligne
+Et la la troisième
+PING
+Voila
+Fin du Fichier dans
+3
+2
+1
+Fin...
