@@ -35,7 +35,7 @@ char			*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	char	*sub;
 
-	if (!s || len == 0 || (unsigned int)ft_strlen(s) < start)
+	if (!s || len == 0 || (unsigned int)ft_strlen(s) <= start)
 		return (ft_strdup("\0"));
 	i = 0;
 	while (s[(size_t)start + i] != '\0' && i < len)
