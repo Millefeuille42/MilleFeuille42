@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/12 20:02:00 by null             ###   ########.fr       */
+/*   Updated: 2019/11/12 20:04:37 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		ft_gnl_join(size_t rsize, char **buf, char **str)
 {
 	int i;
+	int status;
 
 	if (rsize == 0)
 		return (0);
