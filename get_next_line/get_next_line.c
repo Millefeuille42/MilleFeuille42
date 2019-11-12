@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/12 19:29:24 by null             ###   ########.fr       */
+/*   Updated: 2019/11/12 19:31:45 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,13 @@ int		ft_gnl_newline(size_t rsize, char **buf, char **str)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	buf[BUFFER_SIZE + 1];
+	static char	*buf;
 	char		*str;
 	int			status;
 
 	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
+		return (-1);
+	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	status = ft_gnl_newline(read(fd, buf, BUFFER_SIZE), &buf, &str);
 	while (status == 2)
