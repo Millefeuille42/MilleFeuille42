@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/12 19:35:29 by null             ###   ########.fr       */
+/*   Updated: 2019/11/12 19:47:30 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ int		main(void)
 {
 	char **line;
 	if (!(line = malloc(sizeof(char *))))
-		return (3);
-	if (!(*line = malloc(BUFFER_SIZE)))
 		return (3);
 	int fd = open("./test.txt", O_RDONLY);
 	get_next_line(fd, line);
