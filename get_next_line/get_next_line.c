@@ -48,7 +48,7 @@ int		ft_gnl_newline(size_t rsize, char **buf, char **str)
 	i = 0;
 	while ((*buf)[i] != '\n' && i < rsize)
 		i++;
-	if (!(*str = ft_substr(*buf, 0, i))
+	if (!(*str = ft_substr(*buf, 0, i)))
 			return (-1);
 	if (i < rsize)
 	{
