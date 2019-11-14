@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 15:13:34 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/04 12:06:39 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/09 13:01:27 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/14 13:22:37 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	len;
+	size_t			i;
+	unsigned char	*memzone;
 
-	len = ft_strlen(s);
-	while (s[len] != s[0])
+	memzone = malloc(count * size);
+	if (!memzone)
+		return (NULL);
+	i = 0;
+	while (i < (count * size))
 	{
-		if (s[len] == (char)c)
-			return ((char *)(s + len));
-		len--;
+		memzone[i] = 0;
+		i++;
 	}
-	if (s[len] == (char)c)
-		return ((char *)(s + len));
-	return (NULL);
+	return ((void *)memzone);
 }
