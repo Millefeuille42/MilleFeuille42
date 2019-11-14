@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 17:02:10 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/07 13:49:56 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/14 15:29:28 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strnstr(const char *hay, const char *needle, size_t len)
 		return ((char *)hay);
 	while (i < len)
 	{
-		if (!hay[i])
+		if (!hay[i] || (!needle && !hay))
 			return (NULL);
 		j = 0;
 		i2 = i;

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 11:05:55 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/14 12:27:44 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/14 15:16:16 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	size_t			i;
 
 	i = 0;
-	if (n <= 0)
+	if (n <= 0 || (!s1 && !s2))
 		return (0);
 	while (1)
 	{
@@ -33,5 +33,4 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 			return (c1 - c2);
 		i++;
 	}
-	return (c1 - c2);
 }

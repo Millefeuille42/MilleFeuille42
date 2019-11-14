@@ -19,10 +19,10 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	unsigned char	*mem2;
 
 	i = 0;
-	mem1 = (unsigned char *)src;
-	mem2 = (unsigned char *)dst;
 	if (!dst && !src)
 		return (NULL);
+	mem1 = (unsigned char *)src;
+	mem2 = (unsigned char *)dst;
 	if (len == 0)
 		return (mem2);
 	if (mem1 < mem2)
