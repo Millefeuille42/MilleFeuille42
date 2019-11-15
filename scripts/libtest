@@ -1,6 +1,0 @@
-#!/bin/bash
-
-cd ~/libft-unit-test
-rm -rf ~/libft
-cp -r ~/Projekt/libft/mlabouri4 ~/libft
-make f
