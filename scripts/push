@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [[ $1 ]]
+then
+	cd $1
+fi
+
+clear
+git add *
+git status
+echo ""
+echo "Push?"
+echo ""
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes ) git commit -m 'Automatic'; git push; break;;
+		No ) clear; exit;;
+	esac
+done

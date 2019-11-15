@@ -1,0 +1,53 @@
+#!/bin/bash
+
+if [[ "$OSTYPE" = *"linux"* ]]
+then
+	ABS="/home/"
+	echo "Linux detected..."
+elif [[ "$OSTYPE" = *"darwin"* ]]
+then
+	ABS="/USERS/"
+	echo "Mac OSX detected..."
+else
+	echo "Unsupported OS. exiting..."
+	exit
+fi
+if [ "$2" ]
+then
+	if [ "$1" = "abs" ]
+	then
+		FILECOUNT="$(ls -a $ABS$USER/ | grep .bashrc | wc -l | bc)"
+		if [ "$FILECOUNT" != "1" ]
+		then
+			echo ".bashrc not found. Creating File..."
+			touch $ABS$USER/.bashrc
+		fi
+		echo "Adding absolute path to PATH..."
+		echo "PATH=$ABS$USER/$2:$PATH" >> $ABS$USER/.bashrc
+		FILECOUNT="$(ls -a $ABS$USER/ | grep $2 | wc -l | bc)"
+		if [ "$FILECOUNT" != "1" ]
+		then
+			echo "$2 folder not found. Creating Folder..."
+			mkdir $ABS$USER/$2
+		fi
+		echo "Reload .bashrc"
+	fi
+	if [ "$1" = "rel" ]
+	then
+		FILECOUNT="$(ls -a ~/ | grep .bashrc | wc -l | bc)"
+		if [ "$FILECOUNT" != "1" ]
+		then
+			echo ".bashrc not found. Creating File..."
+			touch ~/.bashrc
+		fi
+		echo "Adding relative path to PATH..."
+		echo "PATH=~/$2:$PATH" >> ~/.bashrc
+		FILECOUNT="$(ls -a ~/ | grep $2 | wc -l | bc)"
+		if [ "$FILECOUNT" != "1" ]
+		then
+			echo "$2 folder not found. Creating Folder..."
+			mkdir ~/$2
+		fi
+		echo "Reload .bashrc"
+	fi
+fi

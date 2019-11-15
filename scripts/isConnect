@@ -1,0 +1,3 @@
+#!/bin/bash
+
+TOKEN=$(curl -X POST --data "grant_type=client_credentials&client_id=680a1a32978eee27a4d7c8503081dd814d07bf126172527f1a01a757d26028fd&client_secret=4002c9672e70b3cc961286c9063501ccab18347cbc5300b6509e50aff2a6e72a" https://api.intra.42.fr/oauth/token)

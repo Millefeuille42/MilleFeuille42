@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#WIP
+
+if [ ! $1 ]
+then
+	exit
+fi
+
+if [[ "$2" == "-index" ]]
+then
+	find / -name "$1" 2>&1 | awk '!/Permission denied/' > ~/search_list.out
+	cat ~/search_list.out
+	echo ""
+	echo "$(cat ~/search_list.out | wc -l | bc) File(s) Indexed"
+else
+	cat ~/search_list.out | grep $1
+	echo ""
+	echo "$(cat ~/search_list.out | grep $1 | wc -l | bc) File(s) Found"
+fi
