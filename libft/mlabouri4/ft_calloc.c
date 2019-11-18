@@ -15,13 +15,18 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	size_t			i;
+	size_t		total;
 	unsigned char	*memzone;
 
-	memzone = malloc(count * size);
+	if (!count || !size)
+		total = 1;
+	else
+		total = size * count;
+	memzone = malloc(total);
 	if (!memzone)
 		return (NULL);
 	i = 0;
-	while (i < (count * size))
+	while (i < total)
 	{
 		memzone[i] = 0;
 		i++;
