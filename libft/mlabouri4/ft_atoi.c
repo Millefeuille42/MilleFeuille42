@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 17:13:43 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/10/24 13:23:56 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:56:30 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ int			ft_atoi(const char *str)
 	nb = 0;
 	i = 0;
 	check = 0;
-	str = ft_check((char *)str, &check);
-	if (!str)
-		return (nb);
+	if (str == NULL)
+		return (0);
+	if (!(str = ft_check((char *)str, &check)))
+		return (0);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = nb * 10 + (str[i] - 48);

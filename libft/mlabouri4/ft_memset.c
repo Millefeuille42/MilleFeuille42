@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 11:01:40 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/14 15:08:10 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/19 11:55:11 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memset(void *b, int c, size_t len)
 	unsigned char	*mem;
 
 	i = 0;
+	if (!b)
+		return (NULL);
 	mem = (unsigned char *)b;
 	while (i < len)
 	{

@@ -6,96 +6,41 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:39:35 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/05 14:48:36 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/19 17:44:32 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static size_t	ft_trimlen(char const *s1, char const *set, size_t len)
+static char	ft_in_set(char const c, char const *set)
 {
-	size_t	i;
-	size_t	i2;
+	size_t i;
 
 	i = 0;
-	while (s1[i] != '\0')
+	while (set[i])
 	{
-		i2 = 0;
-		while (set[i2] != '\0' && s1[i] != set[i2])
-			i2++;
-		if (set[i2] == '\0')
-			break ;
-		if (s1[i] == set[i2])
-			len++;
+		if (set[i] == c)
+			return (1);
 		i++;
 	}
-	return (len);
+	return (0);
 }
 
-static size_t	ft_rtrimlen(char const *s1, char const *set, size_t len)
+char		*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	i2;
+	size_t len;
 
-	i = 0;
-	while (s1[i] != '\0')
-		i++;
-	i--;
-	while (i != 0)
-	{
-		i2 = 0;
-		while (set[i2] != '\0' && s1[i] != set[i2])
-			i2++;
-		if (set[i2] == '\0')
-			break ;
-		if (s1[i] == set[i2])
-			len++;
-		i--;
-	}
-	return (len);
-}
-
-static	char	*ft_trim(char const *s1, char const *set, char *trim)
-{
-	size_t	start;
-	size_t	end;
-	size_t	i;
-
-	start = ft_trimlen(s1, set, 0);
-	i = 0;
-	while (s1[i] != '\0')
-		i++;
-	end = i - ft_rtrimlen(s1, set, 0);
-	i = 0;
-	while (i + start < end)
-	{
-		trim[i] = s1[i + start];
-		i++;
-	}
-	trim[i] = '\0';
-	return (trim);
-}
-
-char			*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	len;
-	size_t	i;
-	char	*trim;
-
-	if (!s1)
+	if (!s1 || *s1 == '\0')
 		return (ft_strdup("\0"));
-	if (!set)
+	if (!set || *set == '\0')
 		return (ft_strdup(s1));
-	i = 0;
-	len = ft_trimlen(s1, set, 0);
-	len = ft_rtrimlen(s1, set, len);
-	while (s1[i] != '\0')
-		i++;
-	if ((len + 1) > i)
-		return ("\0");
-	trim = malloc(sizeof(char) * (i - len + 1));
-	if (!trim)
-		return (NULL);
-	trim = ft_trim(s1, set, trim);
-	return (trim);
+	while (ft_in_set(*s1, set))
+		s1++;
+	if (*s1 == '\0')
+		return (ft_strdup("\0"));
+	len = ft_strlen(s1) - 1;
+	while (ft_in_set(s1[len], set))
+		len--;
+	return (ft_substr(s1, 0, len + 1));
 }
