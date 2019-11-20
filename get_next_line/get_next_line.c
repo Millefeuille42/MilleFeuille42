@@ -6,20 +6,33 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/14 17:54:43 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/20 20:06:06 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+char	**ft_buf_edit(size_t rsize, char **buf, size_t i)
+{
+	if (i < rsize)
+		*buf = *buf + i + 1;
+	if (i == rsize - 1)
+	{
+		*buf = NULL;
+		free(*buf);
+	}
+	return (buf);
+}
+
 int		ft_gnl_join(size_t rsize, char **buf, char **str)
 {
-	int i;
-	int status;
+	size_t	i;
+	int		status;
 
 	if (rsize == 0)
 	{
 		*buf = NULL;
+		free(*buf);
 		return (1);
 	}
 	if (rsize < 0)
@@ -28,26 +41,27 @@ int		ft_gnl_join(size_t rsize, char **buf, char **str)
 	i = 0;
 	while ((*buf)[i] != '\n' && i < rsize)
 		i++;
-	if (!(*str = ft_strjoin_gnl(*str, *buf, i)))
+	if (!(*str = ft_strjoin_gnl(str, *buf, i)))
 		return (-1);
-	if ((*buf)[i] == '\n' )
+	if ((*buf)[i] == '\n')
 		status = 1;
 	else
 		status = 2;
-	if (i < rsize)
-		*buf = *buf + i + 1;
+	buf = ft_buf_edit(rsize, buf, i);
 	return (status);
 }
 
 int		ft_gnl_newline(size_t rsize, char **buf, char **str)
 {
-	int i;
-	int status;
+	size_t	i;
+	int		status;
 
 	if (rsize == 0)
 	{
 		*buf = NULL;
 		*str = NULL;
+		free(*buf);
+		free(*str);
 		return (0);
 	}
 	if (rsize < 0)
@@ -62,16 +76,15 @@ int		ft_gnl_newline(size_t rsize, char **buf, char **str)
 		status = 1;
 	else
 		status = 2;
-	if (i < rsize)
-		*buf = *buf + i + 1;
+	buf = ft_buf_edit(rsize, buf, i);
 	return (status);
 }
 
 int		get_next_line(int fd, char **line)
 {
-	static char *buf;
-	char *str;
-	int status;
+	static char	*buf;
+	char		*str;
+	int			status;
 
 	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
 		return (-1);
@@ -89,21 +102,24 @@ int		get_next_line(int fd, char **line)
 	if (status == 0)
 		return (0);
 	*line = str;
+
 	return (status);
 }
 
-int		main(void)
+int		main(int ac, char **av)
 {
-	char **line;
-	int value = 2;
+	char	*line;
+	int		fd;
 
-	if (!(line = malloc(sizeof(char *))))
-		return (3);
-	int fd = open("./test.txt", O_RDONLY);
-
-	while (value)
+	fd = ac > 1 ? open(av[1], O_RDONLY) : 0;
+	while (get_next_line(fd, &line))
 	{
-		value = get_next_line(fd, line);
-		printf("%s\n", line[0]);
+		printf("%s\n", line);
+		free(line);
 	}
+	printf("%s\n", line);
+	//free(line);
+	//system("leaks a.out");
+	close(fd);
+	return (0);
 }

@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 12:03:06 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/20 20:02:41 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/12 15:25:22 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/20 19:19:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdio.h>
-# include <fcntl.h>
+#include "libft.h"
 
-int				ft_strlen(const char *s);
-char			*ft_substr(char *s, unsigned int start, size_t len);
-char			*ft_strjoin_gnl(char **s1, char *s2, size_t len);
-int				get_next_line(int fd, char **line);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	size_t	i;
+	char	*d;
 
-#endif
+	if (!s || !f)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	d = malloc(sizeof(char) * i + 1);
+	if (!d)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		d[i] = (*f)(i, s[i]);
+		i++;
+	}
+	d[i] = '\0';
+	return (d);
+}

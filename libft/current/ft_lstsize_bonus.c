@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 12:03:06 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/20 20:02:41 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/10/12 16:05:57 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/20 19:19:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdio.h>
-# include <fcntl.h>
+#include "libft.h"
 
-int				ft_strlen(const char *s);
-char			*ft_substr(char *s, unsigned int start, size_t len);
-char			*ft_strjoin_gnl(char **s1, char *s2, size_t len);
-int				get_next_line(int fd, char **line);
+int	ft_lstsize(t_list *lst)
+{
+	t_list	*cur;
+	size_t	i;
 
-#endif
+	if (!lst)
+		return (0);
+	i = 1;
+	cur = lst;
+	while (cur->next != NULL)
+	{
+		cur = cur->next;
+		i++;
+	}
+	return (i);
+}
