@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 16:21:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/05 15:04:59 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/20 16:00:58 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t j;
 
 	j = 0;
-	if (!src)
+	if (src == NULL || dst == NULL)
 		return (0);
 	while (src[j] != '\0')
 		j++;

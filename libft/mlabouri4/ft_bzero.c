@@ -17,7 +17,7 @@ void	ft_bzero(void *s, size_t n)
 	size_t			i;
 	unsigned char	*mem;
 
-	if (!s || n <= 0)
+	if (s == NULL || n <= 0)
 		return ;
 	mem = (unsigned char *)s;
 	i = 0;

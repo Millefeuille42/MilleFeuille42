@@ -19,7 +19,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	char			*mem2;
 
 	i = 0;
-	if (!dst && !src)
+	if (dst == NULL || src == NULL)
 		return (NULL);
 	mem1 = (char *)src;
 	mem2 = (char *)dst;
