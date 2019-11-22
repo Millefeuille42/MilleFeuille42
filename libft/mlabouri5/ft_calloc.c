@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/22 16:54:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/22 17:08:56 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/11/22 14:58:58 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/22 14:58:58 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_make_line(size_t size, char **line, char **buf)
-{
-	if (rsize == 0)
-	{
-		free(*buf)
-		*buf == NULL;
-		return (0);
-	}
-	if (rsize =<=)
-}
+#include "libft.h"
 
-int		get_next_line(int fd, char **line)
+void	*ft_calloc(size_t count, size_t size)
 {
-	static char	*buf;
+	void	*mem;
 
-	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
-		return (-1);
-	if (buf == NULL)
+	if (count != 0 && size != 0)
 	{
-		if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + sizeof(char)))))
-			return (-1);
-		*line = NULL;
-		ft_make_line();
+		if (!(mem = malloc(count * size)))
+			return (NULL);
+		ft_bzero(mem, count * size);
+		return (mem);
 	}
+	return (malloc(1));
 }

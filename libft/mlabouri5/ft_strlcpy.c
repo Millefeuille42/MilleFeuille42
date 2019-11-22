@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/22 16:54:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/22 17:08:56 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/11/22 15:02:00 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/22 15:02:00 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_make_line(size_t size, char **line, char **buf)
-{
-	if (rsize == 0)
-	{
-		free(*buf)
-		*buf == NULL;
-		return (0);
-	}
-	if (rsize =<=)
-}
+#include "libft.h"
 
-int		get_next_line(int fd, char **line)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	static char	*buf;
+	size_t	i;
 
-	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
-		return (-1);
-	if (buf == NULL)
+	if (dst != NULL && src != NULL)
 	{
-		if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + sizeof(char)))))
-			return (-1);
-		*line = NULL;
-		ft_make_line();
+		i = 0;
+		if (dstsize == 0)
+			return (ft_strlen(src));
+		while (src[i] && i < dstsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+		return (ft_strlen(src));
 	}
+	return (0);
 }

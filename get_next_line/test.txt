@@ -1,9 +1,0 @@
-Bonjour je suis la premiere ligne
-Ceci est la seconde ligne
-Et la, la troisieme
-PING
-Fin du Fichier dans
-3
-2
-1
-Fin...

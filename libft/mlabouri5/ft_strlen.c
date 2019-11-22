@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/22 16:54:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/22 17:08:56 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/11/22 15:02:06 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/22 15:02:06 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_make_line(size_t size, char **line, char **buf)
-{
-	if (rsize == 0)
-	{
-		free(*buf)
-		*buf == NULL;
-		return (0);
-	}
-	if (rsize =<=)
-}
+#include "libft.h"
 
-int		get_next_line(int fd, char **line)
+size_t	ft_strlen(const char *str)
 {
-	static char	*buf;
+	int	i;
 
-	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
-		return (-1);
-	if (buf == NULL)
+	if (str != NULL)
 	{
-		if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + sizeof(char)))))
-			return (-1);
-		*line = NULL;
-		ft_make_line();
+		i = 0;
+		while (str[i])
+			i++;
+		return (i);
 	}
+	return (0);
 }

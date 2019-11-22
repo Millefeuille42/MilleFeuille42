@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/22 16:54:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/22 17:08:56 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/11/22 15:01:05 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/22 15:01:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_make_line(size_t size, char **line, char **buf)
-{
-	if (rsize == 0)
-	{
-		free(*buf)
-		*buf == NULL;
-		return (0);
-	}
-	if (rsize =<=)
-}
+#include "libft.h"
+#include <stdio.h>
 
-int		get_next_line(int fd, char **line)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	static char	*buf;
+	unsigned char	*first;
+	unsigned char	*second;
 
-	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
-		return (-1);
-	if (buf == NULL)
+	if (s1 != NULL && s2 != NULL && s1 != s2 && n != 0)
 	{
-		if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + sizeof(char)))))
-			return (-1);
-		*line = NULL;
-		ft_make_line();
+		first = (unsigned char *)s1;
+		second = (unsigned char *)s2;
+		while (*first == *second && --n > 0)
+		{
+			first++;
+			second++;
+		}
+		return ((int)(*first - *second));
 	}
+	return (0);
 }

@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/22 16:54:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/22 17:08:56 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/11/22 15:01:48 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/22 15:01:48 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_make_line(size_t size, char **line, char **buf)
-{
-	if (rsize == 0)
-	{
-		free(*buf)
-		*buf == NULL;
-		return (0);
-	}
-	if (rsize =<=)
-}
+#include "libft.h"
 
-int		get_next_line(int fd, char **line)
+char	*ft_strdup(const char *s1)
 {
-	static char	*buf;
+	char *copy;
 
-	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
-		return (-1);
-	if (buf == NULL)
+	if (s1 != NULL)
 	{
-		if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + sizeof(char)))))
-			return (-1);
-		*line = NULL;
-		ft_make_line();
+		if (!(copy = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char))))
+			return (NULL);
+		ft_memmove(copy, s1, ft_strlen(s1) + 1);
+		return (copy);
 	}
+	return (NULL);
 }

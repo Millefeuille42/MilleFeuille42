@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/22 16:54:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/22 17:08:56 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/11/22 15:00:06 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/11/22 15:00:06 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_make_line(size_t size, char **line, char **buf)
-{
-	if (rsize == 0)
-	{
-		free(*buf)
-		*buf == NULL;
-		return (0);
-	}
-	if (rsize =<=)
-}
+#include "libft.h"
 
-int		get_next_line(int fd, char **line)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	static char	*buf;
+	unsigned char	*s;
+	unsigned char	*d;
+	size_t			i;
 
-	if (line == NULL || BUFFER_SIZE == 0 || fd < 0)
-		return (-1);
-	if (buf == NULL)
+	if (dst != NULL && src != NULL && src != dst)
 	{
-		if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + sizeof(char)))))
-			return (-1);
-		*line = NULL;
-		ft_make_line();
+		i = 0;
+		s = (unsigned char *)src;
+		d = (unsigned char *)dst;
+		while (i < n)
+		{
+			d[i] = s[i];
+			if (s[i] == (unsigned char)c)
+				return (d + i + 1);
+			i++;
+		}
 	}
+	return (NULL);
 }
