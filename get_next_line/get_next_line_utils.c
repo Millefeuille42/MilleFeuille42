@@ -6,13 +6,20 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:02:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/21 18:32:42 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/23 15:47:28 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		ft_strlen(const char *s)
+
+void	ft_safe_free(void **mem)
+{
+	free(*mem);
+	*mem = NULL;
+}
+
+int		ft_strlen(char *s)
 {
 	size_t	i;
 
@@ -53,7 +60,7 @@ char	*ft_strjoin_gnl(char **s1, char *s2, size_t len)
 	i2 = 0;
 	if (!(join = malloc(sizeof(char) * (ft_strlen(*s1) + len + 1))))
 	{
-		//free(*s1);
+		ft_safe_free((void **)s1);
 		return (NULL);
 	}
 	while ((*s1)[i] != '\0')
@@ -67,27 +74,27 @@ char	*ft_strjoin_gnl(char **s1, char *s2, size_t len)
 		i2++;
 	}
 	join[i + i2] = '\0';
-	//free(*s1);
+	ft_safe_free((void **)s1);
 	return (join);
 }
 
-char	*ft_strdup_gnl(const char *s1, size_t off)
+char	*ft_strdup_gnl(char **s1, size_t off)
 {
 	int		i;
 	char	*dst;
 
 	i = 0;
-	while (s1[off + i] != '\0')
+	while ((*s1)[off + i] != '\0')
 		i++;
 	if (!(dst = malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	i = 0;
-	while (s1[off + i] != '\0')
+	while ((*s1)[off + i] != '\0')
 	{
-		dst[i] = s1[off + i];
+		dst[i] = (*s1)[off + i];
 		i++;
 	}
 	dst[i] = '\0';
-	//free((void *)s1);
+	ft_safe_free((void **)s1);
 	return (dst);
 }

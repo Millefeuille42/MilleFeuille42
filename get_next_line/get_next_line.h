@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:03:06 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/21 14:20:14 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/23 15:46:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-int				ft_strlen(const char *s);
+int				ft_strlen(char *s);
 char			*ft_substr(char *s, unsigned int start, size_t len);
 char			*ft_strjoin_gnl(char **s1, char *s2, size_t len);
-char			*ft_strdup_gnl(const char *s1, size_t off);
+char			*ft_strdup_gnl(char **s1, size_t off);
+void			ft_safe_free(void **mem);
 int				get_next_line(int fd, char **line);
 #endif
