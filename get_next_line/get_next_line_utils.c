@@ -6,12 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:02:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/23 15:47:28 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/23 18:45:12 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 void	ft_safe_free(void **mem)
 {
@@ -86,7 +85,7 @@ char	*ft_strdup_gnl(char **s1, size_t off)
 	i = 0;
 	while ((*s1)[off + i] != '\0')
 		i++;
-	if (!(dst = malloc(sizeof(char) * (i + 1))))
+	if (!(dst = malloc(sizeof(char) * i + sizeof(char))))
 		return (NULL);
 	i = 0;
 	while ((*s1)[off + i] != '\0')
