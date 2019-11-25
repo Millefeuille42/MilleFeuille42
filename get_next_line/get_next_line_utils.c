@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:02:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/23 18:45:12 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:17:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,29 @@ void	ft_safe_free(void **mem)
 	*mem = NULL;
 }
 
-int		ft_strlen(char *s)
+size_t	ft_strlen(char *str)
 {
-	size_t	i;
+	int	i;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (str != NULL)
+	{
+		i = 0;
+		while (str[i])
+			i++;
+		return (i);
+	}
+	return (0);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	if (s != NULL)
+	{
+		while (*s && *s != c)
+			s++;
+		return (*s != c ? NULL : (char *)s);
+	}
+	return (NULL);
 }
 
 char	*ft_substr(char *s, unsigned int start, size_t len)
@@ -49,7 +64,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-char	*ft_strjoin_gnl(char **s1, char *s2, size_t len)
+char			*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	i2;
@@ -57,43 +72,18 @@ char	*ft_strjoin_gnl(char **s1, char *s2, size_t len)
 
 	i = 0;
 	i2 = 0;
-	if (!(join = malloc(sizeof(char) * (ft_strlen(*s1) + len + 1))))
-	{
-		ft_safe_free((void **)s1);
+	if (!(join = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
 		return (NULL);
-	}
-	while ((*s1)[i] != '\0')
+	while (s1[i] != '\0')
 	{
-		join[i] = (*s1)[i];
+		join[i] = s1[i];
 		i++;
 	}
-	while (s2[i2] != '\0' && i2 < len)
+	while (s2[i2] != '\0')
 	{
 		join[i + i2] = s2[i2];
 		i2++;
 	}
 	join[i + i2] = '\0';
-	ft_safe_free((void **)s1);
 	return (join);
-}
-
-char	*ft_strdup_gnl(char **s1, size_t off)
-{
-	int		i;
-	char	*dst;
-
-	i = 0;
-	while ((*s1)[off + i] != '\0')
-		i++;
-	if (!(dst = malloc(sizeof(char) * i + sizeof(char))))
-		return (NULL);
-	i = 0;
-	while ((*s1)[off + i] != '\0')
-	{
-		dst[i] = (*s1)[off + i];
-		i++;
-	}
-	dst[i] = '\0';
-	ft_safe_free((void **)s1);
-	return (dst);
 }
