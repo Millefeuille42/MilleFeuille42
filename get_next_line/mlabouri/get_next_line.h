@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:03:06 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/25 17:03:27 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/26 14:31:25 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
-# include <stdio.h>
 # include <fcntl.h>
 
 size_t			ft_strlen(char *str);
 char			*ft_substr(char *s, unsigned int start, size_t len);
 char			*ft_strjoin(char *s1, char *s2);
 char			*ft_strchr(const char *s, int c);
-void			ft_safe_free(void **mem);
 int				get_next_line(int fd, char **line);
 #endif

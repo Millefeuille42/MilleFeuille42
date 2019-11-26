@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 16:54:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/25 17:04:01 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/26 14:57:46 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,76 +14,93 @@
 
 static	int		ft_init(char **line, char **buffer, int fd)
 {
-	int i;
+	int		i;
+	char	buf[BUFFER_SIZE + 1];
 
 	if (fd == -1 || line == NULL || BUFFER_SIZE == 0 || BUFFER_SIZE > 8000000)
 		return (-1);
+	if (read(fd, buf, 0))
+		return (-1);
 	if (!*buffer)
 	{
-		if (!(*buffer = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		if (!(*buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 			return (-1);
 		i = 0;
 		while (i < (BUFFER_SIZE + 1))
 		{
-			buffer[i] = 0;
+			(*buffer)[i] = '\0';
 			i++;
 		}
 	}
 	return (0);
 }
 
-static	int		ft_make_joinline(size_t size, char **buf, char **line)
-{
-
-}
-
-static	int		ft_line(char **buffer, char **line, int fd)
+static	int		ft_line(char **buffer, int fd)
 {
 	char	buf[BUFFER_SIZE + 1];
 	char	*cpy_buffer;
 	size_t	rsize;
 
-	while ((rsize = read(fd, buf, BUFFER_SIZE) != 0))
+	rsize = -1;
+	while (rsize != 0)
 	{
+		rsize = read(fd, buf, BUFFER_SIZE);
 		if (rsize < 0)
 			return (-1);
 		buf[rsize] = '\0';
 		cpy_buffer = *buffer;
-		ft_strjoin(*buffer, buf);
+		*buffer = ft_strjoin(*buffer, buf);
 		free(cpy_buffer);
 		if (!*buffer)
 			return (-1);
 		if (ft_strchr(buf, '\n'))
 			break ;
 	}
-	if (rsize == 0)
+	if (rsize == 0 && !(ft_strchr(*buffer, '\n')))
 		return (0);
 	return (1);
 }
 
-int		get_next_line(int fd, char **line)
+static	int		ft_make(char **buffer, char **line)
+{
+	int		i;
+	char	*cpy_buffer;
+
+	i = 0;
+	while ((*buffer)[i] != '\n' && (*buffer)[i] != '\0')
+		i++;
+	*line = ft_substr(*buffer, 0, i);
+	if ((*buffer)[i] != '\0')
+		i++;
+	cpy_buffer = ft_substr(*buffer, i, ft_strlen(*buffer));
+	free(*buffer);
+	if (!cpy_buffer)
+		return (-1);
+	*buffer = cpy_buffer;
+	return (0);
+}
+
+int				get_next_line(int fd, char **line)
 {
 	static char	*buffer;
+	int			status;
 
 	if (ft_init(line, &buffer, fd) == -1)
 		return (-1);
-
-}
-
-int		main(int ac, char **av)
-{
-	char	*line;
-	int		fd;
-
-	fd = ac > 1 ? open(av[1], O_RDONLY) : 0;
-	while (get_next_line(fd, &line) > 0)
+	if ((status = ft_line(&buffer, fd)) == -1)
+		return (-1);
+	if (buffer[0] != '\0')
 	{
-		printf("%s\n", line);
-		free(line);
+		if (ft_make(&buffer, line) == -1)
+			return (-1);
+		if (buffer[0] == '\0')
+		{
+			free(buffer);
+			buffer = NULL;
+		}
+		return (status);
 	}
-	printf("%s\n", line);
-	free(line);
-	//system("leaks a.out");
-	close(fd);
+	free(buffer);
+	*line = ft_substr("\0", 0, 1);
 	return (0);
 }
