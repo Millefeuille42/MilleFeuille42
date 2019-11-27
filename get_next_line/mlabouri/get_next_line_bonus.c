@@ -82,25 +82,25 @@ static	int		ft_make(char **buffer, char **line)
 
 int				get_next_line(int fd, char **line)
 {
-	static char	*buffer;
+	static char	**buffer;
 	int			status;
 
-	if (ft_init(line, &buffer, fd) == -1)
+	if (ft_init(line, &buffer[fd], fd) == -1)
 		return (-1);
-	if ((status = ft_line(&buffer, fd)) == -1)
+	if ((status = ft_line(&buffer[fd], fd)) == -1)
 		return (-1);
-	if (buffer[0] != '\0')
+	if (buffer[fd][0] != '\0')
 	{
-		if (ft_make(&buffer, line) == -1)
+		if (ft_make(&buffer[fd], line) == -1)
 			return (-1);
-		if (buffer[0] == '\0')
+		if (buffer[fd][0] == '\0')
 		{
-			free(buffer);
-			buffer = NULL;
+			free(buffer[fd]);
+			buffer[fd] = NULL;
 		}
 		return (status);
 	}
-	free(buffer);
+	free(buffer[fd]);
 	*line = ft_substr("\0", 0, 1);
 	return (0);
 }
