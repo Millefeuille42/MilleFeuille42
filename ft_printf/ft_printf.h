@@ -1,8 +1,12 @@
 #ifndef FT_PRINTF_H
 #define FT_PRINTF_H
 
+# define FLAGS "-0.*"
+# define CONVS "cspdiuxX%"
+
 # include <stdarg.h>
 # include <string.h>
+# include <stdio.h>
 
 size_t		ft_count_args(const char *s);
 int			ft_val_arg(const char *s, size_t i);

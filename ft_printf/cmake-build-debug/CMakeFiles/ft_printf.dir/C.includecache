@@ -13,4 +13,8 @@ ft_printf.h
 /Users/mlabouri/Projekt/ft_printf/ft_printf.h
 stdarg.h
 -
+string.h
+-
+stdio.h
+-
 
