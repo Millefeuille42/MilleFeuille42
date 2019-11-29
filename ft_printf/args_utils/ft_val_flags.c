@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 14:33:25 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/11/29 11:53:42 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/11/29 20:29:03 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int ft_val_flags(const char *s, size_t i, char flag)
 	flags[1] = '0';
 	flags[2] = '.';
 	flags[3] = '*';
-	func[0] = &val_minus;
 	func[1] = &val_zero;
 	func[2] = &val_dot;
+	func[0] = &val_minus;
 	func[3] = &val_glob;
 	while (flag != flags[i2])
 		i2++;
