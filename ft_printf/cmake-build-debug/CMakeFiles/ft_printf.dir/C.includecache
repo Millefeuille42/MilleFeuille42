@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/mlabouri/Projekt/ft_printf/args_utils/ft_count_args.c
+../ft_printf.h
+/Users/mlabouri/Projekt/ft_printf/ft_printf.h
+
+/Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flags.c
+../ft_printf.h
+/Users/mlabouri/Projekt/ft_printf/ft_printf.h
+
+/Users/mlabouri/Projekt/ft_printf/ft_printf.c
+ft_printf.h
+/Users/mlabouri/Projekt/ft_printf/ft_printf.h
+
+/Users/mlabouri/Projekt/ft_printf/ft_printf.h
+stdarg.h
+-
+string.h
+-
+stdio.h
+-
+
+/Users/mlabouri/Projekt/ft_printf/string_utils/ft_c_in_set.c
+../ft_printf.h
+/Users/mlabouri/Projekt/ft_printf/ft_printf.h
+
+/Users/mlabouri/Projekt/ft_printf/string_utils/ft_strlen.c
+../ft_printf.h
+/Users/mlabouri/Projekt/ft_printf/ft_printf.h
+
