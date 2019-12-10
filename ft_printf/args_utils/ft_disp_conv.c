@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_disp_conv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/10 17:43:58 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/12/10 16:58:47 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/12/10 17:41:39 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int		ft_printf(const char *input, ...)
+void	ft_disp_conv(void **arg, char bin[])
 {
-	va_list	arg;
-	size_t	i;
+	char **conv;
 
-	va_start(arg, input);
-	i = 0;
-	while (input[i] != '\0')
-	{
-		i = ft_putstr_fd_c(input, 1, '%');
-		return 0;
-	}
+	conv = (char **)arg;
+	if (bin[4] == 'c')
+		ft_putchar_fd(**conv, 1);
 }
 
-int main(void)
-{
-	ft_printf("Bonsoir %c je suis test");
-}
+//	TODO
+//		Pointer
+//		Code Missing Functions
+//		NO FLAG VERSION
 
-//	TODO VA_ INCLUSION
+//		&ft_putstr_fd;
+//		&ft_putnbr_base;
+//		&ft_putunbr;
+//		&ft_putchar_fd;

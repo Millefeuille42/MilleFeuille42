@@ -45,10 +45,3 @@ char	val_pointer(const char *s, size_t i, void **arg)
 	//else {return 'p'}
 	return (2);
 }
-
-char	val_percent(const char *s, size_t i, void **arg)
-{
-	//if (ok) {return ('%' + 100)}
-	//else {return '%'}
-	return (2);
-}

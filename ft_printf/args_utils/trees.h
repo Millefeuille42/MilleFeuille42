@@ -24,6 +24,5 @@ char	val_int(const char *s, size_t i, void **arg);
 char	val_char(const char *s, size_t i, void **arg);
 char	val_string(const char *s, size_t i, void **arg);
 char	val_pointer(const char *s, size_t i, void **arg);
-char	val_percent(const char *s, size_t i, void **arg);
 
 #endif
