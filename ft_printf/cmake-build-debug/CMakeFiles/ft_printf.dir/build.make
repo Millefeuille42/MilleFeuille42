@@ -70,35 +70,48 @@ CMakeFiles/ft_printf.dir/ft_printf.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/ft_printf.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mlabouri/Projekt/ft_printf/ft_printf.c -o CMakeFiles/ft_printf.dir/ft_printf.c.s
 
-CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.o: CMakeFiles/ft_printf.dir/flags.make
-CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.o: ../args_utils/ft_count_args.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.o   -c /Users/mlabouri/Projekt/ft_printf/args_utils/ft_count_args.c
+CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.o: ../args_utils/ft_val_flag.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.o   -c /Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flag.c
 
-CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mlabouri/Projekt/ft_printf/args_utils/ft_count_args.c > CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.i
+CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flag.c > CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.i
 
-CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mlabouri/Projekt/ft_printf/args_utils/ft_count_args.c -o CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.s
+CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flag.c -o CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.s
 
-CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.o: CMakeFiles/ft_printf.dir/flags.make
-CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.o: ../args_utils/ft_val_flags.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.o   -c /Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flags.c
+CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.o: ../args_utils/flags_tree.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.o   -c /Users/mlabouri/Projekt/ft_printf/args_utils/flags_tree.c
 
-CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flags.c > CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.i
+CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mlabouri/Projekt/ft_printf/args_utils/flags_tree.c > CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.i
 
-CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flags.c -o CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.s
+CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mlabouri/Projekt/ft_printf/args_utils/flags_tree.c -o CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.s
+
+CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.o: ../args_utils/convs_tree.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.o   -c /Users/mlabouri/Projekt/ft_printf/args_utils/convs_tree.c
+
+CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mlabouri/Projekt/ft_printf/args_utils/convs_tree.c > CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.i
+
+CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mlabouri/Projekt/ft_printf/args_utils/convs_tree.c -o CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.s
 
 CMakeFiles/ft_printf.dir/string_utils/ft_c_in_set.c.o: CMakeFiles/ft_printf.dir/flags.make
 CMakeFiles/ft_printf.dir/string_utils/ft_c_in_set.c.o: ../string_utils/ft_c_in_set.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ft_printf.dir/string_utils/ft_c_in_set.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/ft_printf.dir/string_utils/ft_c_in_set.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/string_utils/ft_c_in_set.c.o   -c /Users/mlabouri/Projekt/ft_printf/string_utils/ft_c_in_set.c
 
 CMakeFiles/ft_printf.dir/string_utils/ft_c_in_set.c.i: cmake_force
@@ -111,7 +124,7 @@ CMakeFiles/ft_printf.dir/string_utils/ft_c_in_set.c.s: cmake_force
 
 CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.o: CMakeFiles/ft_printf.dir/flags.make
 CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.o: ../string_utils/ft_strlen.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.o   -c /Users/mlabouri/Projekt/ft_printf/string_utils/ft_strlen.c
 
 CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.i: cmake_force
@@ -122,25 +135,57 @@ CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mlabouri/Projekt/ft_printf/string_utils/ft_strlen.c -o CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.s
 
+CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.o: ../display_utils/ft_putstr_fd.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.o   -c /Users/mlabouri/Projekt/ft_printf/display_utils/ft_putstr_fd.c
+
+CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mlabouri/Projekt/ft_printf/display_utils/ft_putstr_fd.c > CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.i
+
+CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mlabouri/Projekt/ft_printf/display_utils/ft_putstr_fd.c -o CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.s
+
+CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.o: CMakeFiles/ft_printf.dir/flags.make
+CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.o: ../display_utils/ft_putnbr_fd.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.o   -c /Users/mlabouri/Projekt/ft_printf/display_utils/ft_putnbr_fd.c
+
+CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mlabouri/Projekt/ft_printf/display_utils/ft_putnbr_fd.c > CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.i
+
+CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mlabouri/Projekt/ft_printf/display_utils/ft_putnbr_fd.c -o CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.s
+
 # Object files for target ft_printf
 ft_printf_OBJECTS = \
 "CMakeFiles/ft_printf.dir/ft_printf.c.o" \
-"CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.o" \
-"CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.o" \
+"CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.o" \
+"CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.o" \
+"CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.o" \
 "CMakeFiles/ft_printf.dir/string_utils/ft_c_in_set.c.o" \
-"CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.o"
+"CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.o" \
+"CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.o" \
+"CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.o"
 
 # External object files for target ft_printf
 ft_printf_EXTERNAL_OBJECTS =
 
 ft_printf: CMakeFiles/ft_printf.dir/ft_printf.c.o
-ft_printf: CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.o
-ft_printf: CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.o
+ft_printf: CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.o
+ft_printf: CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.o
+ft_printf: CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.o
 ft_printf: CMakeFiles/ft_printf.dir/string_utils/ft_c_in_set.c.o
 ft_printf: CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.o
+ft_printf: CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.o
+ft_printf: CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.o
 ft_printf: CMakeFiles/ft_printf.dir/build.make
 ft_printf: CMakeFiles/ft_printf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable ft_printf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable ft_printf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ft_printf.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

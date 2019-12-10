@@ -80,10 +80,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/mlabouri/Projekt/ft_printf/args_utils/ft_count_args.c">
+		<Unit filename="/Users/mlabouri/Projekt/ft_printf/args_utils/convs_tree.c">
 			<Option target="ft_printf"/>
 		</Unit>
-		<Unit filename="/Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flags.c">
+		<Unit filename="/Users/mlabouri/Projekt/ft_printf/args_utils/flags_tree.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flag.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/Users/mlabouri/Projekt/ft_printf/display_utils/ft_putnbr_fd.c">
+			<Option target="ft_printf"/>
+		</Unit>
+		<Unit filename="/Users/mlabouri/Projekt/ft_printf/display_utils/ft_putstr_fd.c">
 			<Option target="ft_printf"/>
 		</Unit>
 		<Unit filename="/Users/mlabouri/Projekt/ft_printf/ft_printf.c">

@@ -4,8 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/mlabouri/Projekt/ft_printf/args_utils/ft_count_args.c" "/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.o"
-  "/Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flags.c" "/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.o"
+  "/Users/mlabouri/Projekt/ft_printf/args_utils/convs_tree.c" "/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.o"
+  "/Users/mlabouri/Projekt/ft_printf/args_utils/flags_tree.c" "/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.o"
+  "/Users/mlabouri/Projekt/ft_printf/args_utils/ft_val_flag.c" "/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.o"
+  "/Users/mlabouri/Projekt/ft_printf/display_utils/ft_putnbr_fd.c" "/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.o"
+  "/Users/mlabouri/Projekt/ft_printf/display_utils/ft_putstr_fd.c" "/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.o"
   "/Users/mlabouri/Projekt/ft_printf/ft_printf.c" "/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/ft_printf.c.o"
   "/Users/mlabouri/Projekt/ft_printf/string_utils/ft_c_in_set.c" "/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/string_utils/ft_c_in_set.c.o"
   "/Users/mlabouri/Projekt/ft_printf/string_utils/ft_strlen.c" "/Users/mlabouri/Projekt/ft_printf/cmake-build-debug/CMakeFiles/ft_printf.dir/string_utils/ft_strlen.c.o"

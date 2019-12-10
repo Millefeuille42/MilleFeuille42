@@ -123,59 +123,140 @@ ft_printf/fast:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/build
 .PHONY : ft_printf/fast
 
-args_utils/ft_count_args.o: args_utils/ft_count_args.c.o
+args_utils/convs_tree.o: args_utils/convs_tree.c.o
 
-.PHONY : args_utils/ft_count_args.o
-
-# target to build an object file
-args_utils/ft_count_args.c.o:
-	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.o
-.PHONY : args_utils/ft_count_args.c.o
-
-args_utils/ft_count_args.i: args_utils/ft_count_args.c.i
-
-.PHONY : args_utils/ft_count_args.i
-
-# target to preprocess a source file
-args_utils/ft_count_args.c.i:
-	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.i
-.PHONY : args_utils/ft_count_args.c.i
-
-args_utils/ft_count_args.s: args_utils/ft_count_args.c.s
-
-.PHONY : args_utils/ft_count_args.s
-
-# target to generate assembly for a file
-args_utils/ft_count_args.c.s:
-	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/ft_count_args.c.s
-.PHONY : args_utils/ft_count_args.c.s
-
-args_utils/ft_val_flags.o: args_utils/ft_val_flags.c.o
-
-.PHONY : args_utils/ft_val_flags.o
+.PHONY : args_utils/convs_tree.o
 
 # target to build an object file
-args_utils/ft_val_flags.c.o:
-	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.o
-.PHONY : args_utils/ft_val_flags.c.o
+args_utils/convs_tree.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.o
+.PHONY : args_utils/convs_tree.c.o
 
-args_utils/ft_val_flags.i: args_utils/ft_val_flags.c.i
+args_utils/convs_tree.i: args_utils/convs_tree.c.i
 
-.PHONY : args_utils/ft_val_flags.i
+.PHONY : args_utils/convs_tree.i
 
 # target to preprocess a source file
-args_utils/ft_val_flags.c.i:
-	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.i
-.PHONY : args_utils/ft_val_flags.c.i
+args_utils/convs_tree.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.i
+.PHONY : args_utils/convs_tree.c.i
 
-args_utils/ft_val_flags.s: args_utils/ft_val_flags.c.s
+args_utils/convs_tree.s: args_utils/convs_tree.c.s
 
-.PHONY : args_utils/ft_val_flags.s
+.PHONY : args_utils/convs_tree.s
 
 # target to generate assembly for a file
-args_utils/ft_val_flags.c.s:
-	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/ft_val_flags.c.s
-.PHONY : args_utils/ft_val_flags.c.s
+args_utils/convs_tree.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/convs_tree.c.s
+.PHONY : args_utils/convs_tree.c.s
+
+args_utils/flags_tree.o: args_utils/flags_tree.c.o
+
+.PHONY : args_utils/flags_tree.o
+
+# target to build an object file
+args_utils/flags_tree.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.o
+.PHONY : args_utils/flags_tree.c.o
+
+args_utils/flags_tree.i: args_utils/flags_tree.c.i
+
+.PHONY : args_utils/flags_tree.i
+
+# target to preprocess a source file
+args_utils/flags_tree.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.i
+.PHONY : args_utils/flags_tree.c.i
+
+args_utils/flags_tree.s: args_utils/flags_tree.c.s
+
+.PHONY : args_utils/flags_tree.s
+
+# target to generate assembly for a file
+args_utils/flags_tree.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/flags_tree.c.s
+.PHONY : args_utils/flags_tree.c.s
+
+args_utils/ft_val_flag.o: args_utils/ft_val_flag.c.o
+
+.PHONY : args_utils/ft_val_flag.o
+
+# target to build an object file
+args_utils/ft_val_flag.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.o
+.PHONY : args_utils/ft_val_flag.c.o
+
+args_utils/ft_val_flag.i: args_utils/ft_val_flag.c.i
+
+.PHONY : args_utils/ft_val_flag.i
+
+# target to preprocess a source file
+args_utils/ft_val_flag.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.i
+.PHONY : args_utils/ft_val_flag.c.i
+
+args_utils/ft_val_flag.s: args_utils/ft_val_flag.c.s
+
+.PHONY : args_utils/ft_val_flag.s
+
+# target to generate assembly for a file
+args_utils/ft_val_flag.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/args_utils/ft_val_flag.c.s
+.PHONY : args_utils/ft_val_flag.c.s
+
+display_utils/ft_putnbr_fd.o: display_utils/ft_putnbr_fd.c.o
+
+.PHONY : display_utils/ft_putnbr_fd.o
+
+# target to build an object file
+display_utils/ft_putnbr_fd.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.o
+.PHONY : display_utils/ft_putnbr_fd.c.o
+
+display_utils/ft_putnbr_fd.i: display_utils/ft_putnbr_fd.c.i
+
+.PHONY : display_utils/ft_putnbr_fd.i
+
+# target to preprocess a source file
+display_utils/ft_putnbr_fd.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.i
+.PHONY : display_utils/ft_putnbr_fd.c.i
+
+display_utils/ft_putnbr_fd.s: display_utils/ft_putnbr_fd.c.s
+
+.PHONY : display_utils/ft_putnbr_fd.s
+
+# target to generate assembly for a file
+display_utils/ft_putnbr_fd.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/display_utils/ft_putnbr_fd.c.s
+.PHONY : display_utils/ft_putnbr_fd.c.s
+
+display_utils/ft_putstr_fd.o: display_utils/ft_putstr_fd.c.o
+
+.PHONY : display_utils/ft_putstr_fd.o
+
+# target to build an object file
+display_utils/ft_putstr_fd.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.o
+.PHONY : display_utils/ft_putstr_fd.c.o
+
+display_utils/ft_putstr_fd.i: display_utils/ft_putstr_fd.c.i
+
+.PHONY : display_utils/ft_putstr_fd.i
+
+# target to preprocess a source file
+display_utils/ft_putstr_fd.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.i
+.PHONY : display_utils/ft_putstr_fd.c.i
+
+display_utils/ft_putstr_fd.s: display_utils/ft_putstr_fd.c.s
+
+.PHONY : display_utils/ft_putstr_fd.s
+
+# target to generate assembly for a file
+display_utils/ft_putstr_fd.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/display_utils/ft_putstr_fd.c.s
+.PHONY : display_utils/ft_putstr_fd.c.s
 
 ft_printf.o: ft_printf.c.o
 
@@ -267,12 +348,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ft_printf"
-	@echo "... args_utils/ft_count_args.o"
-	@echo "... args_utils/ft_count_args.i"
-	@echo "... args_utils/ft_count_args.s"
-	@echo "... args_utils/ft_val_flags.o"
-	@echo "... args_utils/ft_val_flags.i"
-	@echo "... args_utils/ft_val_flags.s"
+	@echo "... args_utils/convs_tree.o"
+	@echo "... args_utils/convs_tree.i"
+	@echo "... args_utils/convs_tree.s"
+	@echo "... args_utils/flags_tree.o"
+	@echo "... args_utils/flags_tree.i"
+	@echo "... args_utils/flags_tree.s"
+	@echo "... args_utils/ft_val_flag.o"
+	@echo "... args_utils/ft_val_flag.i"
+	@echo "... args_utils/ft_val_flag.s"
+	@echo "... display_utils/ft_putnbr_fd.o"
+	@echo "... display_utils/ft_putnbr_fd.i"
+	@echo "... display_utils/ft_putnbr_fd.s"
+	@echo "... display_utils/ft_putstr_fd.o"
+	@echo "... display_utils/ft_putstr_fd.i"
+	@echo "... display_utils/ft_putstr_fd.s"
 	@echo "... ft_printf.o"
 	@echo "... ft_printf.i"
 	@echo "... ft_printf.s"
