@@ -27,14 +27,14 @@ size_t	ft_putstr_fd_c(const char *s, int fd, char c)
 	return (i);
 }
 
-size_t	ft_putstr_fd(const char *s, int fd, char c)
+size_t	ft_putstr_fd(const char *s, int fd)
 {
 	size_t	i;
 
 	if (fd < 0 || !s)
 		return (-1);
 	i = 0;
-	while (s[i] != '\0' && s[i] != c)
+	while (s[i] != '\0')
 	{
 		write(fd, &s[i], 1);
 		i++;

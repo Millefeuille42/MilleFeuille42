@@ -6,17 +6,17 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 14:33:25 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/10 17:21:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/12 15:18:15 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "trees.h"
 
-char	ft_val_conv(const char *s, size_t i, void **arg)
+char	ft_val_conv(const char *s, size_t i, unsigned long long int arg)
 {
-	char	(*func[5])(const char *, size_t, void **);
+	char	(*func[5])(const char *, size_t, unsigned long long);
 	char	convs[5];
-	char	conv;
+	int		conv;
 
 	func[0] = &val_int;
 	func[1] = &val_char;
@@ -27,7 +27,7 @@ char	ft_val_conv(const char *s, size_t i, void **arg)
 	convs[2] = 's';
 	convs[3] = 'p';
 	conv = 1;
-	while (s[i] != convs[conv] || convs[conv] != '\0')
+	while (s[i] != convs[conv] && convs[conv] != '\0')
 		conv++;
 	if (convs[conv] == '\0')
 	{
@@ -38,7 +38,7 @@ char	ft_val_conv(const char *s, size_t i, void **arg)
 	return ((func)[conv](s, i, arg));
 }
 
-size_t	ft_args(const char *s, size_t i, void **arg)
+size_t	ft_args(const char *s, size_t i, unsigned long long int arg)
 {
 	char	args[4];
 	char	bin[5];
@@ -62,6 +62,5 @@ size_t	ft_args(const char *s, size_t i, void **arg)
 		i++;
 	}
 	bin[4] = ft_val_conv(s, i, arg);
-	ft_disp_conv(arg, bin);
 	return (i + 1);
 }

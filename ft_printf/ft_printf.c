@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/10 17:43:58 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/12 15:46:34 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,31 @@
 
 int		ft_printf(const char *input, ...)
 {
-	va_list	arg;
+	va_list	args;
+	unsigned long long arg;
 	size_t	i;
 
-	va_start(arg, input);
+	va_start(args, input);
 	i = 0;
+
 	while (input[i] != '\0')
 	{
 		i = ft_putstr_fd_c(input, 1, '%');
-		return 0;
+		if (input[i] == '\0')
+			return (0);
+		arg = va_arg(args, unsigned long long);
+		i = ft_args(input, i + 1, arg);
+		input = input + i;
 	}
+	return (0);
 }
 
 int main(void)
 {
-	ft_printf("Bonsoir %c je suis test");
+//	ft_printf("Bonsoir %s je suis test [%c]\n", "mlabouri", 'h');
+	printf("Test : %.9d", 765644);
 }
 
-//	TODO VA_ INCLUSION
+//	TODO
+//		- 0x = ADD x - int length 0 to the left of the int
+//		-
