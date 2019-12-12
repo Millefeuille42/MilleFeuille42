@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_disp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 17:44:24 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/12 16:29:21 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/12/12 16:09:27 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/12/12 17:04:21 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../trees/trees.h"
 
-size_t	ft_putstr_fd_c(char *s, int fd, char c)
+void ft_disp(char bin[], unsigned long long arg)
 {
-	size_t	i;
+	void	(*func[4])(char, unsigned long long);
 
-	if (fd < 0 || !s)
-		return (-1);
-	i = 0;
-	while (s[i] != '\0' && s[i] != c)
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
-	return (i);
-}
-
-void ft_putstr_fd(char *s, int fd)
-{
-	size_t	i;
-
-	if (fd < 0 || !s)
-		return ;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+	func[0] = &disp_char;
+	func[1] = &disp_string;
+	func[bin[4]];
 }

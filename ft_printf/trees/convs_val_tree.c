@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convs_tree.c                                       :+:      :+:    :+:   */
+/*   convs_val_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/10 13:08:28 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/12 15:31:16 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/12/12 16:13:50 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/12/12 16:13:59 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ char	val_int(const char *s, size_t i, unsigned long long int arg)
 char	val_char(const char *s, size_t i, unsigned long long int arg)
 {
 	ft_putchar_fd((char)arg, 1);
-	return ('c');
+	return (0);
 }
 
 char	val_string(const char *s, size_t i, unsigned long long int arg)
 {
 	ft_putstr_fd((char *)arg, 1);
-	return ('s');
+	return (1);
 }
 
 char	val_pointer(const char *s, size_t i, unsigned long long int arg)

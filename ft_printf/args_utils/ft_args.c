@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_val_flags.c                                     :+:      :+:    :+:   */
+/*   ft_args.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 14:33:25 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/12 15:18:15 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/12/12 16:14:27 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/12/12 16:29:21 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "trees.h"
+#include "../trees/trees.h"
 
-char	ft_val_conv(const char *s, size_t i, unsigned long long int arg)
+char	ft_val_conv(char *s, size_t i, unsigned long long int arg)
 {
 	char	(*func[5])(const char *, size_t, unsigned long long);
 	char	convs[5];
@@ -38,7 +38,7 @@ char	ft_val_conv(const char *s, size_t i, unsigned long long int arg)
 	return ((func)[conv](s, i, arg));
 }
 
-size_t	ft_args(const char *s, size_t i, unsigned long long int arg)
+size_t	ft_args(char *s, size_t i, unsigned long long int arg)
 {
 	char	args[4];
 	char	bin[5];
@@ -62,5 +62,6 @@ size_t	ft_args(const char *s, size_t i, unsigned long long int arg)
 		i++;
 	}
 	bin[4] = ft_val_conv(s, i, arg);
+	ft_disp(bin, arg);
 	return (i + 1);
 }

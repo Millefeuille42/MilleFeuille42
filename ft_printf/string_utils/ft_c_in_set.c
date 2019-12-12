@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-char		ft_cinset(const char c, const char *set)
+char		ft_cinset(char c, const char *set)
 {
 	int i;
 

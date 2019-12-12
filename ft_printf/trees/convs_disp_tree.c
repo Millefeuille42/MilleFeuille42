@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags_tree.c                                       :+:      :+:    :+:   */
+/*   convs_disp_tree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/10 12:54:16 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/10 12:58:05 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/12/12 16:57:31 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "trees.h"
 
-char	val_minus(const char *s, size_t i)
+// diuxX
+// c
+// s
+// p
+// %
+
+void	disp_int(char conv, unsigned long long int arg)
 {
-	//if (ok) {return ('-' + 100)}
-	//else {return '-'}
-	return (2);
+	return ;
 }
 
-char	val_zero(const char *s, size_t i)
+void	disp_char(char conv, unsigned long long int arg)
 {
-	//if (ok) {return ('0' + 100)}
-	//else {return '0'}
-	return (2);
+	ft_putchar_fd((char)arg, 1);
 }
 
-char	val_dot(const char *s, size_t i)
+void	disp_string(char conv, unsigned long long int arg)
 {
-	//if (ok) {return ('.' + 100)}
-	//else {return '.'}
-	return (2);
+	ft_putstr_fd((char *)arg, 1);
 }
 
-char	val_42(const char *s, size_t i)
+void	disp_pointer(char conv, unsigned long long int arg)
 {
-	//if (ok) {return ('*' + 100)}
-	//else {return '*'}
-	return (2);
+	//if (ok) {return ('p' + 100)}
+	//else {return 'p'}
+	return ;
 }
