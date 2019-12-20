@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/12 16:57:31 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/20 15:18:53 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 void	disp_int(char conv, unsigned long long int arg)
 {
-	return ;
+
 }
 
 void	disp_char(char conv, unsigned long long int arg)
