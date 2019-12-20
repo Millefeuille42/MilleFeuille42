@@ -6,11 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:19:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/20 15:22:49 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/20 15:23:32 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void ft_putnbrbase(int n, char *base)
 {
-	
+
 }
