@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/20 17:13:15 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/20 17:28:00 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		ft_printf(const char *input, ...)
 		if (input[i] == '\0')
 			return (0);
 		arg = va_arg(args, unsigned long long);
+
 		i = ft_args((char *)input, i + 1, arg);
 	}
 	return (0);
@@ -35,8 +36,8 @@ int		ft_printf(const char *input, ...)
 
 int main(void)
 {
-		ft_printf("Bonsoir %s je suis test [%c]yes %% %bir", "mlabouri", 'h');
-		printf("\nBonsoir %s je suis test [%c]yes %% %bir", "mlabouri", 'h');
+		ft_printf("Bonsoir %s je suis test [%c]yes %% %d files", "mlabouri", 'h', 32, 34);
+		printf("\nBonsoir %s je suis test [%c]yes %% %d files", "mlabouri", 'h', 32, 34);
 	//	printf("Test : %.9d", 765644);
 }
 

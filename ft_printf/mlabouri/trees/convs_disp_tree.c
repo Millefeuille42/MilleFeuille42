@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/20 17:17:19 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/20 17:21:52 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@
 
 void	disp_int(char conv, unsigned long long int arg)
 {
-
+	if (ft_cinset(conv, "di"))
+		ft_putnbr_fd((int) arg, 1);
+	else if (ft_cinset(conv, "X"))
+		ft_putnbrbase((int)arg, HEXX);
+	else if (ft_cinset(conv, "x"))
+		ft_putnbrbase((int)arg, HEX);
 }
 
 void	disp_char(char conv, unsigned long long int arg)
