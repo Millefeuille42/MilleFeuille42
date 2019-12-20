@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/20 15:18:53 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/20 17:17:19 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ void	disp_string(char conv, unsigned long long int arg)
 
 void	disp_pointer(char conv, unsigned long long int arg)
 {
-	//if (ok) {return ('p' + 100)}
-	//else {return 'p'}
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/20 14:21:06 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/20 17:13:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ size_t	ft_args(char *s, size_t i, unsigned long long int arg)
 	if (s[i] == '%')
 		ft_disp(bin, (unsigned long long int)'%', 'c');
 	else if (!(ft_cinset(s[i], ALL)))
-	{
-		ft_disp(bin, (unsigned long long int)'%', 'c');
-		i--;
-	}
+		return (i);
 	else
 		ft_disp(bin, arg, s[i]);
 	return (i + 1);

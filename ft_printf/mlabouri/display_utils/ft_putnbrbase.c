@@ -6,26 +6,53 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:19:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/20 16:10:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/20 17:03:43 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-char	*ft_
-
-void	ft_putnbrbase(int n, char *base)
+static	void	ft_set(long int nb, int length, int baselen, char *base)
 {
-	size_t baselen;
-	size_t i;
-	long int nb;
+	size_t	i;
+	char	n[length];
+
+	i = length - 1;
+	while (nb > baselen)
+	{
+		n[i] = base[(nb % baselen)];
+		nb = nb / baselen;
+		i--;
+	}
+	n[0] = base[nb];
+	i = 0;
+	while (i != length)
+	{
+		write(1, &n[i], 1);
+		i++;
+	}
+}
+
+void			ft_putnbrbase(int n, char *base)
+{
+	int			baselen;
+	long int	nb;
+	long int	nb2;
+	size_t	length;
 
 	baselen = ft_strlen(base);
-	nb = (long int)n;
+	nb = (size_t)n;
 	if (nb < 0)
 	{
 		nb = -nb;
 		write(1, "-", 1);
 	}
-	ft_convert_base(nb, base);
+	nb2 = nb;
+	length = 1;
+	while (nb > baselen)
+	{
+		nb = nb / baselen;
+		length++;
+	}
+	ft_set(nb2, length, baselen, base);
 }

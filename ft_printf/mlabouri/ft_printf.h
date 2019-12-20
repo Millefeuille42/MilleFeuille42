@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:54:36 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/20 14:35:59 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/20 16:44:01 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # define CONVS "cspdiuxX"
 # define INTS "diuxX"
 # define ALL "cspdiuxX%-0.*"
-# define HEXX "123456789ABCDEF"
-# define HEX "123456789abcdef"
+# define HEXX "0123456789ABCDEF"
+# define HEX "0123456789abcdef"
 
 # include <stdarg.h>
 # include <string.h>
