@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/20 14:44:45 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/20 15:02:33 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ int		ft_printf(const char *input, ...)
 
 int main(void)
 {
-	ft_printf("Bonsoir %s je suis test [%c]yes %% %bir", "mlabouri", 'h');
-	printf("Bonsoir %s je suis test [%c]yes %% %bir", "mlabouri", 'h');
+	ft_punbrbase(4667, HEX);
+	//	ft_printf("Bonsoir %s je suis test [%c]yes %% %bir", "mlabouri", 'h');
+	//	printf("Bonsoir %s je suis test [%c]yes %% %bir", "mlabouri", 'h');
 	//	printf("Test : %.9d", 765644);
 }
 

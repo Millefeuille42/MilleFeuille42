@@ -31,6 +31,7 @@ size_t		ft_putstr_fd_c(char *s, int fd, char c, size_t i);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putchar_fd(char c, int f);
 void		ft_putnbr_fd(int n, int fd);
+void		ft_putnbrbase(int n, char *base);
 char		ft_cinset(char c, const char *set);
 size_t		ft_strlen(const char *str);
 #endif
