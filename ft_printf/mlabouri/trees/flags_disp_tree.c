@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   convs_disp_tree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 13:45:53 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/23 12:16:55 by null             ###   ########.fr       */
+/*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/12/24 10:50:42 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "trees.h"
 
-int	ft_isalnum(int c)
+void	disp_minus(char conv, unsigned long long int arg)
 {
-	if (c < 65 || c > 90)
-	{
-		if (c < 97 || c > 122)
-		{
-			if (c < 48 || c > 57)
-				return (0);
-			return (3);
-		}
-		return (2);
-	}
-	return (1);
+
+}
+
+void	disp_zero(char conv, unsigned long long int arg)
+{
+
+}
+
+void	disp_dot(char conv, unsigned long long int arg)
+{
+
+}
+
+void	disp_42(char conv, unsigned long long int arg)
+{
+
 }

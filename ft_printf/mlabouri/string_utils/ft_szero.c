@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 13:45:53 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/23 12:16:55 by null             ###   ########.fr       */
+/*   Created: 2019/11/22 14:58:24 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/12/24 11:19:53 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int	ft_isalnum(int c)
+void	ft_szero(char *s, size_t n)
 {
-	if (c < 65 || c > 90)
+	size_t			i;
+
+	if (s != NULL)
 	{
-		if (c < 97 || c > 122)
+		i = 0;
+		while (i < n)
 		{
-			if (c < 48 || c > 57)
-				return (0);
-			return (3);
+			s[i] = '0';
+			i++;
 		}
-		return (2);
 	}
-	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/20 17:28:00 by mlabouri         ###   ########.fr       */
+/*   Updated: 2019/12/24 11:12:21 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int		ft_printf(const char *input, ...)
 {
 	va_list				args;
-	unsigned long long	arg;
 	size_t				i;
 	static	size_t		len;
 
@@ -27,17 +26,15 @@ int		ft_printf(const char *input, ...)
 		i = ft_putstr_fd_c((char *) input, 1, '%', i);
 		if (input[i] == '\0')
 			return (0);
-		arg = va_arg(args, unsigned long long);
-
-		i = ft_args((char *)input, i + 1, arg);
+		i = ft_args((char *)input, i + 1, &args);
 	}
 	return (0);
 }
 
 int main(void)
 {
-		ft_printf("Bonsoir %s je suis test [%c]yes %% %d files", "mlabouri", 'h', 32, 34);
-		printf("\nBonsoir %s je suis test [%c]yes %% %d files", "mlabouri", 'h', 32, 34);
+		ft_printf("%Bonsoir %s je suis test [%c] yes %% %d files", "mlabouri", 'h', 32);
+		printf("\nBonsoir %s je suis test [%c] yes %% %010d files", "mlabouri", 'h', 32);
 	//	printf("Test : %.9d", 765644);
 }
 
