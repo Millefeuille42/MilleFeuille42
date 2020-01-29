@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/27 15:58:47 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/01/29 14:40:16 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ int		ft_printf(const char *input, ...)
 
 int main(void)
 {
-		ft_printf("%Bonsoir %s je suis test [%c] yes %% %010d files", "mlabouri", 'h', 32);
-		printf("\nBonsoir %s je suis test [%c] yes %% %010d files", "mlabouri", 'h', 32);
+		ft_printf("%Bonsoir %s je suis test [%c] yes %% %010s files", "mlabouri", 'h', "niktoi");
+		printf("\nBonsoir %s je suis test [%c] yes %% %010s files", "mlabouri", 'h', "niktoi");
 	//	printf("Test : %.9d", 765644);
 }
 
 //	TODO
-//		- 0x = ADD x - int length 0 to the left of the int
-//		-
+//		- u conversion and length
+//		- p conversion and length
+//		- all flags except 0
 //		- static initiated at dec

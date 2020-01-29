@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:09:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/27 15:51:57 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/01/29 15:47:27 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void ft_disp(int bin[], unsigned long long arg, char conv)
 {
 	static	void	(*func[255])(char, unsigned long long int);
-	static	void	(*func2[255])(int, unsigned long long int);
+	static	void	(*func2[255])(int, unsigned long long int, char);
 	size_t i;
 
 	func['c'] = &disp_char;
@@ -29,7 +29,7 @@ void ft_disp(int bin[], unsigned long long arg, char conv)
 	while (i < 255)
 	{
 		if (bin[i])
-			func2[i](bin[i], arg);
+			func2[i](bin[i], arg, conv);
 		i++;
 	}
 	if (ft_cinset(conv, INTS))

@@ -15,7 +15,7 @@
 size_t			ft_args(char *s, size_t i, va_list *args)
 {
 	int			bin[255];
-	static	int	(*func[255])(const char *, size_t);
+	static	int	(*func[255])(const char *, size_t, );
 
 	func['-'] = &val_minus;
 	func['0'] = &val_zero;
