@@ -1,41 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags_val_tree.c                                   :+:      :+:    :+:   */
+/*   convs_disp_tree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 16:13:55 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/14 13:46:58 by null             ###   ########.fr       */
+/*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
+/*   Updated: 2019/12/24 10:50:42 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "trees.h"
 
-char	val_minus(const char *s, size_t i)
+void	disp_minus(int conv, unsigned long long int arg)
 {
-	//if (ok) {return ('-' + 100)}
-	//else {return '-'}
-	return (2);
+
 }
 
-char	val_zero(const char *s, size_t i)
+void	disp_zero(int conv, unsigned long long int arg)
 {
-	//if (ok) {return ('0' + 100)}
-	//else {return '0'}
-	return (2);
+	int length;
+
+	length = 1;
+	while ((int)arg > 10)
+	{
+		arg = (int)arg / 10;
+		length++;
+	}
+	length = conv - length;
+	while (length != 0)
+	{
+		ft_putchar_fd('0', 1);
+		length--;
+	}
 }
 
-char	val_dot(const char *s, size_t i)
+void	disp_dot(int conv, unsigned long long int arg)
 {
-	//if (ok) {return ('.' + 100)}
-	//else {return '.'}
-	return (2);
+
 }
 
-char	val_42(const char *s, size_t i)
+void	disp_42(int conv, unsigned long long int arg)
 {
-	//if (ok) {return ('*' + 100)}
-	//else {return '*'}
-	return (2);
+
 }

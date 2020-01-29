@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 14:58:24 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/24 11:19:53 by null             ###   ########.fr       */
+/*   Updated: 2020/01/27 15:48:04 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	ft_szero(char *s, size_t n)
+void	ft_szero(int *s, size_t n)
 {
 	size_t			i;
 
@@ -21,7 +21,7 @@ void	ft_szero(char *s, size_t n)
 		i = 0;
 		while (i < n)
 		{
-			s[i] = '0';
+			s[i] = 0;
 			i++;
 		}
 	}
