@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 12:55:35 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/29 15:50:19 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/01/30 11:09:36 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void	disp_int(char conv, unsigned long long int arg);
 void	disp_char(char conv, unsigned long long int arg);
 void	disp_string(char conv, unsigned long long int arg);
 void	disp_pointer(char conv, unsigned long long int arg);
-void	disp_minus(int bin, unsigned long long int arg, char conv);
-void	disp_zero(int bin, unsigned long long int arg, char conv);
-void	disp_dot(int bin, unsigned long long int arg, char conv);
-void	disp_42(int bin, unsigned long long int arg, char conv);
-int length_int(char conv, unsigned long long int arg);
-int length_string(char conv, unsigned long long int arg);
+void	disp_minus(int bin[], unsigned long long int arg, char conv);
+void	disp_zero(int bin[], unsigned long long int arg, char conv);
+void	disp_dot(int bin[], unsigned long long int arg, char conv);
+void	disp_42(int bin[], unsigned long long int arg, char conv);
+int		length_int(char conv, unsigned long long int arg);
+int		length_string(char conv, unsigned long long int arg);
+int		length_char(char conv, unsigned long long int arg);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:54:36 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/29 15:47:27 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/01/30 11:24:12 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 # include <unistd.h>
 
 size_t				ft_args(char *s, size_t i, va_list *args);
-void				ft_disp(int *bin, unsigned long long arg, char conv);
+void				ft_disp_convs(unsigned long long arg, char conv);
+void				ft_disp_flags(int bin[], unsigned long long arg, char conv);
 size_t				ft_putstr_fd_c(char *s, int fd, char c, size_t i);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putchar_fd(char c, int f);

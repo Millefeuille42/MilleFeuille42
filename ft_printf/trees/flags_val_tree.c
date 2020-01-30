@@ -30,9 +30,24 @@ static	int		itoa_mk2(const char *s, int start, int end)
 
 int				 val_minus(const char *s, size_t i)
 {
-	//if (ok) {return ('-' + 100)}
-	//else {return '-'}
-	return (2);
+	int	start;
+	int	end;
+
+	start = 0;
+	end = 0;
+	while (ft_isdigit(s[i]))
+	{
+		if (start == 0)
+			start = i;
+		else
+			end = i;
+		i++;
+	}
+	if (start == 0)
+		return (0);
+	if (end == 0)
+		return (s[start]);
+	return (itoa_mk2(s, start, end));
 }
 
 int val_zero(const char *s, size_t i)
