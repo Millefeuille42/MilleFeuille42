@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:09:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/30 11:30:22 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/01/30 11:44:10 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void ft_disp_flags(int bin[], unsigned long long arg, char conv)
 	func2['-'] = &disp_minus;
 	func2['0'] = &disp_zero;
 	func2['.'] = &disp_dot;
-	func2['*'] = &disp_42;
 	i = 0;
 	while (i < 255)
 	{

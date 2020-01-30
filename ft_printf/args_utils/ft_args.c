@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/30 11:34:54 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/01/30 11:35:46 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 size_t			ft_args(char *s, size_t i, va_list *args)
 {
 	int			bin[255];
-	static	int	(*func[255])(const char *, size_t);
+	static	int	(*func[255])(const char *, size_t, va_list *);
 
 	func['-'] = &val_minus;
 	func['0'] = &val_zero;
 	func['.'] = &val_dot;
-	func['*'] = &val_42;
 	ft_szero(bin, 255);
 	while (ft_cinset(s[i], FLAGS))
 	{
-		bin[s[i]] = (func)[s[i]](s, (i + 1));
+		bin[s[i]] = (func)[s[i]](s, (i + 1), args);
 		if (ft_cinset(s[i++], "0-"))
 			while (ft_isdigit(s[i]))
 				i++;
