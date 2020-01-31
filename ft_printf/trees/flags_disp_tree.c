@@ -56,8 +56,3 @@ void	disp_dot(int bin[], unsigned long long int arg, char conv)
 {
 
 }
-
-void	disp_42(int bin[], unsigned long long int arg, char conv)
-{
-
-}

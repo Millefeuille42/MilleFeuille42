@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:13:55 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/30 11:31:12 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/01/31 09:14:26 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "trees.h"
 
-static	int		itoa_mk2(const char *s, int start, int end)
+static	int		atoi_mk2(const char *s, int start, int end)
 {
 	int res;
 	int power;
@@ -45,13 +45,16 @@ int				 val_minus(const char *s, size_t i, va_list *args)
 	}
 	if (s[i] == '*' && !(ft_isdigit(s[i + 1])))
 		return (va_arg(*args, int));
-	if (s[i] != '*' && ft_isdigit(s[i + 1]))
-		return (val_zero(s, i + 1, args));
+	if (s[i] == '*' && ft_isdigit(s[i + 1]))
+	{
+		end = va_arg(*args, int);
+		return (val_minus(s, i + 1, args));
+	}
 	if (start == 0)
 		return (0);
 	if (end == 0)
-		return (s[start]);
-	return (itoa_mk2(s, start, end));
+		return (s[start] - 48);
+	return (atoi_mk2(s, start, end));
 }
 
 int val_zero(const char *s, size_t i, va_list *args)
@@ -71,25 +74,19 @@ int val_zero(const char *s, size_t i, va_list *args)
 	}
 	if (s[i] == '*' && !(ft_isdigit(s[i + 1])))
 		return (va_arg(*args, int));
-	if (s[i] != '*' && ft_isdigit(s[i + 1]))
+	if (s[i] == '*' && ft_isdigit(s[i + 1]))
+	{
+		end = va_arg(*args, int);
 		return (val_zero(s, i + 1, args));
+	}
 	if (start == 0)
 		return (0);
 	if (end == 0)
-		return (s[start]);
-	return (itoa_mk2(s, start, end));
+		return (s[start] - 48);
+	return (atoi_mk2(s, start, end));
 }
 
 int val_dot(const char *s, size_t i, va_list *args)
 {
-	//if (ok) {return ('.' + 100)}
-	//else {return '.'}
-	return (2);
-}
-
-int val_42(const char *s, size_t i, va_list *args)
-{
-	//if (ok) {return ('*' + 100)}
-	//else {return '*'}
 	return (2);
 }

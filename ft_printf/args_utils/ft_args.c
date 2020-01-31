@@ -25,7 +25,7 @@ size_t			ft_args(char *s, size_t i, va_list *args)
 	{
 		bin[s[i]] = (func)[s[i]](s, (i + 1), args);
 		if (ft_cinset(s[i++], "0-"))
-			while (ft_isdigit(s[i]))
+			while (ft_isdigit(s[i]) || s[i] == '*')
 				i++;
 		else
 			i++;

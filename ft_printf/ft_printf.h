@@ -13,8 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define FLAGS "-0.*"
-# define CONVS "cspdiuxX"
+# define FLAGS "-0."
 # define INTS "diuxX"
 # define ALL "cspdiuxX%-0.*"
 # define HEXX "0123456789ABCDEF"
