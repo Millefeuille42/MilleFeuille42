@@ -1,38 +1,44 @@
 FROM debian:buster
+MAINTAINER mlabouri@student.42.fr
 
-# /etc/nginx/sites-available/ft_server
+ENV DEBIAN_FRONTEND=noninteractive
+
 # /usr/share/phpmyadmin/config.inc.php
 # /etc/nginx/conf.d/phpMyAdmin.conf
 
-#install everything
-RUN sudo apt-get update \
-    && sudo apt-get -y upgrade \
-#nginx
-    && sudo apt-get -y install ufw nginx gnupg \
-    && sudo ufw allow 'Nginx Full' \
-#MySQL
-    && cd /tmp && wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb \
-    && sudo dpkg -i mysql-apt-config* && cd \
-#PHP
-    && apt-get -y install default-mysql-server php-fpm php-mysql php-mbstring php-zip php-gd\
-#Configure nginx for PHP
-    && sudo mkdir /var/www/ft_server && sudo rm -rf /var/www/html \
-    && sudo chown -R root:root /var/www/ft_server \
-    && sudo ln -s /etc/nginx/sites-available/ft_server /etc/nginx/sites-enabled/ \
-    && rm -rf /etc/nginx/sites-enabled/default \
-    && sudo nginx -t && sudo systemctl reload nginx \
-#Install PHPMyAdmin
-    && wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz \
-    && tar xvf phpMyAdmin-4.9.0.1-all-languages.tar.gz \
-    && sudo mv phpMyAdmin-4.9.0.1-all-languages/ /usr/share/phpmyadmin \
-#Configure PHPMyAdmin
-    && sudo mkdir -p /var/lib/phpmyadmin/tmp \
-    && sudo chown -R www-data:www-data /var/lib/phpmyadmin \
-    && sudo cp /usr/share/phpmyadmin/config.sample.inc.php /usr/share/phpmyadmin/config.inc.php
+    #init
+RUN apt-get update && apt-get -y upgrade
 
-sudo ln -s /usr/share/phpmyadmin
+    #nginx
+RUN apt-get -y install sudo wget curl vim ufw nginx gnupg lsb-release && ufw allow 'Nginx Full'
+
+    #MySQL
+WORKDIR /tmp
+RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb && dpkg -i mysql-apt-config*
+
+    #PHP
+WORKDIR /root
+RUN apt-get -y install default-mysql-server php-fpm php-mysql php-mbstring php-zip php-gd
+
+    #Configure nginx for PHP
+RUN mkdir /var/www/ft_server && rm -rf /var/www/html && chown -R root:root /var/www/ft_server
+ADD --chown=root srcs/ft_server /etc/nginx/sites-available/ft_server
+RUN ln -s /etc/nginx/sites-available/ft_server /etc/nginx/sites-enabled/ && rm -rf /etc/nginx/sites-enabled/default
+
+RUN nginx -t && service nginx stop && service nginx start
+
+EXPOSE 80/tcp
+##Install PHPMyAdmin
+#    && wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz \
+#    && tar xvf phpMyAdmin-4.9.0.1-all-languages.tar.gz \
+#    &&  mv phpMyAdmin-4.9.0.1-all-languages/ /usr/share/phpmyadmin \
+##Configure PHPMyAdmin
+#    &&  mkdir -p /var/lib/phpmyadmin/tmp \
+#    &&  chown -R www-data:www-data /var/lib/phpmyadmin \
+#    &&  cp /usr/share/phpmyadmin/config.sample.inc.php /usr/share/phpmyadmin/config.inc.php
+
 
 ##db?
-# sudo mariadb < /usr/share/phpmyadmin/sql/create_tables.sql
-# sudo mariadb < GRANT SELECT, INSERT, UPDATE, DELETE ON phpmyadmin.* TO 'pma'@'localhost' IDENTIFIED BY '';
+#  mariadb < /usr/share/phpmyadmin/sql/create_tables.sql
+#  mariadb < GRANT SELECT, INSERT, UPDATE, DELETE ON phpmyadmin.* TO 'pma'@'localhost' IDENTIFIED BY '';
 #
