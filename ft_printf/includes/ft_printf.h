@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:54:36 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/30 11:24:12 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:42:56 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ int					ft_power(int nb, int power);
 size_t				ft_strlen(const char *str);
 void				ft_szero(int *s, size_t n);
 int 				ft_nbr_len(int n);
+int					atoi_mk2(const char *s, int start, int end);
 #endif

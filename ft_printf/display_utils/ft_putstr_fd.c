@@ -6,11 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 17:44:24 by mlabouri          #+#    #+#             */
-/*   Updated: 2019/12/24 11:01:58 by null             ###   ########.fr       */
+/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/ft_printf.h"
 
 size_t ft_putstr_fd_c(char *s, int fd, char c, size_t i)
 {

@@ -6,11 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:09:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/30 11:44:10 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/04 16:04:35 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../trees/trees.h"
+#include "../includes/trees.h"
 
 void ft_disp_convs(unsigned long long arg, char conv)
 {
@@ -35,6 +35,7 @@ void ft_disp_flags(int bin[], unsigned long long arg, char conv)
 	func2['-'] = &disp_minus;
 	func2['0'] = &disp_zero;
 	func2['.'] = &disp_dot;
+	func2[' '] = &disp_pad;
 	i = 0;
 	while (i < 255)
 	{

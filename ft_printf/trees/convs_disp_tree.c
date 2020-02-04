@@ -6,11 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/29 15:56:54 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "trees.h"
+#include "../includes/trees.h"
 
 // diuxX
 // c

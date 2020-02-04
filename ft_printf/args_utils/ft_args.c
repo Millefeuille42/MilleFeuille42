@@ -6,28 +6,28 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/30 11:35:46 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/04 16:25:03 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../trees/trees.h"
+#include "../includes/trees.h"
 
 size_t			ft_args(char *s, size_t i, va_list *args)
 {
 	int			bin[255];
-	static	int	(*func[255])(const char *, size_t, va_list *);
+	static	int	(*func[255])(const char *, size_t, va_list *) = {};
 
 	func['-'] = &val_minus;
 	func['0'] = &val_zero;
 	func['.'] = &val_dot;
 	ft_szero(bin, 255);
-	while (ft_cinset(s[i], FLAGS))
+	while (ft_cinset(s[i], FLAGS) || ft_isdigit(s[i]))
 	{
 		bin[s[i]] = (func)[s[i]](s, (i + 1), args);
-		if (ft_cinset(s[i++], "0-"))
-			while (ft_isdigit(s[i]) || s[i] == '*')
-				i++;
-		else
+		if (ft_isdigit(s[i]) && !(bin['0']) && !(bin['-']))
+			bin[' '] = val_pad(s, (i + 1), args);
+		i++;
+		while (ft_isdigit(s[i]) || s[i] == '*')
 			i++;
 	}
 	if (s[i] == '%')

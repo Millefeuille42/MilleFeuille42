@@ -6,11 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 14:58:24 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/27 15:48:04 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_szero(int *s, size_t n)
 {

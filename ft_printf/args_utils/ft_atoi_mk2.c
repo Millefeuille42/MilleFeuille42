@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi_mk2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 14:28:02 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
+/*   Created: 2020/02/04 16:00:40 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/02/04 16:04:35 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/trees.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int		atoi_mk2(const char *s, int start, int end)
 {
-	size_t			i;
-	unsigned char	*mem;
+	int res;
+	int power;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	mem = (unsigned char *)s;
-	while (i < n)
+	power = end - start;
+	res = 0;
+	while (power >= 0)
 	{
-		if (mem[i] == (unsigned char)c)
-			return ((void *)mem + i);
-		i++;
+		res = res + ((int)s[start] - 48) * ft_power(10, power);
+		start++;
+		power = end - start;
 	}
-	return (NULL);
+	return (res);
 }

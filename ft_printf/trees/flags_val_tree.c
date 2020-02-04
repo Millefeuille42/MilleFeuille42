@@ -6,27 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:13:55 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/31 09:14:26 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/04 16:04:35 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "trees.h"
-
-static	int		atoi_mk2(const char *s, int start, int end)
-{
-	int res;
-	int power;
-
-	power = end - start;
-	res = 0;
-	while (power >= 0)
-	{
-		res = res + ((int)s[start] - 48) * ft_power(10, power);
-		start++;
-		power = end - start;
-	}
-	return (res);
-}
+#include "../includes/trees.h"
 
 int				 val_minus(const char *s, size_t i, va_list *args)
 {
@@ -89,4 +73,33 @@ int val_zero(const char *s, size_t i, va_list *args)
 int val_dot(const char *s, size_t i, va_list *args)
 {
 	return (2);
+}
+
+int		val_pad(const char *s, size_t i, va_list *args)
+{
+	int	start;
+	int	end;
+
+	start = 0;
+	end = 0;
+	while (ft_isdigit(s[i]))
+	{
+		if (start == 0)
+			start = i;
+		else
+			end = i;
+		i++;
+	}
+	if (s[i] == '*' && !(ft_isdigit(s[i + 1])))
+		return (va_arg(*args, int));
+	if (s[i] == '*' && ft_isdigit(s[i + 1]))
+	{
+		end = va_arg(*args, int);
+		return (val_pad(s, i + 1, args));
+	}
+	if (start == 0)
+		return (0);
+	if (end == 0)
+		return (s[start] - 48);
+	return (atoi_mk2(s, start, end));
 }
