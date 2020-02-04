@@ -21,11 +21,12 @@ size_t			ft_args(char *s, size_t i, va_list *args)
 	func['0'] = &val_zero;
 	func['.'] = &val_dot;
 	ft_szero(bin, 255);
-	while (ft_cinset(s[i], FLAGS) || ft_isdigit(s[i]))
+	while (ft_cinset(s[i], FLAGS) || ft_isdigit0(s[i]))
 	{
-		bin[s[i]] = (func)[s[i]](s, (i + 1), args);
-		if (ft_isdigit(s[i]) && !(bin['0']) && !(bin['-']))
-			bin[' '] = val_pad(s, (i + 1), args);
+		if ((ft_isdigit0(s[i]) || s[i] == '*') && !(bin['0']) && !(bin['-']))
+			bin[' '] = val_pad(s, (i), args);
+		else
+			bin[s[i]] = (func)[s[i]](s, (i + 1), args);
 		i++;
 		while (ft_isdigit(s[i]) || s[i] == '*')
 			i++;

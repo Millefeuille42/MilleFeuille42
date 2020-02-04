@@ -62,14 +62,12 @@ void	disp_pad(int bin[], unsigned long long int arg, char conv)
 	int 		length;
 	static	int	(*func[255])(char, unsigned long long int);
 
-	if (bin['-'])
-		return;
 	func['s'] = length_string;
 	func['c'] = length_char;
 	if (ft_cinset(conv, INTS))
-		length = bin['0'] - length_int(conv, arg);
+		length = bin[' '] - length_int(conv, arg);
 	else
-		length = bin['0'] - func[conv](conv, arg);
+		length = bin[' '] - func[conv](conv, arg);
 	while (length != 0)
 	{
 		ft_putchar_fd(' ', 1);

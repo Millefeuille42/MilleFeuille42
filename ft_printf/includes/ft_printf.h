@@ -13,7 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define FLAGS "-0."
+# define FLAGS "-0.*+"
 # define INTS "diuxX"
 # define ALL "cspdiuxX%-0.*"
 # define HEXX "0123456789ABCDEF"
@@ -34,6 +34,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putnbrbase(int n, char *base);
 char				ft_cinset(char c, const char *set);
 int					ft_isdigit(int c);
+int					ft_isdigit0(int c);
 int					ft_power(int nb, int power);
 size_t				ft_strlen(const char *str);
 void				ft_szero(int *s, size_t n);

@@ -33,11 +33,13 @@ int		ft_printf(const char *input, ...)
 
 int main(void)
 {
-		ft_printf("\nBonsoir %s je suis test [%c] %% %0*5-*s files", "mlabouri", 'h', 6, 7, "1234");
-		printf("\nBonsoir %s je suis test [%c] %% %0*5-*s files", "mlabouri", 'h', 6, 7, "1234");
+		ft_printf("\nBonsoir %s je suis test [%c] %% %010s files", "mlabouri", 'h', "1234");
+		printf("\nBonsoir %s je suis test [%c] %% %-10s files", "mlabouri", 'h', "1234");
 }
 
 //	TODO
 //		- u conversion and length
 //		- p conversion and length
 //		- dot Flag
+//		- 0 : s, c, p || undefined behavior
+//		- * : * || undefined behavior
