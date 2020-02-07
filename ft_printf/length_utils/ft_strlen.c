@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_mk2.c                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/04 16:00:40 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/04 16:04:35 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/11/22 15:02:06 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/trees.h"
+#include "ft_printf.h"
 
-int		atoi_mk2(const char *s, int start, int end)
+size_t	ft_strlen(const char *str)
 {
-	int res;
-	int power;
+	int	i;
 
-	power = end - start;
-	res = 0;
-	while (power >= 0)
+	if (str != NULL)
 	{
-		res = res + ((int)s[start] - 48) * ft_power(10, power);
-		start++;
-		power = end - start;
+		i = 0;
+		while (str[i])
+			i++;
+		return (i);
 	}
-	return (res);
+	return (0);
 }
