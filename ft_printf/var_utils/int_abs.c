@@ -1,44 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   int_abs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 16:00:48 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
+/*   Created: 2020/02/07 10:04:43 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/02/07 10:12:09 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_nbr_len(int n)
+#include "../includes/ft_printf.h"
+
+long int int_abs(int nb)
 {
-	long int	nb;
-	int	length;
+	long int nb2;
 
-	length = 1;
-	nb = (long int)n;
-	if (nb < 0)
-	{
-		nb = -nb;
-		length++;
-	}
-	while (nb > 10)
-	{
-		nb = nb / 10;
-		length++;
-	}
-	return (length);
-}
-
-int ft_unbr_len(unsigned int nb)
-{
-	int	length;
-
-	length = 1;
-	while (nb > 10)
-	{
-		nb = nb / 10;
-		length++;
-	}
-	return (length);
+	nb2 = (int)nb;
+	ft_putchar_fd('-', 1);
+	return (-nb2);
 }

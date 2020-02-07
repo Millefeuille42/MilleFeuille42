@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/01/31 09:16:35 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/07 10:19:03 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int		ft_printf(const char *input, ...)
 
 int main(void)
 {
-		ft_printf("\nBonsoir %s je suis test [%c] %% %010s files", "mlabouri", 'h', "1234");
-		printf("\nBonsoir %s je suis test [%c] %% %-10s files", "mlabouri", 'h', "1234");
+		ft_printf("\nBonsoir %s je suis test [%c] %% %020u files", "mlabouri", 'h', -1234);
+		printf("\nBonsoir %s je suis test [%c] %% %020u files", "mlabouri", 'h', -1234);
 }
 
 //	TODO
-//		- u conversion and length
 //		- p conversion and length
 //		- dot Flag
-//		- 0 : s, c, p || undefined behavior
-//		- * : * || undefined behavior
+
+//		0 : s, c, p || undefined behavior
+//		* : * || undefined behavior
