@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y upgrade
 
     #nginx
-RUN apt-get -y install sudo wget curl vim ufw nginx gnupg lsb-release && ufw allow 'Nginx Full'
+RUN apt-get -y install wget curl vim nginx gnupg (lsb-release)
 
     #MySQL
 WORKDIR /tmp
@@ -27,7 +27,8 @@ RUN ln -s /etc/nginx/sites-available/ft_server /etc/nginx/sites-enabled/ && rm -
 
 RUN nginx -t && service nginx stop && service nginx start
 
-EXPOSE 80/tcp
+EXPOSE 80
+
 ##Install PHPMyAdmin
 #    && wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz \
 #    && tar xvf phpMyAdmin-4.9.0.1-all-languages.tar.gz \
@@ -36,7 +37,6 @@ EXPOSE 80/tcp
 #    &&  mkdir -p /var/lib/phpmyadmin/tmp \
 #    &&  chown -R www-data:www-data /var/lib/phpmyadmin \
 #    &&  cp /usr/share/phpmyadmin/config.sample.inc.php /usr/share/phpmyadmin/config.inc.php
-
 
 ##db?
 #  mariadb < /usr/share/phpmyadmin/sql/create_tables.sql
