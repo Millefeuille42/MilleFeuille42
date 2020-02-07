@@ -34,7 +34,7 @@ void				ft_putunbr(unsigned int nb);
 void				ft_putnbrbase(int n, char *base);
 size_t				ft_putstr_fd_c(char *s, int fd, char c, size_t i);
 void				ft_putstr_fd(char *s, int fd);
-
+void				ft_putnstr(char *s, int len);
 
 char				ft_cinset(char c, const char *set);
 int					ft_isdigit(int c);

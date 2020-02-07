@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 17:44:24 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/07 15:45:46 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,18 @@ void ft_putstr_fd(char *s, int fd)
 	while (s[i] != '\0')
 	{
 		write(fd, &s[i], 1);
+		i++;
+	}
+}
+
+void ft_putnstr(char *s, int len)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0' && i < len)
+	{
+		write(1, &s[i], 1);
 		i++;
 	}
 }
