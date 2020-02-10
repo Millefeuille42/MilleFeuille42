@@ -30,6 +30,7 @@ void	disp_minus(int bin[], unsigned long long int arg, char conv)
 	{
 		ft_putchar_fd(' ', 1);
 		length--;
+		g_count++;
 	}
 }
 
@@ -52,6 +53,7 @@ void	disp_zero(int bin[], unsigned long long int arg, char conv)
 	{
 		ft_putchar_fd('0', 1);
 		length--;
+		g_count++;
 	}
 	ft_disp_convs(arg, conv);
 }
@@ -71,6 +73,7 @@ void	disp_dot(int bin[], unsigned long long int arg, char conv)
 		{
 			ft_putchar_fd('0', 1);
 			length--;
+			g_count++;
 		}
 		ft_disp_convs(arg, conv);
 	}
@@ -93,6 +96,7 @@ void	disp_pad(int bin[], unsigned long long int arg, char conv)
 	{
 		ft_putchar_fd(' ', 1);
 		length--;
+		g_count++;
 	}
 	ft_disp_convs(arg, conv);
 }

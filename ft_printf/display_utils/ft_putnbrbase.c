@@ -31,6 +31,7 @@ static	void	ft_set(long int nb, int length, int baselen, char *base)
 		write(1, &n[i], 1);
 		i++;
 	}
+	g_count = g_count + i;
 }
 
 void			ft_putnbrbase(int n, char *base)

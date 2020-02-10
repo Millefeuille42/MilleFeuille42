@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 17:44:24 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/07 15:45:46 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:16:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ size_t ft_putstr_fd_c(char *s, int fd, char c, size_t i)
 	{
 		write(fd, &s[i], 1);
 		i++;
+		g_count++;
 	}
 	return (i);
 }
@@ -35,6 +36,7 @@ void ft_putstr_fd(char *s, int fd)
 	{
 		write(fd, &s[i], 1);
 		i++;
+		g_count++;
 	}
 }
 
@@ -47,5 +49,6 @@ void ft_putnstr(char *s, int len)
 	{
 		write(1, &s[i], 1);
 		i++;
+		g_count++;
 	}
 }

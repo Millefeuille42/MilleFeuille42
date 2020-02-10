@@ -24,6 +24,8 @@
 # include <stdio.h> //remove
 # include <unistd.h>
 
+extern int g_count;
+
 size_t				ft_args(char *s, size_t i, va_list *args);
 void				ft_disp_convs(unsigned long long arg, char conv);
 void				ft_disp_flags(int bin[], unsigned long long arg, char conv);

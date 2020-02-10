@@ -6,11 +6,16 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:09:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/04 16:04:35 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:05:35 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/trees.h"
+
+static char is_only(int bin[], char index)
+{
+
+}
 
 void ft_disp_convs(unsigned long long arg, char conv)
 {
@@ -39,13 +44,15 @@ void ft_disp_flags(int bin[], unsigned long long arg, char conv)
 	i = 0;
 	while (i < 255)
 	{
-		if (bin[i])
+		if (bin[i] && i != ' ')
 		{
 			func2[i](bin, arg, conv);
 			i2++;
 		}
 		i++;
 	}
-	if (i2 == 0)
+	if (i2 == 0 && bin[' '])
+		disp_pad(bin, arg, conv);
+	else if (i2 == 0)
 		ft_disp_convs(arg, conv);
 }

@@ -31,6 +31,7 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	nb = nb + 48;
 	write(fd, &nb, 1);
+	g_count++;
 }
 
 void	ft_putunbr(unsigned int nb)
@@ -42,4 +43,5 @@ void	ft_putunbr(unsigned int nb)
 	}
 	nb = nb + 48;
 	write(1, &nb, 1);
+	g_count++;
 }
