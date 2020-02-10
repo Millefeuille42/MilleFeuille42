@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 09:31:30 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 10:06:12 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 size_t	ft_args(char *s, size_t i, va_list *args)
 {
 	int			bin[255];
-	static	int	(*func[255])(const char *, size_t, va_list *) = {};
+	static int	(*func[255])(const char *, size_t, va_list *);
 
 	func['-'] = &val_minus;
 	func['0'] = &val_zero;
@@ -24,9 +24,9 @@ size_t	ft_args(char *s, size_t i, va_list *args)
 	while (ft_cinset(s[i], FLAGS) || ft_isdigit0(s[i]))
 	{
 		if ((ft_isdigit0(s[i]) || s[i] == '*') && !(bin['0']) && !(bin['-']))
-			bin[' '] = val_pad(s, (i), args);
+			bin[' '] = val_pad(s, i, args);
 		else
-			bin[s[i]] = (func)[s[i]](s, (i + 1), args);
+			bin[(int)s[i]] = (func)[(int)s[i]](s, (i + 1), args);
 		i++;
 		while (ft_isdigit(s[i]) || s[i] == '*')
 			i++;

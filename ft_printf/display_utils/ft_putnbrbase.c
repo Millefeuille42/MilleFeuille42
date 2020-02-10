@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:19:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 09:16:50 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:35:54 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	void	ft_set(long int nb, int length, int baselen, char *base)
 {
-	size_t	i;
+	int		i;
 	char	n[length];
 
 	i = length - 1;

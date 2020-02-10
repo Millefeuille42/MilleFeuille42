@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:54:36 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/07 10:31:47 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 10:02:13 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int					ft_isdigit(int c);
 int					ft_isdigit0(int c);
 int					ft_power(int nb, int power);
 void				ft_szero(int *s, size_t n);
-long int 			int_abs(int nb);
+long int			int_abs(int nb);
 int					atoi_mk2(const char *s, int start, int end);
 
 size_t				ft_strlen(const char *str);
-int 				ft_nbr_len(int n);
-int 				ft_unbr_len(unsigned int nb);
+int					ft_nbr_len(int n);
+int					ft_unbr_len(unsigned int nb);
 
 #endif

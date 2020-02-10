@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:50:51 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 09:37:49 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:54:29 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ int		length_int(char conv, unsigned long long int arg)
 
 int		length_char(char conv, unsigned long long int arg)
 {
+	conv = 0;
+	arg = 0;
 	return (1);
 }
 
 int		length_string(char conv, unsigned long long int arg)
 {
+	conv = 0;
 	return (ft_strlen((char *)arg));
 }
