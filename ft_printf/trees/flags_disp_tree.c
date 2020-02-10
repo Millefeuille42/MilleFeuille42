@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 09:41:42 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:58:43 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	disp_dot(int bin[], unsigned long long int arg, char conv)
 		{
 			ft_putchar_fd('0', 1);
 			length--;
-			g_count++;
 		}
 		ft_disp_convs(arg, conv);
 	}

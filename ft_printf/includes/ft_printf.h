@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:54:36 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 10:02:13 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 10:02:26 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int					atoi_mk2(const char *s, int start, int end);
 size_t				ft_strlen(const char *str);
 int					ft_nbr_len(int n);
 int					ft_unbr_len(unsigned int nb);
+int					ft_nbrbase_len(int n, char *base);
 
 #endif

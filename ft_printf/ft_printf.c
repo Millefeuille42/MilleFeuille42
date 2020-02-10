@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 09:47:23 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 10:21:19 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	main(void)
 	int ret;
 	int ret2;
 
-	ret = ft_printf("\nBonsoir %s [%c] %% %3.4s test", "mlabouri", 'h', "tpabo");
-	ret2 = printf("\nBonsoir %s [%c] %% %3.4s test", "mlabouri", 'h', "tpabo");
+	ret = ft_printf("Bonsoir %s [%c] %% %.9X", "mlabouri", 'h', -1234);
+	ret2 = printf("Bonsoir %s [%c] %% %.9X", "mlabouri", 'h', -1234);
 	printf("\nUSER : %d \nNORM : %d", ret, ret2);
 }
 

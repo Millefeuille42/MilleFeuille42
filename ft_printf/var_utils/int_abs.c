@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 10:04:43 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/07 10:12:09 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:44:20 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ long int	int_abs(int nb)
 
 	nb2 = (int)nb;
 	ft_putchar_fd('-', 1);
+	g_count++;
 	return (-nb2);
 }

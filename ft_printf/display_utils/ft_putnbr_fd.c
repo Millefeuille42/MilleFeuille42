@@ -23,6 +23,7 @@ void	ft_putnbr_fd(int n, int fd)
 	{
 		nb = -nb;
 		ft_putchar_fd('-', 1);
+		g_count++;
 	}
 	if (nb > 9)
 	{

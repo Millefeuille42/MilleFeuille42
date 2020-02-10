@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:50:51 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 09:54:29 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 10:00:37 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		length_int(char conv, unsigned long long int arg)
 {
 	if (ft_cinset(conv, "di"))
 		return (ft_nbr_len((int)arg));
-//	if (ft_cinset(conv, "Xx"))
-//		return (ft_nbrbase_len((int)arg, HEXX));
+	if (ft_cinset(conv, "Xx"))
+		return (ft_nbrbase_len((int)arg, HEXX));
 	return (ft_unbr_len((unsigned int)arg));
 }
 
