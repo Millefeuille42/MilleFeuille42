@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:19:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 11:33:49 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 11:24:56 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static	int		ft_set(unsigned long nb, int l, unsigned long bl, char *base)
+static	void	ft_set(unsigned long nb, int l, unsigned long bl, char *b)
 {
 	int		i;
 	char	n[l];
@@ -20,21 +20,24 @@ static	int		ft_set(unsigned long nb, int l, unsigned long bl, char *base)
 	i = l - 1;
 	while (nb > bl)
 	{
-		n[i] = base[(nb % bl)];
+		n[i] = b[(nb % bl)];
 		nb = nb / bl;
 		i--;
 	}
-	n[0] = base[nb];
+	n[0] = b[nb];
 	i = 0;
 	while (i != l)
+	{
+		write(1, &n[i], 1);
 		i++;
-	return (i);
+		g_count++;
+	}
 }
 
-int				ft_nbrbase_len(unsigned long nb, char *base)
+void			ft_putnbrbase(unsigned long nb, char *base)
 {
-	unsigned long	baselen;
-	unsigned long	nb2;
+	unsigned long baselen;
+	unsigned long nb2;
 	size_t			length;
 
 	baselen = ft_strlen(base);
@@ -45,5 +48,5 @@ int				ft_nbrbase_len(unsigned long nb, char *base)
 		nb = nb / baselen;
 		length++;
 	}
-	return (ft_set(nb2, length, baselen, base));
+	ft_set(nb2, length, baselen, base);
 }

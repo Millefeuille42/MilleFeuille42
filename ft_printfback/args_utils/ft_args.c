@@ -15,14 +15,18 @@
 size_t	ft_args(char *s, size_t i, va_list *args)
 {
 	int			bin[255];
+	static int	(*func[255])(const char *, size_t, va_list *);
 
+	func['-'] = &val_minus;
+	func['0'] = &val_zero;
+	func['.'] = &val_dot;
 	ft_szero(bin, 255);
 	while (ft_cinset(s[i], FLAGS) || ft_isdigit0(s[i]))
 	{
 		if ((ft_isdigit0(s[i]) || s[i] == '*') && !(bin['0']) && !(bin['-']))
 			bin[' '] = val_pad(s, i, args);
 		else
-			bin[(int)s[i]] = (g_func_fval)[(int)s[i]](s, (i + 1), args);
+			bin[(int)s[i]] = (func)[(int)s[i]](s, (i + 1), args);
 		i++;
 		while (ft_isdigit(s[i]) || s[i] == '*')
 			i++;

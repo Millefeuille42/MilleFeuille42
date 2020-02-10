@@ -6,32 +6,20 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 12:21:56 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 11:45:47 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/trees.h"
 
 int			g_count;
-int			(*g_func_length[255])(char, unsigned long long int);
-void		(*g_func_conv[255])(unsigned long long int);
-int			(*g_func_fval[255])(const char *, size_t, va_list *);
-void		(*g_func_fdisp[255])(int[], unsigned long long int, char);
+static int	(*g_func_length[255])(char, unsigned long long int);
 
 static void		init(void)
 {
 	g_func_length['s'] = length_string;
 	g_func_length['c'] = length_char;
 	g_func_length['p'] = length_pointer;
-	g_func_conv['c'] = &disp_char;
-	g_func_conv['s'] = &disp_string;
-	g_func_conv['p'] = &disp_pointer;
-	g_func_fval['-'] = &val_minus;
-	g_func_fval['0'] = &val_zero;
-	g_func_fval['.'] = &val_dot;
-	g_func_fdisp['-'] = &disp_minus;
-	g_func_fdisp['0'] = &disp_zero;
-	g_func_fdisp['.'] = &disp_dot;
 }
 
 int				ft_printf(const char *input, ...)
@@ -40,7 +28,6 @@ int				ft_printf(const char *input, ...)
 	size_t				i;
 	static	size_t		len;
 
-	init();
 	va_start(args, input);
 	i = 0;
 	g_count = 0;
@@ -55,8 +42,21 @@ int				ft_printf(const char *input, ...)
 	return (g_count);
 }
 
+int	main(void)
+{
+	int ret;
+	int ret2;
+
+	ret = ft_printf("\nBonsoir %s [%c] %% %-17p niktoi", "mlabouri", 'h', &ret2);
+	ret2 = printf("\nBonsoir %s [%c] %% %-17p niktoi", "mlabouri", 'h', &ret2);
+	printf("\nUSER : %d \nNORM : %d", ret, ret2);
+}
+
 /*
-**		0 : s, c, p		||	undefined behavior
-**		* : *, digit	||	undefined behavior
-**		. : -, p, c		||	undefined behavior
+	* TODO
+	*		- p conversion and length (min 0x)
+	*
+	*		0 : s, c, p		||	undefined behavior
+	*		* : *, digit	||	undefined behavior
+	*		. : -, p, c		||	undefined behavior
 */

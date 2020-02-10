@@ -6,12 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:54:36 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 12:19:13 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 11:41:11 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
 
 # define FLAGS "-0.*+"
 # define INTS "diuxX"
@@ -21,13 +22,11 @@
 
 # include <stdarg.h>
 # include <string.h>
+# include <stdio.h> //remove
 # include <unistd.h>
 
-extern int	g_count;
-extern int	(*g_func_length[255])(char, unsigned long long int);
-extern void	(*g_func_conv[255])(unsigned long long int);
-extern int	(*g_func_fval[255])(const char *, size_t, va_list *);
-extern void	(*g_func_fdisp[255])(int[], unsigned long long int, char);
+extern int g_count;
+extern int g_func_length;
 
 size_t				ft_args(char *s, size_t i, va_list *args);
 void				ft_disp_convs(unsigned long long arg, char conv);
