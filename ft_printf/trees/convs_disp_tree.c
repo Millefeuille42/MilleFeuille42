@@ -6,22 +6,16 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/07 10:17:28 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:38:45 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/trees.h"
 
-// diuxX
-// c
-// s
-// p
-// %
-
 void	disp_int(char conv, unsigned long long int arg)
 {
 	if (ft_cinset(conv, "di"))
-		ft_putnbr_fd((int) arg, 1);
+		ft_putnbr_fd((int)arg, 1);
 	else if (ft_cinset(conv, "X"))
 		ft_putnbrbase((int)arg, HEXX);
 	else if (ft_cinset(conv, "x"))
@@ -42,5 +36,5 @@ void	disp_string(char conv, unsigned long long int arg)
 
 void	disp_pointer(char conv, unsigned long long int arg)
 {
-	return;
+	return ;
 }

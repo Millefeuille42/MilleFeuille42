@@ -6,18 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:09:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 09:05:35 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:32:43 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/trees.h"
 
-static char is_only(int bin[], char index)
-{
-
-}
-
-void ft_disp_convs(unsigned long long arg, char conv)
+void	ft_disp_convs(unsigned long long arg, char conv)
 {
 	static	void	(*func[255])(char, unsigned long long int);
 
@@ -30,11 +25,11 @@ void ft_disp_convs(unsigned long long arg, char conv)
 		(func)[conv](conv, arg);
 }
 
-void ft_disp_flags(int bin[], unsigned long long arg, char conv)
+void	ft_disp_flags(int bin[], unsigned long long arg, char conv)
 {
-	static	void	(*func2[255])(int [], unsigned long long int, char);
-	size_t i;
-	size_t i2;
+	static	void	(*func2[255])(int[], unsigned long long int, char);
+	size_t			i;
+	size_t			i2;
 
 	i2 = 0;
 	func2['-'] = &disp_minus;

@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-long int int_abs(int nb)
+long int	int_abs(int nb)
 {
 	long int nb2;
 

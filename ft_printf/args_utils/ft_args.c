@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/07 16:10:13 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:31:30 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/trees.h"
 
-size_t			ft_args(char *s, size_t i, va_list *args)
+size_t	ft_args(char *s, size_t i, va_list *args)
 {
 	int			bin[255];
 	static	int	(*func[255])(const char *, size_t, va_list *) = {};

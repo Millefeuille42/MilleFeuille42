@@ -6,14 +6,14 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 16:00:48 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:36:22 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_nbr_len(int n)
+int		ft_nbr_len(int n)
 {
 	long int	nb;
-	int	length;
+	int			length;
 
 	length = 1;
 	nb = (long int)n;
@@ -30,7 +30,7 @@ int ft_nbr_len(int n)
 	return (length);
 }
 
-int ft_unbr_len(unsigned int nb)
+int		ft_unbr_len(unsigned int nb)
 {
 	int	length;
 

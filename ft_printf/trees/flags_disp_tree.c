@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/07 15:49:49 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:41:31 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	disp_minus(int bin[], unsigned long long int arg, char conv)
 {
-	int 		length;
-	static	int	(*func[255])(char, unsigned long long int);
+	int			length;
+	static int	(*func[255])(char, unsigned long long int);
 
 	if (bin['.'])
-		return;
+		return ;
 	func['s'] = length_string;
 	func['c'] = length_char;
 	if (ft_cinset(conv, INTS))
@@ -36,11 +36,11 @@ void	disp_minus(int bin[], unsigned long long int arg, char conv)
 
 void	disp_zero(int bin[], unsigned long long int arg, char conv)
 {
-	int 		length;
-	static	int	(*func[255])(char, unsigned long long int);
+	int			length;
+	static int	(*func[255])(char, unsigned long long int);
 
 	if (bin['-'] || bin['.'])
-		return;
+		return ;
 	func['s'] = length_string;
 	func['c'] = length_char;
 	if (ft_cinset(conv, INTS))
@@ -60,7 +60,7 @@ void	disp_zero(int bin[], unsigned long long int arg, char conv)
 
 void	disp_dot(int bin[], unsigned long long int arg, char conv)
 {
-	int 		length;
+	int			length;
 
 	if (bin['.'] < 0)
 		bin['.'] = 0;
@@ -83,8 +83,8 @@ void	disp_dot(int bin[], unsigned long long int arg, char conv)
 
 void	disp_pad(int bin[], unsigned long long int arg, char conv)
 {
-	int 		length;
-	static	int	(*func[255])(char, unsigned long long int);
+	int			length;
+	static int	(*func[255])(char, unsigned long long int);
 
 	func['s'] = length_string;
 	func['c'] = length_char;

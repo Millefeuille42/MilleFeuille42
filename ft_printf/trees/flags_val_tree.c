@@ -6,16 +6,16 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:13:55 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/07 12:38:58 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:43:00 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/trees.h"
 
-int				 val_minus(const char *s, size_t i, va_list *args)
+int	val_minus(const char *s, size_t i, va_list *args)
 {
-	int	start;
-	int	end;
+	int		start;
+	int		end;
 
 	start = 0;
 	end = 0;
@@ -41,10 +41,10 @@ int				 val_minus(const char *s, size_t i, va_list *args)
 	return (atoi_mk2(s, start, end));
 }
 
-int val_zero(const char *s, size_t i, va_list *args)
+int	val_zero(const char *s, size_t i, va_list *args)
 {
-	int	start;
-	int	end;
+	int		start;
+	int		end;
 
 	start = 0;
 	end = 0;
@@ -70,10 +70,10 @@ int val_zero(const char *s, size_t i, va_list *args)
 	return (atoi_mk2(s, start, end));
 }
 
-int val_dot(const char *s, size_t i, va_list *args)
+int	val_dot(const char *s, size_t i, va_list *args)
 {
-	int	start;
-	int	end;
+	int		start;
+	int		end;
 
 	start = 0;
 	end = 0;
@@ -99,7 +99,7 @@ int val_dot(const char *s, size_t i, va_list *args)
 	return (atoi_mk2(s, start, end));
 }
 
-int		val_pad(const char *s, size_t i, va_list *args)
+int	val_pad(const char *s, size_t i, va_list *args)
 {
 	int	start;
 	int	end;

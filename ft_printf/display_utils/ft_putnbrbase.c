@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:19:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:16:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void			ft_putnbrbase(int n, char *base)
 	int			baselen;
 	long int	nb;
 	long int	nb2;
-	size_t	length;
+	size_t		length;
 
 	baselen = ft_strlen(base);
 	nb = (size_t)n;

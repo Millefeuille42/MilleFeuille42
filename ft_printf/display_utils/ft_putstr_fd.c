@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 17:44:24 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 09:16:50 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:20:30 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-size_t ft_putstr_fd_c(char *s, int fd, char c, size_t i)
+size_t	ft_putstr_fd_c(char *s, int fd, char c, size_t i)
 {
 	if (fd < 0 || !s)
 		return (-1);
@@ -25,7 +25,7 @@ size_t ft_putstr_fd_c(char *s, int fd, char c, size_t i)
 	return (i);
 }
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	i;
 
@@ -40,7 +40,7 @@ void ft_putstr_fd(char *s, int fd)
 	}
 }
 
-void ft_putnstr(char *s, int len)
+void	ft_putnstr(char *s, int len)
 {
 	size_t	i;
 

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 09:19:34 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/10 09:46:21 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int g_count;
 
-int		ft_printf(const char *input, ...)
+int	ft_printf(const char *input, ...)
 {
 	va_list				args;
 	size_t				i;
@@ -26,7 +26,7 @@ int		ft_printf(const char *input, ...)
 	len = ft_strlen(input);
 	while (i < len)
 	{
-		i = ft_putstr_fd_c((char *) input, 1, '%', i);
+		i = ft_putstr_fd_c((char *)input, 1, '%', i);
 		if (input[i] == '\0')
 			return (g_count);
 		i = ft_args((char *)input, i + 1, &args);
@@ -34,7 +34,7 @@ int		ft_printf(const char *input, ...)
 	return (g_count);
 }
 
-int main(void)
+int	main(void)
 {
 	int ret;
 	int ret2;
@@ -44,9 +44,11 @@ int main(void)
 	printf("\nUSER : %d \nNORM : %d", ret, ret2);
 }
 
-/**	TODO										**/
-/**		- p conversion and length (min 0x)		**/
-/**												**/
-/**		0 : s, c, p		||	undefined behavior	**/
-/**		* : *, digit	||	undefined behavior	**/
-/**		. : -, p, c		||	undefined behavior	**/
+/*
+	* TODO
+	*		- p conversion and length (min 0x)
+	*
+	*		0 : s, c, p		||	undefined behavior
+	*		* : *, digit	||	undefined behavior
+	*		. : -, p, c		||	undefined behavior
+*/
