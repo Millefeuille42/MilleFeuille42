@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(long n, int fd)
 {
 	long int	nb;
 
@@ -23,11 +23,10 @@ void	ft_putnbr_fd(int n, int fd)
 	{
 		nb = -nb;
 		ft_putchar_fd('-', 1);
-		g_count++;
 	}
 	if (nb > 9)
 	{
-		ft_putnbr_fd((int)nb / 10, fd);
+		ft_putnbr_fd(nb / 10, fd);
 		nb = nb % 10;
 	}
 	nb = nb + 48;

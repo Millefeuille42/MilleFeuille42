@@ -15,6 +15,7 @@ SRCS	=	./trees/flags_disp_tree.c trees/flags_val_tree.c trees/args_length_tree.c
 			./args_utils/ft_args.c args_utils/ft_disp.c																									\
 			./var_utils/ft_c_in_set.c var_utils/ft_isdigit.c var_utils/ft_power.c var_utils/ft_szero.c var_utils/int_abs.c var_utils/ft_atoi_mk2.c 		\
 			./display_utils/ft_putchar_fd.c display_utils/ft_putnbr_fd.c display_utils/ft_putnbrbase.c display_utils/ft_putstr_fd.c						\
+			./ft_printf.c
 
 OBJS	=	${SRCS:.c=.o}
 

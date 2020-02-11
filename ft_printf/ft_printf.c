@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "includes/trees.h"
+#include <stdio.h>
 
 int			g_count;
 int			(*g_func_length[255])(char, unsigned long long int);
@@ -53,6 +54,17 @@ int				ft_printf(const char *input, ...)
 		i = ft_args((char *)input, i + 1, &args);
 	}
 	return (g_count);
+}
+
+int main(void)
+{
+	int rep;
+	int rep2;
+
+	rep = ft_printf("\n%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2d", 8, -12, 123456789,  0, -12345678, 97, -2147483648, 2147483647);
+	rep2 = printf("\n%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2dhh", 8, -12, 123456789,  0, -12345678, 97, -2147483648, 2147483647);
+
+	printf("\n%d :: %d", rep, rep2);
 }
 
 /*

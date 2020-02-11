@@ -34,7 +34,7 @@ void				ft_disp_convs(unsigned long long arg, char conv);
 void				ft_disp_flags(int bin[], unsigned long long arg, char conv);
 
 void				ft_putchar_fd(char c, int f);
-void				ft_putnbr_fd(int n, int fd);
+void				ft_putnbr_fd(long n, int fd);
 void				ft_putunbr(unsigned int nb);
 void				ft_putnbrbase(unsigned long n, char *base);
 size_t				ft_putstr_fd_c(char *s, int fd, char c, size_t i);

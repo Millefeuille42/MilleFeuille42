@@ -15,7 +15,7 @@
 void	disp_int(char conv, unsigned long long int arg)
 {
 	if (ft_cinset(conv, "di"))
-		ft_putnbr_fd((int)arg, 1);
+		ft_putnbr_fd((long)arg, 1);
 	else if (conv == 'X')
 		ft_putnbrbase((unsigned int)arg, HEXX);
 	else if (ft_cinset(conv, "x"))
