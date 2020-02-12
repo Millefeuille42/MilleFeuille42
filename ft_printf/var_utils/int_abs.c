@@ -18,6 +18,5 @@ long int	int_abs(int nb)
 
 	nb2 = (int)nb;
 	ft_putchar_fd('-', 1);
-	g_count++;
 	return (-nb2);
 }

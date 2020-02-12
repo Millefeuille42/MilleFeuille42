@@ -6,18 +6,15 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 12:21:56 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:30:25 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/trees.h"
-#include <stdio.h>
 
 int			g_count;
 int			(*g_func_length[255])(char, unsigned long long int);
 void		(*g_func_conv[255])(unsigned long long int);
-int			(*g_func_fval[255])(const char *, size_t, va_list *);
-void		(*g_func_fdisp[255])(int[], unsigned long long int, char);
 
 static void		init(void)
 {
@@ -27,12 +24,6 @@ static void		init(void)
 	g_func_conv['c'] = &disp_char;
 	g_func_conv['s'] = &disp_string;
 	g_func_conv['p'] = &disp_pointer;
-	g_func_fval['-'] = &val_minus;
-	g_func_fval['0'] = &val_zero;
-	g_func_fval['.'] = &val_dot;
-	g_func_fdisp['-'] = &disp_minus;
-	g_func_fdisp['0'] = &disp_zero;
-	g_func_fdisp['.'] = &disp_dot;
 }
 
 int				ft_printf(const char *input, ...)
@@ -56,19 +47,12 @@ int				ft_printf(const char *input, ...)
 	return (g_count);
 }
 
-int main(void)
-{
-	int rep;
-	int rep2;
-
-	rep = ft_printf("\n%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2d", 8, -12, 123456789,  0, -12345678, 97, -2147483648, 2147483647);
-	rep2 = printf("\n%2i, %2d, %2d, %2d, %2d, %2d, %2d, %2dhh", 8, -12, 123456789,  0, -12345678, 97, -2147483648, 2147483647);
-
-	printf("\n%d :: %d", rep, rep2);
-}
-
 /*
-**		0 : s, c, p		||	undefined behavior
-**		* : *, digit	||	undefined behavior
-**		. : -, p, c		||	undefined behavior
+ * . || c, rien
+ * . || s, max de char
+ * . || si . == 0 et i == 0 ou s, afficher rien
+
+ * Width < 0 == - Padding
+ * - == 0 padding null
+ * 0 padding = width si .
 */

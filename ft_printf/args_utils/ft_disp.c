@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:09:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 11:41:11 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/12 16:49:36 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,19 @@ void	ft_disp_convs(unsigned long long arg, char conv)
 		(g_func_conv)[(int)conv](arg);
 }
 
-void	ft_disp_flags(int bin[], unsigned long long arg, char conv)
+void	ft_disp_flags(struct s_f bin, unsigned long long arg, char conv)
 {
-	size_t			i;
-	size_t			i2;
+	int	f;
 
-	i2 = 0;
-	i = 0;
-	while (i < 255)
-	{
-		if (bin[i] && i != ' ')
-		{
-			g_func_fdisp[i](bin, arg, conv);
-			i2++;
-		}
-		i++;
-	}
-	if (i2 == 0 && bin[' '])
-		disp_pad(bin, arg, conv);
-	else if (i2 == 0)
+	f = 0;
+	if (bin.pad && !(bin.minus) && !(bin.zero))
+		f = disp_pad(&bin, arg, conv);
+	if (bin.zero && !(bin.minus))
+		f = disp_zero(&bin, arg, conv);
+	if (bin.dotc)
+		f = disp_dot(&bin, arg, conv);
+	if (bin.minus)
+		f = disp_minus(&bin, arg, conv);
+	if (f == 0)
 		ft_disp_convs(arg, conv);
 }
