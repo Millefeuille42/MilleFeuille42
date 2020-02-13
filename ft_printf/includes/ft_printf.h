@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:54:36 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/12 16:49:36 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/13 17:57:27 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@
 
 struct s_f
 {
-	char	dotc;
+	int		dotc;
 	int 	dot;
 	int 	zero;
-	char 	zeros;
 	int 	minus;
 	int 	pad;
+	int 	length;
 };
 
 extern int	g_count;
@@ -65,5 +65,6 @@ size_t				ft_strlen(const char *str);
 int					ft_nbr_len(int n);
 int					ft_unbr_len(unsigned int nb);
 int					ft_nbrbase_len(unsigned long nb, char *base);
+int 				ft_diff(int n1, int n2);
 
 #endif

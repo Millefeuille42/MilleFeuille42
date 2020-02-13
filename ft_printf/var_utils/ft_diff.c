@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_diff.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/22 14:58:24 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/12 16:48:45 by mlabouri         ###   ########.fr       */
+/*   Created: 2020/02/13 16:20:22 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/02/13 16:49:28 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-
-struct s_f ft_szero(struct s_f bin)
+int	ft_diff(int n1, int n2)
 {
-	bin.dot = 0;
-	bin.dotc = 0;
-	bin.minus = 0;
-	bin.pad = 0;
-	bin.zero = 0;
-	bin.length = 0;
-	return (bin);
+	if (n1 > n2)
+		return (n1 - n2);
+	if (n2 > n1)
+		return (n2 - n1);
+	return (n1);
 }

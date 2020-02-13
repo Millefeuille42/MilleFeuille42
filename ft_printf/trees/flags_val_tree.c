@@ -38,14 +38,13 @@ int	val_minus(const char *s, size_t i, va_list *args)
 	return (atoi_mk2(s, start, end));
 }
 
-int val_zero(const char *s, size_t i, va_list *args, char *zeros)
+int val_zero(const char *s, size_t i, va_list *args)
 {
 	int		start;
 	int		end;
 
 	start = 0;
 	end = 0;
-	*zeros = 1;
 	while (ft_isdigit(s[i]))
 	{
 		if (start == 0)
@@ -57,8 +56,7 @@ int val_zero(const char *s, size_t i, va_list *args, char *zeros)
 	if (s[i] == '*' && !(ft_isdigit(s[i + 1])))
 		return (va_arg(*args, int));
 	if (s[i] == '*' && ft_isdigit(s[i + 1]))
-		return (val_zero(s, i + 1, args, zeros));
-	*zeros = 0;
+		return (val_zero(s, i + 1, args));
 	if (start == 0)
 		return (0);
 	if (end == 0)

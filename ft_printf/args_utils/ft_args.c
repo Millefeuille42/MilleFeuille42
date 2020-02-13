@@ -26,7 +26,7 @@ size_t	ft_args(char *s, size_t i, va_list *args)
 		if (s[i] == '-' && !bin.dotc)
 			bin.minus = val_minus(s, i + 1, args);
 		if (s[i] == '0' && !bin.dotc)
-			bin.zero = val_zero(s, i + 1, args, &(bin.zeros));
+			bin.zero = val_zero(s, i + 1, args);
 		i++;
 		while (ft_isdigit(s[i]) || s[i] == '*')
 			i++;
