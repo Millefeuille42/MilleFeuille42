@@ -6,17 +6,40 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/12 17:14:34 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/14 14:42:37 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/trees.h"
 
+static void	ft_detarg(struct s_c arg , char co, va_list *args, struct s_f bin)
+{
+	if (co == 'c')
+		arg.ch = (char)va_arg(*args, int);
+	else if (co == 's')
+	{
+		arg.s = va_arg(*args, char *);
+		if (arg.s == NULL)
+			arg.s = "(null)";
+	}
+	else if (co == 'p')
+		arg.p = va_arg(*args, unsigned long long);
+	else if (ft_cinset(co, INTS))
+		arg.diuxX = va_arg(*args, unsigned);
+	else
+	{
+		arg.ch = '%';
+		co = 'c';
+	}
+	ft_disp_flags(bin, arg, co);
+}
+
 size_t	ft_args(char *s, size_t i, va_list *args)
 {
 	struct s_f	bin;
+	struct s_c	arg;
 
-	bin = ft_szero(bin);
+	ft_szero(&bin, &arg);
 	while (ft_cinset(s[i], FLAGS) || ft_isdigit0(s[i]))
 	{
 		if ((ft_isdigit0(s[i]) || s[i] == '*') && !(bin.zero) && !(bin.minus))
@@ -31,11 +54,8 @@ size_t	ft_args(char *s, size_t i, va_list *args)
 		while (ft_isdigit(s[i]) || s[i] == '*')
 			i++;
 	}
-	if (s[i] == '%')
-		ft_disp_flags(bin, (unsigned long long int)'%', 'c');
-	else if (!(ft_cinset(s[i], ALL)))
+	if (!(ft_cinset(s[i], ALL)))
 		return (i);
-	else
-		ft_disp_flags(bin, va_arg(*args, unsigned long long), s[i]);
+	ft_detarg(arg, s[i], args, bin);
 	return (i + 1);
 }

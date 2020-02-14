@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:19:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/10 11:30:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/14 11:40:06 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static	void	ft_set(unsigned long nb, int l, unsigned long bl, char *b)
 	}
 }
 
-void			ft_putnbrbase(unsigned long nb, char *base)
+void			ft_putnbrbase(unsigned nb, char *base)
 {
 	unsigned long	baselen;
 	unsigned long	nb2;

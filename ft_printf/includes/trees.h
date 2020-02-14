@@ -17,22 +17,22 @@
 
 int		val_minus(const char *s, size_t i, va_list *args);
 int val_zero(const char *s, size_t i, va_list *args);
-int		val_dot(const char *s, size_t i, va_list *args, char *dotc);
+int		val_dot(const char *s, size_t i, va_list *args, int *dotc);
 int		val_pad(const char *s, size_t i, va_list *args);
 
-void	disp_int(char conv, unsigned long long int arg);
-void	disp_char(unsigned long long int arg);
-void	disp_string(unsigned long long int arg);
-void	disp_pointer(unsigned long long int arg);
+void	disp_int(char conv, struct s_c arg);
+void	disp_char(struct s_c arg);
+void	disp_string(struct s_c arg);
+void	disp_pointer(struct s_c arg);
 
-int		disp_minus(struct s_f *bin, unsigned long long int arg, char conv);
-int		disp_zero(struct s_f *bin, unsigned long long int arg, char conv);
-int		disp_dot(struct s_f *bin, unsigned long long int arg, char conv);
-int		disp_pad(struct s_f *bin, unsigned long long int arg, char conv);
+int		disp_minus(struct s_f *bin, struct s_c arg, char conv);
+int		disp_zero(struct s_f *bin, struct s_c arg, char conv);
+int		disp_dot(struct s_f *bin, struct s_c arg, char conv);
+int		disp_pad(struct s_f *bin, struct s_c arg, char conv);
 
-int		length_int(char c, unsigned long long int arg, struct s_f *bin);
-int		length_char(char c, unsigned long long int arg, struct s_f *bin);
-int		length_string(char c, unsigned long long int arg, struct s_f *bin);
-int		length_pointer(char c, unsigned long long int arg, struct s_f *bin);
+int		length_int(char c, struct s_c arg, struct s_f *bin);
+int		length_char(char c, struct s_c arg, struct s_f *bin);
+int		length_string(char c, struct s_c arg, struct s_f *bin);
+int		length_pointer(char c, struct s_c arg, struct s_f *bin);
 
 #endif

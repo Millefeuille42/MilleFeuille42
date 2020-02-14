@@ -64,7 +64,7 @@ int val_zero(const char *s, size_t i, va_list *args)
 	return (atoi_mk2(s, start, end));
 }
 
-int val_dot(const char *s, size_t i, va_list *args, char *dotc)
+int val_dot(const char *s, size_t i, va_list *args, int *dotc)
 {
 	int		start;
 	int		end;
