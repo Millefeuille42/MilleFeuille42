@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:54:36 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/14 13:45:19 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:59:00 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ struct s_f
 
 struct s_c
 {
-	unsigned long		diuxX;
-	unsigned long long	p;
+	unsigned 			diuxX;
+	long				p;
 	char				ch;
 	char * 				s;
 };
@@ -56,7 +56,7 @@ void				ft_disp_flags(struct s_f bin, struct s_c arg, char conv);
 void				ft_putchar_fd(char c, int f);
 void				ft_putnbr_fd(unsigned long int n, int fd, char flag);
 void				ft_putunbr(unsigned int nb);
-void				ft_putnbrbase(unsigned n, char *base);
+void				ft_putnbrbase(unsigned long n, char *base);
 size_t				ft_putstr_fd_c(char *s, int fd, char c, size_t i);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putnstr(char *s, int len);

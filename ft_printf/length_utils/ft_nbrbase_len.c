@@ -18,7 +18,7 @@ static	int		ft_set(unsigned long nb, int l, unsigned long bl, char *base)
 	char	n[l];
 
 	i = l - 1;
-	while (nb > bl)
+	while (nb >= bl)
 	{
 		n[i] = base[(nb % bl)];
 		nb = nb / bl;
@@ -40,7 +40,7 @@ int				ft_nbrbase_len(unsigned long nb, char *base)
 	baselen = ft_strlen(base);
 	nb2 = nb;
 	length = 1;
-	while (nb > baselen)
+	while (nb >= baselen)
 	{
 		nb = nb / baselen;
 		length++;

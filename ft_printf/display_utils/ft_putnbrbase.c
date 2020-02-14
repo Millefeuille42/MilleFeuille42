@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:19:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/14 11:40:06 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:59:00 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static	void	ft_set(unsigned long nb, int l, unsigned long bl, char *b)
 	char	n[l];
 
 	i = l - 1;
-	while (nb > bl)
+	while (nb >= bl)
 	{
 		n[i] = b[(nb % bl)];
 		nb = nb / bl;
@@ -34,16 +34,16 @@ static	void	ft_set(unsigned long nb, int l, unsigned long bl, char *b)
 	}
 }
 
-void			ft_putnbrbase(unsigned nb, char *base)
+void			ft_putnbrbase(unsigned long nb, char *base)
 {
-	unsigned long	baselen;
-	unsigned long	nb2;
+	unsigned long baselen;
+	unsigned long nb2;
 	size_t			length;
 
 	baselen = ft_strlen(base);
 	nb2 = nb;
 	length = 1;
-	while (nb > baselen)
+	while (nb >= baselen)
 	{
 		nb = nb / baselen;
 		length++;

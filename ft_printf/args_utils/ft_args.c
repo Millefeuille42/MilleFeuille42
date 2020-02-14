@@ -23,7 +23,7 @@ static void	ft_detarg(struct s_c arg , char co, va_list *args, struct s_f bin)
 			arg.s = "(null)";
 	}
 	else if (co == 'p')
-		arg.p = va_arg(*args, unsigned long long);
+		arg.p = va_arg(*args, long);
 	else if (ft_cinset(co, INTS))
 		arg.diuxX = va_arg(*args, unsigned);
 	else

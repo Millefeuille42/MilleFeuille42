@@ -6,7 +6,7 @@
 #    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 13:26:44 by mlabouri          #+#    #+#              #
-#    Updated: 2020/02/12 09:53:34 by mlabouri         ###   ########.fr        #
+#    Updated: 2020/02/14 15:45:32 by mlabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LIB		=	ar rc
 
 RM		=	rm -f
 
-FLAGS	=	 -I ${INCL}
+FLAGS	=	 -Wall -Wextra -Werror -I ${INCL}
 
 .c.o	:
 			${COMPILE} ${FLAGS} -c $< -o ${<:.c=.o}

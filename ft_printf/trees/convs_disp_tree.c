@@ -17,9 +17,9 @@ void	disp_int(char conv, struct s_c arg)
 	if (ft_cinset(conv, "di"))
 		ft_putnbr_fd((unsigned long)arg.diuxX, 1, 0);
 	else if (conv == 'X')
-		ft_putnbrbase((unsigned long)arg.diuxX, HEXX);
+		ft_putnbrbase((unsigned)arg.diuxX, HEXX);
 	else if (ft_cinset(conv, "x"))
-		ft_putnbrbase((unsigned long)arg.diuxX, HEX);
+		ft_putnbrbase((unsigned)arg.diuxX, HEX);
 	else
 		ft_putunbr((unsigned long)arg.diuxX);
 }
