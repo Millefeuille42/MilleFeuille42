@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/14 13:43:07 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:02:59 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	disp_int(char conv, struct s_c arg)
 {
 	if (ft_cinset(conv, "di"))
-		ft_putnbr_fd((unsigned long)arg.diuxX, 1, 0);
+		ft_putnbr_fd((unsigned long)arg.diux, 1, 0);
 	else if (conv == 'X')
-		ft_putnbrbase((unsigned)arg.diuxX, HEXX);
+		ft_putnbrbase((unsigned)arg.diux, HEXX);
 	else if (ft_cinset(conv, "x"))
-		ft_putnbrbase((unsigned)arg.diuxX, HEX);
+		ft_putnbrbase((unsigned)arg.diux, HEX);
 	else
-		ft_putunbr((unsigned long)arg.diuxX);
+		ft_putunbr((unsigned long)arg.diux);
 }
 
 void	disp_char(struct s_c arg)
@@ -38,5 +38,4 @@ void	disp_pointer(struct s_c arg)
 {
 	ft_putstr_fd("0x", 1);
 	ft_putnbrbase(arg.p, HEX);
-
 }

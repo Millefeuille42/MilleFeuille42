@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:14:27 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/14 14:42:37 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/25 15:53:21 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/trees.h"
 
-static void	ft_detarg(struct s_c arg , char co, va_list *args, struct s_f bin)
+static void	ft_detarg(struct s_c arg, char co, va_list *args, struct s_f bin)
 {
 	if (co == 'c')
 		arg.ch = (char)va_arg(*args, int);
@@ -25,7 +25,7 @@ static void	ft_detarg(struct s_c arg , char co, va_list *args, struct s_f bin)
 	else if (co == 'p')
 		arg.p = va_arg(*args, long);
 	else if (ft_cinset(co, INTS))
-		arg.diuxX = va_arg(*args, unsigned);
+		arg.diux = va_arg(*args, unsigned);
 	else
 	{
 		arg.ch = '%';
@@ -34,7 +34,7 @@ static void	ft_detarg(struct s_c arg , char co, va_list *args, struct s_f bin)
 	ft_disp_flags(bin, arg, co);
 }
 
-size_t	ft_args(char *s, size_t i, va_list *args)
+size_t		ft_args(char *s, size_t i, va_list *args)
 {
 	struct s_f	bin;
 	struct s_c	arg;

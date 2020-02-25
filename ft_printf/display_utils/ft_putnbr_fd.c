@@ -6,20 +6,20 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 17:48:10 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/12 11:48:57 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:00:06 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static long	ft_special(unsigned long int n, char flag)
+static long		ft_special(unsigned long int n, char flag)
 {
 	if (flag)
 		return (2147483648);
 	return ((long)(int)n);
 }
 
-void ft_putnbr_fd(unsigned long int n, int fd, char flag)
+void			ft_putnbr_fd(unsigned long int n, int fd, char flag)
 {
 	long int	nb;
 
@@ -43,7 +43,7 @@ void ft_putnbr_fd(unsigned long int n, int fd, char flag)
 	g_count++;
 }
 
-void		ft_putunbr(unsigned int nb)
+void			ft_putunbr(unsigned int nb)
 {
 	if (nb > 9)
 	{

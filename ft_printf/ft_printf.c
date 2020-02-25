@@ -6,15 +6,15 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/25 15:20:45 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/25 15:55:49 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/trees.h"
 
-int			g_count;
-int			(*g_func_length[255])(char, struct s_c, struct s_f *);
-void		(*g_func_conv[255])(struct s_c);
+int						g_count;
+int						(*g_func_length[255])(char, struct s_c, struct s_f *);
+void					(*g_func_conv[255])(struct s_c);
 
 static void		init(void)
 {
@@ -41,7 +41,7 @@ int				ft_printf(const char *input, ...)
 	{
 		i = ft_putstr_fd_c((char *)input, 1, '%', i);
 		if (input[i] == '\0')
-			break;
+			break ;
 		i = ft_args((char *)input, i + 1, &args);
 	}
 	va_end(args);

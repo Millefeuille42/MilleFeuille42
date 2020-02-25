@@ -6,27 +6,27 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:50:51 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/25 12:31:13 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:02:59 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/trees.h"
 
-int length_int(char conv, struct s_c arg, struct s_f *bin)
+int		length_int(char conv, struct s_c arg, struct s_f *bin)
 {
 	int length;
 
 	if (ft_cinset(conv, "di"))
 	{
-		length = ft_nbr_len((int)arg.diuxX);
-		if ((int)arg.diuxX < 0)
+		length = ft_nbr_len((int)arg.diux);
+		if ((int)arg.diux < 0)
 			length--;
 	}
 	else if (ft_cinset(conv, "Xx"))
-		length = ft_nbrbase_len((unsigned long)arg.diuxX, HEX);
+		length = ft_nbrbase_len((unsigned long)arg.diux, HEX);
 	else
-		length = ft_unbr_len((unsigned long)arg.diuxX);
-	if (bin->dotc && bin->dot == 0 && arg.diuxX == 0)
+		length = ft_unbr_len((unsigned long)arg.diux);
+	if (bin->dotc && bin->dot == 0 && arg.diux == 0)
 		length = 0;
 	else if (bin->dotc && bin->dot >= length)
 	{
