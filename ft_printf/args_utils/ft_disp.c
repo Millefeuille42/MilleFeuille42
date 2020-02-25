@@ -25,7 +25,7 @@ void	ft_disp_flags(struct s_f bin, struct s_c arg, char conv)
 	int	disp;
 
 	disp = 0;
-	if (bin.dot < 0)
+	if (bin.dot < 0 || conv == 'c')
 		bin.dotc = 0;
 	if (ft_cinset(conv, INTS))
 		bin.length = length_int(conv, arg, &bin);

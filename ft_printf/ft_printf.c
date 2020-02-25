@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:31:46 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/14 12:13:50 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/25 15:20:45 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,9 @@ int				ft_printf(const char *input, ...)
 	{
 		i = ft_putstr_fd_c((char *)input, 1, '%', i);
 		if (input[i] == '\0')
-			return (g_count);
+			break;
 		i = ft_args((char *)input, i + 1, &args);
 	}
 	va_end(args);
 	return (g_count);
 }
-
-/*
- * . || c, rien
- * . || s, max de char
- * . || si . == 0 et i == 0 ou s, afficher rien
-
- * Width < 0 == - Padding
- * - == 0 padding null
- * 0 padding = width si .
-*/
