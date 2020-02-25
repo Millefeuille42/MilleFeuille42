@@ -1,6 +1,7 @@
 FROM debian:buster
 MAINTAINER mlabouri@student.42.fr
 
+EXPOSE 80
 ENV DEBIAN_FRONTEND=noninteractive
 
 # /usr/share/phpmyadmin/config.inc.php
@@ -10,11 +11,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y upgrade
 
     #nginx
-RUN apt-get -y install wget curl vim nginx gnupg (lsb-release)
+RUN apt-get -y install wget curl vim nginx
 
     #MySQL
-WORKDIR /tmp
-RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb && dpkg -i mysql-apt-config*
+RUN apt-get -y install mariadb-server
 
     #PHP
 WORKDIR /root
@@ -26,8 +26,6 @@ ADD --chown=root srcs/ft_server /etc/nginx/sites-available/ft_server
 RUN ln -s /etc/nginx/sites-available/ft_server /etc/nginx/sites-enabled/ && rm -rf /etc/nginx/sites-enabled/default
 
 RUN nginx -t && service nginx stop && service nginx start
-
-EXPOSE 80
 
 ##Install PHPMyAdmin
 #    && wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz \
