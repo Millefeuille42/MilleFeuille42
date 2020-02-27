@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_parser.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 16:34:45 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/27 17:45:34 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/11/22 15:02:06 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int leave_err(int err, void **t_free)
+size_t	ft_strlen(const char *str)
 {
-	if (t_free && *t_free)
-		free(*t_free);
-	return (err);
-}
+	int	i;
 
-char	cub_parser(int fd, struct s_cub *conf)
-{
-	char **line;
-
-	line_reader(line, fd);
-	return (1);
+	if (str != NULL)
+	{
+		i = 0;
+		while (str[i])
+			i++;
+		return (i);
+	}
+	return (0);
 }

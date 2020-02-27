@@ -12,25 +12,15 @@
 
 #include "../cub3d.h"
 
-char designate(char *line, char *(des[2]))
+static int leave_err(int err, void **t_free)
 {
-	int i;
-
-	i = 0;
-	*(des[1]) = '\0';
-	while (line[i] != ' ')
-	{
-		if (i > 1)
-			return (1);
-		*(des[i]) = line[i];
-		i++;
-	}
-	return (0);
+	if (t_free && *t_free)
+		free(*t_free);
+	return (err);
 }
 
-int line_r(char *line)
+int line_reader(char **line, int fd)
 {
-	int i;
-
-	while (line[1][i]);
+	if ((get_next_line(fd, line)) == -1)
+		return (-1);
 }

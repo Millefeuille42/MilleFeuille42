@@ -13,7 +13,11 @@
 #ifndef CUB3D_H
 #define CUB3D_H
 
-#include "GNL/get_next_line.h"
+#include "parsing/GNL/get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
+
+#define FLAGLEN 8
 
 struct 				s_res
 {
@@ -41,5 +45,11 @@ struct 				s_cub
 };
 
 char	cub_parser(int fd, struct s_cub *conf);
+int		line_reader(char **line, int fd);
+
+char		*ft_strdup(const char *s1);
+char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
+size_t		ft_strlen(const char *str);
 
 #endif
