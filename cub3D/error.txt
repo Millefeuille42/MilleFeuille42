@@ -1,0 +1,2 @@
+0 = Config invalide
+-1 = Fichier inexistant

@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:02:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/27 17:18:22 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		ft_strlen(char *str)
+size_t		ft_gstrlen(char *str)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ size_t		ft_strlen(char *str)
 	return (0);
 }
 
-char		*ft_strchr(const char *s, int c)
+char		*ft_gstrchr(const char *s, int c)
 {
 	if (s != NULL)
 	{
@@ -37,7 +37,7 @@ char		*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char		*ft_substr(char *s, unsigned int start, size_t len)
+char		*ft_gsubstr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*sub;
@@ -58,7 +58,7 @@ char		*ft_substr(char *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-char		*ft_strjoin(char *s1, char *s2)
+char		*ft_gstrjoin(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	i2;
@@ -66,7 +66,7 @@ char		*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	i2 = 0;
-	if (!(join = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+	if (!(join = malloc(sizeof(char) * (ft_gstrlen(s1) + ft_gstrlen(s2) + 1))))
 		return (NULL);
 	while (s1[i] != '\0')
 	{
