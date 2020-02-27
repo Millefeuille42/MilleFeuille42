@@ -19,8 +19,7 @@ static int leave_err(int err, void **t_free)
 	return (err);
 }
 
-int line_reader(char **line, int fd)
+int line_reader(int fd, struct s_cub *cub)
 {
-	if ((get_next_line(fd, line)) == -1)
-		return (-1);
+
 }

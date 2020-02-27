@@ -21,8 +21,13 @@ static int leave_err(int err, void **t_free)
 
 char	cub_parser(int fd, struct s_cub *conf)
 {
-	char **line;
+	static char *charset = "R,NO,SO,WE,EA,S,F,C\0";
+	int head;
+	char *line;
 
-	line_reader(line, fd);
-	return (1);
+	if ((get_next_line(fd, &line)) == -1)
+		return (-1);
+	if (!(head = parse_head(line)))
+		return (-2);
+	conf->parse[head](line);
 }

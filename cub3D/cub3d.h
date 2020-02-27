@@ -42,10 +42,11 @@ struct 				s_cub
 	char			*we;
 	char			*ea;
 	char 			*map;
+	int				(*parse[7])(char *);
 };
 
-char	cub_parser(int fd, struct s_cub *conf);
-int		line_reader(char **line, int fd);
+char		cub_parser(int fd, struct s_cub *conf);
+int			line_reader(int fd);
 
 char		*ft_strdup(const char *s1);
 char		*ft_strjoin(char const *s1, char const *s2);
