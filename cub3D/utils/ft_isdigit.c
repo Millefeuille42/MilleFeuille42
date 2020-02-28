@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_parser.c                                      :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 17:45:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/02/27 17:46:03 by mlabouri         ###   ########.fr       */
+/*   Created: 2019/11/22 14:59:27 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/02/04 15:42:53 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
-
-//static int leave_err(int err, void **t_free)
-//{
-//	if (t_free && *t_free)
-//		free(*t_free);
-//	return (err);
-//}
-//
-//int line_reader(int fd, struct s_cub *cub)
-//{
-//
-//}
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}

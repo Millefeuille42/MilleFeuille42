@@ -47,10 +47,14 @@ struct 				s_cub
 
 char		cub_parser(int fd, struct s_cub *conf);
 int			line_reader(int fd);
+int			res_p(struct s_cub *conf, char *line);
 
 char		*ft_strdup(const char *s1);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 size_t		ft_strlen(const char *str);
+int			ft_isdigit(int c);
+int			atoi_mk2(const char *s, int start, int end);
+char		ft_cinset(char c, const char *set);
 
 #endif

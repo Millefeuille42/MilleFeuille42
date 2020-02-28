@@ -17,8 +17,6 @@ int main(void)
 	int fd;
 	struct s_cub conf;
 
-	printf("pro");
-	fd = open("./sample.cub", O_RDONLY);
-	cub_parser(fd, &conf);
-	close(fd);
+	res_p(&conf, "R 1920 1080\n");
+	printf("x: %i | y: %i", conf.res.x, conf.res.y);
 }
