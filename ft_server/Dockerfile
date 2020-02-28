@@ -4,7 +4,7 @@ MAINTAINER mlabouri@student.42.fr
 EXPOSE 80
 ENV DEBIAN_FRONTEND=noninteractive
 
-# /var/www/ft_server/phpmyadminconfig.inc.php
+# /var/www/nginx_conf/phpmyadminconfig.inc.php
 # /etc/nginx/conf.d/phpMyAdmin.conf
 
     #init
@@ -23,26 +23,21 @@ WORKDIR /root
 RUN apt-get -y install default-mysql-server php-fpm php-mysql php-mbstring php-zip php-gd
 
     #Configure nginx for PHP
-RUN mkdir /var/www/ft_server && rm -rf /var/www/html && chown -R root:root /var/www/ft_server
-ADD --chown=root srcs/ft_server /etc/nginx/sites-available/ft_server
-RUN ln -s /etc/nginx/sites-available/ft_server /etc/nginx/sites-enabled/ && rm -rf /etc/nginx/sites-enabled/default
-RUN echo "loule" >> /var/www/ft_server/index.html
+ADD --chown=root srcs/nginx_conf /etc/nginx/sites-enabled/default
+RUN echo "<?php \n phpinfo();" >> /var/www/html/index.php
 
     #Install PHPMyAdmin
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz
 RUN tar xvf phpMyAdmin-4.9.0.1-all-languages.tar.gz
-RUN mv phpMyAdmin-4.9.0.1-all-languages/ /var/www/ft_server/phpmyadmin
+RUN mv phpMyAdmin-4.9.0.1-all-languages/ /usr/share/phpmyadmin
 
     #Configure PHPMyAdmin
 RUN mkdir -p /var/lib/phpmyadmin/tmp
 RUN chown -R www-data:www-data /var/lib/phpmyadmin
-RUN cp /var/www/ft_server/phpmyadmin/config.sample.inc.php /var/www/ft_server/phpmyadmin/config.inc.php
+RUN cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
 
 CMD  service nginx start; echo "IP : $(hostname -I)"; while [ 1 ]; do sleep 2; done
 
-
-
-
-#RUN mariadb < /var/www/ft_server/phpmyadminsql/create_tables.sql
+#RUN mariadb < /var/www/nginx_conf/phpmyadminsql/create_tables.sql
 #RUN mariadb < CREATE DATABASE test;
  #RUN mariadb < GRANT ALL ON example_database.* TO 'example_user'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;

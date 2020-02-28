@@ -2,10 +2,8 @@ server {
     listen 80;
     listen [::]:80;
 
-    root /var/www/ft_server;
+    root /var/www/html;
     index index.php index.html index.htm;
-
-    server_name ft_server;
 
     location / {
         try_files $uri $uri/ =404;
