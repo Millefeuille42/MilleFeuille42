@@ -1,2 +1,8 @@
--2 = Config invalide
 -1 = Fichier inexistant
+    -10 = Config
+    -11 = Chemin Nord
+    -12 = Chemin Sud
+    -13 = Chemin Ouest
+    -14 = Chemin Est
+    -15 = Chemin Sprite
+-2 = Config invalide
