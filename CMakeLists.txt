@@ -1,23 +1,33 @@
 cmake_minimum_required(VERSION 3.10)
 project(42)
-set(CMAKE_CXX_STANDARD 99)
+set(CMAKE_C_STANDARD 99)
+
+set(CMAKE_C_COMPILER /usr/bin/gcc)
+set(CMAKE_CXX_COMPILER /usr/bin/g++)
 
 add_subdirectory(CMAKE/cub3D)
 add_subdirectory(CMAKE/ft_printf)
 add_subdirectory(CMAKE/GNL)
 add_subdirectory(CMAKE/Libft)
 
-add_executable(cub3D ${SOURCE_CUB3D} cub3D/parsing/parsing_methods/parsing_methods_1.c cub3D/utils/ft_isdigit.c cub3D/utils/ft_atoi_mk2.c cub3D/utils/ft_c_in_set.c cub3D/parsing/parsing_methods/error_check_methods.c cub3D/parsing/parsing_methods/parsing_methods_3.c cub3D/parsing/parsing_methods/error_check_methods_2.c)
+add_executable(cub3D ${SOURCE_CUB3D}
+        cub3D/parsing/parsing_methods/parsing_methods_1.c cub3D/utils/ft_isdigit.c cub3D/utils/ft_atoi_mk2.c
+        cub3D/utils/ft_c_in_set.c cub3D/parsing/parsing_methods/parsing_methods_2.c cub3D/parsing/init_conf.c
+        cub3D/utils/ft_substr.c
+        cub3D/parsing/parsing_methods/error_check_methods.c cub3D/parsing/parsing_methods/parsing_methods_3.c
+        cub3D/parsing/parsing_methods/error_check_methods_2.c cub3D/utils/ft_split.c
+        )
 add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 add_executable(get_next_line ${SOURCE_GNL} main.c)
 add_executable(libft ${SOURCES_LIBFT} main.c)
 
 set_target_properties(get_next_line PROPERTIES COMPILE_FLAGS "-D BUFFER_SIZE=12")
+set_target_properties(cub3D PROPERTIES COMPILE_FLAGS -lmlx -framework OpenGL -framework Appkit)
 
 if (${42code})
-    #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
 endif ()
 if (${NHOME})
-  #  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
 endif ()
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")

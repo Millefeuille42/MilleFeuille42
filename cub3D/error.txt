@@ -1,3 +1,3 @@
--1 = Fichier inexistant
+-3 = Erreur Système
 -2 = Config invalide
--3 = System error
+-1 = Fichier inexistant

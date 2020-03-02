@@ -1,31 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_check_methods_2.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/02 14:31:23 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/03/02 16:17:06 by mlabouri         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-static int linecount(char *map)
+static int linecount(char **map, char *pos)
 {
 	int i;
-	int lines;
+	int i2;
 
 	i = 0;
-	lines = 0;
-	while (map[i] != '\0')
+	while (map[i])
 	{
-		while (map[i] != '\n' && map[i] != '\0')
-			i++;
-		lines++;
+		i2 = 0;
+		while (map[i][i2])
+		{
+			if (!(ft_cinset(map[i][i2], "102NSWO ")))
+				return (-2);
+			if (ft_cinset(map[i][i2], "NSWO"))
+			{
+				if (*pos)
+					return (-2);
+				else
+					*pos = map[i][i2];
+			}
+			i2++;
+		}
+		i++;
 	}
+	if (i < 3)
+		return (-2);
+	return (i);
 }
 
-int map_e(char *map)
+int map_e(char **map, char *pos)
 {
 	int len;
 	int lines;
 	int i[2];
 
 	i[0] = 0;
-	lines = 0;
-
-	if (lines < 3)
+	if ((lines = linecount(map, pos)) < 3)
 		return (-2);
+
 	return (0);
 }
