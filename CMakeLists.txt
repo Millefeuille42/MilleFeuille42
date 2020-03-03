@@ -16,7 +16,7 @@ add_executable(cub3D ${SOURCE_CUB3D}
         cub3D/utils/ft_substr.c
         cub3D/parsing/parsing_methods/error_check_methods.c cub3D/parsing/parsing_methods/parsing_methods_3.c
         cub3D/parsing/parsing_methods/error_check_methods_2.c cub3D/utils/ft_split.c
-        )
+        cub3D/mlx3D.c)
 add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 add_executable(get_next_line ${SOURCE_GNL} main.c)
 add_executable(libft ${SOURCES_LIBFT} main.c)

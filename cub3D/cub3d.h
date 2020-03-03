@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:34:39 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/02 17:26:16 by mlabouri         ###   ########lyon.fr   */
+/*   Updated: 2020/03/03 16:37:56 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include "parsing/GNL/get_next_line.h"
 #include <fcntl.h>
 #include <stdio.h>
+#include <mlx.h>
+#include <string.h>
+#include <errno.h>
+
 
 #define RES conf->res
 #define FLOOR conf->floor
@@ -59,7 +63,11 @@ typedef struct 		s_cub
 	struct s_path	sprite;
 	char 			**map;
 	char			pos;
+	void 			*mlxptr;
+	void 			*winptr;
 }					t_cub;
+
+int					mlx3D(t_cub conf);
 
 int					cub_parser(int fd, struct s_cub *conf);
 
