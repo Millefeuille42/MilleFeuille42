@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:34:39 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/03 16:37:56 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/03/04 17:18:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@
 #include <mlx.h>
 #include <string.h>
 #include <errno.h>
+#include <math.h>
+#include <time.h>
 
-
-#define RES conf->res
-#define FLOOR conf->floor
-#define ROOF conf->roof
 #define NORTH conf->no
 #define SOUTH conf->so
 #define WEST conf->we
@@ -51,6 +49,46 @@ typedef struct		s_path
 	int				fd;
 }					t_path;
 
+
+typedef struct	s_player
+{
+	double 		p_x;
+	double 		p_y;
+	double 		d_x;
+	double 		d_y;
+	double 		plane_x;
+	double 		plane_y;
+	double		camera_x;
+}				t_player;
+
+typedef struct	s_ray
+{
+	double 		r_d_x;
+	double 		r_d_y;
+	double 		s_dist_x;
+	double 		s_dist_y;
+	double 		d_dist_x;
+	double 		d_dist_y;
+	double 		pwd;
+	int 		st_x;
+	int 		st_y;
+	int 		hit;
+	int 		side;
+}				t_ray;
+
+typedef struct	s_map
+{
+	int 		m_x;
+	int 		m_y;
+}				t_map;
+
+typedef struct s_draw
+{
+	int l_h;
+	int	dr_st;
+	int	dr_end;
+}				t_draw;
+
 typedef struct 		s_cub
 {
 	struct s_res	res;
@@ -63,11 +101,18 @@ typedef struct 		s_cub
 	struct s_path	sprite;
 	char 			**map;
 	char			pos;
+	t_player		player;
 	void 			*mlxptr;
 	void 			*winptr;
 }					t_cub;
 
-int					mlx3D(t_cub conf);
+typedef struct	s_rc
+{
+	t_player	p;
+	t_ray		r;
+	t_map		m;
+	t_cub		*conf;
+}				t_rc;
 
 int					cub_parser(int fd, struct s_cub *conf);
 
@@ -93,5 +138,7 @@ int					atoi_mk2(const char *s, int start, int end);
 char				ft_cinset(char c, const char *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				**ft_split(char const *s, char c);
+
+t_rc			mlx3D(t_cub *conf);
 
 #endif

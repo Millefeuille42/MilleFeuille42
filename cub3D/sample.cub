@@ -1,4 +1,4 @@
-R 1280 720
+R 500 500
 NO ./sample.cub
 SO ./sample.cub
 WE ./sample.cub

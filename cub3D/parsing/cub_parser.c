@@ -111,8 +111,8 @@ int			cub_parser(int fd, t_cub *conf)
 		if ((head = (read_line(line, fd, conf, head))))
 			return (leave_err(head, (void **)&line));
 		i++;
+		free(line);
 	}
-	free(line);
 	if ((map_p(conf, fd)) || ((err_check(*conf))))
 		return (-2);
 	return (0);
