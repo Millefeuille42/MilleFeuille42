@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 
+/*
 int main(void)
 {
 	int fd;
@@ -44,6 +45,7 @@ int main(void)
 	//mlx_loop(conf.mlxptr);
 	deinit_conf(&conf);
 }
+*/
 
 // TODO
 //		- Safe exiting
