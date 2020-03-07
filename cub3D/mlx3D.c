@@ -6,19 +6,17 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 15:34:43 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/06 18:54:29 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/03/07 12:05:13 by                  ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <stdio.h>
-#include <mlx.h>
+//#include <mlx.h>
 #include <string.h>
 #include <errno.h>
 #include <math.h>
 #include <time.h>
-
-double oldTime;
 
 //#include "cub3d.h"
 
@@ -81,9 +79,9 @@ typedef struct 	s_ray
 {
 	t_dbl_co	dir;
 	t_dbl_co	coef;
-	t_dbl_co	c_pos;
-	t_dbl_co	o_pos;
-	t_int_co	m_pos;
+	t_dbl_co	cpos;
+	t_dbl_co	opos;
+	t_int_co	mpos;
 }				t_ray;
 
 int r_m_posx;
@@ -100,16 +98,17 @@ int drawEnd;
 void *mlxptr;
 void *winptr;
 
-
+/*
 char send_ray(double ray_a)
 {
-
 	if (ray_a < 0)
 		ray_a = (360*100) - fabs(ray_a);
 	dir_x = cos((ray_a/100) * M_PI/180);
 	dir_y = sin((ray_a/100) * M_PI/180);
+
 	coef_x = (dir_y - pos_y) / (dir_x - pos_x);
 	coef_y = (dir_x - pos_x) / (dir_y - pos_y);
+
 	if (dir_x > dir_y)
 	{
 		r_posy = floor(pos_y) + 1;
@@ -129,7 +128,7 @@ char send_ray(double ray_a)
 		or_posy = r_posy;
 
 		coef_x = (dir_y - r_posy) / (dir_x - r_posx);
-		coef_y = (dir_x - r_posx) / (dir_y - r_m_posy);
+		coef_y = (dir_x - r_posx) / (dir_y - r_posy);
 
 		r_posx = floor(or_posx) + 1;
 		r_posy = ((r_posx - or_posx) / coef_y) + or_posy;
@@ -141,46 +140,65 @@ char send_ray(double ray_a)
 		}
 		r_m_posx = floor(r_posx);
 		r_m_posy = floor(r_posy);
-
 	}
 	//printf("Pos = %i,%i wall = %i\n", r_m_posx,r_m_posy, worldMap[r_m_posy][r_m_posx]);
 	//printf("ray_angle = %f\nr_posx = %f\nr_posy = %f\n", ray_a/100, r_posx, r_posy);
 	return (0);
 }
+*/
+char opti_send_ray(double ray_a, t_ray r)
+{
+	if (ray_a < 0)
+		ray_a = (360*100) - fabs(ray_a);
+	r.dir.x = cos((ray_a/100) * M_PI/180);
+	r.dir.y = sin((ray_a/100) * M_PI/180);
+	r.coef.x = (r.dir.y - r.opos.y) / (r.dir.x - r.cpos.x);
+	r.coef.y = (r.dir.x - r.cpos.x) / (r.dir.y - r.opos.y);
+	while (worldMap[r.mpos.y][r.mpos.x] == 0)
+	{
+		r.opos.x = r.cpos.x;
+		r.opos.y = r.opos.y;
+		r.cpos.x = floor(r.opos.x) + 1;
+		r.opos.y = ((r.cpos.x - r.opos.x) / r.coef.y) + r.opos.y;
+		if (floor(r.opos.y) > floor(r.opos.y))
+		{
+			r.opos.y = floor(r.opos.y) + 1;
+			r.cpos.x = ((r.opos.y - r.opos.y) / r.coef.x) + r.opos.x;
+		}
+		r.mpos.x = floor(r.cpos.x);
+		r.mpos.y = floor(r.opos.y);
+	}
+	//printf("Pos = %i,%i wall = %i\n", r.mpos.x,r.mpos.y, worldMap[r.mpos.y][r.mpos.x]);
+	//printf("ray_angle = %f\nr.cpos.x = %f\nr.opos.y = %f\n", ray_a/100, r.cpos.x, r.opos.y);
+	return (0);
+}
 
 int pouet(int key, void *param)
 {
+	t_ray r;
 	if (key == 124)
 	{
 		dir_ad = dir_ad + 16;
 		if (dir_ad >= 360)
 			dir_ad = dir_ad - 360;
-		printf("%f\n", dir_ad);
-		printf("%f\n", pos_x);
-		printf("%f\n\n", pos_y);
+		//printf("%f\n", dir_ad);
+		//printf("%f\n", pos_x);
+		//printf("%f\n\n", pos_y);
 	}
-
 	if (key == 123)
 	{
 		dir_ad = dir_ad - 16;
 		if (dir_ad <= 0)
 			dir_ad = 360 - fabs(dir_ad);
-		printf("%f\n", dir_ad);
-		printf("%f\n", pos_x);
-		printf("%f\n\n", pos_y);
+		//printf("%f\n", dir_ad);
+		//printf("%f\n", pos_x);
+		//printf("%f\n\n", pos_y);
 	}
-
 	//printf("key:%i\n", key);
-
-	mlx_clear_window(mlxptr, winptr);
-
-
+	//mlx_clear_window(mlxptr, winptr);
 	i = (fov / (float)resx) * 100;
-
 	ray_ad = (dir_ad - (fov/2)) * 100;
-
 	x = 0;
-
 //	printf("\n%f\n", dir_ad + fov/2);
 	while ((int)ray_ad <= ((int)dir_ad + (int)fov / 2)*100)
 	{
@@ -205,10 +223,10 @@ int pouet(int key, void *param)
 		//printf("%f\n", dist);
 		while (drawStart < drawEnd)
 		{
-			if (floor(dist) > 2)
-				mlx_pixel_put(mlxptr, winptr, x, drawStart, 255/2);
-			else
-				mlx_pixel_put(mlxptr, winptr, x, drawStart, 255);
+			//if (floor(dist) > 2)
+			//	//mlx_pixel_put(mlxptr, winptr, x, drawStart, 255/2);
+			//else
+			//	mlx_pixel_put(mlxptr, winptr, x, drawStart, 255);
 			drawStart++;
 		}
 		x++;
@@ -220,9 +238,9 @@ int pouet(int key, void *param)
 
 int main(void)
 {
-	mlxptr = mlx_init();
-	winptr = mlx_new_window(mlxptr, resx, resy, "test");
-	pouet('0', NULL);
-	mlx_key_hook(winptr, &pouet, (void *)12);
-	mlx_loop(mlxptr);
+	//mlxptr = mlx_init();
+	//winptr = mlx_new_window(mlxptr, resx, resy, "test");
+	pouet(123, NULL);
+	//mlx_key_hook(winptr, &pouet, (void *)12);
+	//mlx_loop(mlxptr);
 }

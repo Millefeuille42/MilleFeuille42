@@ -31,16 +31,16 @@ if (${NHOME})
 endif ()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 
-include_directories(
-        /Users/mlabouri/Projekt/cub3D/minilibx/
-        /usr/local/lib/
-        /usr/local/include/
-        /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/)
-link_directories(
-        /Users/mlabouri/Projekt/cub3D/minilibx/
-        /usr/local/lib/
-        /usr/local/include/
-        /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/)
+#include_directories(
+#        /Users/mlabouri/Projekt/cub3D/minilibx/
+#        /usr/local/lib/
+#        /usr/local/include/
+#        /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/)
+#link_directories(
+#        /Users/mlabouri/Projekt/cub3D/minilibx/
+#        /usr/local/lib/
+#        /usr/local/include/
+#        /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/)
 #add_link_options(-framework OpenGL -framework /System/Library/Frameworks/AppKit.framework/Appkit)
 #target_link_libraries(cub3D LINK_PUBLIC libmlx.a)
 
