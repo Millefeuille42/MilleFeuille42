@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/02 14:31:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/02 16:17:06 by mlabouri         ###   ########lyon.fr   */
+/*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/03/08 10:30:08 by mlabouri         ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../parsing.h"
 
-static int linecount(char **map, char *pos)
+static int linecount(char **map, t_dbl_co *pos)
 {
 	int i;
 	int i2;
@@ -41,7 +41,7 @@ static int linecount(char **map, char *pos)
 	return (i);
 }
 
-int map_e(char **map, char *pos)
+int map_e(char **map, t_dbl_co *pos)
 {
 	int len;
 	int lines;

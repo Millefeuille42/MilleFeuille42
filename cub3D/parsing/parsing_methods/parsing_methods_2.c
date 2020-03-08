@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/28 14:04:12 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/02 11:13:34 by mlabouri         ###   ########.fr       */
+/*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/03/08 10:30:08 by mlabouri         ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../parsing.h"
 
 static int rgb_parsing(int *color, int *i, char *line, char *pos)
 {

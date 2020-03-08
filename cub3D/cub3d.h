@@ -5,22 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 16:34:39 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/04 17:18:05 by mlabouri         ###   ########.fr       */
+/*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/03/08 10:30:08 by mlabouri         ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 #define CUB3D_H
 
-#include "parsing/GNL/get_next_line.h"
 #include <fcntl.h>
-#include <stdio.h>
-#include <mlx.h>
+#include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 #include <errno.h>
 #include <math.h>
 #include <time.h>
+#include <stdio.h> //remove
+//#include <mlx.h>
 
 #define NORTH conf->no
 #define SOUTH conf->so
@@ -49,96 +50,56 @@ typedef struct		s_path
 	int				fd;
 }					t_path;
 
-
-typedef struct	s_player
+typedef struct 		s_dbl_co
 {
-	double 		p_x;
-	double 		p_y;
-	double 		d_x;
-	double 		d_y;
-	double 		plane_x;
-	double 		plane_y;
-	double		camera_x;
-}				t_player;
+	double			x;
+	double			y;
+}					t_dbl_co;
 
-typedef struct	s_ray
+typedef struct 		s_int_co
 {
-	double 		r_d_x;
-	double 		r_d_y;
-	double 		s_dist_x;
-	double 		s_dist_y;
-	double 		d_dist_x;
-	double 		d_dist_y;
-	double 		pwd;
-	int 		st_x;
-	int 		st_y;
-	int 		hit;
-	int 		side;
-}				t_ray;
+	int				x;
+	int				y;
+}					t_int_co;
 
-typedef struct	s_map
+typedef struct 		s_ray
 {
-	int 		m_x;
-	int 		m_y;
-}				t_map;
+	t_dbl_co		dir;
+	t_dbl_co		coef;
+	t_dbl_co		cpos;
+	t_dbl_co		opos;
+	t_int_co		mpos;
+	double 			angle;
+}					t_ray;
 
-typedef struct s_draw
+typedef struct		s_conf
 {
-	int l_h;
-	int	dr_st;
-	int	dr_end;
-}				t_draw;
+	t_res			res;
+	t_plan			floor;
+	t_plan			roof;
+	t_path			no;
+	t_path			so;
+	t_path			we;
+	t_path			ea;
+	t_path			sprite;
+	char 			**map;
+	t_dbl_co		pos;
+}					t_conf;
 
 typedef struct 		s_cub
 {
-	struct s_res	res;
-	struct s_plan	floor;
-	struct s_plan	roof;
-	struct s_path	no;
-	struct s_path	so;
-	struct s_path	we;
-	struct s_path	ea;
-	struct s_path	sprite;
-	char 			**map;
-	char			pos;
-	t_player		player;
+	t_conf			*conf;
+	t_dbl_co		pos;
+	double 			dir_a;
+	double 			fov;
 	void 			*mlxptr;
 	void 			*winptr;
 }					t_cub;
 
-typedef struct	s_rc
-{
-	t_player	p;
-	t_ray		r;
-	t_map		m;
-	t_cub		*conf;
-}				t_rc;
+int					cub_parser(int fd, t_conf *conf);
 
-int					cub_parser(int fd, struct s_cub *conf);
+void				deinit_conf(t_conf *conf);
 
-void				deinit_conf(struct s_cub *conf);
-void				clear(char **pstr);
-
-int					res_p(struct s_cub *conf, char *line);
-int					plan_p(struct s_plan *plan, char *line);
-int					path_p(char **path, char *line);
-int					map_p(struct s_cub *conf, int fd);
-
-int					res_e(struct s_res res);
-int					rgb_e(struct s_plan plan);
-int					map_e(char **map, char *pos);
-int					path_e(struct s_path *file);
-
-char				*ft_strdup(const char *s1);
-char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strnstr(const char *hay, const char *ne, size_t len);
-size_t				ft_strlen(const char *str);
-int					ft_isdigit(int c);
-int					atoi_mk2(const char *s, int start, int end);
-char				ft_cinset(char c, const char *set);
-char				*ft_substr(char const *s, unsigned int start, size_t len);
-char				**ft_split(char const *s, char c);
-
-t_rc			mlx3D(t_cub *conf);
+t_rc			mlx3D(t_conf *conf);
 
 #endif

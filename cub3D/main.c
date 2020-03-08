@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 16:33:35 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/04 17:25:20 by mlabouri         ###   ########.fr       */
+/*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/03/08 10:30:08 by mlabouri         ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int main(void)
 {
 	int fd;
 	int err;
-	t_cub conf;
+	t_conf conf;
 
 	//prtime("Parsing start");
-	conf = (t_cub) {};
+	conf = (t_conf) {};
 	errno = 0;
 	fd = open("./sample.cub", O_RDONLY);
 	if ((err = cub_parser(fd, &conf)) >= 0 && !errno)

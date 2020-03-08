@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_methods_3.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlabouri <mlabouri@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/02 14:50:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/02 16:06:08 by mlabouri         ###   ########lyon.fr   */
+/*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/03/08 10:30:08 by mlabouri         ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../parsing.h"
 
 static int safe_join(char **s1, char **s2)
 {
@@ -32,7 +32,7 @@ static int safe_join(char **s1, char **s2)
 	return (0);
 }
 
-int map_p(struct s_cub *conf, int fd)
+int map_p(struct s_conf *conf, int fd)
 {
 	int err;
 	char *line;

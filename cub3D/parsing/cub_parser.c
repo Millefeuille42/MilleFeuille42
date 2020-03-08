@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 16:34:45 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/02 14:20:59 by mlabouri         ###   ########.fr       */
+/*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/03/08 10:30:08 by mlabouri         ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "parsing.h"
 
 static int	leave_err(int err, void **t_free)
 {
@@ -47,7 +47,7 @@ static int	parse_head(char *line)
 	return (i);
 }
 
-static int	read_line(char *line, int fd, t_cub *conf, int head)
+static int	read_line(char *line, int fd, t_conf *conf, int head)
 {
 	int err;
 
@@ -70,7 +70,7 @@ static int	read_line(char *line, int fd, t_cub *conf, int head)
 	return (0);
 }
 
-static int	err_check(t_cub conf)
+static int	err_check(t_conf conf)
 {
 	if ((res_e(conf.res)))
 		return (-2);
@@ -93,7 +93,7 @@ static int	err_check(t_cub conf)
 	return (0);
 }
 
-int			cub_parser(int fd, t_cub *conf)
+int			cub_parser(int fd, t_conf *conf)
 {
 	int i;
 

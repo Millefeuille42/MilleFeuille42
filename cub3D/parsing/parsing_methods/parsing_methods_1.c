@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/28 14:04:26 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/02 09:15:30 by mlabouri         ###   ########.fr       */
+/*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/03/08 10:30:08 by mlabouri         ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../parsing.h"
 
-int	res_p(t_cub *conf, char *line)
+int	res_p(t_conf *conf, char *line)
 {
 	int i;
 	int i2;

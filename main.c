@@ -3,7 +3,7 @@
 int main(void)
 {
 	int fd;
-	struct s_cub conf;
+	struct s_conf conf;
 
 	printf("pro");
 	fd = open("./sample.cub", O_RDONLY);
