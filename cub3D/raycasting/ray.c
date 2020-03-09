@@ -6,12 +6,18 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:32:13 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/08 10:32:13 by mlabouri         ###   ########          */
+/*   Updated: 2020/03/09 19:07:15 by mlabouri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+void	ft_putchar_fd(char c, int fd)
+{
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
+}
 int worldMap[24][24]=
 		{
 				{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -19,18 +25,18 @@ int worldMap[24][24]=
 				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,1},
-				{1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,2,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1},
-				{1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,1,1,1,1,1,1,1,0,0,1,0,1,0,1,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,0,1,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+				{1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+				{1,1,1,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 				{1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 				{1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 				{1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -40,7 +46,35 @@ int worldMap[24][24]=
 				{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 		};
 
-static void draw(t_cub cub, t_ray r)
+int world2Map[24][24]=
+		{
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
+		};
+
+static void draw(t_cub cub, t_ray r, int x)
 {
 	int draw_s;
 	int draw_e;
@@ -56,38 +90,43 @@ static void draw(t_cub cub, t_ray r)
 		draw_e = cub.conf->res.y - 1;
 	while (draw_s < draw_e)
 	{
-		//if (floor(dist) > 2)
-		//	//mlx_pixel_put(mlxptr, winptr, x, drawStart, 255/2);
-		//else
-		//	mlx_pixel_put(mlxptr, winptr, x, drawStart, 255);
+		if (floor(dist) > 2)
+			mlx_pixel_put(cub.mlx, cub.win, x, draw_s, 255/2);
+		else
+			mlx_pixel_put(cub.mlx, cub.win, x, draw_s, 255);
 		draw_s++;
 	}
 }
 
-static void send_ray(t_ray r)
+static t_ray send_ray(t_ray r, double r_angle)
 {
-	if (r.angle < 0)
-		r.angle = (360*100) - fabs(r.angle);
-	r.dir.x = cos((r.angle/100) * M_PI/180);
-	r.dir.y = sin((r.angle/100) * M_PI/180);
-	r.coef.x = (r.dir.y - r.opos.y) / (r.dir.x - r.cpos.x);
-	r.coef.y = (r.dir.x - r.cpos.x) / (r.dir.y - r.opos.y);
+	r.dir.x = cos((r_angle / 100) * M_PI / 180);
+	r.dir.y = sin((r_angle / 100) * M_PI / 180);
+	//printf("dirx:%f\n", r.dir.x);
+	//printf("diry:%f\n\n", r.dir.y);
+	r.coef.x = (r.dir.y - r.cpos.y) / (r.dir.x - r.cpos.x);
+	r.coef.y = (r.dir.x - r.cpos.x) / (r.dir.y - r.cpos.y);
 	r.mpos.x = floor(r.cpos.x);
-	r.mpos.y = floor(r.opos.y);
+	r.mpos.y = floor(r.cpos.y);
 	while (worldMap[r.mpos.y][r.mpos.x] == 0)
 	{
 		r.opos.x = r.cpos.x;
-		r.opos.y = r.opos.y;
+		r.opos.y = r.cpos.y;
+
 		r.cpos.x = floor(r.opos.x) + 1;
-		r.opos.y = ((r.cpos.x - r.opos.x) / r.coef.y) + r.opos.y;
-		if (floor(r.opos.y) > floor(r.opos.y))
+		r.cpos.y = ((r.cpos.x - r.opos.x) / r.coef.y) + r.opos.y;
+
+		if (floor(r.cpos.y) > floor(r.opos.y))
 		{
-			r.opos.y = floor(r.opos.y) + 1;
-			r.cpos.x = ((r.opos.y - r.opos.y) / r.coef.x) + r.opos.x;
+			r.cpos.y = floor(r.opos.y) + 1;
+			r.cpos.x = ((r.cpos.y - r.opos.y) / r.coef.x) + r.opos.x;
 		}
+
 		r.mpos.x = floor(r.cpos.x);
-		r.mpos.y = floor(r.opos.y);
+		r.mpos.y = floor(r.cpos.y);
+		world2Map[r.mpos.y][r.mpos.x] = worldMap[r.mpos.y][r.mpos.x];
 	}
+	return(r);
 }
 
 int raycasting(t_cub cub)
@@ -95,17 +134,108 @@ int raycasting(t_cub cub)
 	t_ray r;
 	int x;
 	double i;
+	double r_angle;
 
 	i = (cub.fov / (float)cub.conf->res.x) * 100;
-	//mlx_clear_window(mlxptr, winptr);
-	r.angle = (cub.dir_a - (cub.fov/2)) * 100;
+	r_angle = (cub.dir_a - (cub.fov/2)) * 100;
 	x = 0;
-	while ((int)r.angle <= ((int)cub.dir_a + (int)cub.fov / 2)*100)
+	while ((int)r_angle <= ((int)cub.dir_a + (int)cub.fov / 2)*100)
 	{
-		send_ray(r);
-		draw(cub, r);
+		r.cpos = cub.pos;
+		r = send_ray(r, r_angle);
+		draw(cub, r, x);
 		x++;
-		r.angle = (r.angle + i);
+		r_angle = (r_angle + i);
 	}
+	int ii = 0;
+	int ii2;
+
+	world2Map[(int)cub.pos.y][(int)cub.pos.x] = 8;
+
+	while (ii < 24)
+	{
+		ii2 = 0;
+		while (ii2 < 24)
+		{
+			printf("%i ", world2Map[ii][ii2]);
+			ii2++;
+		}
+		printf("\n");
+		ii++;
+	}
+
+	printf("ray from:%f\n", (cub.dir_a - (cub.fov/2)));
+	printf("ray to:%f\n", (cub.dir_a + (cub.fov / 2)));
+
 	return (0);
+}
+
+int key_hook(int key, t_cub *cub)
+{
+	int ii = 0;
+	int ii2;
+
+	while (ii < 24)
+	{
+		ii2 = 0;
+		while (ii2 < 24)
+		{
+			world2Map[ii][ii2] = 2;
+			ii2++;
+		}
+		ii++;
+	}
+
+	if (key == 124)
+	{
+		cub->dir_a = cub->dir_a + 10;
+		if (cub->dir_a >= 360)
+			cub->dir_a = cub->dir_a - 360;
+		printf("%f\n", cub->dir_a);
+	}
+	if (key == 123)
+	{
+		cub->dir_a = cub->dir_a - 10;
+		if (cub->dir_a <= 0)
+			cub->dir_a = 360 - fabs(cub->dir_a);
+		printf("%f\n", cub->dir_a);
+	}
+
+	if (key == 125)
+	{
+		if (cub->fov < 360)
+			cub->fov = cub->fov + 10;
+		printf("%f\n", cub->fov);
+	}
+	if (key == 126)
+	{
+		if (cub->fov > 10)
+			cub->fov = cub->fov - 10;
+		printf("%f\n", cub->fov);
+	}
+
+	mlx_clear_window(cub->mlx, cub->win);
+	raycasting(*cub);
+	return (0);
+}
+
+int main(void)
+{
+	t_cub cub;
+
+	cub = (t_cub) {
+		.fov = 90,
+		.pos.x = 8,
+		.pos.y = 5,
+		.dir_a = 0,
+		.conf = &((t_conf) {
+			.res.x = 500,
+			.res.y = 500
+		})
+	};
+	cub.mlx = mlx_init();
+	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x, cub.conf->res.x, "cub3D");
+	raycasting(cub);
+	mlx_key_hook(cub.win, &key_hook, &cub);
+	mlx_loop(cub.mlx);
 }

@@ -16,7 +16,9 @@ add_executable(cub3D ${SOURCE_CUB3D}
         cub3D/utils/ft_substr.c
         cub3D/parsing/parsing_methods/error_check_methods.c cub3D/parsing/parsing_methods/parsing_methods_3.c
         cub3D/parsing/parsing_methods/error_check_methods_2.c cub3D/utils/ft_split.c
-        cub3D/raycasting/mlx3D.c cub3D/parsing/parsing.h cub3D/raycasting/raycasting.h cub3D/raycasting/ray.c)
+        cub3D/raycasting/mlx3D.c cub3D/parsing/parsing.h cub3D/raycasting/ray.c
+        )
+
 add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 add_executable(get_next_line ${SOURCE_GNL} main.c)
 add_executable(libft ${SOURCES_LIBFT} main.c)
@@ -31,16 +33,16 @@ if (${NHOME})
 endif ()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 
-#include_directories(
-#        /Users/mlabouri/Projekt/cub3D/minilibx/
-#        /usr/local/lib/
-#        /usr/local/include/
-#        /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/)
-#link_directories(
-#        /Users/mlabouri/Projekt/cub3D/minilibx/
-#        /usr/local/lib/
-#        /usr/local/include/
-#        /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/)
-#add_link_options(-framework OpenGL -framework /System/Library/Frameworks/AppKit.framework/Appkit)
-#target_link_libraries(cub3D LINK_PUBLIC libmlx.a)
+include_directories(
+        /Users/mlabouri/Projekt/cub3D/minilibx/
+        /usr/local/lib/
+        /usr/local/include/
+        /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/)
+link_directories(
+        /Users/mlabouri/Projekt/cub3D/minilibx/
+        /usr/local/lib/
+        /usr/local/include/
+        /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/)
+add_link_options(-framework OpenGL -framework /System/Library/Frameworks/AppKit.framework/Appkit)
+target_link_libraries(cub3D LINK_PUBLIC libmlx.a)
 

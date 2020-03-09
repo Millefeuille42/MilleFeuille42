@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/08 10:30:08 by mlabouri         ###   ########          */
+/*   Updated: 2020/03/09 15:51:07 by mlabouri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <math.h>
 #include <time.h>
 #include <stdio.h> //remove
-//#include <mlx.h>
+#include <mlx.h>
 
 #define NORTH conf->no
 #define SOUTH conf->so
@@ -69,7 +69,6 @@ typedef struct 		s_ray
 	t_dbl_co		cpos;
 	t_dbl_co		opos;
 	t_int_co		mpos;
-	double 			angle;
 }					t_ray;
 
 typedef struct		s_conf
@@ -92,14 +91,12 @@ typedef struct 		s_cub
 	t_dbl_co		pos;
 	double 			dir_a;
 	double 			fov;
-	void 			*mlxptr;
-	void 			*winptr;
+	void 			*mlx;
+	void 			*win;
 }					t_cub;
 
 int					cub_parser(int fd, t_conf *conf);
 
 void				deinit_conf(t_conf *conf);
-
-t_rc			mlx3D(t_conf *conf);
 
 #endif
