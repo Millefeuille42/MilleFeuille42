@@ -18,7 +18,7 @@ add_executable(cub3D ${SOURCE_CUB3D}
         cub3D/parsing/parsing_methods/error_check_methods_2.c cub3D/utils/ft_split.c
         cub3D/raycasting/mlx3D.c cub3D/parsing/parsing.h cub3D/raycasting/ray.c
         )
-
+add_executable(cu3D cub3D/raycasting/ray.c)
 add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 add_executable(get_next_line ${SOURCE_GNL} main.c)
 add_executable(libft ${SOURCES_LIBFT} main.c)

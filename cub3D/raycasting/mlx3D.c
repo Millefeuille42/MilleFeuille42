@@ -194,9 +194,9 @@ int main(void)
 	t_cub cub;
 
 	cub = (t_cub) {};
-	mlxptr = mlx_init();
-	winptr = mlx_new_window(mlxptr, resx, resy, "test");
+	//mlxptr = mlx_init();
+	//winptr = mlx_new_window(mlxptr, resx, resy, "test");
 	pouet();
-	mlx_key_hook(winptr, &key_hook, (void *)12);
-	mlx_loop(mlxptr);
+	//mlx_key_hook(winptr, &key_hook, (void *)12);
+	//mlx_loop(mlxptr);
 }

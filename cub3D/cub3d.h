@@ -21,7 +21,7 @@
 #include <math.h>
 #include <time.h>
 #include <stdio.h> //remove
-#include <mlx.h>
+//#include <mlx.h>
 
 #define NORTH conf->no
 #define SOUTH conf->so
