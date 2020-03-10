@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/09 15:51:07 by mlabouri         ###   ########lyon.fr   */
+/*   Updated: 2020/03/10 14:32:12 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <math.h>
 #include <time.h>
 #include <stdio.h> //remove
-//#include <mlx.h>
+#include <mlx.h>
 
 #define NORTH conf->no
 #define SOUTH conf->so
