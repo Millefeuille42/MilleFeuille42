@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/10 14:32:12 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/03/11 10:48:19 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ typedef struct 		s_cub
 	double 			fov;
 	void 			*mlx;
 	void 			*win;
+	void			*v_img;
+	char			*c_ima;
+	int 			bpp;
+	int 			sl;
+	int 			endian;
 }					t_cub;
 
 int					cub_parser(int fd, t_conf *conf);
