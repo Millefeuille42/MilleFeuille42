@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:32:13 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/11 11:28:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/03/11 15:07:01 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,60 +47,6 @@ int worldMap[24][24]=
 				{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 		};
 
-
-void draw_minimap(t_cub cub)
-{
-	int ii = 0;
-	int ii2;
-	int x;
-	int y;
-	int rx = 0;
-	int ry;
-
-	y = 0;
-	while (ii < 24)
-	{
-		ii2 = 0;
-		x = 0;
-		while (ii2 < 24)
-		{
-			rx = x;
-			while (rx < x + 16)
-			{
-				ry = y;
-				while (ry < y + 16)
-				{
-					if (worldMap[ii][ii2] == 1)
-						mlx_pixel_put(cub.mlx, cub.win, rx, ry, 16711680);
-					else
-						mlx_pixel_put(cub.mlx, cub.win, rx, ry, 0);
-					ry++;
-				}
-				rx++;
-			}
-			x+=16;
-			ii2++;
-		}
-		y+=16;
-		ii++;
-	}
-
-	x = (int)cub.pos.x * 16;
-	y = (int)cub.pos.y * 16;
-
-	rx = x;
-	while (rx < x + 16)
-	{
-		ry = y;
-		while (ry < y + 16)
-		{
-			mlx_pixel_put(cub.mlx, cub.win, rx, ry, 16776960);
-			ry++;
-		}
-		rx++;
-	}
-}
-
 int world2Map[24][24]=
 		{
 				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
@@ -134,6 +80,7 @@ static t_cub draw(t_cub cub, t_ray r, int x)
 	int draw_s;
 	int draw_e;
 	double dist;
+	int i;
 
 //	printf("%f || %f\n", r.cpos.x, r.cpos.y);
 	dist = sqrt(pow(cub.pos.x - r.cpos.x, 2) + pow(cub.pos.y - r.cpos.y, 2));
@@ -148,14 +95,33 @@ static t_cub draw(t_cub cub, t_ray r, int x)
 	if (draw_e >= cub.conf->res.y)
 		draw_e = cub.conf->res.y - 1;
 
-	while (draw_s * cub.sl < draw_e * cub.sl)
+	if (x <= 100)
+		return cub;
+	i = 0;
+	while (i < draw_s )
 	{
-		if (x == 0)
-			printf("%i, %i || %i\n", draw_s, draw_e, x);
-
-		cub.c_ima[draw_s * cub.sl + x * 4] = (char)255;
-		cub.c_ima[draw_s * cub.sl + x * 4 + 1] = (char)255;
-		cub.c_ima[draw_s * cub.sl + x * 4 + 2] = (char)(255);
+		//printf("|%i\n", i);
+		cub.c_ima[i * cub.sl + x * (cub.bpp/8)] = (char)0;
+		cub.c_ima[i * cub.sl + x * (cub.bpp/8) + 1] = (char)125;
+		cub.c_ima[i * cub.sl + x * (cub.bpp/8) + 2] = (char)(125);
+		i++;
+	}
+	i = draw_e;
+	while (i  < (cub.conf->res.y - 1))
+	{
+		//printf("%i\n", i);
+		cub.c_ima[i * cub.sl + x * (cub.bpp/8)] = (char)125;
+		cub.c_ima[i * cub.sl + x * (cub.bpp/8) + 1] = (char)0;
+		cub.c_ima[i * cub.sl + x * (cub.bpp/8) + 2] = (char)0;
+		i++;
+	}
+	if (x <= 100 || x >= cub.)
+		printf("%i, %i || %i\n", i * cub.sl, draw_e, x * (cub.bpp/8));
+	while (draw_s < draw_e )
+	{
+		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8)] = (char)(355/(dist));
+		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8) + 1] = (char)(355/(dist));
+		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8) + 2] = (char)(355/(dist));
 		draw_s++;
 	}
 
@@ -263,7 +229,7 @@ static t_ray send_ray(t_ray r, double r_angle, t_cub cub)
 
 		world2Map[r.mpos.y][r.mpos.x] = worldMap[r.mpos.y][r.mpos.x];
 
-		//mlx_pixel_put(cub.mlx, cub.win, (int)((r.cpos.x) * 16), (int)((r.cpos.y) * 16), 16776960);
+		mlx_pixel_put(cub.mlx, cub.win, (int)((r.cpos.x) * 16), (int)((r.cpos.y) * 16), 16776960);
 	}
 	return(r);
 }
@@ -292,7 +258,6 @@ int raycasting(t_cub cub)
 	i = (cub.fov / (float)cub.conf->res.x) * 100;
 	r_angle = (cub.dir_a - (cub.fov/2)) * 100;
 	x = 0;
-	//draw_minimap(cub);
 	while ((int)r_angle <= ((int)cub.dir_a + (int)cub.fov / 2)*100)
 	{
 		r.cpos = cub.pos;
@@ -302,8 +267,8 @@ int raycasting(t_cub cub)
 		x++;
 		r_angle = (r_angle + i);
 	}
-	int ii = 23;
-	int ii2;
+	//int ii = 23;
+	//int ii2;
 
 	world2Map[(int)cub.pos.y][(int)cub.pos.x] = 8;
 
@@ -328,7 +293,6 @@ int key_hook(int key, t_cub *cub)
 		mlx_destroy_image(cub->mlx, cub->v_img);
 	cub->v_img = mlx_new_image(cub->mlx, cub->conf->res.x, cub->conf->res.y);
 	cub->c_ima = mlx_get_data_addr(cub->v_img, &cub->bpp, &cub->sl, &cub->endian);
-
 	if (key == 124)
 	{
 		cub->dir_a = cub->dir_a + 10;
@@ -336,26 +300,27 @@ int key_hook(int key, t_cub *cub)
 			cub->dir_a = cub->dir_a - 360;
 		printf("%f\n", cub->dir_a);
 	}
-	if (key == 123)
+	else if (key == 123)
 	{
 		cub->dir_a = cub->dir_a - 10;
 		if (cub->dir_a <= 0)
 			cub->dir_a = 360 - fabs(cub->dir_a);
 		printf("%f\n", cub->dir_a);
 	}
-
-	if (key == 125)
+	else if (key == 125)
 	{
-		if (cub->fov < 360)
+		if (cub->fov < 140)
 			cub->fov = cub->fov + 10;
 		printf("%f\n", cub->fov);
 	}
-	if (key == 126)
+	else if (key == 126)
 	{
 		if (cub->fov > 10)
 			cub->fov = cub->fov - 10;
 		printf("%f\n", cub->fov);
 	}
+	else if (key != 0)
+		return (0);
 	raycasting(*cub);
 	mlx_clear_window(cub->mlx, cub->win);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->v_img, 0, 0);
@@ -377,11 +342,11 @@ int main(void)
 		})
 	};
 	cub.mlx = mlx_init();
-	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x, cub.conf->res.x, "cub3D");
-	raycasting(cub);
-	cub.dir_a += 10;
-	mlx_key_hook(cub.win, &key_hook, &cub);
+	mlx_do_key_autorepeaton(cub.mlx);
+	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x, cub.conf->res.y, "cub3D");
+	mlx_do_key_autorepeaton(cub.mlx);
+	key_hook(0, &cub);
+	mlx_hook(cub.win, 2, (1L<<0), &key_hook, &cub);
 	mlx_loop(cub.mlx);
-}
 
-// TODO 4quarts
+}
