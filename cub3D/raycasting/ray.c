@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:32:13 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/11 15:07:01 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/03/11 19:13:10 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ static t_cub draw(t_cub cub, t_ray r, int x)
 	double dist;
 	int i;
 
-//	printf("%f || %f\n", r.cpos.x, r.cpos.y);
 	dist = sqrt(pow(cub.pos.x - r.cpos.x, 2) + pow(cub.pos.y - r.cpos.y, 2));
-//	printf("dist:%f\n\n", dist);
 	int lineHeight = (int)(cub.conf->res.y / dist);
 	if (dist == 0)
 		lineHeight = 0;
@@ -95,7 +93,7 @@ static t_cub draw(t_cub cub, t_ray r, int x)
 	if (draw_e >= cub.conf->res.y)
 		draw_e = cub.conf->res.y - 1;
 
-	if (x <= 100)
+	if (x >= cub.conf->res.x)
 		return cub;
 	i = 0;
 	while (i < draw_s )
@@ -115,28 +113,37 @@ static t_cub draw(t_cub cub, t_ray r, int x)
 		cub.c_ima[i * cub.sl + x * (cub.bpp/8) + 2] = (char)0;
 		i++;
 	}
-	if (x <= 100 || x >= cub.)
-		printf("%i, %i || %i\n", i * cub.sl, draw_e, x * (cub.bpp/8));
 	while (draw_s < draw_e )
 	{
-		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8)] = (char)(355/(dist));
-		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8) + 1] = (char)(355/(dist));
-		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8) + 2] = (char)(355/(dist));
+		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8)] = (char)((255*1.5)/(dist));
+		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8) + 1] = (char)(255*1.5/(dist));
+		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8) + 2] = (char)(255*1.5/(dist));
 		draw_s++;
 	}
 
 	return (cub);
 }
 
-static t_ray send_ray(t_ray r, double r_angle, t_cub cub)
+static t_ray send_ray(t_ray r, double r_angle, t_cub cub, int x)
 {
+	if (r_angle / 100 > 269.999995 && r_angle / 100 <= 270.0000005)
+		r_angle -= 0.04;
+	if (r_angle / 100 > 179.999995 && r_angle / 100 <= 180.0000005)
+		r_angle -= 0.04;
+	if (r_angle / 100 > 89.999995 && r_angle / 100 <= 90.0000005)
+		r_angle -= 0.04;
+	if (r_angle / 100 > 359.999995 && r_angle / 100 <= 360.0000005)
+		r_angle -= 0.04;
+	if (r_angle / 100 > -1.0000005 && r_angle / 100 <= 0.0000005)
+		r_angle -= 0.04;
+
 	r.dir.x = cos((r_angle / 100) * M_PI / 180) + r.cpos.x;
 	r.dir.y = sin((r_angle / 100) * M_PI / 180) + r.cpos.y;
 
 	r.coef.x = (r.dir.y - r.cpos.y) / (r.dir.x - r.cpos.x);
-//	r.coef.y = (r.dir.x - r.cpos.x) / (r.dir.y - r.cpos.y);
 	r.mpos.x = floor(r.cpos.x);
 	r.mpos.y = floor(r.cpos.y);
+
 	while (worldMap[r.mpos.y][r.mpos.x] == 0)
 	{
 		r.opos.x = r.cpos.x;
@@ -184,7 +191,7 @@ static t_ray send_ray(t_ray r, double r_angle, t_cub cub)
 			r.mpos.x = ceil(r.cpos.x);
 			r.mpos.y = floor(r.cpos.y);
 		}
-		else if (r_angle > 180*100 && r_angle <= 270*100)
+		else if (r_angle > 180*100 && r_angle < 270*100)
 		{
 			r.cpos.x = ceil(r.opos.x) - 1;
 			r.cpos.y = (r.opos.x - r.cpos.x) * -(r.coef.x) + r.opos.y;
@@ -229,7 +236,7 @@ static t_ray send_ray(t_ray r, double r_angle, t_cub cub)
 
 		world2Map[r.mpos.y][r.mpos.x] = worldMap[r.mpos.y][r.mpos.x];
 
-		mlx_pixel_put(cub.mlx, cub.win, (int)((r.cpos.x) * 16), (int)((r.cpos.y) * 16), 16776960);
+		//mlx_pixel_put(cub.mlx, cub.win, (int)((r.cpos.x) * 16), (int)((r.cpos.y) * 16), 16776960);
 	}
 	return(r);
 }
@@ -261,8 +268,7 @@ int raycasting(t_cub cub)
 	while ((int)r_angle <= ((int)cub.dir_a + (int)cub.fov / 2)*100)
 	{
 		r.cpos = cub.pos;
-		if (r_angle != 9000 && r_angle != 18000)
-			r = send_ray(r, r_angle, cub);
+		r = send_ray(r, r_angle, cub, x);
 		cub = draw(cub, r, x);
 		x++;
 		r_angle = (r_angle + i);
@@ -286,34 +292,37 @@ int raycasting(t_cub cub)
 
 	return (0);
 }
+static char keyc[255]= {};
 
 int key_hook(int key, t_cub *cub)
 {
+
+	keyc[key] = 1;
 	if (cub->v_img)
 		mlx_destroy_image(cub->mlx, cub->v_img);
 	cub->v_img = mlx_new_image(cub->mlx, cub->conf->res.x, cub->conf->res.y);
 	cub->c_ima = mlx_get_data_addr(cub->v_img, &cub->bpp, &cub->sl, &cub->endian);
-	if (key == 124)
+	if (key == 124 || keyc[124] == 1)
 	{
 		cub->dir_a = cub->dir_a + 10;
 		if (cub->dir_a >= 360)
 			cub->dir_a = cub->dir_a - 360;
 		printf("%f\n", cub->dir_a);
 	}
-	else if (key == 123)
+	else if (key == 123 || keyc[123] == 1)
 	{
 		cub->dir_a = cub->dir_a - 10;
 		if (cub->dir_a <= 0)
 			cub->dir_a = 360 - fabs(cub->dir_a);
 		printf("%f\n", cub->dir_a);
 	}
-	else if (key == 125)
+	else if (key == 125 || keyc[125] == 1)
 	{
 		if (cub->fov < 140)
 			cub->fov = cub->fov + 10;
 		printf("%f\n", cub->fov);
 	}
-	else if (key == 126)
+	else if (key == 126 || keyc[126] == 1)
 	{
 		if (cub->fov > 10)
 			cub->fov = cub->fov - 10;
@@ -327,6 +336,12 @@ int key_hook(int key, t_cub *cub)
 	return (0);
 }
 
+int key_rhook(int key, t_cub *cub)
+{
+	keyc[key] = 0;
+	return (0);
+}
+
 int main(void)
 {
 	t_cub cub;
@@ -337,16 +352,18 @@ int main(void)
 		.pos.y = 12,
 		.dir_a = 310,
 		.conf = &((t_conf) {
-			.res.x = 1280,
-			.res.y = 720
+			.res.x = 1920,
+			.res.y = 1080
 		})
 	};
 	cub.mlx = mlx_init();
-	mlx_do_key_autorepeaton(cub.mlx);
 	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x, cub.conf->res.y, "cub3D");
-	mlx_do_key_autorepeaton(cub.mlx);
 	key_hook(0, &cub);
+	if (keyc[124] == 1 || keyc[125] == 1 || keyc[123] == 1 || keyc[126] == 1)
+		key_hook(0, &cub);
 	mlx_hook(cub.win, 2, (1L<<0), &key_hook, &cub);
+	mlx_hook(cub.win, 3, (1L<<0), &key_rhook, &cub);
+
 	mlx_loop(cub.mlx);
 
 }
