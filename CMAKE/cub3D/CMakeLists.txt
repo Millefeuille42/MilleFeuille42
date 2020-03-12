@@ -23,9 +23,9 @@ set(    SOURCE_CUB3D
         cub3D/utils/ft_split.c
 
         cub3D/graphical/drawing_utils.c
-        cub3D/graphical/ray.c
-        cub3D/graphical/events.c
+        cub3D/graphical/hooks/events.c
         cub3D/graphical/hooks/keyboard_hooks.c
         cub3D/graphical/hooks/keyboard_functions.c
-
+        cub3D/graphical/rays/ray.c
+        cub3D/graphical/rays/ray_utils.c
         PARENT_SCOPE)

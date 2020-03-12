@@ -50,3 +50,6 @@ int main(void)
 // TODO
 //		- Safe exiting
 //		- Proper Map Check
+//		- Movement
+//		- Proper KeyMapping
+//		- Orchestration

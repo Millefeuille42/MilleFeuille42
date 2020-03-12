@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:48:45 by mlabouri          #+#    #+#             */
-//*   Updated: 2020/03/12 18:04:33 by mlabouri         ###   ########.fr       */
+//*   Updated: 2020/03/12 19:33:17 by mlabouri         ###   ########          */
 *                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,13 @@ typedef struct		s_draw
 	double			dist;
 }					t_draw;
 
+int				graphics(t_conf *conf);
+
 int				raycasting(t_win cub);
+t_ray 			ray_fst_quarter(t_ray r);
+t_ray 			ray_scd_quarter(t_ray r);
+t_ray 			ray_trd_quarter(t_ray r);
+t_ray 			ray_frt_quarter(t_ray r);
 t_win			draw(t_win cub, t_ray r, int x);
 
 t_win			keys_init(t_win cub);

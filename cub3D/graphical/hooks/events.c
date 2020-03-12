@@ -6,11 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:20:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/12 17:19:12 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/03/12 19:36:30 by mlabouri         ###   ########          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphical.h"
+#include "../graphical.h"
 
 static int 	quit(t_win **cub)
 {
@@ -29,7 +29,7 @@ static int event_hooks(t_win *cub)
 	mlx_loop(cub->mlx);
 }
 
-int graphics_main(t_conf *conf)
+int graphics(t_conf *conf)
 {
 	t_win cub;
 
@@ -46,7 +46,7 @@ int graphics_main(t_conf *conf)
 	cub = keys_init(cub);
 	cub.mlx = mlx_init();
 	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x,
-			cub.conf->res.y, "cub3D");
+							 cub.conf->res.y, "cub3D");
 	event_hooks(&cub);
 	return (0);
 }
