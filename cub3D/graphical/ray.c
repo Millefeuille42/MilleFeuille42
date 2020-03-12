@@ -6,11 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:32:13 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/11 19:13:10 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/03/12 18:16:16 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "graphical.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
@@ -75,54 +75,7 @@ int world2Map[24][24]=
 				{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 		};
 
-static t_cub draw(t_cub cub, t_ray r, int x)
-{
-	int draw_s;
-	int draw_e;
-	double dist;
-	int i;
 
-	dist = sqrt(pow(cub.pos.x - r.cpos.x, 2) + pow(cub.pos.y - r.cpos.y, 2));
-	int lineHeight = (int)(cub.conf->res.y / dist);
-	if (dist == 0)
-		lineHeight = 0;
-	draw_s = -lineHeight / 2 + cub.conf->res.y / 2;
-	if (draw_s < 0)
-		draw_s = 0;
-	draw_e = lineHeight / 2 + cub.conf->res.y / 2;
-	if (draw_e >= cub.conf->res.y)
-		draw_e = cub.conf->res.y - 1;
-
-	if (x >= cub.conf->res.x)
-		return cub;
-	i = 0;
-	while (i < draw_s )
-	{
-		//printf("|%i\n", i);
-		cub.c_ima[i * cub.sl + x * (cub.bpp/8)] = (char)0;
-		cub.c_ima[i * cub.sl + x * (cub.bpp/8) + 1] = (char)125;
-		cub.c_ima[i * cub.sl + x * (cub.bpp/8) + 2] = (char)(125);
-		i++;
-	}
-	i = draw_e;
-	while (i  < (cub.conf->res.y - 1))
-	{
-		//printf("%i\n", i);
-		cub.c_ima[i * cub.sl + x * (cub.bpp/8)] = (char)125;
-		cub.c_ima[i * cub.sl + x * (cub.bpp/8) + 1] = (char)0;
-		cub.c_ima[i * cub.sl + x * (cub.bpp/8) + 2] = (char)0;
-		i++;
-	}
-	while (draw_s < draw_e )
-	{
-		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8)] = (char)((255*1.5)/(dist));
-		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8) + 1] = (char)(255*1.5/(dist));
-		cub.c_ima[draw_s * cub.sl + x * (cub.bpp/8) + 2] = (char)(255*1.5/(dist));
-		draw_s++;
-	}
-
-	return (cub);
-}
 
 static t_ray send_ray(t_ray r, double r_angle, t_cub cub, int x)
 {
@@ -241,7 +194,7 @@ static t_ray send_ray(t_ray r, double r_angle, t_cub cub, int x)
 	return(r);
 }
 
-int raycasting(t_cub cub)
+int raycasting(t_win cub)
 {
 	t_ray r;
 	int x;
@@ -291,79 +244,4 @@ int raycasting(t_cub cub)
 	//}
 
 	return (0);
-}
-static char keyc[255]= {};
-
-int key_hook(int key, t_cub *cub)
-{
-
-	keyc[key] = 1;
-	if (cub->v_img)
-		mlx_destroy_image(cub->mlx, cub->v_img);
-	cub->v_img = mlx_new_image(cub->mlx, cub->conf->res.x, cub->conf->res.y);
-	cub->c_ima = mlx_get_data_addr(cub->v_img, &cub->bpp, &cub->sl, &cub->endian);
-	if (key == 124 || keyc[124] == 1)
-	{
-		cub->dir_a = cub->dir_a + 10;
-		if (cub->dir_a >= 360)
-			cub->dir_a = cub->dir_a - 360;
-		printf("%f\n", cub->dir_a);
-	}
-	else if (key == 123 || keyc[123] == 1)
-	{
-		cub->dir_a = cub->dir_a - 10;
-		if (cub->dir_a <= 0)
-			cub->dir_a = 360 - fabs(cub->dir_a);
-		printf("%f\n", cub->dir_a);
-	}
-	else if (key == 125 || keyc[125] == 1)
-	{
-		if (cub->fov < 140)
-			cub->fov = cub->fov + 10;
-		printf("%f\n", cub->fov);
-	}
-	else if (key == 126 || keyc[126] == 1)
-	{
-		if (cub->fov > 10)
-			cub->fov = cub->fov - 10;
-		printf("%f\n", cub->fov);
-	}
-	else if (key != 0)
-		return (0);
-	raycasting(*cub);
-	mlx_clear_window(cub->mlx, cub->win);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->v_img, 0, 0);
-	return (0);
-}
-
-int key_rhook(int key, t_cub *cub)
-{
-	keyc[key] = 0;
-	return (0);
-}
-
-int main(void)
-{
-	t_cub cub;
-
-	cub = (t_cub) {
-		.fov = 80,
-		.pos.x = 12,
-		.pos.y = 12,
-		.dir_a = 310,
-		.conf = &((t_conf) {
-			.res.x = 1920,
-			.res.y = 1080
-		})
-	};
-	cub.mlx = mlx_init();
-	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x, cub.conf->res.y, "cub3D");
-	key_hook(0, &cub);
-	if (keyc[124] == 1 || keyc[125] == 1 || keyc[123] == 1 || keyc[126] == 1)
-		key_hook(0, &cub);
-	mlx_hook(cub.win, 2, (1L<<0), &key_hook, &cub);
-	mlx_hook(cub.win, 3, (1L<<0), &key_rhook, &cub);
-
-	mlx_loop(cub.mlx);
-
 }

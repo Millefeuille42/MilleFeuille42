@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/11 17:14:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/03/12 18:04:33 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,6 @@ typedef struct 		s_int_co
 	int				y;
 }					t_int_co;
 
-typedef struct 		s_ray
-{
-	t_dbl_co		dir;
-	t_dbl_co		coef;
-	t_dbl_co		cpos;
-	t_dbl_co		opos;
-	t_int_co		mpos;
-}					t_ray;
-
 typedef struct		s_conf
 {
 	t_res			res;
@@ -83,23 +74,9 @@ typedef struct		s_conf
 	t_path			sprite;
 	char 			**map;
 	t_dbl_co		pos;
-}					t_conf;
-
-typedef struct 		s_cub
-{
-	t_conf			*conf;
-	t_dbl_co		pos;
 	double 			dir_a;
 	double 			fov;
-	void 			*mlx;
-	void 			*win;
-	void			*v_img;
-	char			*c_ima;
-	int 			bpp;
-	int 			sl;
-	int 			endian;
-
-}					t_cub;
+}					t_conf;
 
 int					cub_parser(int fd, t_conf *conf);
 

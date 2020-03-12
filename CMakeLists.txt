@@ -10,15 +10,7 @@ add_subdirectory(CMAKE/ft_printf)
 add_subdirectory(CMAKE/GNL)
 add_subdirectory(CMAKE/Libft)
 
-add_executable(cub3D ${SOURCE_CUB3D}
-        cub3D/parsing/parsing_methods/parsing_methods_1.c cub3D/utils/ft_isdigit.c cub3D/utils/ft_atoi_mk2.c
-        cub3D/utils/ft_c_in_set.c cub3D/parsing/parsing_methods/parsing_methods_2.c cub3D/init_conf.c
-        cub3D/utils/ft_substr.c
-        cub3D/parsing/parsing_methods/error_check_methods.c cub3D/parsing/parsing_methods/parsing_methods_3.c
-        cub3D/parsing/parsing_methods/error_check_methods_2.c cub3D/utils/ft_split.c
-        cub3D/raycasting/mlx3D.c cub3D/parsing/parsing.h cub3D/raycasting/ray.c
-        )
-add_executable(cu3D cub3D/raycasting/ray.c)
+add_executable(cub3D ${SOURCE_CUB3D})
 add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 add_executable(get_next_line ${SOURCE_GNL} main.c)
 add_executable(libft ${SOURCES_LIBFT} main.c)
