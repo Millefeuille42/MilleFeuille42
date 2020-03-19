@@ -27,10 +27,10 @@ static int linecount(char **map, t_dbl_co *pos)
 				return (-2);
 			if (ft_cinset(map[i][i2], "NSWO"))
 			{
-				if (*pos)
-					return (-2);
-				else
-					*pos = map[i][i2];
+				//if (*pos)
+				//	return (-2);
+				//else
+				//	*pos = map[i][i2];
 			}
 			i2++;
 		}

@@ -17,9 +17,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-#include <errno.h>
 #include <math.h>
-#include <time.h>
 #include <stdio.h> //remove
 #include <mlx.h>
 
@@ -79,7 +77,18 @@ typedef struct		s_conf
 }					t_conf;
 
 int					cub_parser(int fd, t_conf *conf);
+int					graphics(t_conf *conf);
 
 void				deinit_conf(t_conf *conf);
+
+char				*ft_strdup(const char *s1);
+char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strnstr(const char *hay, const char *ne, size_t len);
+size_t				ft_strlen(const char *str);
+int					ft_isdigit(int c);
+int					atoi_mk2(const char *s, int start, int end);
+char				ft_cinset(char c, const char *set);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+char				**ft_split(char const *s, char c);
 
 #endif

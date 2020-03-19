@@ -10,31 +10,36 @@ add_subdirectory(CMAKE/ft_printf)
 add_subdirectory(CMAKE/GNL)
 add_subdirectory(CMAKE/Libft)
 
+add_executable(minishell main.c Minishell/command_parsing.c Minishell/ft_split.c Minishell/lenght_utils.c)
 add_executable(cub3D ${SOURCE_CUB3D})
+#add_executable(cub3D cub3D/main.c)
 add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 add_executable(get_next_line ${SOURCE_GNL} main.c)
 add_executable(libft ${SOURCES_LIBFT} main.c)
 
 set_target_properties(get_next_line PROPERTIES COMPILE_FLAGS "-D BUFFER_SIZE=12")
 
-if (${42code})
+if (${WFLAGS})
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
 endif ()
-if (${NHOME})
+if (${SAN})
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+endif ()
+if (${COVER})
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage")
 endif ()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 
 include_directories(
-        /Users/mlabouri/Projekt/cub3D/minilibx/
-        /usr/local/lib/
-        /usr/local/include/
-        /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/)
+        /usr/include
+        /home/millefeuille/CLionProjects/MilleFeuille42/mlx
+)
 link_directories(
-        /Users/mlabouri/Projekt/cub3D/minilibx/
-        /usr/local/lib/
-        /usr/local/include/
-        /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/)
+        /usr/include
+        /home/millefeuille/CLionProjects/MilleFeuille42/mlx
+)
+target_link_libraries(cub3D LINK_PUBLIC libm.so libc.so libmlx.a libX11.so libXext.so)
+
 add_link_options(-framework OpenGL -framework /System/Library/Frameworks/AppKit.framework/Appkit)
-target_link_libraries(cub3D LINK_PUBLIC libmlx.a)
+#target_link_libraries(cub3D LINK_PUBLIC libmlx.a)
 

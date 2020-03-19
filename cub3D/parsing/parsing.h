@@ -26,15 +26,5 @@ int					rgb_e(t_plan plan);
 int					map_e(char **map, t_dbl_co *pos);
 int					path_e(t_path *file);
 
-char				*ft_strdup(const char *s1);
-char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strnstr(const char *hay, const char *ne, size_t len);
-size_t				ft_strlen(const char *str);
-int					ft_isdigit(int c);
-int					atoi_mk2(const char *s, int start, int end);
-char				ft_cinset(char c, const char *set);
-char				*ft_substr(char const *s, unsigned int start, size_t len);
-char				**ft_split(char const *s, char c);
-
 void				clear(char **pstr);
 # endif

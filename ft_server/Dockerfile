@@ -27,17 +27,13 @@ ADD --chown=root srcs/nginx_conf /etc/nginx/sites-enabled/default
 RUN echo "<?php \n phpinfo();" >> /var/www/html/index.php
 
     #Install PHPMyAdmin
-RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz
+RUN wget -q https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz
 RUN tar xvf phpMyAdmin-4.9.0.1-all-languages.tar.gz
-RUN mv phpMyAdmin-4.9.0.1-all-languages/ /usr/share/phpmyadmin
+RUN mv phpMyAdmin-4.9.0.1-all-languages/ /var/www/html/phpmyadmin/
 
     #Configure PHPMyAdmin
 RUN mkdir -p /var/lib/phpmyadmin/tmp
-RUN chown -R www-data:www-data /var/lib/phpmyadmin
+RUN chown -R www-data:www-data /var/lib/phpmyadmin && chown -R www-data:www-data /var/www/html/phpmyadmin/
 RUN cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
 
-CMD  service nginx start; echo "IP : $(hostname -I)"; while [ 1 ]; do sleep 2; done
-
-#RUN mariadb < /var/www/nginx_conf/phpmyadminsql/create_tables.sql
-#RUN mariadb < CREATE DATABASE test;
- #RUN mariadb < GRANT ALL ON example_database.* TO 'example_user'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+CMD service nginx start; echo "IP : $(hostname -I)"; while [ 1 ]; do sleep 2; done

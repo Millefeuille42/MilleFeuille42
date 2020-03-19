@@ -50,7 +50,10 @@ t_win			draw(t_win cub, t_ray r, int x)
 		return (cub);
 	lim = def_length(cub, r);
 	dist = (int)floor(lim.dist);
-	col = (t_plan){255 / dist, 255 / dist, 255};
+	if (dist < 1)
+		col = (t_plan){255, 255, 255};
+	else
+		col = (t_plan){255 / dist, 255 / dist, 255};
 	i = 0;
 	while (i < (cub.conf->res.y - 1))
 	{
