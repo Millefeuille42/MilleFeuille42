@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:48:45 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/19 11:11:50 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/22 14:43:14 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,20 @@
 
 # include "../cub3d.h"
 
-# define UP		65362
-# define LEFT	65361
-# define DOWN	65364
-# define RIGHT	65363
-# define ESCAPE	65307
-
+# define UP			119
+# define LEFT		97
+# define DOWN		115
+# define RIGHT		100
+# define R_UP		65362
+# define R_LEFT		65361
+# define R_DOWN		65364
+# define R_RIGHT	65363
+# define ESCAPE		65307
 
 typedef struct		s_key
 {
-	char			keyc[65363];
-	int				length;
-	char			keyl[5];
+	char			keyc[66000];
+	char			keyl[7];
 }					t_key;
 
 typedef struct		s_img
@@ -54,6 +56,8 @@ typedef struct 		s_win
 	void 			*win;
 	t_img			img;
 	t_key 			keys;
+	int				inc_u;
+	int				inc_d;
 }					t_win;
 
 typedef struct		s_draw
@@ -64,11 +68,14 @@ typedef struct		s_draw
 }					t_draw;
 
 int				raycasting(t_win cub);
-t_ray 			ray_fst_quarter(t_ray r, double r_a);
-t_ray 			ray_scd_quarter(t_ray r, double r_a);
-t_ray 			ray_trd_quarter(t_ray r, double r_a);
-t_ray 			ray_frt_quarter(t_ray r, double r_a);
-t_win			draw(t_win cub, t_ray r, int x);
+
+t_ray 			ray_fst_quarter(t_ray r, t_conf conf);
+t_ray 			ray_scd_quarter(t_ray r, t_conf conf);
+t_ray 			ray_trd_quarter(t_ray r, t_conf conf);
+t_ray 			ray_frt_quarter(t_ray r, t_conf conf);
+
+t_win			draw(t_win cub, t_ray r, int x, double r_a);
+t_img			create_image(t_win cub);
 
 t_win			keys_init(t_win cub);
 int				key_rhook(int key, t_win *cub);
@@ -78,8 +85,10 @@ void 			up(t_win **cub);
 void 			down(t_win **cub);
 void 			left(t_win **cub);
 void 			right(t_win **cub);
+void 			r_up(t_win **cub);
+void 			r_down(t_win **cub);
+void 			r_left(t_win **cub);
+void 			r_right(t_win **cub);
 void 			escape(t_win **cub);
-
-t_img create_image(t_win cub);
 
 # endif

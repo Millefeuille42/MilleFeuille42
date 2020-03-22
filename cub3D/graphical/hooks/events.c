@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:20:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/19 13:22:56 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/22 16:44:57 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int graphics(t_conf *conf)
 
 	cub = (t_win) {
 			.conf = &((t_conf) {
-					.fov = 90,
+					.fov = 60,
 					.pos.x = 12,
 					.pos.y = 12,
 					.dir_a = 310,

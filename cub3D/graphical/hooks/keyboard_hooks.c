@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:44:04 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/19 11:49:36 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/22 12:32:03 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ static void	key_f(int key, t_win **cub)
 		left(cub);
 	else if (key == RIGHT)
 		right(cub);
+	else if (key == R_UP)
+		r_up(cub);
+	else if (key == R_DOWN)
+		r_down(cub);
+	else if (key == R_LEFT)
+		r_left(cub);
+	else if (key == R_RIGHT)
+		r_right(cub);
 	else if (key == ESCAPE)
 		escape(cub);
 }
@@ -32,6 +40,10 @@ static int key_check(int key, t_win **cub)
 		|| key == DOWN
 		|| key == LEFT
 		|| key == RIGHT
+		|| key == R_UP
+		|| key == R_DOWN
+		|| key == R_LEFT
+		|| key == R_RIGHT
 		|| key == ESCAPE)
 		return (1);
 	return (0);
@@ -60,13 +72,14 @@ int keyp_hook(int key, t_win *cub)
 	return (0);
 }
 
+
+
 t_win keys_init(t_win cub)
 {
 	int i;
 
 	i = 0;
-	cub.keys.length = 4;
-	while (i < 65363)
+	while (i < 66000)
 	{
 		cub.keys.keyc[i]= 0;
 		i++;
@@ -75,6 +88,8 @@ t_win keys_init(t_win cub)
 	cub.keys.keyl[1] = DOWN;
 	cub.keys.keyl[2] = LEFT;
 	cub.keys.keyl[3] = RIGHT;
-	cub.keys.keyl[4] = ESCAPE;
+	cub.keys.keyl[4] = R_LEFT;
+	cub.keys.keyl[5] = R_RIGHT;
+	cub.keys.keyl[6] = ESCAPE;
 	return (cub);
 }
