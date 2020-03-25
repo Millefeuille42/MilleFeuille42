@@ -16,6 +16,14 @@
 #include "../cub3d.h"
 #include "GNL/get_next_line.h"
 
+typedef struct		s_map_properties
+{
+	int				x;
+	int				y;
+	int				length;
+	int				lines;
+}					t_map_properties;
+
 int					res_p(t_conf *conf, char *line);
 int					plan_p(t_plan *plan, char *line);
 int					path_p(char **path, char *line);
@@ -23,7 +31,7 @@ int					map_p(t_conf *conf, int fd);
 
 int					res_e(t_res res);
 int					rgb_e(t_plan plan);
-int					map_e(char **map, t_dbl_co *pos);
+int					map_e(char **map, t_conf *conf);
 int					path_e(t_path *file);
 
 void				clear(char **pstr);

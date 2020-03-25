@@ -70,25 +70,25 @@ static int	read_line(char *line, int fd, t_conf *conf, int head)
 	return (0);
 }
 
-static int	err_check(t_conf conf)
+static int	err_check(t_conf *conf)
 {
-	if ((res_e(conf.res)))
+	if ((res_e(conf->res)))
 		return (-2);
-	if ((rgb_e(conf.floor)))
+	if ((rgb_e(conf->floor)))
 		return (-2);
-	if ((rgb_e(conf.roof)))
+	if ((rgb_e(conf->roof)))
 		return (-2);
-	if ((map_e(conf.map, &conf.pos)))
+	if ((map_e(conf->map, conf)))
 		return (-2);
-	if ((path_e(&conf.no)))
+	if ((path_e(&conf->no)))
 		return (-1);
-	if ((path_e(&conf.so)))
+	if ((path_e(&conf->so)))
 		return (-1);
-	if ((path_e(&conf.we)))
+	if ((path_e(&conf->we)))
 		return (-1);
-	if ((path_e(&conf.ea)))
+	if ((path_e(&conf->ea)))
 		return (-1);
-	if ((path_e(&conf.sprite)))
+	if ((path_e(&conf->sprite)))
 		return (-1);
 	return (0);
 }
@@ -113,7 +113,7 @@ int			cub_parser(int fd, t_conf *conf)
 		i++;
 		free(line);
 	}
-	if ((map_p(conf, fd)) || ((err_check(*conf))))
+	if ((map_p(conf, fd)) || ((err_check(conf))))
 		return (-2);
 	return (0);
 }

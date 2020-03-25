@@ -1,3 +1,5 @@
 -3 = Erreur Système
 -2 = Config invalide
+    -21 = chemin Invalide
+    -22 = map Invalide
 -1 = Fichier inexistant

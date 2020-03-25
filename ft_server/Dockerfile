@@ -4,36 +4,44 @@ MAINTAINER mlabouri@student.42.fr
 EXPOSE 80
 ENV DEBIAN_FRONTEND=noninteractive
 
-# /var/www/nginx_conf/phpmyadminconfig.inc.php
-# /etc/nginx/conf.d/phpMyAdmin.conf
-
-    #init
+    #Init
 RUN apt-get update && apt-get -y upgrade
 
-    #nginx
-RUN apt-get -y install wget curl vim nginx
+    #Install packages
+RUN apt-get -y install wget curl vim \
+    nginx \
+    php-fpm php-common php-mbstring php-xmlrpc php-soap php-gd php-xml php-intl php-mysql php-cli php-zip php-curl \
+    mariadb-server-10.3 default-mysql-server
 
-    #MySQL
-RUN apt-get -y install mariadb-server-10.3
-RUN ["/bin/bash", "-c", "debconf-set-selections <<< 'mariadb-server-5.5 mysql-server/root_password password rootpass'"]
-RUN ["/bin/bash", "-c", "debconf-set-selections <<< 'mariadb-server-5.5 mysql-server/root_password_again password rootpass'"]
-
-    #PHP
-WORKDIR /root
-RUN apt-get -y install default-mysql-server php-fpm php-mysql php-mbstring php-zip php-gd
-
-    #Configure nginx for PHP
-ADD --chown=root srcs/nginx_conf /etc/nginx/sites-enabled/default
-RUN echo "<?php \n phpinfo();" >> /var/www/html/index.php
+WORKDIR /tmp
 
     #Install PHPMyAdmin
-RUN wget -q https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz
-RUN tar xvf phpMyAdmin-4.9.0.1-all-languages.tar.gz
-RUN mv phpMyAdmin-4.9.0.1-all-languages/ /var/www/html/phpmyadmin/
+RUN wget -q https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz\
+    && tar xvf phpMyAdmin-4.9.0.1-all-languages.tar.gz && rm phpMyAdmin-4.9.0.1-all-languages.tar.gz
+RUN mv phpMyAdmin-4.9.0.1-all-languages/ /usr/share/phpMyAdmin/
+RUN mkdir -p /usr/share/phpMyAdmin/tmp \
+    && chmod -R 777 /usr/share/phpMyAdmin && chown -R www-data:www-data /usr/share/phpMyAdmin
+RUN ln -s /usr/share/phpMyAdmin /var/www/html/pma
 
-    #Configure PHPMyAdmin
-RUN mkdir -p /var/lib/phpmyadmin/tmp
-RUN chown -R www-data:www-data /var/lib/phpmyadmin && chown -R www-data:www-data /var/www/html/phpmyadmin/
-RUN cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
+    #Setup MYSQL
+RUN ["/bin/bash", "-c", "debconf-set-selections <<< 'mariadb-server-5.5 mysql-server/root_password password'"]
+RUN ["/bin/bash", "-c", "debconf-set-selections <<< 'mariadb-server-5.5 mysql-server/root_password_again password'"]
+RUN service mysql start \
+    && mysql < /usr/share/phpMyAdmin/sql/create_tables.sql \
+    && echo "CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;" | mysql -u root \
+    && echo "GRANT ALL ON wordpress.* TO 'wordpress_user'@'localhost' IDENTIFIED BY 'password';" | mysql -u root \
+    && echo "FLUSH PRIVILEGES;" | mysql -u root \
+    && echo "update mysql.user set plugin = 'mysql_native_password' where user='root';" | mysql -u root
 
-CMD service nginx start; echo "IP : $(hostname -I)"; while [ 1 ]; do sleep 2; done
+    #Install WordPress
+ADD --chown=www-data:www-data srcs/wp /tmp/wp
+RUN mv /tmp/wp/* /var/www/html/
+
+RUN chown -R www-data:www-data /var/www/
+RUN chmod -R 777 /var/www/
+
+ADD --chown=www-data:www-data srcs/nginx_conf /etc/nginx/sites-enabled/default
+ADD --chown=www-data:www-data srcs/config.inc.php /usr/share/phpMyAdmin/config.inc.php
+
+CMD service mysql start & service php7.3-fpm start & service nginx start & /bin/bash
+
