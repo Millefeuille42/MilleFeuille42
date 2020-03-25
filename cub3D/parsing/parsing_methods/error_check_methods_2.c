@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/25 20:44:34 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/25 22:16:21 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,16 @@ static int	read_pos(t_map_properties mp, t_conf *conf, char **map)
 		if (conf->dir_a)
 			return (-22);
 		else
+		{
 			*conf = def_pos(*conf, mp.y, mp.x, map[mp.y][mp.x]);
+			map[mp.y][mp.x] = '0';
+		}
 	}
 	else if (ft_cinset(map[mp.y][mp.x], "102 "))
 	{
 		if (map[mp.y][mp.x] == ' ')
 			map[mp.y][mp.x] = '1';
-		if ((mp.y == 0 || mp.y > mp.lines) && map[mp.y][mp.x] != '1')
+		if ((mp.y == 0 || mp.y == mp.lines - 1) && map[mp.y][mp.x] != '1')
 			return (-22);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/08 10:30:08 by mlabouri         ###   ########          */
+/*   Updated: 2020/03/25 22:25:42 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	parse_head(char *line)
 	return (i);
 }
 
-static int	read_line(char *line, int fd, t_conf *conf, int head)
+static int	read_line(char *line, t_conf *conf, int head)
 {
 	int err;
 
@@ -108,7 +108,7 @@ int			cub_parser(int fd, t_conf *conf)
 			return (leave_err(head, (void **)&line));
 		if ((head = parse_head(line)) < 0)
 			return (leave_err(head, (void **)&line));
-		if ((head = (read_line(line, fd, conf, head))))
+		if ((head = (read_line(line, conf, head))))
 			return (leave_err(head, (void **)&line));
 		i++;
 		free(line);

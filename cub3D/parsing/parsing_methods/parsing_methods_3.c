@@ -16,7 +16,6 @@ static int safe_join(char **s1, char **s2)
 {
 	char *temp;
 	char *temp2;
-	int err;
 
 	if (!(temp = ft_strjoin(*s1, *s2)))
 		return (-3);

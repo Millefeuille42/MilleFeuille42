@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/25 20:45:47 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/25 22:17:01 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int main(void)
 	int i = 0;
 	t_conf conf;
 
-	err = 0;
 	conf = (t_conf) {.fov = 90};
 	fd = open("cub3D/sample.cub", O_RDONLY);
 	err = cub_parser(fd, &conf);
@@ -30,14 +29,14 @@ int main(void)
 		   conf.we.path, conf.sprite.path);
 	printf("\nPos: %i, %i", (int)conf.pos.x, (int)conf.pos.y);
 	printf("\nDir: %i", (int)conf.dir_a);
-	printf("\nerr: %i", err);
 	printf("\nmap:\n");
-		while (conf.map[i])
-		{
-			printf("%s\n", conf.map[i]);
-			i++;
-		}
+	while (conf.map[i])
+	{
+		printf("%s\n", conf.map[i]);
+		i++;
+	}
 	deinit_conf(&conf);
+	return (abs(err));
 }
 /*
 int main (void)

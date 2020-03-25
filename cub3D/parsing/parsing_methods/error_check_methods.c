@@ -31,10 +31,8 @@ int rgb_e(struct s_plan plan)
 
 int path_e(struct s_path *file)
 {
-	int fd;
-
-	fd = open(file->path, O_RDONLY);
-	if (fd < 0)
+	file->fd = open(file->path, O_RDONLY);
+	if (file->fd < 0)
 		return (-1);
 	return (0);
 }
