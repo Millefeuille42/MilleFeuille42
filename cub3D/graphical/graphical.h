@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:48:45 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/22 14:43:14 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/26 18:02:37 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ t_ray 			ray_trd_quarter(t_ray r, t_conf conf);
 t_ray 			ray_frt_quarter(t_ray r, t_conf conf);
 
 t_win			draw(t_win cub, t_ray r, int x, double r_a);
+void			minimap(t_win cub);
 t_img			create_image(t_win cub);
+t_img			image_pixel_put(int x, int y, t_img img, t_plan color);
 
 t_win			keys_init(t_win cub);
 int				key_rhook(int key, t_win *cub);

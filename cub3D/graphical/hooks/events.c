@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:20:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/22 16:44:57 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/26 15:49:26 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,7 @@ int graphics(t_conf *conf)
 {
 	t_win cub;
 
-	cub = (t_win) {
-			.conf = &((t_conf) {
-					.fov = 60,
-					.pos.x = 12,
-					.pos.y = 12,
-					.dir_a = 310,
-					.res.x = 640,
-					.res.y = 360
-			})
-	};
+	cub = (t_win) {.conf = conf};
 	cub = keys_init(cub);
 	cub.mlx = mlx_init();
 	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x,

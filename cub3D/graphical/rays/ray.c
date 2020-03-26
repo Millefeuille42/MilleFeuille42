@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 18:52:04 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/22 16:25:40 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/26 17:52:49 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ int raycasting(t_win cub)
 		x++;
 		r_angle = (r_angle + i);
 	}
+	minimap(cub);
 	return (0);
 }

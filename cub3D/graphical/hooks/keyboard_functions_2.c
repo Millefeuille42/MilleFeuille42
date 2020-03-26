@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 17:19:16 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/22 12:31:41 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/26 18:50:44 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ void 	r_right(t_win **cub)
 void 	r_up(t_win **cub)
 {
 	if ((*cub)->inc_u < 100)
-		(*cub)->inc_u += 10;
+		(*cub)->inc_u += 20;
 	if ((*cub)->inc_d < 100)
-		(*cub)->inc_d += 10;
+		(*cub)->inc_d += 20;
 }
 
 void 	r_down(t_win **cub)
 {
 	if ((*cub)->inc_u > -100)
-		(*cub)->inc_u -= 10;
+		(*cub)->inc_u -= 20;
 	if ((*cub)->inc_d > -100)
-		(*cub)->inc_d -= 10;
+		(*cub)->inc_d -= 20;
 }

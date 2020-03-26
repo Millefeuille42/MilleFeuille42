@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 16:44:04 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/22 12:32:03 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/26 17:49:08 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int keyp_hook(int key, t_win *cub)
 
 	raycasting(*cub);
 	mlx_clear_window(cub->mlx, cub->win);
-
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.v_img, 0, 0);
 	return (0);
 }

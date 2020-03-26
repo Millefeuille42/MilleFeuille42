@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:48:20 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/22 16:28:41 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/26 18:02:37 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,20 @@ static t_draw	def_length(t_win cub, t_ray r, double r_a)
 	return (rt);
 }
 
-static t_img	image_pixel_put(int x, int y, t_img img, t_plan color)
+t_img	image_pixel_put(int x, int y, t_img img, t_plan color)
 {
 	img.c_img[y * img.sl + x * (img.bpp / 8)] = (char)color.b;
 	img.c_img[y * img.sl + x * (img.bpp / 8) + 1] = (char)color.g;
 	img.c_img[y * img.sl + x * (img.bpp / 8) + 2] = (char)color.r;
+	return (img);
+}
+
+t_img	image_pixel_put_a(int x, int y, t_img img, t_plan color)
+{
+	img.c_img[y * img.sl + x * (img.bpp / 8)] = (char)color.b;
+	img.c_img[y * img.sl + x * (img.bpp / 8) + 1] = (char)color.g;
+	img.c_img[y * img.sl + x * (img.bpp / 8) + 2] = (char)color.r;
+	img.c_img[y * img.sl + x * (img.bpp / 8) + 2] = 5;
 	return (img);
 }
 

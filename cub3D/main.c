@@ -35,7 +35,7 @@ int main(void)
 		printf("%s\n", conf.map[i]);
 		i++;
 	}
-	deinit_conf(&conf);
+	graphics(&conf);
 	return (abs(err));
 }
 /*
