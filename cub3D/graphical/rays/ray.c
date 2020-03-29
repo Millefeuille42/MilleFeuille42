@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 18:52:04 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/26 17:52:49 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/29 14:08:14 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int raycasting(t_win cub)
 	{
 		r.cpos = cub.conf->pos;
 		r = send_ray(r, r_angle, cub);
-		cub = draw(cub, r, x , r_angle);
+		cub = draw(cub, r, x, r_angle);
 		x++;
 		r_angle = (r_angle + i);
 	}

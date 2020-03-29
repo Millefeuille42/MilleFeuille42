@@ -72,7 +72,7 @@ static int	read_line(char *line, t_conf *conf, int head)
 
 static int	err_check(t_conf *conf)
 {
-	if ((res_e(conf->res)))
+	if ((res_e(&(conf->res))))
 		return (-2);
 	if ((rgb_e(conf->floor)))
 		return (-2);

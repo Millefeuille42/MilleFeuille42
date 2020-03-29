@@ -4,13 +4,13 @@ set(    SOURCE_CUB3D
         cub3D/init_conf.c
 
         cub3D/parsing/cub_parser.c
-        cub3D/parsing/GNL/get_next_line_utils.c
-        cub3D/parsing/GNL/get_next_line.c
         cub3D/parsing/parsing_methods/parsing_methods_1.c
         cub3D/parsing/parsing_methods/parsing_methods_2.c
-        cub3D/parsing/parsing_methods/error_check_methods.c
         cub3D/parsing/parsing_methods/parsing_methods_3.c
+        cub3D/parsing/parsing_methods/error_check_methods.c
         cub3D/parsing/parsing_methods/error_check_methods_2.c
+        cub3D/parsing/GNL/get_next_line_utils.c
+        cub3D/parsing/GNL/get_next_line.c
 
         cub3D/utils/ft_strdup.c
         cub3D/utils/ft_strjoin.c
@@ -23,6 +23,7 @@ set(    SOURCE_CUB3D
         cub3D/utils/ft_split.c
 
         cub3D/graphical/drawing_utils.c
+        cub3D/graphical/drawing_utils_2.c
         cub3D/graphical/hooks/events.c
         cub3D/graphical/hooks/keyboard_hooks.c
         cub3D/graphical/hooks/keyboard_functions.c

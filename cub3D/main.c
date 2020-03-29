@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/25 22:17:01 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/27 11:21:59 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
 	int i = 0;
 	t_conf conf;
 
-	conf = (t_conf) {.fov = 90};
+	conf = (t_conf) {.fov = 60};
 	fd = open("cub3D/sample.cub", O_RDONLY);
 	err = cub_parser(fd, &conf);
 	printf("\nRes: %i by %i", conf.res.x, conf.res.y);
@@ -38,22 +38,8 @@ int main(void)
 	graphics(&conf);
 	return (abs(err));
 }
-/*
-int main (void)
-{
-	t_conf conf;
 
-	conf = (t_conf) {
-			.fov = 80,
-			.pos.x = 12,
-			.pos.y = 12,
-			.dir_a = 310,
-			.res.x = 1920,
-			.res.y = 1080
-	};
-	graphics(&conf);
-}
-*/
+
 // TODO
 //		- Safe exiting
 //		- Proper Map Check
