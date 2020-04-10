@@ -6,42 +6,38 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/25 22:16:21 by millefeuille     ###   ########lyon.fr   */
+/*   Updated: 2020/03/30 14:49:32 by millefeuille     ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parsing.h"
 
-static t_conf def_pos(t_conf conf, int y, int x, char dir)
+static check_lim(t_map_prop mp, char **map)
 {
-	conf.pos.x = (double)x;
-	conf.pos.y = (double)y;
-	if (dir == 'N')
-		conf.dir_a = 90;
-	else if (dir == 'W')
-		conf.dir_a = 180;
-	else
-		conf.dir_a = 270;
-	return (conf);
+
 }
 
-static int	read_pos(t_map_properties mp, t_conf *conf, char **map)
+static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 {
-	if (ft_cinset(map[mp.y][mp.x], "NSWO"))
+	if (ft_cinset(*m, "NSWO"))
 	{
 		if (conf->dir_a)
 			return (-22);
+		conf->pos.x = (double)mp.x;
+		conf->pos.y = (double)mp.y;
+		if (*m == 'N')
+			conf->dir_a = 90;
+		else if (*m == 'W')
+			conf->dir_a = 180;
 		else
-		{
-			*conf = def_pos(*conf, mp.y, mp.x, map[mp.y][mp.x]);
-			map[mp.y][mp.x] = '0';
-		}
+			conf->dir_a = 270;
+		*m = '0';
 	}
-	else if (ft_cinset(map[mp.y][mp.x], "102 "))
+	else if (ft_cinset(*m, "1025 "))
 	{
-		if (map[mp.y][mp.x] == ' ')
-			map[mp.y][mp.x] = '1';
-		if ((mp.y == 0 || mp.y == mp.lines - 1) && map[mp.y][mp.x] != '1')
+		if (*m == ' ')
+			*m = '5';
+		if ((mp.y == 0 || mp.y == mp.lines - 1) && !ft_cinset(*m, "15"))
 			return (-22);
 	}
 	return (0);
@@ -49,7 +45,7 @@ static int	read_pos(t_map_properties mp, t_conf *conf, char **map)
 
 int map_e(char **map, t_conf *conf)
 {
-	t_map_properties prop;
+	t_map_prop prop;
 
 	prop.y = 0;
 	prop.lines = 0;
@@ -63,7 +59,7 @@ int map_e(char **map, t_conf *conf)
 			prop.length++;
 		while (map[prop.y][prop.x])
 		{
-			if (read_pos(prop, conf, map))
+			if (read_pos(prop, conf, &map[prop.y][prop.x]))
 				return (-2);
 			prop.x++;
 		}

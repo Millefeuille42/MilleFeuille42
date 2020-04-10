@@ -16,13 +16,13 @@
 #include "../cub3d.h"
 #include "GNL/get_next_line.h"
 
-typedef struct		s_map_properties
+typedef struct		s_map_prop
 {
 	int				x;
 	int				y;
 	int				length;
 	int				lines;
-}					t_map_properties;
+}					t_map_prop;
 
 int					res_p(t_conf *conf, char *line);
 int					plan_p(t_plan *plan, char *line);
