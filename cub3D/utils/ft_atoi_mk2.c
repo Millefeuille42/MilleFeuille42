@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/08 10:30:08 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/03/12 18:50:35 by mlabouri         ###   ########          */
+/*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_power(int nb, int power)
 		return (nb * ft_power(nb, power - 1));
 }
 
-int		atoi_mk2(const char *s, int start, int end)
+int			atoi_mk2(const char *s, int start, int end)
 {
 	int res;
 	int power;
