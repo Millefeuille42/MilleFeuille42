@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 18:33:31 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	key_f(int key, t_win **cub)
 		escape(cub);
 }
 
-static int key_check(int key, t_win **cub)
+static int	key_check(int key)
 {
 	if (key == UP
 		|| key == DOWN
@@ -49,38 +49,35 @@ static int key_check(int key, t_win **cub)
 	return (0);
 }
 
-int key_rhook(int key, t_win *cub)
+int			key_rhook(int key, t_win *cub)
 {
-	if (key_check(key, &cub))
+	if (key_check(key))
 		cub->keys.keyc[key] = 0;
 	return (0);
 }
 
-int keyp_hook(int key, t_win *cub)
+int			keyp_hook(int key, t_win *cub)
 {
 	cub->img = create_image(*cub);
 	cub->keys.keyc[key] = 1;
-	if (cub->keys.keyc[key] && key_check(key, &cub))
+	if (cub->keys.keyc[key] && key_check(key))
 		key_f(key, &cub);
 	else
 		return (0);
-
 	raycasting(*cub);
 	mlx_clear_window(cub->mlx, cub->win);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.v_img, 0, 0);
 	return (0);
 }
 
-
-
-t_win keys_init(t_win cub)
+t_win		keys_init(t_win cub)
 {
 	int i;
 
 	i = 0;
 	while (i < 66000)
 	{
-		cub.keys.keyc[i]= 0;
+		cub.keys.keyc[i] = 0;
 		i++;
 	}
 	cub.keys.keyl[0] = UP;

@@ -6,40 +6,34 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 15:32:23 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <math.h>
-#include <stdio.h> //remove
-#include <mlx.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <math.h>
+# include <stdio.h> /*remove*/
+# include <mlx.h>
 
-#define NORTH conf->no
-#define SOUTH conf->so
-#define WEST conf->we
-#define EAST conf->ea
-#define SPRITE conf->sprite
-#define MAP conf->map
-#define PARAMSNB 8
+# define PARAMSNB 8
 
-typedef struct 		s_res
+typedef struct		s_res
 {
 	int				x;
-	int 			y;
+	int				y;
 }					t_res;
 
-typedef struct 		s_plan
+typedef struct		s_plan
 {
 	int				r;
-	int 			g;
-	int 			b;
+	int				g;
+	int				b;
 }					t_plan;
 
 typedef struct		s_path
@@ -48,13 +42,13 @@ typedef struct		s_path
 	int				fd;
 }					t_path;
 
-typedef struct 		s_dbl_co
+typedef struct		s_dbl_co
 {
 	double			x;
 	double			y;
 }					t_dbl_co;
 
-typedef struct 		s_int_co
+typedef struct		s_int_co
 {
 	int				x;
 	int				y;
@@ -70,10 +64,10 @@ typedef struct		s_conf
 	t_path			we;
 	t_path			ea;
 	t_path			sprite;
-	char 			**map;
+	char			**map;
 	t_dbl_co		pos;
-	double 			dir_a;
-	double 			fov;
+	double			dir_a;
+	double			fov;
 }					t_conf;
 
 int					cub_parser(int fd, t_conf *conf);

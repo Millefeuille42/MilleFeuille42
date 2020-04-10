@@ -6,14 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 18:38:31 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphical.h"
 
-
-static void d_square(int y, int x, t_win cub, t_plan col)
+static void	d_square(int y, int x, t_win cub, t_plan col)
 {
 	int i;
 	int i2;
@@ -24,18 +23,18 @@ static void d_square(int y, int x, t_win cub, t_plan col)
 		i2 = 0;
 		while (i2 < 4)
 		{
-			image_pixel_put(x * 4 + i2, y * 4 + i,cub.img, col);
+			image_pixel_put(x * 4 + i2, y * 4 + i, cub.img, col);
 			i2++;
 		}
 		i++;
 	}
 }
 
-void minimap(t_win cub)
+void		minimap(t_win cub)
 {
-	int i;
-	int i2;
-	t_plan col;
+	int		i;
+	int		i2;
+	t_plan	col;
 
 	i = 0;
 	col = (t_plan) {255, 2525, 255};

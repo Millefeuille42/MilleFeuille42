@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 15:07:13 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parsing.h"
 
-static int rgb_parsing(int *color, int *i, char *line, char *pos)
+static int	rgb_parsing(int *color, int *i, char *line, char *pos)
 {
 	int i2;
 
@@ -30,7 +30,7 @@ static int rgb_parsing(int *color, int *i, char *line, char *pos)
 	return (0);
 }
 
-int	plan_p(struct s_plan *plan, char *line)
+int			plan_p(struct s_plan *plan, char *line)
 {
 	int i;
 

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 18:40:25 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,19 @@ t_img	image_pixel_put(int x, int y, t_img img, t_plan color)
 	return (img);
 }
 
-
-t_plan shade(t_plan col, double dist, char way, int in)
+t_plan	shade(t_plan col, double dist, char way, int in)
 {
 	if (way)
 	{
-		col.r = (int)(((double)col.r/255.0 + 0.1) * (in * (255.0/dist)));
-		col.g = (int)(((double)col.g/255.0 + 0.1) * (in * (255.0/dist)));
-		col.b = (int)(((double)col.b/255.0 + 0.1) * (in * (255.0/dist)));
+		col.r = (int)(((double)col.r / 255.0 + 0.1) * (in * (255.0 / dist)));
+		col.g = (int)(((double)col.g / 255.0 + 0.1) * (in * (255.0 / dist)));
+		col.b = (int)(((double)col.b / 255.0 + 0.1) * (in * (255.0 / dist)));
 	}
 	else
 	{
-		col.r = (int)(((double)col.r/255.0 + 0.1) * (in * (dist/255.0)));
-		col.g = (int)(((double)col.g/255.0 + 0.1) * (in * (dist/255.0)));
-		col.b = (int)(((double)col.b/255.0 + 0.1) * (in * (dist/255.0)));
+		col.r = (int)(((double)col.r / 255.0 + 0.1) * (in * (dist / 255.0)));
+		col.g = (int)(((double)col.g / 255.0 + 0.1) * (in * (dist / 255.0)));
+		col.b = (int)(((double)col.b / 255.0 + 0.1) * (in * (dist / 255.0)));
 	}
 	col.r = col.r > 255 ? 255 : col.r;
 	col.g = col.g > 255 ? 255 : col.g;

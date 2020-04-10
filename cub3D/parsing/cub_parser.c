@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 15:07:16 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int	leave_err(int err, void **t_free)
 
 static int	parse_head(char *line)
 {
-	int err;
-	int i;
+	int			err;
+	int			i;
 	static char *charset[PARAMSNB];
 
 	i = 0;
@@ -95,10 +95,9 @@ static int	err_check(t_conf *conf)
 
 int			cub_parser(int fd, t_conf *conf)
 {
-	int i;
-
-	int head;
-	char *line;
+	int		i;
+	int		head;
+	char	*line;
 
 	line = NULL;
 	i = 0;

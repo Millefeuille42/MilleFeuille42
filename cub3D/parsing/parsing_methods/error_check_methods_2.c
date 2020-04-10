@@ -6,15 +6,15 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 15:26:00 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parsing.h"
 
-static check_lim(t_map_prop mp, char **map)
+static int	check_lim(t_map_prop mp, char **map)
 {
-
+	(void)mp;
 }
 
 static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
@@ -43,7 +43,7 @@ static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 	return (0);
 }
 
-int map_e(char **map, t_conf *conf)
+int			map_e(char **map, t_conf *conf)
 {
 	t_map_prop prop;
 

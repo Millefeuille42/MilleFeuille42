@@ -6,16 +6,16 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 18:31:58 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../graphical.h"
 
-void 	left(t_win **cub)
+void	left(t_win **cub)
 {
-	double angle;
-	t_dbl_co n_pos;
+	double		angle;
+	t_dbl_co	n_pos;
 
 	angle = (*cub)->conf->dir_a + 90;
 	n_pos.x = (*cub)->conf->pos.x - (cos(angle * M_PI / 180) / 5);
@@ -25,10 +25,10 @@ void 	left(t_win **cub)
 	(*cub)->conf->pos = n_pos;
 }
 
-void 	right(t_win **cub)
+void	right(t_win **cub)
 {
-	double angle;
-	t_dbl_co n_pos;
+	double		angle;
+	t_dbl_co	n_pos;
 
 	angle = (*cub)->conf->dir_a + 90;
 	n_pos.x = (*cub)->conf->pos.x + (cos(angle * M_PI / 180) / 5);
@@ -38,10 +38,10 @@ void 	right(t_win **cub)
 	(*cub)->conf->pos = n_pos;
 }
 
-void 	up(t_win **cub)
+void	up(t_win **cub)
 {
-	double angle;
-	t_dbl_co n_pos;
+	double		angle;
+	t_dbl_co	n_pos;
 
 	angle = (*cub)->conf->dir_a;
 	n_pos.x = (*cub)->conf->pos.x + (cos(angle * M_PI / 180) / 5);
@@ -51,10 +51,10 @@ void 	up(t_win **cub)
 	(*cub)->conf->pos = n_pos;
 }
 
-void 	down(t_win **cub)
+void	down(t_win **cub)
 {
-	double angle;
-	t_dbl_co n_pos;
+	double		angle;
+	t_dbl_co	n_pos;
 
 	angle = (*cub)->conf->dir_a;
 	n_pos.x = (*cub)->conf->pos.x - (cos(angle * M_PI / 180) / 5);
@@ -64,7 +64,7 @@ void 	down(t_win **cub)
 	(*cub)->conf->pos = n_pos;
 }
 
-void 	escape(t_win **cub)
+void	escape(t_win **cub)
 {
 	deinit_conf((*cub)->conf);
 	exit(0);

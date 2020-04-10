@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 15:07:13 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_draw	def_length(t_win cub, t_ray r, double r_a)
 
 	lim.dist = sqrt(pow(cub.conf->pos.x - r.cpos.x, 2)
 					+ pow(cub.conf->pos.y - r.cpos.y, 2));
-	lim.dist = cos((r_a/100 - cub.conf->dir_a) * (M_PI / 180)) * lim.dist;
+	lim.dist = cos((r_a / 100 - cub.conf->dir_a) * (M_PI / 180)) * lim.dist;
 	line_height = (int)((cub.conf->res.y) / lim.dist);
 	if (lim.dist == 0)
 		line_height = 0;
@@ -32,7 +32,7 @@ static t_draw	def_length(t_win cub, t_ray r, double r_a)
 	return (lim);
 }
 
-t_win draw(t_win cub, t_ray r, int x, double r_a)
+t_win			draw(t_win cub, t_ray r, int x, double r_a)
 {
 	int		i;
 	t_draw	lim;

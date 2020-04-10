@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 15:23:43 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parsing.h"
 
-static int safe_join(char **s1, char **s2)
+static int	safe_join(char **s1, char **s2)
 {
 	char *temp;
 	char *temp2;
@@ -31,11 +31,11 @@ static int safe_join(char **s1, char **s2)
 	return (0);
 }
 
-int map_p(struct s_conf *conf, int fd)
+int			map_p(struct s_conf *conf, int fd)
 {
-	int err;
-	char *line;
-	char *final;
+	int		err;
+	char	*line;
+	char	*final;
 
 	final = NULL;
 	while ((err = get_next_line(fd, &line)))

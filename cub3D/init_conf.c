@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 15:35:41 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	safe_free(void **element)
 		free(*element);
 }
 
-void	clear(char **pstr)
+void		clear(char **pstr)
 {
 	int i;
 
@@ -42,16 +42,16 @@ static void	safe_close(int fd)
 		close(fd);
 }
 
-void deinit_conf(t_conf *conf)
+void		deinit_conf(t_conf *conf)
 {
-	safe_free((void **)&(NORTH.path));
-	safe_free((void **)&(SOUTH.path));
-	safe_free((void **)&(WEST.path));
-	safe_free((void **)&(EAST.path));
-	safe_free((void **)&(SPRITE.path));
-	clear(MAP);
-	safe_close((NORTH.fd));
-	safe_close((SOUTH.fd));
-	safe_close((WEST.fd));
-	safe_close((EAST.fd));
+	safe_free((void **)&(conf->no.path));
+	safe_free((void **)&(conf->so.path));
+	safe_free((void **)&(conf->we.path));
+	safe_free((void **)&(conf->ea.path));
+	safe_free((void **)&(conf->sprite.path));
+	clear(conf->map);
+	safe_close((conf->no.fd));
+	safe_close((conf->so.fd));
+	safe_close((conf->we.fd));
+	safe_close((conf->ea.fd));
 }

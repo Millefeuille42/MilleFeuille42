@@ -6,12 +6,12 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 18:37:18 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAYCASTING_H
-# define RAYCASTING_H
+#ifndef GRAPHICAL_H
+# define GRAPHICAL_H
 
 # include "../cub3d.h"
 
@@ -35,12 +35,12 @@ typedef struct		s_img
 {
 	void			*v_img;
 	char			*c_img;
-	int 			bpp;
-	int 			sl;
-	int 			endian;
+	int				bpp;
+	int				sl;
+	int				endian;
 }					t_img;
 
-typedef struct 		s_ray
+typedef struct		s_ray
 {
 	t_dbl_co		dir;
 	t_dbl_co		coef;
@@ -49,13 +49,13 @@ typedef struct 		s_ray
 	t_int_co		mpos;
 }					t_ray;
 
-typedef struct 		s_win
+typedef struct		s_win
 {
 	t_conf			*conf;
-	void 			*mlx;
-	void 			*win;
+	void			*mlx;
+	void			*win;
 	t_img			img;
-	t_key 			keys;
+	t_key			keys;
 	int				inc_u;
 	int				inc_d;
 }					t_win;
@@ -67,32 +67,32 @@ typedef struct		s_draw
 	double			dist;
 }					t_draw;
 
-int				raycasting(t_win cub);
+int					raycasting(t_win cub);
 
-t_ray 			ray_fst_quarter(t_ray r, t_conf conf);
-t_ray 			ray_scd_quarter(t_ray r, t_conf conf);
-t_ray 			ray_trd_quarter(t_ray r, t_conf conf);
-t_ray 			ray_frt_quarter(t_ray r, t_conf conf);
+t_ray				ray_fst_quarter(t_ray r, t_conf conf);
+t_ray				ray_scd_quarter(t_ray r, t_conf conf);
+t_ray				ray_trd_quarter(t_ray r, t_conf conf);
+t_ray				ray_frt_quarter(t_ray r, t_conf conf);
 
-t_img			create_image(t_win cub);
-t_img			image_pixel_put(int x, int y, t_img img, t_plan color);
+t_img				create_image(t_win cub);
+t_img				image_pixel_put(int x, int y, t_img img, t_plan color);
 
-t_win			draw(t_win cub, t_ray r, int x, double r_a);
-t_plan			shade(t_plan col, double dist, char way, int in);
-void			minimap(t_win cub);
+t_win				draw(t_win cub, t_ray r, int x, double r_a);
+t_plan				shade(t_plan col, double dist, char way, int in);
+void				minimap(t_win cub);
 
-t_win			keys_init(t_win cub);
-int				key_rhook(int key, t_win *cub);
-int				keyp_hook(int key, t_win *cub);
+t_win				keys_init(t_win cub);
+int					key_rhook(int key, t_win *cub);
+int					keyp_hook(int key, t_win *cub);
 
-void 			up(t_win **cub);
-void 			down(t_win **cub);
-void 			left(t_win **cub);
-void 			right(t_win **cub);
-void 			r_up(t_win **cub);
-void 			r_down(t_win **cub);
-void 			r_left(t_win **cub);
-void 			r_right(t_win **cub);
-void 			escape(t_win **cub);
+void				up(t_win **cub);
+void				down(t_win **cub);
+void				left(t_win **cub);
+void				right(t_win **cub);
+void				r_up(t_win **cub);
+void				r_down(t_win **cub);
+void				r_left(t_win **cub);
+void				r_right(t_win **cub);
+void				escape(t_win **cub);
 
-# endif
+#endif

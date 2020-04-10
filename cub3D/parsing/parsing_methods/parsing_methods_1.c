@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 15:07:13 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ int	res_p(t_conf *conf, char *line)
 		i2++;
 	if (!(ft_cinset(line[i2], " \n\t\r")) && line[i2] != '\0')
 		return (-2);
-	conf->res.y = atoi_mk2(line, i, i2 -1);
+	conf->res.y = atoi_mk2(line, i, i2 - 1);
 	return (0);
 }
 
-int		path_p(char **path, char *line)
+int	path_p(char **path, char *line)
 {
 	int i;
 

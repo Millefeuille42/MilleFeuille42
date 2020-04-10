@@ -6,15 +6,15 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 14:06:41 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/10 15:29:17 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-#include "../cub3d.h"
-#include "GNL/get_next_line.h"
+# include "../cub3d.h"
+# include "GNL/get_next_line.h"
 
 typedef struct		s_map_prop
 {
@@ -35,4 +35,4 @@ int					map_e(char **map, t_conf *conf);
 int					path_e(t_path *file);
 
 void				clear(char **pstr);
-# endif
+#endif
