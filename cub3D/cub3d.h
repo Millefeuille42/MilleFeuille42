@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 15:32:23 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/13 15:41:21 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <math.h>
-# include <stdio.h> /*remove*/
 # include <mlx.h>
 
 # define PARAMSNB 8
@@ -84,5 +83,6 @@ int					atoi_mk2(const char *s, int start, int end);
 char				ft_cinset(char c, const char *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				**ft_split(char const *s, char c);
+void				ft_putstr_fd(char *s, int fd);
 
 #endif

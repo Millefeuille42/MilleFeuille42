@@ -6,44 +6,57 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 15:07:18 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/13 15:59:34 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main(void)
+static void		disp_error(int err)
 {
-	int fd;
-	int err;
-	int i = 0;
-	t_conf conf;
+	ft_putstr_fd("Error\n", 2);
+	if (err == -1)
+		ft_putstr_fd("Invalid cub file!\n", 2);
+	if (err <= -20 && err >= -23)
+		ft_putstr_fd("Invalid Configuration: ", 2);
+	if (err == -20)
+		ft_putstr_fd("Resolution\n", 2);
+	if (err == -21)
+		ft_putstr_fd("Texture Path\n", 2);
+	if (err == -22)
+		ft_putstr_fd("Map\n", 2);
+	if (err == -23)
+		ft_putstr_fd("Color\n", 2);
+	if (err == -3)
+		ft_putstr_fd("System Error\n", 2);
+}
 
-	conf = (t_conf) {.fov = 60};
-	fd = open("cub3D/sample.cub", O_RDONLY);
-	err = cub_parser(fd, &conf);
-	printf("\nRes: %i by %i", conf.res.x, conf.res.y);
-	printf("\nFloor: %i,%i,%i", conf.floor.r, conf.floor.g, conf.floor.b);
-	printf("\nRoof: %i,%i,%i", conf.roof.r, conf.roof.g, conf.roof.b);
-	printf("\nNorth: %s\nSouth: %s\nEast: %s\nWest: %s\nSprite: %s", conf.no.path, conf.so.path, conf.ea.path,
-		   conf.we.path, conf.sprite.path);
-	printf("\nPos: %i, %i", (int)conf.pos.x, (int)conf.pos.y);
-	printf("\nDir: %i", (int)conf.dir_a);
-	printf("\nmap:\n");
-	while (conf.map[i])
+int				main(int argc, char *argv[])
+{
+	int		fd;
+	int		err;
+	t_conf	conf;
+
+	if (argc < 1)
+		err = -1;
+	else
 	{
-		printf("%s\n", conf.map[i]);
-		i++;
+		conf = (t_conf) {.fov = 60};
+		fd = open(argv[1], O_RDONLY);
+		err = cub_parser(fd, &conf);
+		if (!err)
+			graphics(&conf);
+		else
+		{
+			disp_error(err);
+			deinit_conf(&conf);
+		}
 	}
-	graphics(&conf);
 	return (abs(err));
 }
 
-
-// TODO
-//		- Safe exiting
-//		- Proper Map Check
-//		- Movement
-//		- Proper KeyMapping
-//		- Error Handling
-//		- Orchestration
+/*	TODO							*/
+/*		- Save						*/
+/*		- Sprites					*/
+/*		- Texturing					*/
+/*		- Proper KeyMapping (MacOs)	*/

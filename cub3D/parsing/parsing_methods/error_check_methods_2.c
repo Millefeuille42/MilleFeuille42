@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 15:26:00 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/13 10:59:10 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,21 @@
 
 static int	check_lim(t_map_prop mp, char **map)
 {
-	(void)mp;
+	if (!(mp.y == 0 || mp.y == mp.lines - 1))
+	{
+		if (!ft_cinset(map[mp.y][mp.length - 1], "15"))
+			return (-22);
+		if ((ft_cinset(map[mp.y - 1][mp.length - 2], "15")
+		|| ft_cinset(map[mp.y - 1][mp.length - 1], "15")
+		|| ft_cinset(map[mp.y - 1][mp.length], "15"))
+		&& (ft_cinset(map[mp.y + 1][mp.length - 2], "15")
+		|| ft_cinset(map[mp.y + 1][mp.length - 1], "15")
+		|| ft_cinset(map[mp.y + 1][mp.length], "15")))
+			return (0);
+		else
+			return (-22);
+	}
+	return (0);
 }
 
 static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
@@ -60,9 +74,11 @@ int			map_e(char **map, t_conf *conf)
 		while (map[prop.y][prop.x])
 		{
 			if (read_pos(prop, conf, &map[prop.y][prop.x]))
-				return (-2);
+				return (-22);
 			prop.x++;
 		}
+		if (check_lim(prop, map))
+			return (-22);
 		prop.y++;
 	}
 	return (0);

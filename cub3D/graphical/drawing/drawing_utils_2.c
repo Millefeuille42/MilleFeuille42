@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphical.h"
+#include "../graphical.h"
 
 t_img	image_pixel_put(int x, int y, t_img img, t_plan color)
 {

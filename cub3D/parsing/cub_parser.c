@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/10 15:07:16 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/13 11:04:24 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,23 @@ static int	read_line(char *line, t_conf *conf, int head)
 static int	err_check(t_conf *conf)
 {
 	if ((res_e(&(conf->res))))
-		return (-2);
+		return (-20);
 	if ((rgb_e(conf->floor)))
-		return (-2);
+		return (-23);
 	if ((rgb_e(conf->roof)))
-		return (-2);
+		return (-23);
 	if ((map_e(conf->map, conf)))
-		return (-2);
+		return (-22);
 	if ((path_e(&conf->no)))
-		return (-1);
+		return (-21);
 	if ((path_e(&conf->so)))
-		return (-1);
+		return (-21);
 	if ((path_e(&conf->we)))
-		return (-1);
+		return (-21);
 	if ((path_e(&conf->ea)))
-		return (-1);
+		return (-21);
 	if ((path_e(&conf->sprite)))
-		return (-1);
+		return (-21);
 	return (0);
 }
 
@@ -98,6 +98,7 @@ int			cub_parser(int fd, t_conf *conf)
 	int		i;
 	int		head;
 	char	*line;
+	int		err;
 
 	line = NULL;
 	i = 0;
@@ -112,7 +113,9 @@ int			cub_parser(int fd, t_conf *conf)
 		i++;
 		free(line);
 	}
-	if ((map_p(conf, fd)) || ((err_check(conf))))
-		return (-2);
+	if ((err = (map_p(conf, fd))))
+		return (err);
+	if ((err = (err_check(conf))))
+		return (err);
 	return (0);
 }

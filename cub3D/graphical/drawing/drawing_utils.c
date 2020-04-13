@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphical.h"
+#include "../graphical.h"
 
 static t_draw	def_length(t_win cub, t_ray r, double r_a)
 {

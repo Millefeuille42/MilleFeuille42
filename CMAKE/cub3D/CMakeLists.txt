@@ -21,14 +21,20 @@ set(    SOURCE_CUB3D
         cub3D/utils/ft_c_in_set.c
         cub3D/utils/ft_substr.c
         cub3D/utils/ft_split.c
+        cub3D/utils/ft_putstr_fd.c
 
-        cub3D/graphical/drawing_utils.c
-        cub3D/graphical/drawing_utils_2.c
+        cub3D/graphical/drawing/drawing_utils.c
+        cub3D/graphical/drawing/drawing_utils_2.c
         cub3D/graphical/hooks/events.c
         cub3D/graphical/hooks/keyboard_hooks.c
         cub3D/graphical/hooks/keyboard_functions.c
         cub3D/graphical/hooks/keyboard_functions_2.c
         cub3D/graphical/rays/ray.c
         cub3D/graphical/rays/ray_utils.c
+        cub3D/graphical/minimap.c
+
+        cub3D/cub3d.h
+        cub3D/parsing/parsing.h
+        cub3D/graphical/parsing.h
 
         PARENT_SCOPE)

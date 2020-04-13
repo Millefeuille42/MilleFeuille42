@@ -1,5 +1,7 @@
 -3 = Erreur Système
 -2 = Config invalide
+    -20 = res
     -21 = chemin Invalide
     -22 = map Invalide
+    -23 = couleur
 -1 = Fichier inexistant
