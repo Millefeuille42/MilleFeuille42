@@ -35,6 +35,6 @@ set(    SOURCE_CUB3D
 
         cub3D/cub3d.h
         cub3D/parsing/parsing.h
-        cub3D/graphical/parsing.h
+        cub3D/graphical/graphical.h
 
         PARENT_SCOPE)

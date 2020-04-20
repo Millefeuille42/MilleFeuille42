@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/13 16:03:16 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/04/13 16:05:51 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ typedef struct		s_ray
 	t_int_co		mpos;
 }					t_ray;
 
+typedef struct		s_text
+{
+	t_int_co	size;
+	t_img		img;
+}					t_text;
+
 typedef struct		s_win
 {
 	t_conf			*conf;
@@ -74,6 +80,11 @@ typedef struct		s_win
 	t_key			keys;
 	int				inc_u;
 	int				inc_d;
+	t_text			no;
+	t_text			so;
+	t_text			we;
+	t_text			ea;
+	t_text			sp;
 }					t_win;
 
 typedef struct		s_draw
