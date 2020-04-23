@@ -32,7 +32,7 @@ int					map_p(t_conf *conf, int fd);
 int					res_e(t_res *res);
 int					rgb_e(t_plan plan);
 int					map_e(char **map, t_conf *conf);
-int					path_e(t_path *file);
+int					path_e(t_text *file);
 
 void				clear(char **pstr);
 #endif

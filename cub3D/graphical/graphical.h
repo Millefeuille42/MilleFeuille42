@@ -17,10 +17,10 @@
 
 # if __APPLE__
 
-#  define UP		1
-#  define LEFT		2
-#  define DOWN		3
-#  define RIGHT		4
+#  define UP		13
+#  define LEFT		0
+#  define DOWN		1
+#  define RIGHT		2
 #  define R_UP		126
 #  define R_LEFT	124
 #  define R_DOWN	125
@@ -47,15 +47,6 @@ typedef struct		s_key
 	char			keyl[7];
 }					t_key;
 
-typedef struct		s_img
-{
-	void			*v_img;
-	char			*c_img;
-	int				bpp;
-	int				sl;
-	int				endian;
-}					t_img;
-
 typedef struct		s_ray
 {
 	t_dbl_co		dir;
@@ -64,12 +55,6 @@ typedef struct		s_ray
 	t_dbl_co		opos;
 	t_int_co		mpos;
 }					t_ray;
-
-typedef struct		s_text
-{
-	t_int_co	size;
-	t_img		img;
-}					t_text;
 
 typedef struct		s_win
 {
@@ -80,11 +65,6 @@ typedef struct		s_win
 	t_key			keys;
 	int				inc_u;
 	int				inc_d;
-	t_text			no;
-	t_text			so;
-	t_text			we;
-	t_text			ea;
-	t_text			sp;
 }					t_win;
 
 typedef struct		s_draw

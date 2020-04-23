@@ -59,4 +59,3 @@ int				main(int argc, char *argv[])
 /*		- Save						*/
 /*		- Sprites					*/
 /*		- Texturing					*/
-/*		- Proper KeyMapping (MacOs)	*/

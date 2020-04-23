@@ -38,12 +38,11 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 
 include_directories(
         /usr/include
-        /home/millefeuille/CLionProjects/MilleFeuille42/mlx
+        /usr/local/include
 )
 link_directories(
         /usr/include
-        /home/millefeuille/CLionProjects/MilleFeuille42/mlx
+        /usr/local/include
 )
 target_link_libraries(cub3D LINK_PUBLIC libm.so libc.so libmlx.a libX11.so libXext.so)
 add_link_options(-framework OpenGL -framework /System/Library/Frameworks/AppKit.framework/Appkit)
-

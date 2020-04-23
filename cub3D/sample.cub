@@ -1,9 +1,9 @@
 R 500 500
-NO cub3D/textures/bluestone.xpm
-SO cub3D/textures/eagle.xpm
-WE cub3D/textures/greystone.xpm
-EA cub3D/textures/colorstone.xpm
-S  cub3D/textures/barrel.xpm
+NO textures/bluestone.xpm
+SO textures/eagle.xpm
+WE textures/greystone.xpm
+EA textures/colorstone.xpm
+S  textures/barrel.xpm
 F 94, 201, 247
 C 83, 104, 173
        111111111111111111111111

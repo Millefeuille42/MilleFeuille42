@@ -16,8 +16,8 @@ t_ray	ray_fst_quarter(t_ray r, t_conf conf)
 {
 	while (conf.map[r.mpos.y][r.mpos.x] == '0')
 	{
-		r.cpos.x += r.dir.x / 500;
-		r.cpos.y += r.dir.y / 500;
+		r.cpos.x += r.dir.x / 50;
+		r.cpos.y += r.dir.y / 50;
 		r.mpos.x = floor(r.cpos.x);
 		r.mpos.y = floor(r.cpos.y);
 	}

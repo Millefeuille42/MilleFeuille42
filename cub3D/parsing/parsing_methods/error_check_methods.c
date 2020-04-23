@@ -30,10 +30,34 @@ int	rgb_e(struct s_plan plan)
 	return (0);
 }
 
-int	path_e(struct s_path *file)
+static int texture_length(t_text *text)
+{
+	char *line;
+	char flag;
+
+	flag = 0;
+	while (get_next_line(text->fd, &line))
+	{
+		if (flag)
+		{
+			if (line[ft_strlen(line) - 1] == ',')
+				line[ft_strlen(line) - 1] = '\0';
+			else
+				flag = 0;
+			text->size.x = (int)ft_strlen(line) - 2;
+			text->size.y++;
+		}
+		if (!ft_strncmp(line, "/* pixels */", ft_strlen("/* pixels */")))
+			flag = 1;
+		free(line);
+	}
+}
+
+int	path_e(t_text *file)
 {
 	file->fd = open(file->path, O_RDONLY);
 	if (file->fd < 0)
 		return (-1);
+	texture_length(file);
 	return (0);
 }

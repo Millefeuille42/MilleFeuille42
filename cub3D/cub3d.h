@@ -35,12 +35,6 @@ typedef struct		s_plan
 	int				b;
 }					t_plan;
 
-typedef struct		s_path
-{
-	char			*path;
-	int				fd;
-}					t_path;
-
 typedef struct		s_dbl_co
 {
 	double			x;
@@ -53,16 +47,33 @@ typedef struct		s_int_co
 	int				y;
 }					t_int_co;
 
+typedef struct		s_img
+{
+	void			*v_img;
+	char			*c_img;
+	int				bpp;
+	int				sl;
+	int				endian;
+}					t_img;
+
+typedef struct		s_text
+{
+	t_int_co		size;
+	t_img			img;
+	char			*path;
+	int				fd;
+}					t_text;
+
 typedef struct		s_conf
 {
 	t_res			res;
 	t_plan			floor;
 	t_plan			roof;
-	t_path			no;
-	t_path			so;
-	t_path			we;
-	t_path			ea;
-	t_path			sprite;
+	t_text			no;
+	t_text			so;
+	t_text			we;
+	t_text			ea;
+	t_text			sprite;
 	char			**map;
 	t_dbl_co		pos;
 	double			dir_a;
@@ -84,5 +95,6 @@ char				ft_cinset(char c, const char *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				**ft_split(char const *s, char c);
 void				ft_putstr_fd(char *s, int fd);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
