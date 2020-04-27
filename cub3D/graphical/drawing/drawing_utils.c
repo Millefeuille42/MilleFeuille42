@@ -42,8 +42,6 @@ t_win			draw(t_win cub, t_ray r, int x, double r_a)
 	if (x >= cub.conf->res.x)
 		return (cub);
 	lim = def_length(cub, r, r_a);
-	col = (t_plan) {54, 36, 171};
-	col = shade(col, lim.dist, 1, 2);
 	i = 0;
 	while (i < (cub.conf->res.y - 1))
 	{
@@ -51,7 +49,10 @@ t_win			draw(t_win cub, t_ray r, int x, double r_a)
 		if (i < lim.s)
 			image_pixel_put(x, i, cub.img, cub.conf->roof);
 		else if (i < lim.e)
+		{
+			col = text_spot(r.cpos, *cub.conf->t, i, lim);
 			image_pixel_put(x, i, cub.img, col);
+		}
 		else
 			image_pixel_put(x, i, cub.img, g_col);
 		i++;

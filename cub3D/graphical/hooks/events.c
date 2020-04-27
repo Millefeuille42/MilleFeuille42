@@ -22,7 +22,7 @@ t_img		create_image(t_win cub)
 	img.v_img = mlx_new_image(cub.mlx,
 			cub.conf->res.x, cub.conf->res.y);
 	img.c_img = mlx_get_data_addr(img.v_img,
-			&img.bpp, &img.sl, &img.endian);
+			&img.bpp, &img.sl, &img.e);
 	return (img);
 }
 
@@ -35,7 +35,7 @@ static int	quit(t_win **cub)
 static int	event_hooks(t_win *cub)
 {
 	cub->img = create_image(*cub);
-	raycasting(*cub);
+	raycasting(cub);
 	mlx_clear_window(cub->mlx, cub->win);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.v_img, 0, 0);
 	mlx_hook(cub->win, 2, (1L << 0),
@@ -50,10 +50,14 @@ static int	event_hooks(t_win *cub)
 int			graphics(t_conf *conf)
 {
 	t_win cub;
+	t_int_co ssize;
 
 	cub = (t_win) {.conf = conf};
 	cub = keys_init(cub);
 	cub.mlx = mlx_init();
+	mlx_get_screen_size(cub.mlx, &ssize.x, &ssize.y);
+	cub.conf->res.x = cub.conf->res.x > ssize.x ? ssize.x : cub.conf->res.x;
+	cub.conf->res.y = cub.conf->res.y > ssize.y ? ssize.y : cub.conf->res.y;
 	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x,
 		cub.conf->res.y, "cub3D");
 	event_hooks(&cub);

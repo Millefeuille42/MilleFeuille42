@@ -16,8 +16,6 @@ int	res_e(struct s_res *res)
 {
 	if (res->x <= 0 || res->y <= 0)
 		return (-2);
-	res->x = res->x > 1920 ? 1920 : res->x;
-	res->y = res->y > 1080 ? 1080 : res->y;
 	return (0);
 }
 
@@ -44,8 +42,8 @@ static int texture_length(t_text *text)
 				line[ft_strlen(line) - 1] = '\0';
 			else
 				flag = 0;
-			text->size.x = (int)ft_strlen(line) - 2;
-			text->size.y++;
+			text->s.x = (int)ft_strlen(line) - 2;
+			text->s.y++;
 		}
 		if (!ft_strncmp(line, "/* pixels */", ft_strlen("/* pixels */")))
 			flag = 1;

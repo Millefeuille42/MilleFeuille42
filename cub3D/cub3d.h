@@ -53,15 +53,16 @@ typedef struct		s_img
 	char			*c_img;
 	int				bpp;
 	int				sl;
-	int				endian;
+	int				e;
 }					t_img;
 
 typedef struct		s_text
 {
-	t_int_co		size;
-	t_img			img;
+	t_int_co		s;
+	t_img			i;
 	char			*path;
 	int				fd;
+	char			hitpoint;
 }					t_text;
 
 typedef struct		s_conf
@@ -78,6 +79,7 @@ typedef struct		s_conf
 	t_dbl_co		pos;
 	double			dir_a;
 	double			fov;
+	t_text			*t;
 }					t_conf;
 
 int					cub_parser(int fd, t_conf *conf);

@@ -34,14 +34,18 @@ RUN service mysql start \
     && echo "update mysql.user set plugin = 'mysql_native_password' where user='root';" | mysql -u root
 
     #Install WordPress
-ADD --chown=www-data:www-data srcs/wp /tmp/wp
-RUN mv /tmp/wp/* /var/www/html/
+RUN cd /tmp && curl -LO https://wordpress.org/latest.tar.gz
+RUN tar xzvf /tmp/latest.tar.gz && cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
+RUN cp -a /tmp/wordpress/. /var/www/html && cd
 
 RUN chown -R www-data:www-data /var/www/
 RUN chmod -R 777 /var/www/
 
 ADD --chown=www-data:www-data srcs/nginx_conf /etc/nginx/sites-enabled/default
 ADD --chown=www-data:www-data srcs/config.inc.php /usr/share/phpMyAdmin/config.inc.php
+ADD --chown=www-data:www-data srcs/wp-config.php /var/www/html/wp-config.php
+ADD --chown=www-data:www-data srcs/localhost.cert /etc/nginx/certs/localhost.cert
+ADD --chown=www-data:www-data srcs/localhost.key /etc/nginx/certs/localhost.key
 
 CMD service mysql start & service php7.3-fpm start & service nginx start & /bin/bash
 

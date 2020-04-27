@@ -64,7 +64,7 @@ int			keyp_hook(int key, t_win *cub)
 		key_f(key, &cub);
 	else
 		return (0);
-	raycasting(*cub);
+	raycasting(cub);
 	mlx_clear_window(cub->mlx, cub->win);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.v_img, 0, 0);
 	return (0);

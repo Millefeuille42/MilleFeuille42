@@ -1,8 +1,18 @@
 server {
-   listen 80;
-   listen [::]:80;
-
+   listen 443;
    root /var/www/html;
+
+   ssl on;
+   autoindex off;
+
+   ssl_certificate /etc/nginx/certs/localhost.cert;
+   ssl_certificate_key /etc/nginx/certs/localhost.key;
+
+   error_page 404 = @index;
+   error_page 403 = @index;
+   location @index {
+     return 302 /;
+   }
 
    location / {
         index index.php;
@@ -21,5 +31,11 @@ server {
        expires max;
        log_not_found off;
    }
+}
 
+server {
+	listen 80;
+
+	server_name localhost;
+	return 301 https://$server_name$request_uri;
 }

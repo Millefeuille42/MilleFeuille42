@@ -44,5 +44,5 @@ link_directories(
         /usr/include
         /usr/local/include
 )
-target_link_libraries(cub3D LINK_PUBLIC libm.so libc.so libmlx.a libX11.so libXext.so)
+target_link_libraries(cub3D LINK_PUBLIC libm.so libc.so libmlx.a libX11.so libXext.so bsd.so)
 add_link_options(-framework OpenGL -framework /System/Library/Frameworks/AppKit.framework/Appkit)

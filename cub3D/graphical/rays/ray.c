@@ -26,34 +26,35 @@ static t_ray	send_ray(t_ray r, double r_angle, t_win cub)
 	r.mpos.x = floor(r.cpos.x);
 	r.mpos.y = floor(r.cpos.y);
 	if ((r_angle > 0 && r_angle <= 90 * 100) || r_angle >= 360 * 100)
-		r = ray_fst_quarter(r, *cub.conf);
+		r = ray_fst_quarter(r, cub.conf);
 	else if (r_angle > 90 * 100 && r_angle <= 180 * 100)
-		r = ray_scd_quarter(r, *cub.conf);
+		r = ray_scd_quarter(r, cub.conf);
 	else if (r_angle > 180 * 100 && r_angle <= 270 * 100)
-		r = ray_trd_quarter(r, *cub.conf);
+		r = ray_trd_quarter(r, cub.conf);
 	else
-		r = ray_frt_quarter(r, *cub.conf);
+		r = ray_frt_quarter(r, cub.conf);
 	return (r);
 }
 
-int				raycasting(t_win cub)
+int				raycasting(t_win *cub)
 {
 	t_ray	r;
 	int		x;
 	double	i;
 	double	r_a;
 
-	i = (cub.conf->fov / (float)cub.conf->res.x) * 100;
-	r_a = (cub.conf->dir_a - (cub.conf->fov / 2)) * 100;
+	init_textures(cub);
+	i = (cub->conf->fov / (float)cub->conf->res.x) * 100;
+	r_a = (cub->conf->dir_a - (cub->conf->fov / 2)) * 100;
 	x = 0;
-	while ((int)r_a <= ((int)cub.conf->dir_a + (int)cub.conf->fov / 2) * 100)
+	while ((int)r_a <= ((int)cub->conf->dir_a + (int)cub->conf->fov / 2) * 100)
 	{
-		r.cpos = cub.conf->pos;
-		r = send_ray(r, r_a, cub);
-		cub = draw(cub, r, x, r_a);
+		r.cpos = cub->conf->pos;
+		r = send_ray(r, r_a, *cub);
+		*cub = draw(*cub, r, x, r_a);
 		x++;
 		r_a = (r_a + i);
 	}
-	minimap(cub);
+	minimap(*cub);
 	return (0);
 }
