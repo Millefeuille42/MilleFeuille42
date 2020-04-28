@@ -36,7 +36,7 @@ RUN service mysql start \
     #Install WordPress
 RUN cd /tmp && curl -LO https://wordpress.org/latest.tar.gz
 RUN tar xzvf /tmp/latest.tar.gz && cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
-RUN cp -a /tmp/wordpress/. /var/www/html && cd
+RUN cp -a /tmp/wordpress/. /var/www/html
 
 RUN chown -R www-data:www-data /var/www/
 RUN chmod -R 777 /var/www/
@@ -46,6 +46,8 @@ ADD --chown=www-data:www-data srcs/config.inc.php /usr/share/phpMyAdmin/config.i
 ADD --chown=www-data:www-data srcs/wp-config.php /var/www/html/wp-config.php
 ADD --chown=www-data:www-data srcs/localhost.cert /etc/nginx/certs/localhost.cert
 ADD --chown=www-data:www-data srcs/localhost.key /etc/nginx/certs/localhost.key
+
+WORKDIR /
 
 CMD service mysql start & service php7.3-fpm start & service nginx start & /bin/bash
 
