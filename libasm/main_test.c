@@ -41,6 +41,8 @@ int main(void)
 		CPY(*sstr, dstr[0], dstr[1], dstr[2])
 		WRT((*sstr)[i])
 
+		printf("lol");
+
 		free(*sstr);
 		free(dstr[0]);
 		free(dstr[1]);
