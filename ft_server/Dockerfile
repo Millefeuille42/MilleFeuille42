@@ -49,5 +49,5 @@ ADD --chown=www-data:www-data srcs/localhost.key /etc/nginx/certs/localhost.key
 
 WORKDIR /
 
-CMD service mysql start & service php7.3-fpm start & service nginx start & /bin/bash
+CMD service mysql start & service php7.3-fpm start & service nginx start & tail -f /dev/null
 
