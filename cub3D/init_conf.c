@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "includes/cub3d.h"
 
-static void	safe_free(void **element)
+static void			safe_free(void **element)
 {
 	if (element && *element)
 		free(*element);
 }
 
-void		clear(char **pstr)
+void				clear(char **pstr)
 {
 	int i;
 
@@ -36,13 +36,13 @@ void		clear(char **pstr)
 	}
 }
 
-static void	safe_close(int fd)
+inline static void	safe_close(int fd)
 {
 	if (fd)
 		close(fd);
 }
 
-void		deinit_conf(t_conf *conf)
+void				deinit_conf(t_conf *conf)
 {
 	safe_free((void **)&(conf->no.path));
 	safe_free((void **)&(conf->so.path));

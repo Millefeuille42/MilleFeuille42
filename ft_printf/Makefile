@@ -9,7 +9,6 @@
 #   Updated: 2020/04/10 15:07:13 by mlabouri         ###   ########.fr       #
 #                                                                            #
 # ************************************************************************** #
-******************* #
 
 SRCS	=	./trees/flags_disp_tree.c trees/flags_val_tree.c trees/args_length_tree.c trees/convs_disp_tree.c																\
 			./length_utils/ft_nbr_len.c length_utils/ft_strlen.c length_utils/ft_nbrbase_len.c																				\

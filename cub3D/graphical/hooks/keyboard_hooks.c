@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../graphical.h"
+#include "../../includes/graphical.h"
 
-static void	key_f(int key, t_win **cub)
+inline static void	key_f(int key, t_win **cub)
 {
 	if (key == UP)
 		up(cub);
@@ -34,7 +34,7 @@ static void	key_f(int key, t_win **cub)
 		escape(cub);
 }
 
-static int	key_check(int key)
+inline static int	key_check(int key)
 {
 	if (key == UP
 		|| key == DOWN
@@ -49,14 +49,14 @@ static int	key_check(int key)
 	return (0);
 }
 
-int			key_rhook(int key, t_win *cub)
+int					key_rhook(int key, t_win *cub)
 {
 	if (key_check(key))
 		cub->keys.keyc[key] = 0;
 	return (0);
 }
 
-int			keyp_hook(int key, t_win *cub)
+int					keyp_hook(int key, t_win *cub)
 {
 	cub->img = create_image(*cub);
 	cub->keys.keyc[key] = 1;
@@ -70,7 +70,7 @@ int			keyp_hook(int key, t_win *cub)
 	return (0);
 }
 
-t_win		keys_init(t_win cub)
+t_win				keys_init(t_win cub)
 {
 	int i;
 

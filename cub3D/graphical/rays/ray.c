@@ -10,18 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../graphical.h"
+#include "../../includes/graphical.h"
 
-static t_ray	send_ray(t_ray r, double r_angle, t_win cub)
+inline static t_ray	send_ray(t_ray r, double r_angle, t_win cub)
 {
 	while ((r_angle / 100 > 269.999995 && r_angle / 100 <= 270.0000005)
 		|| (r_angle / 100 > 179.999995 && r_angle / 100 <= 180.0000005)
 		|| (r_angle / 100 > 89.999995 && r_angle / 100 <= 90.0000005)
 		|| (r_angle / 100 > 359.999995 && r_angle / 100 <= 360.0000005)
 		|| (r_angle / 100 > -1.0000005 && r_angle / 100 <= 0.0000005))
-		r_angle -= 0.04 * 100;
-	r.dir.x = cos((r_angle / 100) * M_PI / 180);
-	r.dir.y = sin((r_angle / 100) * M_PI / 180);
+		r_angle -= 0.04;
+	r.dir.x = cos((r_angle / 100) * TPI);
+	r.dir.y = sin((r_angle / 100) * TPI);
 	r.coef.x = (r.dir.y - r.cpos.y) / (r.dir.x - r.cpos.x);
 	r.mpos.x = floor(r.cpos.x);
 	r.mpos.y = floor(r.cpos.y);
@@ -36,7 +36,7 @@ static t_ray	send_ray(t_ray r, double r_angle, t_win cub)
 	return (r);
 }
 
-int				raycasting(t_win *cub)
+int					raycasting(t_win *cub)
 {
 	t_ray	r;
 	int		x;

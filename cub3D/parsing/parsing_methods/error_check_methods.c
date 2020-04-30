@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/parsing.h"
 
-int	res_e(struct s_res *res)
+int					res_e(struct s_res *res)
 {
 	if (res->x <= 0 || res->y <= 0)
 		return (-2);
 	return (0);
 }
 
-int	rgb_e(struct s_plan plan)
+int					rgb_e(struct s_plan plan)
 {
 	if (plan.r > 255 || plan.g > 255 || plan.b > 255)
 		return (-21);
@@ -28,7 +28,7 @@ int	rgb_e(struct s_plan plan)
 	return (0);
 }
 
-static int texture_length(t_text *text)
+inline static void	texture_length(t_text *text)
 {
 	char *line;
 	char flag;
@@ -51,7 +51,7 @@ static int texture_length(t_text *text)
 	}
 }
 
-int	path_e(t_text *file)
+int					path_e(t_text *file)
 {
 	file->fd = open(file->path, O_RDONLY);
 	if (file->fd < 0)

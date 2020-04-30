@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
-static	char	*ft_input(char const *s1, char const *s2)
+inline static	char	*ft_input(char const *s1, char const *s2)
 {
 	if (!s1 && s2)
 		return (ft_strdup(s2));
@@ -23,7 +23,7 @@ static	char	*ft_input(char const *s1, char const *s2)
 	return (NULL);
 }
 
-char			*ft_strjoin(char const *s1, char const *s2)
+char					*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;
 	size_t	i2;

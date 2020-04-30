@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
-static	char	**ft_null_string(void)
+inline static	char	**ft_null_string(void)
 {
 	char **stringset;
 
@@ -24,7 +24,7 @@ static	char	**ft_null_string(void)
 	return (stringset);
 }
 
-static	char	**ft_makestringset(char const *s, char c)
+inline static	char	**ft_makestringset(char const *s, char c)
 {
 	size_t	i;
 	size_t	size;
@@ -52,7 +52,7 @@ static	char	**ft_makestringset(char const *s, char c)
 	return (stringset);
 }
 
-static	char	*ft_makestring(char const *s, char c)
+inline static	char	*ft_makestring(char const *s, char c)
 {
 	size_t	i;
 	char	*string;
@@ -65,24 +65,24 @@ static	char	*ft_makestring(char const *s, char c)
 	return (string);
 }
 
-static	char	*ft_writestring(char const *s, char c, char *string, size_t *i)
+inline static	char	*wrtstring(char const *s, char c, char *str, size_t *i)
 {
 	size_t	i2;
 
 	i2 = 0;
 	while (s[*i] != '\0' && s[*i] != c)
 	{
-		string[i2] = s[*i];
+		str[i2] = s[*i];
 		*i = *i + 1;
 		i2++;
 	}
-	string[i2] = '\0';
+	str[i2] = '\0';
 	if (s[*i] != '\0')
 		*i = *i + 1;
-	return (string);
+	return (str);
 }
 
-char			**ft_split(char const *s, char c)
+char					**ft_split(char const *s, char c)
 {
 	char	**set;
 	size_t	i;
@@ -100,7 +100,7 @@ char			**ft_split(char const *s, char c)
 		{
 			if (!(set[set_i] = ft_makestring(s + i, c)))
 				return (NULL);
-			set[set_i] = ft_writestring(s, c, set[set_i], &i);
+			set[set_i] = wrtstring(s, c, set[set_i], &i);
 			set_i++;
 		}
 		else

@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../graphical.h"
-
-
+#include "../../includes/graphical.h"
 
 void	init_textures(t_win *cub)
 {
@@ -35,11 +33,11 @@ void	init_textures(t_win *cub)
 	t->i.c_img = mlx_get_data_addr(t->i.v_img, &t->i.bpp, &t->i.sl, &t->i.e);
 }
 
-t_plan	text_spot(t_dbl_co hit, t_text t, double y, t_draw lim)
+t_col	text_spot(t_dbl_co hit, t_text t, double y, t_draw lim)
 {
-	t_plan color;
-	int x_hit;
-	double y_hit;
+	t_col	color;
+	int		x_hit;
+	double	y_hit;
 
 	if (t.hitpoint)
 		x_hit = floor((hit.x - floor(hit.x)) * t.s.x);

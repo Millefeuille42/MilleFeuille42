@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../includes/parsing.h"
 
-static int	leave_err(int err, void **t_free)
+inline static int	leave_err(int err, void **t_free)
 {
 	if (t_free && *t_free)
 		free(*t_free);
 	return (err);
 }
 
-static int	parse_head(char *line)
+inline static int	parse_head(char *line)
 {
 	int			err;
 	int			i;
@@ -47,7 +47,7 @@ static int	parse_head(char *line)
 	return (i);
 }
 
-static int	read_line(char *line, t_conf *conf, int head)
+inline static int	read_line(char *line, t_conf *conf, int head)
 {
 	int err;
 
@@ -70,7 +70,7 @@ static int	read_line(char *line, t_conf *conf, int head)
 	return (0);
 }
 
-static int	err_check(t_conf *conf)
+inline static int	err_check(t_conf *conf)
 {
 	if ((res_e(&(conf->res))))
 		return (-20);
@@ -93,7 +93,7 @@ static int	err_check(t_conf *conf)
 	return (0);
 }
 
-int			cub_parser(int fd, t_conf *conf)
+int					cub_parser(int fd, t_conf *conf)
 {
 	int		i;
 	int		head;

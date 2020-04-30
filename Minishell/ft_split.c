@@ -100,7 +100,7 @@ char			**ft_split(char const *s, char c)
 		{
 			if (!(set[set_i] = ft_makestring(s + i, c)))
 				return (NULL);
-			set[set_i] = ft_writestring(s, c, set[set_i], &i);
+			set[set_i] = wrtstring(s, c, set[set_i], &i);
 			set_i++;
 		}
 		else

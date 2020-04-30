@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/parsing.h"
 
-static int	rgb_parsing(int *color, int *i, char *line, char *pos)
+inline static int	rgb_parsing(int *color, int *i, char *line, char *pos)
 {
 	int i2;
 
@@ -30,7 +30,7 @@ static int	rgb_parsing(int *color, int *i, char *line, char *pos)
 	return (0);
 }
 
-int			plan_p(struct s_plan *plan, char *line)
+int					plan_p(struct s_plan *plan, char *line)
 {
 	int i;
 

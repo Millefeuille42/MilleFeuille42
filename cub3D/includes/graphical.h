@@ -12,8 +12,9 @@
 
 #ifndef GRAPHICAL_H
 # define GRAPHICAL_H
-
-# include "../cub3d.h"
+# define TPI M_PI / 180
+# include "cub3d.h"
+# include <X11/X.h>
 
 # if __APPLE__
 
@@ -44,7 +45,7 @@
 typedef struct		s_key
 {
 	char			keyc[66000];
-	char			keyl[7];
+	int				keyl[7];
 }					t_key;
 
 typedef struct		s_ray
@@ -52,15 +53,14 @@ typedef struct		s_ray
 	t_dbl_co		dir;
 	t_dbl_co		coef;
 	t_dbl_co		cpos;
-	t_dbl_co		opos;
 	t_int_co		mpos;
 }					t_ray;
 
 typedef struct		s_win
 {
-	t_conf			*conf;
 	void			*mlx;
 	void			*win;
+	t_conf			*conf;
 	t_img			img;
 	t_key			keys;
 	int				inc_u;
@@ -74,23 +74,22 @@ typedef struct		s_draw
 	double			dist;
 }					t_draw;
 
-int					raycasting(t_win *cub);
+int					raycasting(t_win *cub)__attribute__((hot));
 
-t_ray				ray_fst_quarter(t_ray r, t_conf *conf);
-t_ray				ray_scd_quarter(t_ray r, t_conf *conf);
-t_ray				ray_trd_quarter(t_ray r, t_conf *conf);
-t_ray				ray_frt_quarter(t_ray r, t_conf *conf);
+t_ray				ray_fst_quarter(t_ray r, t_conf *cf)__attribute__((hot));
+t_ray				ray_scd_quarter(t_ray r, t_conf *cf)__attribute__((hot));
+t_ray				ray_trd_quarter(t_ray r, t_conf *cf)__attribute__((hot));
+t_ray				ray_frt_quarter(t_ray r, t_conf *cf)__attribute__((hot));
 
 t_img				create_image(t_win cub);
-t_img				image_pixel_put(int x, int y, t_img img, t_plan color);
+t_img				image_pixel_put(int x, int y, t_img i, t_col c);
 
-t_win				draw(t_win cub, t_ray r, int x, double r_a);
-t_plan				shade(t_plan col, double dist, char way, int in);
+t_win				draw(t_win c, t_ray r, int x, double a)__attribute__((hot));
+t_col				shade(t_col c, double d, char w, int i)__attribute__((hot));
 void				minimap(t_win cub);
 
 void				init_textures(t_win *cub);
-t_plan				text_spot(t_dbl_co hit, t_text t, double y, t_draw lim);
-t_text				define_text(t_ray r, double angle, t_win cub);
+t_col				text_spot(t_dbl_co hit, t_text t, double y, t_draw lim);
 
 t_win				keys_init(t_win cub);
 int					key_rhook(int key, t_win *cub);

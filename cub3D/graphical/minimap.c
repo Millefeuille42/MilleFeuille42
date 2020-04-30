@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphical.h"
+#include "../includes/graphical.h"
 
-static void	d_square(int y, int x, t_win cub, t_plan col)
+inline static void	d_square(int y, int x, t_win cub, t_col col)
 {
 	int i;
 	int i2;
@@ -30,23 +30,23 @@ static void	d_square(int y, int x, t_win cub, t_plan col)
 	}
 }
 
-void		minimap(t_win cub)
+void				minimap(t_win cub)
 {
 	int		i;
 	int		i2;
-	t_plan	col;
+	t_col	col;
 
 	i = 0;
-	col = (t_plan) {255, 2525, 255};
+	col = (t_col) {255, 225, 255};
 	while (cub.conf->map[i])
 	{
 		i2 = 0;
 		while (cub.conf->map[i][i2])
 		{
 			if (cub.conf->map[i][i2] != '0')
-				d_square(i, i2, cub, (t_plan) {0, 255, 0});
+				d_square(i, i2, cub, (t_col) {0, 255, 0});
 			else
-				d_square(i, i2, cub, (t_plan) {0, 0, 255});
+				d_square(i, i2, cub, (t_col) {0, 0, 255});
 			i2++;
 		}
 		i++;

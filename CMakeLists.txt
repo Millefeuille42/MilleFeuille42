@@ -17,7 +17,7 @@ add_executable(libft ${SOURCES_LIBFT} main.c)
 add_executable(get_next_line ${SOURCE_GNL} main.c)
 add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 
-add_executable(cub3D ${SOURCE_CUB3D} cub3D/graphical/drawing/texturing.c)
+add_executable(cub3D ${SOURCE_CUB3D})
 
 add_executable(libasm ${SOURCE_LIBASM})
 
@@ -34,7 +34,7 @@ endif ()
 if (${COVER})
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage")
 endif ()
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3")
 
 include_directories(
         /usr/include

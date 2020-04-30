@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
-static size_t	ft_sub_strlcpy(char *dst, const char *src, size_t dstsize)
+inline static size_t	ft_sub_strlcpy(char *dst, const char *src, size_t dsize)
 {
 	size_t i;
 	size_t j;
@@ -21,7 +21,7 @@ static size_t	ft_sub_strlcpy(char *dst, const char *src, size_t dstsize)
 	while (src[j] != '\0')
 		j++;
 	i = 0;
-	while (src[i] != '\0' && i < dstsize)
+	while (src[i] != '\0' && i < dsize)
 	{
 		dst[i] = src[i];
 		i++;
@@ -30,19 +30,19 @@ static size_t	ft_sub_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (j);
 }
 
-char			*ft_substr(char const *s, unsigned int start, size_t len)
+char					*ft_substr(char const *s, unsigned int strt, size_t len)
 {
 	size_t	i;
 	char	*sub;
 
-	if (!s || len == 0 || (unsigned int)ft_strlen(s) <= start)
+	if (!s || len == 0 || (unsigned int)ft_strlen(s) <= strt)
 		return (ft_strdup("\0"));
 	i = 0;
-	while (s[(size_t)start + i] != '\0' && i < len)
+	while (s[(size_t)strt + i] != '\0' && i < len)
 		i++;
 	sub = malloc(sizeof(char) * i + 1);
 	if (!sub)
 		return (NULL);
-	ft_sub_strlcpy(sub, s + start, len);
+	ft_sub_strlcpy(sub, s + strt, len);
 	return (sub);
 }

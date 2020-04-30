@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../includes/get_next_line.h"
 
-static	int		ft_ginit(char **line, char **buffer, int fd)
+inline static	int		ft_ginit(char **line, char **buffer, int fd)
 {
 	int		i;
 	char	buf[BUFFER_SIZE + 1];
@@ -35,7 +35,7 @@ static	int		ft_ginit(char **line, char **buffer, int fd)
 	return (0);
 }
 
-static	int		ft_gline(char **buffer, int fd)
+inline static	int		ft_gline(char **buffer, int fd)
 {
 	char	buf[BUFFER_SIZE + 1];
 	char	*cpy_buffer;
@@ -61,7 +61,7 @@ static	int		ft_gline(char **buffer, int fd)
 	return (1);
 }
 
-static	int		ft_gmake(char **buffer, char **line)
+inline static	int		ft_gmake(char **buffer, char **line)
 {
 	int		i;
 	char	*cpy_buffer;
@@ -80,7 +80,7 @@ static	int		ft_gmake(char **buffer, char **line)
 	return (0);
 }
 
-int				get_next_line(int fd, char **line)
+int						get_next_line(int fd, char **line)
 {
 	static char	*buffer;
 	int			status;

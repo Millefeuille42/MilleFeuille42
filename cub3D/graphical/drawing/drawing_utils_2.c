@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../graphical.h"
+#include "../../includes/graphical.h"
 
-t_img	image_pixel_put(int x, int y, t_img img, t_plan color)
+t_img	image_pixel_put(int x, int y, t_img img, t_col color)
 {
 	img.c_img[y * img.sl + x * (img.bpp / 8)] = (char)color.b;
 	img.c_img[y * img.sl + x * (img.bpp / 8) + 1] = (char)color.g;
@@ -20,7 +20,7 @@ t_img	image_pixel_put(int x, int y, t_img img, t_plan color)
 	return (img);
 }
 
-t_plan	shade(t_plan col, double dist, char way, int in)
+t_col	shade(t_col col, double dist, char way, int in)
 {
 	if (way)
 	{

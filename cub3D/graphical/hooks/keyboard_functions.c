@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../graphical.h"
+#include "../../includes/graphical.h"
 
 void	left(t_win **cub)
 {
@@ -18,8 +18,8 @@ void	left(t_win **cub)
 	t_dbl_co	n_pos;
 
 	angle = (*cub)->conf->dir_a + 90;
-	n_pos.x = (*cub)->conf->pos.x - (cos(angle * M_PI / 180) / 5);
-	n_pos.y = (*cub)->conf->pos.y - sin(angle * M_PI / 180) / 5;
+	n_pos.x = (*cub)->conf->pos.x - (cos(angle * TPI) / 5);
+	n_pos.y = (*cub)->conf->pos.y - sin(angle * TPI) / 5;
 	if ((*cub)->conf->map[(int)(n_pos.y)][(int)(n_pos.x)] != '0')
 		return ;
 	(*cub)->conf->pos = n_pos;
@@ -31,8 +31,8 @@ void	right(t_win **cub)
 	t_dbl_co	n_pos;
 
 	angle = (*cub)->conf->dir_a + 90;
-	n_pos.x = (*cub)->conf->pos.x + (cos(angle * M_PI / 180) / 5);
-	n_pos.y = (*cub)->conf->pos.y + sin(angle * M_PI / 180) / 5;
+	n_pos.x = (*cub)->conf->pos.x + (cos(angle * TPI) / 5);
+	n_pos.y = (*cub)->conf->pos.y + sin(angle * TPI) / 5;
 	if ((*cub)->conf->map[(int)(n_pos.y)][(int)(n_pos.x)] != '0')
 		return ;
 	(*cub)->conf->pos = n_pos;
@@ -44,8 +44,8 @@ void	up(t_win **cub)
 	t_dbl_co	n_pos;
 
 	angle = (*cub)->conf->dir_a;
-	n_pos.x = (*cub)->conf->pos.x + (cos(angle * M_PI / 180) / 5);
-	n_pos.y = (*cub)->conf->pos.y + sin(angle * M_PI / 180) / 5;
+	n_pos.x = (*cub)->conf->pos.x + (cos(angle * TPI) / 5);
+	n_pos.y = (*cub)->conf->pos.y + sin(angle * TPI) / 5;
 	if ((*cub)->conf->map[(int)(n_pos.y)][(int)(n_pos.x)] != '0')
 		return ;
 	(*cub)->conf->pos = n_pos;
@@ -57,8 +57,8 @@ void	down(t_win **cub)
 	t_dbl_co	n_pos;
 
 	angle = (*cub)->conf->dir_a;
-	n_pos.x = (*cub)->conf->pos.x - (cos(angle * M_PI / 180) / 5);
-	n_pos.y = (*cub)->conf->pos.y - sin(angle * M_PI / 180) / 5;
+	n_pos.x = (*cub)->conf->pos.x - (cos(angle * TPI) / 5);
+	n_pos.y = (*cub)->conf->pos.y - sin(angle * TPI) / 5;
 	if ((*cub)->conf->map[(int)(n_pos.y)][(int)(n_pos.x)] != '0')
 		return ;
 	(*cub)->conf->pos = n_pos;

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/parsing.h"
 
-static int	check_lim(t_map_prop mp, char **map)
+inline static int	check_lim(t_map_prop mp, char **map)
 {
 	if (!(mp.y == 0 || mp.y == mp.lines - 1))
 	{
@@ -31,7 +31,7 @@ static int	check_lim(t_map_prop mp, char **map)
 	return (0);
 }
 
-static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
+inline static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 {
 	if (ft_cinset(*m, "NSWO"))
 	{
@@ -57,7 +57,7 @@ static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 	return (0);
 }
 
-int			map_e(char **map, t_conf *conf)
+int					map_e(char **map, t_conf *conf)
 {
 	t_map_prop prop;
 

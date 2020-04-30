@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../graphical.h"
+#include "../../includes/graphical.h"
 
-t_img		create_image(t_win cub)
+t_img				create_image(t_win cub)
 {
 	t_img img;
 
@@ -26,31 +26,33 @@ t_img		create_image(t_win cub)
 	return (img);
 }
 
-static int	quit(t_win **cub)
+inline static int	quit(t_win **cub)
 {
 	deinit_conf((*cub)->conf);
 	exit(0);
+	return (0);
 }
 
-static int	event_hooks(t_win *cub)
+inline static int	event_hooks(t_win *cub)
 {
 	cub->img = create_image(*cub);
 	raycasting(cub);
 	mlx_clear_window(cub->mlx, cub->win);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.v_img, 0, 0);
-	mlx_hook(cub->win, 2, (1L << 0),
+	mlx_hook(cub->win, KeyRelease, KeyReleaseMask,
+			 &key_rhook, cub);
+	mlx_hook(cub->win, KeyPress, KeyPressMask,
 			&keyp_hook, cub);
-	mlx_hook(cub->win, 3, (1L << 1),
-			&key_rhook, cub);
-	mlx_hook(cub->win, 17, 0,
+	mlx_hook(cub->win, DestroyNotify, NoEventMask,
 			&quit, cub);
 	mlx_loop(cub->mlx);
+	return (0);
 }
 
-int			graphics(t_conf *conf)
+int					graphics(t_conf *conf)
 {
-	t_win cub;
-	t_int_co ssize;
+	t_win		cub;
+	t_int_co	ssize;
 
 	cub = (t_win) {.conf = conf};
 	cub = keys_init(cub);

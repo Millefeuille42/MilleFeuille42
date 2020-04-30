@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
-static int	ft_power(int nb, int power)
+inline static int	ft_power(int nb, int power)
 {
 	if (power < 0)
 		return (0);
@@ -24,7 +24,7 @@ static int	ft_power(int nb, int power)
 		return (nb * ft_power(nb, power - 1));
 }
 
-int			atoi_mk2(const char *s, int start, int end)
+int					atoi_mk2(const char *s, int start, int end)
 {
 	int res;
 	int power;

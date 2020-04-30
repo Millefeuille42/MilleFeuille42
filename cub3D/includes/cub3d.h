@@ -33,7 +33,7 @@ typedef struct		s_plan
 	int				r;
 	int				g;
 	int				b;
-}					t_plan;
+}					t_col;
 
 typedef struct		s_dbl_co
 {
@@ -68,18 +68,18 @@ typedef struct		s_text
 typedef struct		s_conf
 {
 	t_res			res;
-	t_plan			floor;
-	t_plan			roof;
+	t_col			floor;
+	t_col			roof;
 	t_text			no;
 	t_text			so;
 	t_text			we;
 	t_text			ea;
 	t_text			sprite;
+	t_text			*t;
 	char			**map;
 	t_dbl_co		pos;
 	double			dir_a;
 	double			fov;
-	t_text			*t;
 }					t_conf;
 
 int					cub_parser(int fd, t_conf *conf);

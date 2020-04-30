@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../includes/cub3d.h"
 
-static void	*ft_memcpy(void *dst, const void *src, size_t n)
+inline static void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned char	*d;
 	unsigned char	*s;
@@ -32,7 +32,7 @@ static void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-static void	*ft_memmove(void *dst, const void *src, size_t len)
+inline static void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char *d;
 	unsigned char *s;
@@ -53,7 +53,7 @@ static void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (NULL);
 }
 
-char		*ft_strdup(const char *s1)
+char				*ft_strdup(const char *s1)
 {
 	char *copy;
 

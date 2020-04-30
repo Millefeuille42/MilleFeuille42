@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/parsing.h"
 
 int	res_p(t_conf *conf, char *line)
 {

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../../includes/parsing.h"
 
-static int	safe_join(char **s1, char **s2)
+inline static int	safe_join(char **s1, char **s2)
 {
 	char *temp;
 	char *temp2;
@@ -31,7 +31,7 @@ static int	safe_join(char **s1, char **s2)
 	return (0);
 }
 
-int			map_p(struct s_conf *conf, int fd)
+int					map_p(struct s_conf *conf, int fd)
 {
 	int		err;
 	char	*line;

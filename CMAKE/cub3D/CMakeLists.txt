@@ -32,9 +32,6 @@ set(    SOURCE_CUB3D
         cub3D/graphical/rays/ray.c
         cub3D/graphical/rays/ray_utils.c
         cub3D/graphical/minimap.c
-
-        cub3D/cub3d.h
-        cub3D/parsing/parsing.h
-        cub3D/graphical/graphical.h
+		cub3D/graphical/drawing/texturing.c
 
         PARENT_SCOPE)

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "includes/cub3d.h"
 
-static void		disp_error(int err)
+inline static void		disp_error(int err)
 {
 	ft_putstr_fd("Error\n", 2);
 	if (err == -1)
@@ -31,7 +31,7 @@ static void		disp_error(int err)
 		ft_putstr_fd("System Error\n", 2);
 }
 
-int				main(int argc, char *argv[])
+int						main(int argc, char *argv[])
 {
 	int		fd;
 	int		err;
@@ -54,8 +54,3 @@ int				main(int argc, char *argv[])
 	}
 	return (abs(err));
 }
-
-/*	TODO							*/
-/*		- Save						*/
-/*		- Sprites					*/
-/*		- Texturing					*/
