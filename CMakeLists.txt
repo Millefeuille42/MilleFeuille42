@@ -17,7 +17,7 @@ add_executable(libft ${SOURCES_LIBFT} main.c)
 add_executable(get_next_line ${SOURCE_GNL} main.c)
 add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 
-add_executable(cub3D ${SOURCE_CUB3D})
+add_executable(cub3D ${SOURCE_CUB3D} cub3D/utils/vector_matrix.c)
 
 add_executable(libasm ${SOURCE_LIBASM})
 

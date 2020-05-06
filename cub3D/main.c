@@ -41,7 +41,9 @@ int						main(int argc, char *argv[])
 		err = -1;
 	else
 	{
-		conf = (t_conf) {.fov = 60};
+		conf = (t_conf){.play.pos.x = -1};
+		conf.play.dir = (t_dvec){1,0};
+		conf.play.plan = (t_dvec){0,-1};
 		fd = open(argv[1], O_RDONLY);
 		err = cub_parser(fd, &conf);
 		if (!err)

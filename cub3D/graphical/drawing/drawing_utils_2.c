@@ -24,15 +24,15 @@ t_col	shade(t_col col, double dist, char way, int in)
 {
 	if (way)
 	{
-		col.r = (int)(((double)col.r / 255.0 + 0.1) * (in * (255.0 / dist)));
-		col.g = (int)(((double)col.g / 255.0 + 0.1) * (in * (255.0 / dist)));
-		col.b = (int)(((double)col.b / 255.0 + 0.1) * (in * (255.0 / dist)));
+		col.r = (int)(((double)col.r / 255.0 + 0.1) * ((in * 255.0 / dist)));
+		col.g = (int)(((double)col.g / 255.0 + 0.1) * ((in * 255.0 / dist)));
+		col.b = (int)(((double)col.b / 255.0 + 0.1) * ((in * 255.0 / dist)));
 	}
 	else
 	{
-		col.r = (int)(((double)col.r / 255.0 + 0.1) * (in * (dist / 255.0)));
-		col.g = (int)(((double)col.g / 255.0 + 0.1) * (in * (dist / 255.0)));
-		col.b = (int)(((double)col.b / 255.0 + 0.1) * (in * (dist / 255.0)));
+		col.r = (int)(((double)col.r / 255.0 + 0.1) * ((in * dist / 255.0)));
+		col.g = (int)(((double)col.g / 255.0 + 0.1) * ((in * dist / 255.0)));
+		col.b = (int)(((double)col.b / 255.0 + 0.1) * ((in * dist / 255.0)));
 	}
 	col.r = col.r > 255 ? 255 : col.r;
 	col.g = col.g > 255 ? 255 : col.g;

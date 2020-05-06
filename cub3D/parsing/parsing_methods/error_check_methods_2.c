@@ -33,18 +33,18 @@ inline static int	check_lim(t_map_prop mp, char **map)
 
 inline static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 {
-	if (ft_cinset(*m, "NSWO"))
+	if (ft_cinset(*m, "NSWE"))
 	{
-		if (conf->dir_a)
+		if (conf->play.pos.x > 0)
 			return (-22);
-		conf->pos.x = (double)mp.x;
-		conf->pos.y = (double)mp.y;
+		conf->play.pos.x = (double)mp.x;
+		conf->play.pos.y = (double)mp.y;
 		if (*m == 'N')
-			conf->dir_a = 90;
+			rotate_2(&conf->play.dir, &conf->play.plan, 90);
 		else if (*m == 'W')
-			conf->dir_a = 180;
-		else
-			conf->dir_a = 270;
+			rotate_2(&conf->play.dir, &conf->play.plan, 180);
+		else if (*m == 'E')
+			rotate_2(&conf->play.dir, &conf->play.plan, 270);
 		*m = '0';
 	}
 	else if (ft_cinset(*m, "1025 "))
@@ -54,6 +54,8 @@ inline static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 		if ((mp.y == 0 || mp.y == mp.lines - 1) && !ft_cinset(*m, "15"))
 			return (-22);
 	}
+	else
+		return (-22);
 	return (0);
 }
 
@@ -81,5 +83,7 @@ int					map_e(char **map, t_conf *conf)
 			return (-22);
 		prop.y++;
 	}
+	if (conf->play.pos.x < 0)
+		return (-22);
 	return (0);
 }

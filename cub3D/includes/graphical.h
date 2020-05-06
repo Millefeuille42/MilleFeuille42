@@ -50,10 +50,13 @@ typedef struct		s_key
 
 typedef struct		s_ray
 {
-	t_dbl_co		dir;
-	t_dbl_co		coef;
-	t_dbl_co		cpos;
-	t_int_co		mpos;
+	t_dvec			dir;
+	t_dvec			sdist;
+	t_dvec			dist;
+	t_ivec			mpos;
+	t_ivec			step;
+	char			side;
+	char			hit;
 }					t_ray;
 
 typedef struct		s_win
@@ -76,20 +79,15 @@ typedef struct		s_draw
 
 int					raycasting(t_win *cub)__attribute__((hot));
 
-t_ray				ray_fst_quarter(t_ray r, t_conf *cf)__attribute__((hot));
-t_ray				ray_scd_quarter(t_ray r, t_conf *cf)__attribute__((hot));
-t_ray				ray_trd_quarter(t_ray r, t_conf *cf)__attribute__((hot));
-t_ray				ray_frt_quarter(t_ray r, t_conf *cf)__attribute__((hot));
-
 t_img				create_image(t_win cub);
 t_img				image_pixel_put(int x, int y, t_img i, t_col c);
 
-t_win				draw(t_win c, t_ray r, int x, double a)__attribute__((hot));
+t_win				draw(t_win c, t_ray r, int x)__attribute__((hot));
 t_col				shade(t_col c, double d, char w, int i)__attribute__((hot));
 void				minimap(t_win cub);
 
 void				init_textures(t_win *cub);
-t_col				text_spot(t_dbl_co hit, t_text t, double y, t_draw lim);
+t_col				text_spot(t_dvec hit, t_text t, double y, t_draw lim);
 
 t_win				keys_init(t_win cub);
 int					key_rhook(int key, t_win *cub);

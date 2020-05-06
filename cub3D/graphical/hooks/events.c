@@ -52,7 +52,7 @@ inline static int	event_hooks(t_win *cub)
 int					graphics(t_conf *conf)
 {
 	t_win		cub;
-	t_int_co	ssize;
+	t_ivec	ssize;
 
 	cub = (t_win) {.conf = conf};
 	cub = keys_init(cub);

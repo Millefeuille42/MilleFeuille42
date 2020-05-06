@@ -12,7 +12,7 @@
 
 #include "../includes/graphical.h"
 
-inline static void	d_square(int y, int x, t_win cub, t_col col)
+inline static void	d_sqr(int y, int x, t_win cub, t_col col)
 {
 	int i;
 	int i2;
@@ -44,12 +44,12 @@ void				minimap(t_win cub)
 		while (cub.conf->map[i][i2])
 		{
 			if (cub.conf->map[i][i2] != '0')
-				d_square(i, i2, cub, (t_col) {0, 255, 0});
+				d_sqr(i, i2, cub, (t_col) {0, 255, 0});
 			else
-				d_square(i, i2, cub, (t_col) {0, 0, 255});
+				d_sqr(i, i2, cub, (t_col) {0, 0, 255});
 			i2++;
 		}
 		i++;
 	}
-	d_square(floor(cub.conf->pos.y), floor(cub.conf->pos.x), cub, col);
+	d_sqr(floor(cub.conf->play.pos.y), floor(cub.conf->play.pos.x), cub, col);
 }

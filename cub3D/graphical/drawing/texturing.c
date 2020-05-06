@@ -33,7 +33,7 @@ void	init_textures(t_win *cub)
 	t->i.c_img = mlx_get_data_addr(t->i.v_img, &t->i.bpp, &t->i.sl, &t->i.e);
 }
 
-t_col	text_spot(t_dbl_co hit, t_text t, double y, t_draw lim)
+t_col	text_spot(t_dvec hit, t_text t, double y, t_draw lim)
 {
 	t_col	color;
 	int		x_hit;

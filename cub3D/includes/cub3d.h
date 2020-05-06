@@ -35,17 +35,17 @@ typedef struct		s_plan
 	int				b;
 }					t_col;
 
-typedef struct		s_dbl_co
+typedef struct		s_dvec
 {
 	double			x;
 	double			y;
-}					t_dbl_co;
+}					t_dvec;
 
-typedef struct		s_int_co
+typedef struct		s_ivec
 {
 	int				x;
 	int				y;
-}					t_int_co;
+}					t_ivec;
 
 typedef struct		s_img
 {
@@ -58,12 +58,19 @@ typedef struct		s_img
 
 typedef struct		s_text
 {
-	t_int_co		s;
+	t_ivec			s;
 	t_img			i;
 	char			*path;
 	int				fd;
 	char			hitpoint;
 }					t_text;
+
+typedef struct		s_play
+{
+	t_dvec			dir;
+	t_dvec			pos;
+	t_dvec			plan;
+}					t_play;
 
 typedef struct		s_conf
 {
@@ -77,9 +84,7 @@ typedef struct		s_conf
 	t_text			sprite;
 	t_text			*t;
 	char			**map;
-	t_dbl_co		pos;
-	double			dir_a;
-	double			fov;
+	t_play			play;
 }					t_conf;
 
 int					cub_parser(int fd, t_conf *conf);
@@ -98,5 +103,6 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				**ft_split(char const *s, char c);
 void				ft_putstr_fd(char *s, int fd);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-
+void				rotate(t_dvec *vector, double angle);
+void				rotate_2(t_dvec *vector, t_dvec *vector_2, double angle);
 #endif

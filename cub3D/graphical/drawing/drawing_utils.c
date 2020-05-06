@@ -12,14 +12,19 @@
 
 #include "../../includes/graphical.h"
 
-inline static t_draw	def_length(t_win cub, t_ray r, double r_a)
+inline static t_draw	def_length(t_win cub, t_ray r)
 {
 	t_draw	lim;
 	int		line_height;
 
-	lim.dist = sqrt(pow(cub.conf->pos.x - r.cpos.x, 2)
-					+ pow(cub.conf->pos.y - r.cpos.y, 2));
-	lim.dist = cos((r_a / 100 - cub.conf->dir_a) * TPI) * lim.dist;
+
+	if (!r.side)
+		lim.dist = (r.mpos.x - cub.conf->play.pos.x
+				+ (double)(1 - r.step.x) / 2) / r.dir.x;
+	else
+		lim.dist = (r.mpos.y - cub.conf->play.pos.y
+					+ (double)(1 - r.step.y) / 2) / r.dir.y;
+
 	line_height = (int)((cub.conf->res.y) / lim.dist);
 	if (lim.dist == 0)
 		line_height = 0;
@@ -32,7 +37,7 @@ inline static t_draw	def_length(t_win cub, t_ray r, double r_a)
 	return (lim);
 }
 
-t_win					draw(t_win cub, t_ray r, int x, double r_a)
+t_win					draw(t_win cub, t_ray r, int x)
 {
 	int		i;
 	t_draw	lim;
@@ -41,16 +46,17 @@ t_win					draw(t_win cub, t_ray r, int x, double r_a)
 
 	if (x >= cub.conf->res.x)
 		return (cub);
-	lim = def_length(cub, r, r_a);
+	lim = def_length(cub, r);
 	i = 0;
 	while (i < (cub.conf->res.y - 1))
 	{
-		g_col = shade(cub.conf->floor, (double)i, 0, 50);
+		g_col = shade(cub.conf->floor, (double)i - cub.inc_d, 0, 50);
+		col = shade((t_col){220, 210, 110}, lim.dist, 1, 1);
 		if (i < lim.s)
 			image_pixel_put(x, i, cub.img, cub.conf->roof);
 		else if (i < lim.e)
 		{
-			col = text_spot(r.cpos, *cub.conf->t, i, lim);
+			//col = text_spot(r.cpos, *cub.conf->t, i, lim);
 			image_pixel_put(x, i, cub.img, col);
 		}
 		else

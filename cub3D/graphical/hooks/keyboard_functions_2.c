@@ -14,16 +14,12 @@
 
 void	r_left(t_win **cub)
 {
-	(*cub)->conf->dir_a = (*cub)->conf->dir_a - 10;
-	if ((*cub)->conf->dir_a <= 0)
-		(*cub)->conf->dir_a = 360 - fabs((*cub)->conf->dir_a);
+	rotate_2(&(*cub)->conf->play.dir, &(*cub)->conf->play.plan, 10);
 }
 
 void	r_right(t_win **cub)
 {
-	(*cub)->conf->dir_a = (*cub)->conf->dir_a + 10;
-	if ((*cub)->conf->dir_a >= 360)
-		(*cub)->conf->dir_a = (*cub)->conf->dir_a - 360;
+	rotate_2(&(*cub)->conf->play.dir, &(*cub)->conf->play.plan, -10);
 }
 
 void	r_up(t_win **cub)
