@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/30 18:34:44 by millefeui        ###   ########.fr       */
+/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct		s_text
 	t_img			i;
 	char			*path;
 	int				fd;
-	char			hitpoint;
 }					t_text;
 
 typedef struct		s_play

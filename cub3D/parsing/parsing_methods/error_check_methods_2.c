@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/30 18:34:44 by millefeui        ###   ########.fr       */
+/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ inline static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 			rotate_2(&conf->play.dir, &conf->play.plan, 90);
 		else if (*m == 'W')
 			rotate_2(&conf->play.dir, &conf->play.plan, 180);
-		else if (*m == 'E')
+		else if (*m == 'S')
 			rotate_2(&conf->play.dir, &conf->play.plan, 270);
 		*m = '0';
 	}

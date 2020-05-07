@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(42)
 
 set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_COMPILER /usr/bin/gcc)
+set(CMAKE_C_COMPILER /usr/bin/clang)
 set(CMAKE_CXX_COMPILER /usr/bin/g++)
 
 add_subdirectory(CMAKE/Libft)
@@ -17,7 +17,7 @@ add_executable(libft ${SOURCES_LIBFT} main.c)
 add_executable(get_next_line ${SOURCE_GNL} main.c)
 add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 
-add_executable(cub3D ${SOURCE_CUB3D} cub3D/utils/vector_matrix.c)
+add_executable(cub3D ${SOURCE_CUB3D})
 
 add_executable(libasm ${SOURCE_LIBASM})
 

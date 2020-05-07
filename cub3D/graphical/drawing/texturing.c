@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/13 16:29:23 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/30 18:34:44 by millefeui        ###   ########.fr       */
+/*   Updated: 2020/05/07 12:19:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,18 @@ void	init_textures(t_win *cub)
 	t->i.c_img = mlx_get_data_addr(t->i.v_img, &t->i.bpp, &t->i.sl, &t->i.e);
 }
 
-t_col	text_spot(t_dvec hit, t_text t, double y, t_draw lim)
+t_col	text_spot(t_ray r, t_text t, double y, t_draw lim)
 {
 	t_col	color;
 	int		x_hit;
 	double	y_hit;
 
-	if (t.hitpoint)
-		x_hit = floor((hit.x - floor(hit.x)) * t.s.x);
+	if (r.side)
+		y_hit = r.origin.x + lim.dist * r.dir.x;
 	else
-		x_hit = floor((hit.y - floor(hit.y)) * t.s.y);
+		y_hit = r.origin.y + lim.dist * r.dir.y;
+	x_hit = floor((y_hit - floor(y_hit)) * t.s.x);
+
 	y_hit = ((y - lim.s) / (lim.e - lim.s)) * t.s.y;
 	color.b = t.i.c_img[(int)y_hit * t.i.sl + x_hit * (t.i.bpp / 8)];
 	color.g = t.i.c_img[(int)y_hit * t.i.sl + x_hit * (t.i.bpp / 8) + 1];

@@ -22,6 +22,7 @@ set(    SOURCE_CUB3D
         cub3D/utils/ft_substr.c
         cub3D/utils/ft_split.c
         cub3D/utils/ft_putstr_fd.c
+		cub3D/utils/vector_matrix.c
 
         cub3D/graphical/drawing/drawing_utils.c
         cub3D/graphical/drawing/drawing_utils_2.c
@@ -30,7 +31,6 @@ set(    SOURCE_CUB3D
         cub3D/graphical/hooks/keyboard_functions.c
         cub3D/graphical/hooks/keyboard_functions_2.c
         cub3D/graphical/rays/ray.c
-        cub3D/graphical/rays/ray_utils.c
         cub3D/graphical/minimap.c
 		cub3D/graphical/drawing/texturing.c
 

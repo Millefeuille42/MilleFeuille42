@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/30 18:34:44 by millefeui        ###   ########.fr       */
+/*   Updated: 2020/05/07 12:19:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ inline static t_draw	def_length(t_win cub, t_ray r)
 	t_draw	lim;
 	int		line_height;
 
-
 	if (!r.side)
 		lim.dist = (r.mpos.x - cub.conf->play.pos.x
 				+ (double)(1 - r.step.x) / 2) / r.dir.x;
 	else
 		lim.dist = (r.mpos.y - cub.conf->play.pos.y
 					+ (double)(1 - r.step.y) / 2) / r.dir.y;
-
 	line_height = (int)((cub.conf->res.y) / lim.dist);
 	if (lim.dist == 0)
 		line_height = 0;
@@ -56,7 +54,7 @@ t_win					draw(t_win cub, t_ray r, int x)
 			image_pixel_put(x, i, cub.img, cub.conf->roof);
 		else if (i < lim.e)
 		{
-			//col = text_spot(r.cpos, *cub.conf->t, i, lim);
+			col = text_spot(r, *cub.conf->t, i, lim);
 			image_pixel_put(x, i, cub.img, col);
 		}
 		else

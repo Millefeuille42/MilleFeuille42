@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: millefeuille </var/spool/mail/millefe      +#+  +:+       +#+         #
+#    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/04/30 18:34:32 by millefeui         #+#    #+#              #
-#    Updated: 2020/04/30 18:34:44 by millefeui        ###   ########.fr        #
+#    Created: 2020/05/07 12:19:51 by mlabouri          #+#    #+#              #
+#    Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS	= 	./main.c											\
 			./utils/ft_substr.c									\
 			./utils/ft_split.c									\
 			./utils/ft_putstr_fd.c								\
+			./utils/vector_matrix.c								\
 			./graphical/drawing/drawing_utils.c					\
 			./graphical/drawing/drawing_utils_2.c				\
 			./graphical/hooks/events.c							\
@@ -37,7 +38,6 @@ SRCS	= 	./main.c											\
 			./graphical/hooks/keyboard_functions.c				\
 			./graphical/hooks/keyboard_functions_2.c			\
 			./graphical/rays/ray.c								\
-			./graphical/rays/ray_utils.c						\
 			./graphical/minimap.c								\
 			./graphical/drawing/texturing.c
 
@@ -56,7 +56,7 @@ RM		=	rm -f
 NAME	=	cub3D
 
 .c.o	:
-			${COMPILE} ${FLAGS} -c $< -o $@
+			${COMPILE} ${FLAGS} -c $< -o $@ -O3
 
 ${NAME} :	${OBJS}
 			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS} ${LSTDRT} ${LX} ${LMLX} -O3
@@ -74,7 +74,7 @@ re		:	fclean all
 o		:	re
 			${MAKE} clean
 
-play	:	${NAME} clean
+play	:	o
 			./cub3D ./sample.cub
 
 win_{$NAME}		:	${OBJS}

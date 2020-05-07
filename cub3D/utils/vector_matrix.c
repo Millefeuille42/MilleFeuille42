@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector_matrix.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/07 12:06:45 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/graphical.h"
 
-void rotate(t_dvec *vector, double angle)
+void	rotate(t_dvec *vector, double angle)
 {
 	t_dvec old;
 
@@ -9,7 +21,7 @@ void rotate(t_dvec *vector, double angle)
 	vector->y = old.x * sin(angle * TPI) + old.y * cos(angle * TPI);
 }
 
-void rotate_2(t_dvec *vector, t_dvec *vector_2, double angle)
+void	rotate_2(t_dvec *vector, t_dvec *vector_2, double angle)
 {
 	t_dvec old;
 	t_dvec old_2;

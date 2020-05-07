@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:09:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/30 18:34:44 by millefeui        ###   ########.fr       */
+/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int						main(int argc, char *argv[])
 	else
 	{
 		conf = (t_conf){.play.pos.x = -1};
-		conf.play.dir = (t_dvec){1,0};
-		conf.play.plan = (t_dvec){0,-1};
+		conf.play.dir = (t_dvec){1, 0};
+		conf.play.plan = (t_dvec){0, -1};
 		fd = open(argv[1], O_RDONLY);
 		err = cub_parser(fd, &conf);
 		if (!err)

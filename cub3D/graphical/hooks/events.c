@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/30 18:34:44 by millefeui        ###   ########.fr       */
+/*   Updated: 2020/05/07 12:19:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ inline static int	event_hooks(t_win *cub)
 	mlx_clear_window(cub->mlx, cub->win);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.v_img, 0, 0);
 	mlx_hook(cub->win, KeyRelease, KeyReleaseMask,
-			 &key_rhook, cub);
+		&key_rhook, cub);
 	mlx_hook(cub->win, KeyPress, KeyPressMask,
 			&keyp_hook, cub);
 	mlx_hook(cub->win, DestroyNotify, NoEventMask,
@@ -52,7 +52,7 @@ inline static int	event_hooks(t_win *cub)
 int					graphics(t_conf *conf)
 {
 	t_win		cub;
-	t_ivec	ssize;
+	t_ivec		ssize;
 
 	cub = (t_win) {.conf = conf};
 	cub = keys_init(cub);

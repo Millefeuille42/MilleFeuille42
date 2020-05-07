@@ -6,15 +6,17 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/30 18:34:44 by millefeui        ###   ########.fr       */
+/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICAL_H
 # define GRAPHICAL_H
-# define TPI M_PI / 180
+
 # include "cub3d.h"
 # include <X11/X.h>
+
+# define TPI 0.017453292519943295
 
 # if __APPLE__
 
@@ -51,8 +53,9 @@ typedef struct		s_key
 typedef struct		s_ray
 {
 	t_dvec			dir;
-	t_dvec			sdist;
 	t_dvec			dist;
+	t_dvec			sdist;
+	t_dvec			origin;
 	t_ivec			mpos;
 	t_ivec			step;
 	char			side;
@@ -77,17 +80,17 @@ typedef struct		s_draw
 	double			dist;
 }					t_draw;
 
-int					raycasting(t_win *cub)__attribute__((hot));
+int					raycasting(t_win *cub);
 
 t_img				create_image(t_win cub);
 t_img				image_pixel_put(int x, int y, t_img i, t_col c);
 
-t_win				draw(t_win c, t_ray r, int x)__attribute__((hot));
-t_col				shade(t_col c, double d, char w, int i)__attribute__((hot));
+t_win				draw(t_win c, t_ray r, int x);
+t_col				shade(t_col c, double d, char w, int i);
 void				minimap(t_win cub);
 
 void				init_textures(t_win *cub);
-t_col				text_spot(t_dvec hit, t_text t, double y, t_draw lim);
+t_col				text_spot(t_ray hit, t_text t, double y, t_draw lim);
 
 t_win				keys_init(t_win cub);
 int					key_rhook(int key, t_win *cub);

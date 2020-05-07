@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/04/30 18:34:44 by millefeui        ###   ########.fr       */
+/*   Updated: 2020/05/07 12:19:50 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	left(t_win **cub)
 {
 	t_dvec	n_pos;
-	t_dvec dir;
+	t_dvec	dir;
 
 	dir = (*cub)->conf->play.dir;
 	rotate(&dir, 90);
@@ -30,7 +30,7 @@ void	left(t_win **cub)
 void	right(t_win **cub)
 {
 	t_dvec	n_pos;
-	t_dvec dir;
+	t_dvec	dir;
 
 	dir = (*cub)->conf->play.dir;
 	rotate(&dir, -90);
@@ -45,7 +45,7 @@ void	right(t_win **cub)
 void	up(t_win **cub)
 {
 	t_dvec	n_pos;
-	t_dvec dir;
+	t_dvec	dir;
 
 	dir = (*cub)->conf->play.dir;
 	n_pos.x = (*cub)->conf->play.pos.x + dir.x / 5;
@@ -59,7 +59,7 @@ void	up(t_win **cub)
 void	down(t_win **cub)
 {
 	t_dvec	n_pos;
-	t_dvec dir;
+	t_dvec	dir;
 
 	dir = (*cub)->conf->play.dir;
 	n_pos.x = (*cub)->conf->play.pos.x - dir.x / 5;
