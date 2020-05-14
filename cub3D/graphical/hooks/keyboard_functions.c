@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:50 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ void	down(t_win **cub)
 
 void	escape(t_win **cub)
 {
+	mlx_destroy_image((*cub)->mlx, (*cub)->conf->no.i.v_img);
+	mlx_destroy_image((*cub)->mlx, (*cub)->conf->so.i.v_img);
+	mlx_destroy_image((*cub)->mlx, (*cub)->conf->we.i.v_img);
+	mlx_destroy_image((*cub)->mlx, (*cub)->conf->ea.i.v_img);
+	mlx_destroy_image((*cub)->mlx, (*cub)->conf->sprite.i.v_img);
+	mlx_destroy_image((*cub)->mlx, (*cub)->img.v_img);
+	mlx_destroy_window((*cub)->mlx, (*cub)->win);
 	deinit_conf((*cub)->conf);
 	exit(0);
 }

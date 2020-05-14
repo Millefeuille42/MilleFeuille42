@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ inline static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 	else if (ft_cinset(*m, "1025 "))
 	{
 		if (*m == ' ')
-			*m = '5';
+			*m = '1';
 		if ((mp.y == 0 || mp.y == mp.lines - 1) && !ft_cinset(*m, "15"))
 			return (-22);
 	}

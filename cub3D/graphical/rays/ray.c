@@ -6,13 +6,13 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/graphical.h"
 
-static t_ray	init_ray(t_play p, double cam)
+inline static t_ray	init_ray(t_play p, double cam)
 {
 	t_ray r;
 
@@ -32,7 +32,19 @@ static t_ray	init_ray(t_play p, double cam)
 	return (r);
 }
 
-static t_ray	cast_ray(t_win *cub, t_ray r)
+inline static void	def_text(t_win *cub, t_ray r)
+{
+	if (r.side && r.step.y == 1)
+		cub->conf->t = &cub->conf->no;
+	else if (r.side && r.step.y == -1)
+		cub->conf->t = &cub->conf->so;
+	else if (!r.side && r.step.x == 1)
+		cub->conf->t = &cub->conf->ea;
+	else
+		cub->conf->t = &cub->conf->we;
+}
+
+inline static t_ray	cast_ray(t_win *cub, t_ray r)
 {
 	while (!r.hit)
 	{
@@ -47,20 +59,14 @@ static t_ray	cast_ray(t_win *cub, t_ray r)
 			r.mpos.y += r.step.y;
 			r.side = 1;
 		}
-		if (cub->conf->map[r.mpos.y][r.mpos.x] > '0')
+		if (cub->conf->map[r.mpos.y][r.mpos.x] == '1')
 			r.hit = 1;
 	}
-	cub->conf->t = &cub->conf->we;
-	if (r.side && r.step.y == 1)
-		cub->conf->t = &cub->conf->no;
-	else if (r.side && r.step.y == -1)
-		cub->conf->t = &cub->conf->so;
-	else if (!r.side && r.step.x == 1)
-		cub->conf->t = &cub->conf->ea;
+	def_text(cub, r);
 	return (r);
 }
 
-int				raycasting(t_win *cub)
+int					raycasting(t_win *cub)
 {
 	t_ray	r;
 	int		x;
@@ -76,6 +82,7 @@ int				raycasting(t_win *cub)
 		*cub = draw(*cub, r, x);
 		x++;
 	}
+	*cub = sprites_calculations(*cub);
 	minimap(*cub);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,19 @@ typedef struct		s_play
 	t_dvec			plan;
 }					t_play;
 
+typedef struct		s_sprite
+{
+	t_dvec			c_pos;
+	double			dist;
+	t_ivec			pos;
+	t_ivec			lim_x;
+	t_ivec			lim_y;
+	char			last;
+}					t_sprite;
+
 typedef struct		s_conf
 {
+	char			**map;
 	t_res			res;
 	t_col			floor;
 	t_col			roof;
@@ -82,8 +93,8 @@ typedef struct		s_conf
 	t_text			ea;
 	t_text			sprite;
 	t_text			*t;
-	char			**map;
 	t_play			play;
+	t_sprite		*sp_list;
 }					t_conf;
 
 int					cub_parser(int fd, t_conf *conf);

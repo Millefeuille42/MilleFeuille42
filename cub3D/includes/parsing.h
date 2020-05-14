@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,10 @@ int					rgb_e(t_col plan);
 int					map_e(char **map, t_conf *conf);
 int					path_e(t_text *file);
 
+int					sprites_init(t_conf *conf);
+
+int					ft_atoi(const char *str);
+
 void				clear(char **pstr);
+
 #endif

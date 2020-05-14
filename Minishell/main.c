@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: millefeuille </var/spool/mail/millefe      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/14 15:58:06 by mlabouri         ###   ########.fr       */
+/*   Created: 2020/05/10 16:40:18 by millefeui         #+#    #+#             */
+/*   Updated: 2020/05/10 16:43:00 by millefeui        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft_string"
+#include <stdio.h>
+
+int main()
 {
-	return (c >= '0' && c <= '9');
+	return (0);
 }

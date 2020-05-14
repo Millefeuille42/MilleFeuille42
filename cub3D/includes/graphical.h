@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void				minimap(t_win cub);
 
 void				init_textures(t_win *cub);
 t_col				text_spot(t_ray hit, t_text t, double y, t_draw lim);
+t_win				sprites_calculations(t_win cub);
+t_win				sp_draw(t_win cub, t_sprite sprite);
 
 t_win				keys_init(t_win cub);
 int					key_rhook(int key, t_win *cub);

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:50 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,25 @@ t_img				create_image(t_win cub)
 	return (img);
 }
 
-inline static int	quit(t_win **cub)
+int					quit(void)
 {
-	deinit_conf((*cub)->conf);
 	exit(0);
-	return (0);
 }
 
 inline static int	event_hooks(t_win *cub)
 {
+	char i;
+
+	i = 0;
 	cub->img = create_image(*cub);
-	raycasting(cub);
-	mlx_clear_window(cub->mlx, cub->win);
+	//while (i++ < 10)
+	//	raycasting(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.v_img, 0, 0);
 	mlx_hook(cub->win, KeyRelease, KeyReleaseMask,
 		&key_rhook, cub);
 	mlx_hook(cub->win, KeyPress, KeyPressMask,
 			&keyp_hook, cub);
-	mlx_hook(cub->win, DestroyNotify, NoEventMask,
+	mlx_hook(cub->win, DestroyNotify, StructureNotifyMask,
 			&quit, cub);
 	mlx_loop(cub->mlx);
 	return (0);

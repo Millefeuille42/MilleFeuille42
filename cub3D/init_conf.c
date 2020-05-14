@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void				deinit_conf(t_conf *conf)
 	safe_free((void **)&(conf->we.path));
 	safe_free((void **)&(conf->ea.path));
 	safe_free((void **)&(conf->sprite.path));
+	safe_free((void **)&(conf->sp_list));
 	clear(conf->map);
 	safe_close((conf->no.fd));
 	safe_close((conf->so.fd));

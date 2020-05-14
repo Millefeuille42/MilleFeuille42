@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:50 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ t_win					draw(t_win cub, t_ray r, int x)
 	while (i < (cub.conf->res.y - 1))
 	{
 		g_col = shade(cub.conf->floor, (double)i - cub.inc_d, 0, 50);
-		col = shade((t_col){220, 210, 110}, lim.dist, 1, 1);
 		if (i < lim.s)
 			image_pixel_put(x, i, cub.img, cub.conf->roof);
 		else if (i < lim.e)
 		{
 			col = text_spot(r, *cub.conf->t, i, lim);
+			//col = shade(col, lim.dist, 1, 1);
 			image_pixel_put(x, i, cub.img, col);
 		}
 		else

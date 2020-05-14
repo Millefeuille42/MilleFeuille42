@@ -1,55 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
+/*   sprites_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
+/*   Created: 2020/05/14 15:58:05 by mlabouri          #+#    #+#             */
 /*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/graphical.h"
+#include "../../includes/parsing.h"
 
-inline static void	d_sqr(int y, int x, t_win cub, t_col col)
+inline static int	count_sprites(t_conf *conf)
 {
 	int i;
 	int i2;
+	int count;
 
 	i = 0;
-	while (i < 4)
+	count = 0;
+	while (conf->map[i])
 	{
 		i2 = 0;
-		while (i2 < 4)
+		while (conf->map[i][i2])
 		{
-			image_pixel_put(x * 4 + i2, y * 4 + i, cub.img, col);
+			if (conf->map[i][i2] == '2')
+				count++;
 			i2++;
 		}
 		i++;
 	}
+	count++;
+	return (count);
 }
 
-void				minimap(t_win cub)
+int					sprites_init(t_conf *conf)
 {
-	int		i;
-	int		i2;
-	t_col	col;
+	int i;
+	int i2;
+	int count;
 
 	i = 0;
-	col = (t_col) {255, 225, 255};
-	while (cub.conf->map[i])
+	count = 0;
+	if (!(conf->sp_list = malloc(sizeof(t_sprite) * count_sprites(conf))))
+		return (-3);
+	while (conf->map[i])
 	{
 		i2 = 0;
-		while (cub.conf->map[i][i2])
+		while (conf->map[i][i2])
 		{
-			if (cub.conf->map[i][i2] != '0')
-				d_sqr(i, i2, cub, (t_col) {0, 255, 0});
-			else
-				d_sqr(i, i2, cub, (t_col) {0, 0, 255});
+			if (conf->map[i][i2] == '2')
+			{
+				conf->sp_list[count] = (t_sprite){.pos = {i2, i}, .last = 0};
+				count++;
+			}
 			i2++;
 		}
 		i++;
 	}
-	d_sqr(floor(cub.conf->play.pos.y), floor(cub.conf->play.pos.x), cub, col);
+	conf->sp_list[count] = (t_sprite) {.last = 1};
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ int					cub_parser(int fd, t_conf *conf)
 	if ((err = (map_p(conf, fd))))
 		return (err);
 	if ((err = (err_check(conf))))
+		return (err);
+	if ((err = sprites_init(conf)))
 		return (err);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,43 @@ int					rgb_e(struct s_plan plan)
 	return (0);
 }
 
+inline static int	parse_size(char *str, int *i)
+{
+	char	size[8];
+	int		i2;
+
+	i2 = 0;
+	while (ft_isdigit(str[*i]))
+	{
+		size[i2] = str[*i];
+		*i += 1;
+		i2++;
+	}
+	size[i2] = '\0';
+	return (ft_atoi(size));
+}
+
 inline static void	texture_length(t_text *text)
 {
-	char *line;
-	char flag;
+	char	*line;
+	int		i;
 
-	flag = 0;
-	while (get_next_line(text->fd, &line))
+	i = 0;
+	while (i < 3)
 	{
-		if (flag)
-		{
-			if (line[ft_strlen(line) - 1] == ',')
-				line[ft_strlen(line) - 1] = '\0';
-			else
-				flag = 0;
-			text->s.x = (int)ft_strlen(line) - 2;
-			text->s.y++;
-		}
-		if (!ft_strncmp(line, "/* pixels */", ft_strlen("/* pixels */")))
-			flag = 1;
+		get_next_line(text->fd, &line);
 		free(line);
+		i++;
 	}
+	get_next_line(text->fd, &line);
+	i = 0;
+	while (!ft_isdigit(line[i]))
+		i++;
+	text->s.x = parse_size(line, &i);
+	while (!ft_isdigit(line[i]))
+		i++;
+	text->s.y = parse_size(line, &i);
+	free(line);
 }
 
 int					path_e(t_text *file)
