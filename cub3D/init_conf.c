@@ -44,12 +44,15 @@ inline static void	safe_close(int fd)
 
 void				deinit_conf(t_conf *conf)
 {
+	int i;
+
 	safe_free((void **)&(conf->no.path));
 	safe_free((void **)&(conf->so.path));
 	safe_free((void **)&(conf->we.path));
 	safe_free((void **)&(conf->ea.path));
 	safe_free((void **)&(conf->sprite.path));
 	safe_free((void **)&(conf->sp_list));
+	i = 0;
 	clear(conf->map);
 	safe_close((conf->no.fd));
 	safe_close((conf->so.fd));

@@ -12,7 +12,7 @@
 
 #include "../../includes/graphical.h"
 
-inline static t_draw	def_length(t_win cub, t_ray r)
+inline static t_draw	def_length(t_win cub, t_ray r, int x)
 {
 	t_draw	lim;
 	int		line_height;
@@ -32,6 +32,8 @@ inline static t_draw	def_length(t_win cub, t_ray r)
 	lim.e = line_height / 2 + cub.conf->res.y / 2 + cub.inc_d;
 	if (lim.e >= cub.conf->res.y)
 		lim.e = cub.conf->res.y - 1;
+	cub.conf->buf[x] = (pow(cub.conf->play.pos.x - r.mpos.x, 2)
+			+ pow(cub.conf->play.pos.y - r.mpos.y, 2));
 	return (lim);
 }
 
@@ -44,7 +46,7 @@ t_win					draw(t_win cub, t_ray r, int x)
 
 	if (x >= cub.conf->res.x)
 		return (cub);
-	lim = def_length(cub, r);
+	lim = def_length(cub, r, x);
 	i = 0;
 	while (i < (cub.conf->res.y - 1))
 	{
@@ -54,7 +56,6 @@ t_win					draw(t_win cub, t_ray r, int x)
 		else if (i < lim.e)
 		{
 			col = text_spot(r, *cub.conf->t, i, lim);
-			//col = shade(col, lim.dist, 1, 1);
 			image_pixel_put(x, i, cub.img, col);
 		}
 		else

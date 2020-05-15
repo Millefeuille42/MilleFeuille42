@@ -32,7 +32,26 @@ inline static int	count_sprites(t_conf *conf)
 		i++;
 	}
 	count++;
+	if (!(conf->buf = malloc(sizeof(double) * (conf->res.x + 1))))
+		return (-3);
 	return (count);
+}
+
+void				tag_sprite(t_ivec ray, t_sprite *sprites)
+{
+	int			i;
+	t_sprite	*ret;
+
+	i = 0;
+	ret = NULL;
+	while (!sprites[i].last && !ret)
+	{
+		if (ray.x == sprites[i].pos.x && ray.y == sprites[i].pos.y)
+			ret = &sprites[i];
+		i++;
+	}
+	if (ret)
+		ret->hit = 1;
 }
 
 int					sprites_init(t_conf *conf)

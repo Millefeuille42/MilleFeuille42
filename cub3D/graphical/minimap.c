@@ -43,8 +43,10 @@ void				minimap(t_win cub)
 		i2 = 0;
 		while (cub.conf->map[i][i2])
 		{
-			if (cub.conf->map[i][i2] != '0')
+			if (cub.conf->map[i][i2] == '1')
 				d_sqr(i, i2, cub, (t_col) {0, 255, 0});
+			else if (cub.conf->map[i][i2] == '2')
+				d_sqr(i, i2, cub, (t_col) {255, 0, 0});
 			else
 				d_sqr(i, i2, cub, (t_col) {0, 0, 255});
 			i2++;

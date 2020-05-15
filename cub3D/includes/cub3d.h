@@ -75,10 +75,12 @@ typedef struct		s_sprite
 {
 	t_dvec			c_pos;
 	double			dist;
+	double			b_dist;
 	t_ivec			pos;
 	t_ivec			lim_x;
 	t_ivec			lim_y;
 	char			last;
+	char			hit;
 }					t_sprite;
 
 typedef struct		s_conf
@@ -95,6 +97,7 @@ typedef struct		s_conf
 	t_text			*t;
 	t_play			play;
 	t_sprite		*sp_list;
+	double			*buf;
 }					t_conf;
 
 int					cub_parser(int fd, t_conf *conf);

@@ -37,20 +37,34 @@ inline static t_img	sp_image_pixel_put(int x, int y, t_img img, t_col color)
 	return (img);
 }
 
+inline static char	in_scr(t_res res, int x, int y)
+{
+	if (y < res.y - 1 && y > 150 && x < res.x - 1 && x > 0)
+		return (1);
+	return (0);
+}
+
 t_win				sp_draw(t_win cub, t_sprite s)
 {
 	t_col	spt;
 	int		i;
 	int		i2;
+	double	*buf;
 
+	buf = cub.conf->buf;
 	i = s.lim_y.x;
 	while (i < s.lim_y.y)
 	{
 		i2 = s.lim_x.x;
 		while (i2 < s.lim_x.y)
 		{
-			spt = sp_text_spot((t_dvec){i2, i}, s, cub.conf->sprite);
-			cub.img = sp_image_pixel_put(i2, i, cub.img, spt);
+			if (in_scr(cub.conf->res, i2, i) && s.b_dist <= buf[i2])
+			{
+				spt = sp_text_spot((t_dvec){i2, i}, s, cub.conf->sprite);
+				cub.img = sp_image_pixel_put(i2, i, cub.img, spt);
+				if (spt.r || spt.g || spt.b)
+					buf[i2] = s.b_dist;
+			}
 			i2++;
 		}
 		i++;

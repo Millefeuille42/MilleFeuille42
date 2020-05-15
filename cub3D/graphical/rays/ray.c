@@ -61,6 +61,8 @@ inline static t_ray	cast_ray(t_win *cub, t_ray r)
 		}
 		if (cub->conf->map[r.mpos.y][r.mpos.x] == '1')
 			r.hit = 1;
+		else if (cub->conf->map[r.mpos.y][r.mpos.x] == '2')
+			tag_sprite(r.mpos, cub->conf->sp_list);
 	}
 	def_text(cub, r);
 	return (r);

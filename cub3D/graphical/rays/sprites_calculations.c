@@ -25,6 +25,8 @@ inline static void	sprites_dist(t_win cub)
 		s = &cub.conf->sp_list[i];
 		s->c_pos.x = s->pos.x - p.pos.x + 0.5;
 		s->c_pos.y = s->pos.y - p.pos.y + 0.5;
+		s->b_dist = (pow(p.pos.x - s->pos.x, 2)
+				+ pow(p.pos.y - s->pos.y, 2));
 		s->dist = (pow(p.pos.x - s->c_pos.x, 2)
 				+ pow(p.pos.y - s->c_pos.y, 2));
 		i++;
@@ -70,16 +72,10 @@ inline static void	sprites_screen(t_play p, t_sprite *s, t_win cub)
 	trans.y = inv * (-p.plan.y * s->c_pos.x + p.plan.x * s->c_pos.y);
 	screen = (int)((int)(cub.conf->res.x / 2) * (1 + trans.x / trans.y));
 	factor = abs((int)(cub.conf->res.y / trans.y));
-	s->lim_y.x = -factor / 2 + cub.conf->res.y / 2;
-	s->lim_y.y = factor / 2 + cub.conf->res.y / 2;
+	s->lim_y.x = -factor / 2 + cub.conf->res.y / 2 + cub.inc_u;
+	s->lim_y.y = factor / 2 + cub.conf->res.y / 2 + cub.inc_d;
 	s->lim_x.x = -factor / 2 + screen;
 	s->lim_x.y = factor / 2 + screen;
-	s->lim_x.x = (s->lim_x.x < 0) ? 0 : s->lim_x.x;
-	s->lim_x.y = (s->lim_x.y > cub.conf->res.x)
-			? cub.conf->res.x - 1 : s->lim_x.y;
-	s->lim_y.x = (s->lim_y.x < 0) ? 0 : s->lim_y.x;
-	s->lim_y.y = (s->lim_y.y > cub.conf->res.y)
-			? cub.conf->res.y - 1 : s->lim_y.y;
 }
 
 t_win				sprites_calculations(t_win cub)
@@ -91,8 +87,12 @@ t_win				sprites_calculations(t_win cub)
 	sort_sprites(cub.conf->sp_list);
 	while (!cub.conf->sp_list[i].last)
 	{
-		sprites_screen(cub.conf->play, &cub.conf->sp_list[i], cub);
-		cub = sp_draw(cub, cub.conf->sp_list[i]);
+		if (cub.conf->sp_list[i].hit)
+		{
+			sprites_screen(cub.conf->play, &cub.conf->sp_list[i], cub);
+			cub = sp_draw(cub, cub.conf->sp_list[i]);
+		}
+		cub.conf->sp_list[i].hit = 0;
 		i++;
 	}
 	return (cub);

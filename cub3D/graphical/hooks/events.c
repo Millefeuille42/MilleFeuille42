@@ -37,8 +37,8 @@ inline static int	event_hooks(t_win *cub)
 
 	i = 0;
 	cub->img = create_image(*cub);
-	//while (i++ < 10)
-	//	raycasting(cub);
+	while (i++ < 10)
+		raycasting(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.v_img, 0, 0);
 	mlx_hook(cub->win, KeyRelease, KeyReleaseMask,
 		&key_rhook, cub);
