@@ -102,6 +102,7 @@ typedef struct		s_conf
 
 int					cub_parser(int fd, t_conf *conf);
 int					graphics(t_conf *conf);
+void				save(t_conf *conf);
 
 void				deinit_conf(t_conf *conf);
 

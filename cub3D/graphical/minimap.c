@@ -18,12 +18,12 @@ inline static void	d_sqr(int y, int x, t_win cub, t_col col)
 	int i2;
 
 	i = 0;
-	while (i < 4)
+	while (i < 6)
 	{
 		i2 = 0;
-		while (i2 < 4)
+		while (i2 < 6)
 		{
-			image_pixel_put(x * 4 + i2, y * 4 + i, cub.img, col);
+			image_pixel_put(x * 6 + i2, y * 6 + i, cub.img, col);
 			i2++;
 		}
 		i++;
@@ -37,18 +37,16 @@ void				minimap(t_win cub)
 	t_col	col;
 
 	i = 0;
-	col = (t_col) {255, 225, 255};
+	col = (t_col) {0, 255, 0};
 	while (cub.conf->map[i])
 	{
 		i2 = 0;
 		while (cub.conf->map[i][i2])
 		{
 			if (cub.conf->map[i][i2] == '1')
-				d_sqr(i, i2, cub, (t_col) {0, 255, 0});
+				d_sqr(i, i2, cub, (t_col) {255, 255, 255});
 			else if (cub.conf->map[i][i2] == '2')
 				d_sqr(i, i2, cub, (t_col) {255, 0, 0});
-			else
-				d_sqr(i, i2, cub, (t_col) {0, 0, 255});
 			i2++;
 		}
 		i++;

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
-#include <stdio.h>
 
 inline static void		disp_error(int err)
 {
@@ -47,16 +46,10 @@ int						main(int argc, char *argv[])
 		conf.play.plan = (t_dvec){0, -1};
 		fd = open(argv[1], O_RDONLY);
 		err = cub_parser(fd, &conf);
-		if (!err)
-		{
-			int i = 0;
-			while (conf.map[i])
-			{
-				printf("%s\n", conf.map[i]);
-				i++;
-			}
+		if (argc == 3 && !ft_strncmp(argv[2], "--save", 7) && !err)
+			save(&conf);
+		else if (!err)
 			graphics(&conf);
-		}
 		else
 		{
 			disp_error(err);

@@ -40,4 +40,6 @@ set(    SOURCE_CUB3D
 		cub3D/graphical/drawing/sprites_rendering.c
 		cub3D/graphical/drawing/buffer_commands.c
 
+		cub3D/bitmap/ft_bmp.c
+
         PARENT_SCOPE)

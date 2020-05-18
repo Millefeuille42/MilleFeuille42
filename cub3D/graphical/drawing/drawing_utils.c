@@ -37,7 +37,7 @@ inline static t_draw	def_length(t_win cub, t_ray r, int x)
 	return (lim);
 }
 
-inline static t_win		draw_line(t_win cub, t_ray r, int x, t_draw lim)
+inline static t_win		draw_line(t_win c, t_ray r, int x, t_draw lim)
 {
 	int		i[2];
 	t_col	col;
@@ -45,33 +45,31 @@ inline static t_win		draw_line(t_win cub, t_ray r, int x, t_draw lim)
 	t_col	c_col;
 
 	i[0] = 0;
-	i[1] = cub.conf->res.y + 100 ;
-	while (i[0] < (cub.conf->res.y - 1))
+	i[1] = c.conf->res.y + 100;
+	while (i[0] < (c.conf->res.y - 1))
 	{
-		f_col = shade_plane(cub.conf->floor, (double)i[0], 50);
-		c_col = shade_plane(cub.conf->roof, (double)i[1], 50);
+		f_col = shade_plane(c.conf->floor, (double)i[0], 50, c.conf->res.y);
+		c_col = shade_plane(c.conf->roof, (double)i[1], 50, c.conf->res.y);
 		if (i[0] < lim.s)
-			image_pixel_put(x, i[0], cub.img, c_col);
+			image_pixel_put(x, i[0], c.img, c_col);
 		else if (i[0] < lim.e)
 		{
-			col = text_spot(r, *cub.conf->t, i[0], lim);
+			col = text_spot(r, *c.conf->t, i[0], lim);
 			col = shade_text(col, lim.dist);
-			image_pixel_put(x, i[0], cub.img, col);
+			image_pixel_put(x, i[0], c.img, col);
 		}
 		else
-			image_pixel_put(x, i[0], cub.img, f_col);
+			image_pixel_put(x, i[0], c.img, f_col);
 		i[0]++;
 		i[1]--;
 	}
-	return (cub);
+	return (c);
 }
 
 t_win					draw(t_win cub, t_ray r, int x)
 {
 	t_draw	lim;
 
-	if (x >= cub.conf->res.x)
-		return (cub);
 	lim = def_length(cub, r, x);
 	cub = draw_line(cub, r, x, lim);
 	return (cub);

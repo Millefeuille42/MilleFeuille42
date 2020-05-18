@@ -21,6 +21,7 @@ add_subdirectory(CMAKE/cub3D)
 add_subdirectory(CMAKE/minishell)
 
 add_executable(libft ${SOURCES_LIBFT} main.c)
+
 add_executable(get_next_line ${SOURCE_GNL} main.c)
 add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 

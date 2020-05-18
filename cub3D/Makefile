@@ -45,7 +45,8 @@ SRCS	= 	./main.c											\
 			./graphical/minimap.c								\
 			./graphical/drawing/texturing.c						\
 			./graphical/drawing/sprites_rendering.c				\
-			./graphical/drawing/buffer_commands.c
+			./graphical/drawing/buffer_commands.c				\
+			./bitmap/ft_bmp.c
 
 
 OBJS	=	${SRCS:.c=.o}

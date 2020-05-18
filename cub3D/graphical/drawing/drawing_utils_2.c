@@ -20,11 +20,12 @@ t_img	image_pixel_put(int x, int y, t_img img, t_col color)
 	return (img);
 }
 
-t_col	shade_plane(t_col col, double dist, int in)
+t_col	shade_plane(t_col col, double dist, int in, int y)
 {
-	col.r = (int)(((double)col.r / 255.0 + 0.1) * ((in * dist / 255.0)));
-	col.g = (int)(((double)col.g / 255.0 + 0.1) * ((in * dist / 255.0)));
-	col.b = (int)(((double)col.b / 255.0 + 0.1) * ((in * dist / 255.0)));
+	in = in * y;
+	col.r = (int)(((double)col.r / 255.0 + 0.1) * ((in * (dist / y) / 255.0)));
+	col.g = (int)(((double)col.g / 255.0 + 0.1) * ((in * (dist / y) / 255.0)));
+	col.b = (int)(((double)col.b / 255.0 + 0.1) * ((in * (dist / y) / 255.0)));
 	col.r = col.r > 255 ? 255 : col.r;
 	col.g = col.g > 255 ? 255 : col.g;
 	col.b = col.b > 255 ? 255 : col.b;
@@ -33,7 +34,6 @@ t_col	shade_plane(t_col col, double dist, int in)
 	col.b = col.b < 0 ? 0 : col.b;
 	return (col);
 }
-
 
 t_col	shade_text(t_col col, double dist)
 {
