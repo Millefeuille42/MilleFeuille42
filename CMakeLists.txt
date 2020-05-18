@@ -26,12 +26,12 @@ add_executable(ft_printf ${SOURCE_PRINTF} main.c)
 
 add_executable(cub3D ${SOURCE_CUB3D})
 
-add_executable(minishell ${SOURCE_MINISHELL} Minishell/main.c Minishell/libftstring/ft_parse.c Minishell/libftstring/ft_clear.c Minishell/libftstring/ft_append.c)
+add_executable(minishell ${SOURCE_MINISHELL}Minishell/main.c )# Minishell/libftstring/ft_parse.c Minishell/libftstring/ft_clear.c Minishell/libftstring/ft_append.c)
 
 set_target_properties(get_next_line PROPERTIES COMPILE_FLAGS "-D BUFFER_SIZE=12")
 
 if (${WFLAGS})
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror -std=c99 -pedantic-errors")
 endif ()
 if (${SAN})
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
@@ -41,7 +41,7 @@ if (${COVER})
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage")
 endif ()
 if (${OPTI})
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Ofast")
 endif ()
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")

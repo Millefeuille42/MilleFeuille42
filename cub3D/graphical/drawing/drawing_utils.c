@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,42 @@ inline static t_draw	def_length(t_win cub, t_ray r, int x)
 	return (lim);
 }
 
+inline static t_win		draw_line(t_win cub, t_ray r, int x, t_draw lim)
+{
+	int		i[2];
+	t_col	col;
+	t_col	f_col;
+	t_col	c_col;
+
+	i[0] = 0;
+	i[1] = cub.conf->res.y + 100 ;
+	while (i[0] < (cub.conf->res.y - 1))
+	{
+		f_col = shade_plane(cub.conf->floor, (double)i[0], 50);
+		c_col = shade_plane(cub.conf->roof, (double)i[1], 50);
+		if (i[0] < lim.s)
+			image_pixel_put(x, i[0], cub.img, c_col);
+		else if (i[0] < lim.e)
+		{
+			col = text_spot(r, *cub.conf->t, i[0], lim);
+			col = shade_text(col, lim.dist);
+			image_pixel_put(x, i[0], cub.img, col);
+		}
+		else
+			image_pixel_put(x, i[0], cub.img, f_col);
+		i[0]++;
+		i[1]--;
+	}
+	return (cub);
+}
+
 t_win					draw(t_win cub, t_ray r, int x)
 {
-	int		i;
 	t_draw	lim;
-	t_col	col;
-	t_col	g_col;
 
 	if (x >= cub.conf->res.x)
 		return (cub);
 	lim = def_length(cub, r, x);
-	i = 0;
-	while (i < (cub.conf->res.y - 1))
-	{
-		g_col = shade(cub.conf->floor, (double)i - cub.inc_d, 0, 50);
-		if (i < lim.s)
-			image_pixel_put(x, i, cub.img, cub.conf->roof);
-		else if (i < lim.e)
-		{
-			col = text_spot(r, *cub.conf->t, i, lim);
-			image_pixel_put(x, i, cub.img, col);
-		}
-		else
-			image_pixel_put(x, i, cub.img, g_col);
-		i++;
-	}
+	cub = draw_line(cub, r, x, lim);
 	return (cub);
 }

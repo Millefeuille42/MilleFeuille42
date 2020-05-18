@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 15:58:05 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:12:45 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ inline static int	count_sprites(t_conf *conf)
 		i++;
 	}
 	count++;
-	if (!(conf->buf = malloc(sizeof(double) * (conf->res.x + 1))))
+	if (!(conf->buf = (double *)malloc(sizeof(double)
+			* ((conf->res.x) * (conf->res.y)))))
 		return (-3);
 	return (count);
 }
@@ -62,7 +63,8 @@ int					sprites_init(t_conf *conf)
 
 	i = 0;
 	count = 0;
-	if (!(conf->sp_list = malloc(sizeof(t_sprite) * count_sprites(conf))))
+	if (!(conf->sp_list =
+			(t_sprite *)malloc(sizeof(t_sprite) * count_sprites(conf))))
 		return (-3);
 	while (conf->map[i])
 	{

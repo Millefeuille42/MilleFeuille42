@@ -6,30 +6,11 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
-
-inline static int	check_lim(t_map_prop mp, char **map)
-{
-	if (!(mp.y == 0 || mp.y == mp.lines - 1))
-	{
-		if (!ft_cinset(map[mp.y][mp.length - 1], "15"))
-			return (-22);
-		if ((ft_cinset(map[mp.y - 1][mp.length - 2], "15")
-		|| ft_cinset(map[mp.y - 1][mp.length - 1], "15")
-		|| ft_cinset(map[mp.y - 1][mp.length], "15"))
-		&& (ft_cinset(map[mp.y + 1][mp.length - 2], "15")
-		|| ft_cinset(map[mp.y + 1][mp.length - 1], "15")
-		|| ft_cinset(map[mp.y + 1][mp.length], "15")))
-			return (0);
-		else
-			return (-22);
-	}
-	return (0);
-}
 
 inline static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 {
@@ -47,12 +28,10 @@ inline static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 			rotate_2(&conf->play.dir, &conf->play.plan, 270);
 		*m = '0';
 	}
-	else if (ft_cinset(*m, "1025 "))
+	else if (ft_cinset(*m, "102 "))
 	{
 		if (*m == ' ')
 			*m = '1';
-		if ((mp.y == 0 || mp.y == mp.lines - 1) && !ft_cinset(*m, "15"))
-			return (-22);
 	}
 	else
 		return (-22);
@@ -79,11 +58,11 @@ int					map_e(char **map, t_conf *conf)
 				return (-22);
 			prop.x++;
 		}
-		if (check_lim(prop, map))
-			return (-22);
 		prop.y++;
 	}
 	if (conf->play.pos.x < 0)
+		return (-22);
+	if (check_lim(map, prop))
 		return (-22);
 	return (0);
 }

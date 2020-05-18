@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ int					raycasting(t_win *cub)
 	t_ray	r;
 	int		x;
 	double	cam;
+	int		y;
 
-	init_textures(cub);
+	y = -1;
 	x = 0;
 	while (x < cub->conf->res.x)
 	{
@@ -85,6 +86,7 @@ int					raycasting(t_win *cub)
 		x++;
 	}
 	*cub = sprites_calculations(*cub);
+	reset_buffer(cub);
 	minimap(*cub);
 	return (0);
 }

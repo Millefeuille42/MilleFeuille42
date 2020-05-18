@@ -6,7 +6,7 @@
 #    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/07 12:19:51 by mlabouri          #+#    #+#              #
-#    Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr        #
+#    Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS	= 	./main.c											\
         	./parsing/parsing_methods/parsing_methods_3.c		\
         	./parsing/parsing_methods/error_check_methods.c		\
         	./parsing/parsing_methods/error_check_methods_2.c	\
+        	./parsing/parsing_methods/error_check_methods_3.c	\
 			./parsing/parsing_methods/sprites_init.c			\
 			./parsing/GNL/get_next_line_utils.c					\
         	./parsing/GNL/get_next_line.c						\
@@ -43,28 +44,29 @@ SRCS	= 	./main.c											\
 			./graphical/rays/sprites_calculations.c				\
 			./graphical/minimap.c								\
 			./graphical/drawing/texturing.c						\
-			./graphical/drawing/sprites_rendering.c
+			./graphical/drawing/sprites_rendering.c				\
+			./graphical/drawing/buffer_commands.c
 
 
 OBJS	=	${SRCS:.c=.o}
 INCL	=	./includes/
 
-LSTDRT	=	-L /usr/lib/ -lX11 -lbsd -lm -lc
+LSTDRT	=	-L /usr/lib/ -lbsd -lm -lc
 LX		=	-lX11 -lmlx -lXext
 LMLX	=	-L /usr/local/lib/ -lmlx
 
 COMPILE	=	clang
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -std=c99 -pedantic-errors -Ofast
 
 RM		=	rm -f
 
 NAME	=	cub3D
 
 .c.o	:
-			${COMPILE} ${FLAGS} -c $< -o $@ -O3
+			${COMPILE} ${FLAGS} -c $< -o $@
 
 ${NAME} :	${OBJS}
-			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS} ${LSTDRT} ${LX} ${LMLX} -O3
+			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS} ${LSTDRT} ${LX} ${LMLX}
 
 all		:	${NAME}
 

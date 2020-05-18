@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int					graphics(t_conf *conf)
 	mlx_get_screen_size(cub.mlx, &ssize.x, &ssize.y);
 	cub.conf->res.x = cub.conf->res.x > ssize.x ? ssize.x : cub.conf->res.x;
 	cub.conf->res.y = cub.conf->res.y > ssize.y ? ssize.y : cub.conf->res.y;
+	init_textures(&cub);
 	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x,
 		cub.conf->res.y, "cub3D");
 	event_hooks(&cub);

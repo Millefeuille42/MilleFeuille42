@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   buffer_commands.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/18 11:12:45 by mlabouri         ###   ########.fr       */
+/*   Created: 2020/05/15 17:09:57 by mlabouri          #+#    #+#             */
+/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/graphical.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	reset_buffer(t_win *cub)
 {
-	size_t	i;
+	int i;
 
-	if (fd < 0 || !s)
-		return ;
 	i = 0;
-	while (s[i] != '\0')
+	while (i < (cub->conf->res.x) * (cub->conf->res.y))
 	{
-		write(fd, &s[i], 1);
+		cub->conf->buf[i] = 0;
 		i++;
 	}
 }

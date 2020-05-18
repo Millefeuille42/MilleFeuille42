@@ -6,11 +6,12 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:09:07 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
+#include <stdio.h>
 
 inline static void		disp_error(int err)
 {
@@ -37,7 +38,7 @@ int						main(int argc, char *argv[])
 	int		err;
 	t_conf	conf;
 
-	if (argc < 1)
+	if (argc < 1 || argc > 3)
 		err = -1;
 	else
 	{
@@ -47,7 +48,15 @@ int						main(int argc, char *argv[])
 		fd = open(argv[1], O_RDONLY);
 		err = cub_parser(fd, &conf);
 		if (!err)
+		{
+			int i = 0;
+			while (conf.map[i])
+			{
+				printf("%s\n", conf.map[i]);
+				i++;
+			}
 			graphics(&conf);
+		}
 		else
 		{
 			disp_error(err);

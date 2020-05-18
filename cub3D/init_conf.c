@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,13 @@ inline static void	safe_close(int fd)
 
 void				deinit_conf(t_conf *conf)
 {
-	int i;
-
 	safe_free((void **)&(conf->no.path));
 	safe_free((void **)&(conf->so.path));
 	safe_free((void **)&(conf->we.path));
 	safe_free((void **)&(conf->ea.path));
 	safe_free((void **)&(conf->sprite.path));
 	safe_free((void **)&(conf->sp_list));
-	i = 0;
+	safe_free((void **)&(conf->buf));
 	clear(conf->map);
 	safe_close((conf->no.fd));
 	safe_close((conf->so.fd));

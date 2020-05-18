@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char		*ft_gsubstr(char *s, unsigned int start, size_t len)
 	i = 0;
 	while (s[(size_t)start + i] != '\0' && i < len)
 		i++;
-	sub = malloc(sizeof(char) * i + 1);
+	sub = (char *)malloc(sizeof(char) * i + 1);
 	if (!sub)
 		return (NULL);
 	i = 0;
@@ -66,7 +66,8 @@ char		*ft_gstrjoin(char *s1, char *s2)
 
 	i = 0;
 	i2 = 0;
-	if (!(join = malloc(sizeof(char) * (ft_gstrlen(s1) + ft_gstrlen(s2) + 1))))
+	if (!(join = (char *)malloc(sizeof(char)
+			* (ft_gstrlen(s1) + ft_gstrlen(s2) + 1))))
 		return (NULL);
 	while (s1[i] != '\0')
 	{

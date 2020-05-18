@@ -12,6 +12,7 @@ set(    SOURCE_CUB3D
 		cub3D/parsing/parsing_methods/sprites_init.c
 		cub3D/parsing/GNL/get_next_line_utils.c
         cub3D/parsing/GNL/get_next_line.c
+		cub3D/parsing/parsing_methods/error_check_methods_3.c
 
         cub3D/utils/ft_strdup.c
         cub3D/utils/ft_strjoin.c
@@ -37,5 +38,6 @@ set(    SOURCE_CUB3D
 		cub3D/graphical/minimap.c
 		cub3D/graphical/drawing/texturing.c
 		cub3D/graphical/drawing/sprites_rendering.c
+		cub3D/graphical/drawing/buffer_commands.c
 
         PARENT_SCOPE)

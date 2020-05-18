@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ t_img				create_image(t_win cub);
 t_img				image_pixel_put(int x, int y, t_img i, t_col c);
 
 t_win				draw(t_win c, t_ray r, int x);
-t_col				shade(t_col c, double d, char w, int i);
+t_col				shade_plane(t_col col, double dist, int in);
+t_col				shade_text(t_col col, double dist);
+
 void				minimap(t_win cub);
 
 void				init_textures(t_win *cub);
@@ -95,6 +97,8 @@ t_win				sp_draw(t_win cub, t_sprite sprite);
 
 t_win				sprites_calculations(t_win cub);
 void				tag_sprite(t_ivec ray, t_sprite *sprites);
+
+void				reset_buffer(t_win *cub);
 
 t_win				keys_init(t_win cub);
 int					key_rhook(int key, t_win *cub);
