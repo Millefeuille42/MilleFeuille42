@@ -50,7 +50,8 @@ SRCS	= 	./main.c											\
 
 
 OBJS	=	${SRCS:.c=.o}
-INCL	=	./includes/
+INCL	=	-I ./includes/
+I_MLX	=	-I /usr/include -I /usr/local/include
 
 LSTDRT	=	-L /usr/lib/ -lbsd -lm -lc
 LX		=	-lX11 -lmlx -lXext
@@ -64,10 +65,10 @@ RM		=	rm -f
 NAME	=	cub3D
 
 .c.o	:
-			${COMPILE} ${FLAGS} -c $< -o $@
+			${COMPILE} ${FLAGS} ${INCL} ${I_MLX} -c $< -o $@
 
 ${NAME} :	${OBJS}
-			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS} ${LSTDRT} ${LX} ${LMLX}
+			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS} ${LSTDRT} ${LX} ${LMLX} ${INCL} ${I_MLX}
 
 all		:	${NAME}
 
