@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: millefeuille </var/spool/mail/millefe      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/04/30 18:34:33 by millefeui         #+#    #+#              #
-#    Updated: 2020/05/07 12:19:22 by mlabouri         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # ************************************************************************** #
 #                                                                            #
 #                                                        :::      ::::::::   #
@@ -23,23 +11,21 @@
 # ************************************************************************** #
 
 SRCS	=	./ft_read.s     \
-            ./ft_write.s    \
-            ./ft_strlen.s   \
-            ./ft_strcmp.s   \
-            ./ft_strcpy.s   \
-            ./ft_strdup.s
+            	./ft_write.s    \
+           	./ft_strlen.s   \
+           	./ft_strcmp.s   \
+          	./ft_strcpy.s   \
+          	./ft_strdup.s
 
 OBJS	=	${SRCS:.s=.o}
-
-INCL	=	./libasm.h
 
 NAME	=	libasm.a
 
 COMPILE	=	nasm
 
-LIB		=	ar rc
+LIB		= ar rcs
 
-RM		=	rm -f
+RM		= rm -f
 
 FLAGS	=	-f elf64
 
@@ -56,11 +42,14 @@ clean	:
 			${RM} ${OBJS}
 
 fclean	:	clean
-			${RM} ${NAME}
+			${RM} ${NAME} ./test/test.out
 
 re		:	fclean all
 
 o		:	re
 			${MAKE} fclean
+
+test		:	all
+			clang -no-pie ./test/main.c -L ./ -lasm -o test/test.out; ./test/test.out
 
 .PHONY	:	all clean fclean re

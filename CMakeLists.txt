@@ -12,6 +12,7 @@ include_directories(
 link_directories(
         /usr/include
         /usr/local/include
+        /home/millefeuille/CLionProjects/Millefeuille42/libasm
 )
 
 add_subdirectory(CMAKE/Libft)
@@ -34,13 +35,16 @@ set_target_properties(get_next_line PROPERTIES COMPILE_FLAGS "-D BUFFER_SIZE=12"
 if (${WFLAGS})
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror -std=c99 -pedantic-errors")
 endif ()
+
 if (${SAN})
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
 endif ()
+
 if (${COVER})
     set(CMAKE_C_COMPILER /usr/bin/gcc)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage")
 endif ()
+
 if (${OPTI})
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Ofast")
 endif ()
