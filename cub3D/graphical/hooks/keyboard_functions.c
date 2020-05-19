@@ -21,6 +21,10 @@ void	left(t_win **cub)
 	rotate(&dir, 90);
 	n_pos.x = (*cub)->conf->play.pos.x + dir.x / 5;
 	n_pos.y = (*cub)->conf->play.pos.y + dir.y / 5;
+	if (n_pos.x - floor(n_pos.x) == 0)
+		n_pos.x += 0.1;
+	if (n_pos.y - floor(n_pos.y) == 0)
+		n_pos.y += 0.1;
 	if ((*cub)->conf->map[(int)(n_pos.y + dir.y / 5)]
 		[(int)(n_pos.x + dir.x / 5)] != '0')
 		return ;
@@ -36,6 +40,10 @@ void	right(t_win **cub)
 	rotate(&dir, -90);
 	n_pos.x = (*cub)->conf->play.pos.x + dir.x / 5;
 	n_pos.y = (*cub)->conf->play.pos.y + dir.y / 5;
+	if (n_pos.x - floor(n_pos.x) == 0)
+		n_pos.x += dir.x / 10;
+	if (n_pos.y - floor(n_pos.y) == 0)
+		n_pos.y += dir.y / 10;
 	if ((*cub)->conf->map[(int)(n_pos.y + dir.y / 5)]
 	[(int)(n_pos.x + dir.x / 5)] != '0')
 		return ;
@@ -50,6 +58,10 @@ void	up(t_win **cub)
 	dir = (*cub)->conf->play.dir;
 	n_pos.x = (*cub)->conf->play.pos.x + dir.x / 5;
 	n_pos.y = (*cub)->conf->play.pos.y + dir.y / 5;
+	if (n_pos.x - floor(n_pos.x) == 0)
+		n_pos.x += dir.x / 10;
+	if (n_pos.y - floor(n_pos.y) == 0)
+		n_pos.y += dir.y / 10;
 	if ((*cub)->conf->map[(int)(n_pos.y + dir.y / 2)]
 		[(int)(n_pos.x + dir.x / 2)] != '0')
 		return ;
@@ -64,6 +76,10 @@ void	down(t_win **cub)
 	dir = (*cub)->conf->play.dir;
 	n_pos.x = (*cub)->conf->play.pos.x - dir.x / 5;
 	n_pos.y = (*cub)->conf->play.pos.y - dir.y / 5;
+	if (n_pos.x - floor(n_pos.x) == 0)
+		n_pos.x -= dir.x / 10;
+	if (n_pos.y - floor(n_pos.y) == 0)
+		n_pos.y -= dir.y / 10;
 	if ((*cub)->conf->map[(int)(n_pos.y - dir.y / 2)]
 		[(int)(n_pos.x - dir.x / 2)] != '0')
 		return ;

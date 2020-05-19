@@ -28,50 +28,10 @@ int					rgb_e(struct s_plan plan)
 	return (0);
 }
 
-inline static int	parse_size(char *str, int *i)
-{
-	char	size[8];
-	int		i2;
-
-	i2 = 0;
-	while (ft_isdigit(str[*i]))
-	{
-		size[i2] = str[*i];
-		*i += 1;
-		i2++;
-	}
-	size[i2] = '\0';
-	return (ft_atoi(size));
-}
-
-inline static void	texture_length(t_text *text)
-{
-	char	*line;
-	int		i;
-
-	i = 0;
-	while (i < 3)
-	{
-		get_next_line(text->fd, &line);
-		free(line);
-		i++;
-	}
-	get_next_line(text->fd, &line);
-	i = 0;
-	while (!ft_isdigit(line[i]))
-		i++;
-	text->s.x = parse_size(line, &i);
-	while (!ft_isdigit(line[i]))
-		i++;
-	text->s.y = parse_size(line, &i);
-	free(line);
-}
-
 int					path_e(t_text *file)
 {
 	file->fd = open(file->path, O_RDONLY);
 	if (file->fd < 0)
 		return (-1);
-	texture_length(file);
 	return (0);
 }

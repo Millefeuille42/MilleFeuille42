@@ -12,9 +12,18 @@
 
 #include "../../includes/parsing.h"
 
+inline static int	is_border(t_map_prop mp)
+{
+	if (mp.y == mp.lines - 1 || mp.y == 0)
+		return (0);
+	if (mp.x == mp.length - 1 || mp.x == 0)
+		return (0);
+	return (1);
+}
+
 inline static int	read_pos(t_map_prop mp, t_conf *conf, char *m)
 {
-	if (ft_cinset(*m, "NSWE"))
+	if (ft_cinset(*m, "NSWE") && is_border(mp))
 	{
 		if (conf->play.pos.x > 0)
 			return (-22);

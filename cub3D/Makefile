@@ -33,7 +33,6 @@ SRCS	= 	./main.c											\
         	./utils/ft_split.c									\
         	./utils/ft_putstr_fd.c								\
 			./utils/vector_matrix.c								\
-			./utils/ft_atoi.c									\
 			./graphical/drawing/drawing_utils.c					\
         	./graphical/drawing/drawing_utils_2.c				\
         	./graphical/hooks/events.c							\

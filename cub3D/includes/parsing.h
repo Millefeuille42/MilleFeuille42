@@ -37,8 +37,6 @@ int					check_lim(char **map, t_map_prop prop);
 
 int					sprites_init(t_conf *conf);
 
-int					ft_atoi(const char *str);
-
 void				clear(char **pstr);
 
 #endif

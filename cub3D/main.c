@@ -43,7 +43,7 @@ int						main(int argc, char *argv[])
 	{
 		conf = (t_conf){.play.pos.x = -1};
 		conf.play.dir = (t_dvec){1, 0};
-		conf.play.plan = (t_dvec){0, -1};
+		conf.play.plan = (t_dvec){0, -0.66};
 		fd = open(argv[1], O_RDONLY);
 		err = cub_parser(fd, &conf);
 		if (argc == 3 && !ft_strncmp(argv[2], "--save", 7) && !err)

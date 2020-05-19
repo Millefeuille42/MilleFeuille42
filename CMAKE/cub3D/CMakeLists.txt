@@ -25,7 +25,6 @@ set(    SOURCE_CUB3D
         cub3D/utils/ft_split.c
         cub3D/utils/ft_putstr_fd.c
 		cub3D/utils/vector_matrix.c
-		cub3D/utils/ft_atoi.c
 
 		cub3D/graphical/drawing/drawing_utils.c
         cub3D/graphical/drawing/drawing_utils_2.c

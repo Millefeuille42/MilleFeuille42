@@ -55,6 +55,8 @@ int					graphics(t_conf *conf)
 	t_win		cub;
 	t_ivec		ssize;
 
+	conf->play.pos.x += 0.5;
+	conf->play.pos.y += 0.5;
 	cub = (t_win) {.conf = conf};
 	cub = keys_init(cub);
 	cub.mlx = mlx_init();
@@ -62,6 +64,7 @@ int					graphics(t_conf *conf)
 	cub.conf->res.x = cub.conf->res.x > ssize.x ? ssize.x : cub.conf->res.x;
 	cub.conf->res.y = cub.conf->res.y > ssize.y ? ssize.y : cub.conf->res.y;
 	init_textures(&cub);
+	reset_buffer(&cub);
 	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x,
 		cub.conf->res.y, "cub3D");
 	event_hooks(&cub);
