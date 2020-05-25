@@ -44,7 +44,6 @@ inline static char	in_scr(t_res res, int x, int y)
 	return (0);
 }
 
-
 t_win				sp_draw_2(t_win cub, t_sprite s)
 {
 	t_col	spt;
@@ -73,6 +72,7 @@ t_win				sp_draw_2(t_win cub, t_sprite s)
 	}
 	return (cub);
 }
+
 t_win				sp_draw(t_win cub, t_sprite s)
 {
 	t_col	spt;

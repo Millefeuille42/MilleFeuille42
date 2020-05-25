@@ -94,7 +94,7 @@ void				minimap(t_win cub);
 void				init_textures(t_win *cub);
 t_col				text_spot(t_ray hit, t_text t, double y, t_draw lim);
 t_win				sp_draw(t_win cub, t_sprite sprite);
-t_win				sp_draw_2(t_win cub, t_sprite);
+t_win				sp_draw_2(t_win cub, t_sprite sprite);
 
 t_win				sprites_calculations(t_win cub);
 void				tag_sprite(t_ivec ray, t_sprite *sprites, char sp);

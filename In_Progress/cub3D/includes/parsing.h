@@ -17,6 +17,7 @@
 # include "get_next_line.h"
 
 # define PARAMSNB 9
+
 typedef struct		s_map_prop
 {
 	int				x;
