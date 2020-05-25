@@ -1,9 +1,48 @@
 set(
     SOURCES_LIBFT
-        libft/ft_calloc.c libft/ft_isascii.c libft/ft_itoa.c libft/ft_lstclear.c libft/ft_lstlast_bonus.c libft/ft_memccpy.c libft/ft_memcpy.c libft/ft_putchar_fd.c libft/ft_putstr_fd.c
-        libft/ft_strdup.c libft/ft_strlcpy.c libft/ft_strncmp.c libft/ft_strtrim.c libft/ft_toupper.c libft/ft_atoi.c libft/ft_isalnum.c libft/ft_isdigit.c
-        libft/ft_lstadd_back_bonus.c libft/ft_lstdelone.c libft/ft_lstnew_bonus.c libft/ft_memchr.c libft/ft_memmove.c
-        libft/ft_putendl_fd.c libft/ft_split.c libft/ft_strjoin.c libft/ft_strlen.c libft/ft_strnstr.c libft/ft_substr.c libft/libft.h
-        libft/ft_bzero.c libft/ft_isalpha.c libft/ft_isprint.c libft/ft_lstadd_front_bonus.c libft/ft_lstiter_bonus.c libft/ft_lstsize_bonus.c libft/ft_memcmp.c
-        libft/ft_memset.c libft/ft_putnbr_fd.c libft/ft_strchr.c libft/ft_strlcat.c libft/ft_strmapi.c libft/ft_strrchr.c libft/ft_tolower.c 
+		Finished/libft/ft_calloc.c
+		../../Finished/libft/ft_isascii.c
+		../../Finished/libft/ft_itoa.c
+		../../Finished/libft/ft_lstclear.c
+		../../Finished/libft/ft_lstlast_bonus.c
+		../../Finished/libft/ft_memccpy.c
+		../../Finished/libft/ft_memcpy.c
+		../../Finished/libft/ft_putchar_fd.c
+		../../Finished/libft/ft_putstr_fd.c
+		../../Finished/libft/ft_strdup.c
+		../../Finished/libft/ft_strlcpy.c
+		../../Finished/libft/ft_strncmp.c
+		../../Finished/libft/ft_strtrim.c
+		../../Finished/libft/ft_toupper.c
+		../../Finished/libft/ft_atoi.c
+		../../Finished/libft/ft_isalnum.c
+		../../Finished/libft/ft_isdigit.c
+		../../Finished/libft/ft_lstadd_back_bonus.c
+		../../Finished/libft/ft_lstdelone.c
+		../../Finished/libft/ft_lstnew_bonus.c
+		../../Finished/libft/ft_memchr.c
+		../../Finished/libft/ft_memmove.c
+		../../Finished/libft/ft_putendl_fd.c
+		../../Finished/libft/ft_split.c
+		../../Finished/libft/ft_strjoin.c
+		../../Finished/libft/ft_strlen.c
+		../../Finished/libft/ft_strnstr.c
+		../../Finished/libft/ft_substr.c
+		../../Finished/libft/libft.h
+		../../Finished/libft/ft_bzero.c
+		../../Finished/libft/ft_isalpha.c
+		../../Finished/libft/ft_isprint.c
+		../../Finished/libft/ft_lstadd_front_bonus.c
+		../../Finished/libft/ft_lstiter_bonus.c
+		../../Finished/libft/ft_lstsize_bonus.c
+		../../Finished/libft/ft_memcmp.c
+		../../Finished/libft/ft_memset.c
+		../../Finished/libft/ft_putnbr_fd.c
+		../../Finished/libft/ft_strchr.c
+		../../Finished/libft/ft_strlcat.c
+		../../Finished/libft/ft_strmapi.c
+		../../Finished/libft/ft_strrchr.c
+		../../Finished/libft/ft_tolower.c
     PARENT_SCOPE)
+
+add_executable(libft ${SOURCES_LIBFT} ../../main.c)
