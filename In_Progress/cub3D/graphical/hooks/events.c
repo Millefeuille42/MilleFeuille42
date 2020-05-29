@@ -64,6 +64,7 @@ int					graphics(t_conf *conf)
 {
 	t_win		cub;
 	t_ivec		ssize;
+	int			err;
 
 	conf->play.pos.x += 0.5;
 	conf->play.pos.y += 0.5;
@@ -74,6 +75,8 @@ int					graphics(t_conf *conf)
 	cub.conf->res.x = cub.conf->res.x > ssize.x ? ssize.x : cub.conf->res.x;
 	cub.conf->res.y = cub.conf->res.y > ssize.y ? ssize.y : cub.conf->res.y;
 	init_textures(&cub);
+	if ((err = sprites_init(conf)))
+		return (err);
 	reset_buffer(&cub);
 	cub.win = mlx_new_window(cub.mlx, cub.conf->res.x,
 		cub.conf->res.y, "cub3D");

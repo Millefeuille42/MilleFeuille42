@@ -23,8 +23,8 @@ inline static void	d_sqr(int y, int x, t_win cub, t_col col)
 		i2 = 0;
 		while (i2 < (cub.conf->res.x / 120))
 		{
-			image_pixel_put(x * (cub.conf->res.x / 120) + i2,
-							y * (cub.conf->res.y / 120) + i, cub.img, col,
+			image_pixel_put((t_ivec){x * (cub.conf->res.x / 120) + i2,
+							y * (cub.conf->res.y / 120) + i}, cub.img, col,
 							cub.conf->res);
 			i2++;
 		}

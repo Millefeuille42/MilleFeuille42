@@ -83,7 +83,7 @@ typedef struct		s_draw
 int					raycasting(t_win *cub);
 
 t_img				create_image(t_win cub);
-t_img image_pixel_put(int x, int y, t_img i, t_col c, t_res res);
+t_img				image_pixel_put(t_ivec d, t_img i, t_col c, t_res res);
 
 t_win				draw(t_win c, t_ray r, int x);
 t_col				shade_plane(t_col col, double dist, int in, int y);
@@ -95,6 +95,7 @@ void				init_textures(t_win *cub);
 t_col				text_spot(t_ray hit, t_text t, double y, t_draw lim);
 t_win				sp_draw(t_win cub, t_sprite sprite);
 t_win				sp_draw_2(t_win cub, t_sprite sprite);
+int					sprites_init(t_conf *conf);
 
 t_win				sprites_calculations(t_win cub);
 void				tag_sprite(t_ivec ray, t_sprite *sprites, char sp);

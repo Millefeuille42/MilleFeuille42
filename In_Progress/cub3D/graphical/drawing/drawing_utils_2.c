@@ -12,13 +12,13 @@
 
 #include "../../includes/graphical.h"
 
-t_img image_pixel_put(int x, int y, t_img i, t_col c, t_res res)
+t_img	image_pixel_put(t_ivec d, t_img i, t_col c, t_res res)
 {
-	if (x > res.x || x < 0 || y > res.y || y < 0)
+	if (d.x > res.x || d.x < 0 || d.y > res.y || d.y < 0)
 		return (i);
-	i.c_img[y * i.sl + x * (i.bpp / 8)] = (char)c.b;
-	i.c_img[y * i.sl + x * (i.bpp / 8) + 1] = (char)c.g;
-	i.c_img[y * i.sl + x * (i.bpp / 8) + 2] = (char)c.r;
+	i.c_img[d.y * i.sl + d.x * (i.bpp / 8)] = (char)c.b;
+	i.c_img[d.y * i.sl + d.x * (i.bpp / 8) + 1] = (char)c.g;
+	i.c_img[d.y * i.sl + d.x * (i.bpp / 8) + 2] = (char)c.r;
 	return (i);
 }
 

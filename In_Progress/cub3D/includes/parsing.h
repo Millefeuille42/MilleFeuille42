@@ -40,8 +40,6 @@ int					path_e(t_text *file);
 
 int					check_lim(char **map, t_map_prop prop);
 
-int					sprites_init(t_conf *conf);
-
 void				clear(char **pstr);
 int					skip_wp(char *str);
 

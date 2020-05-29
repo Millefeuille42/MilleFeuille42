@@ -44,7 +44,5 @@ int					error_route(int fd, t_conf *conf)
 		return (err);
 	if ((err = (err_check(conf))))
 		return (err);
-	if ((err = sprites_init(conf)))
-		return (err);
 	return (0);
 }
