@@ -1,6 +1,6 @@
 section .text
     global ft_write
-
+	extern __errno_location
 ft_write:
 	cmp rdx, 0
 	jl _err
@@ -28,5 +28,9 @@ _end_zero:
 	mov rax, 0
 	ret
 _err:
+	mov rax, -1
+    mov rcx, rax
+    call __errno_location
+    mov [rax], rcx
 	mov rax, -1
 	ret

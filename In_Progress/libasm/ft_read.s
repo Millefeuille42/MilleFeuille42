@@ -1,10 +1,11 @@
 section	.text
-global	ft_read
+	global	ft_read
+	extern __errno_location
 
 ft_read:
-	cmp rdx, 0
+		cmp rdx, 0
        	je _end_zero
-	jl _err
+		jl _err
        	cmp rdi, 0
        	jl _err
        	cmp rsi, 0
@@ -17,17 +18,21 @@ _get_fd:
        	mov rax, 72
        	syscall
 _read_here:
-	pop rsi
-	pop rdx
-	cmp eax, 0
-	jne _err
-	mov rax, 0
-	syscall
-	ret
+		pop rsi
+		pop rdx
+		cmp eax, 0
+		jne _err
+		mov rax, 0
+		syscall
+		ret
 _end_zero:
-        mov rax, 0
-        ret
+    	mov rax, 0
+    	ret
 _err:
-        mov rax, -1
-        ret
+		mov rax, -1
+   		mov rcx, rax
+   		call __errno_location
+   		mov [rax], rcx
+		mov rax, -1
+   		ret
 
