@@ -83,7 +83,7 @@ typedef struct		s_draw
 int					raycasting(t_win *cub);
 
 t_img				create_image(t_win cub);
-t_img				image_pixel_put(int x, int y, t_img i, t_col c);
+t_img image_pixel_put(int x, int y, t_img i, t_col c, t_res res);
 
 t_win				draw(t_win c, t_ray r, int x);
 t_col				shade_plane(t_col col, double dist, int in, int y);

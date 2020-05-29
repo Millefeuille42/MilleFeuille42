@@ -85,6 +85,8 @@ int					err_check(t_conf *conf)
 		return (-21);
 	if ((path_e(&conf->sprite)))
 		return (-21);
+	if ((path_e(&conf->sprite_2)))
+		return (-21);
 	return (0);
 }
 

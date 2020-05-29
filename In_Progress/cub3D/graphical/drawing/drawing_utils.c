@@ -27,11 +27,11 @@ inline static t_draw	def_length(t_win cub, t_ray r, int x)
 	if (lim.dist == 0)
 		line_height = 0;
 	lim.s = -line_height / 2 + cub.conf->res.y / 2 + cub.inc_u;
-	if (lim.s < 0)
-		lim.s = 0;
+	//if (lim.s < 0)
+	//	lim.s = 0;
 	lim.e = line_height / 2 + cub.conf->res.y / 2 + cub.inc_d;
-	if (lim.e >= cub.conf->res.y)
-		lim.e = cub.conf->res.y - 1;
+	//if (lim.e >= cub.conf->res.y)
+	//	lim.e = cub.conf->res.y - 1;
 	cub.conf->buf[x] = (pow(cub.conf->play.pos.x - r.mpos.x, 2)
 			+ pow(cub.conf->play.pos.y - r.mpos.y, 2));
 	return (lim);
@@ -51,15 +51,15 @@ inline static t_win		draw_line(t_win c, t_ray r, int x, t_draw lim)
 		f_col = shade_plane(c.conf->floor, (double)i[0], 50, c.conf->res.y);
 		c_col = shade_plane(c.conf->roof, (double)i[1], 50, c.conf->res.y);
 		if (i[0] < lim.s)
-			image_pixel_put(x, i[0], c.img, c_col);
+			image_pixel_put(x, i[0], c.img, c_col, c.conf->res);
 		else if (i[0] < lim.e)
 		{
 			col = text_spot(r, *c.conf->t, i[0], lim);
 			col = shade_text(col, lim.dist);
-			image_pixel_put(x, i[0], c.img, col);
+			image_pixel_put(x, i[0], c.img, col, c.conf->res);
 		}
 		else
-			image_pixel_put(x, i[0], c.img, f_col);
+			image_pixel_put(x, i[0], c.img, f_col, c.conf->res);
 		i[0]++;
 		i[1]--;
 	}

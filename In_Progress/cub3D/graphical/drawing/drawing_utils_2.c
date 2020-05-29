@@ -12,12 +12,14 @@
 
 #include "../../includes/graphical.h"
 
-t_img	image_pixel_put(int x, int y, t_img img, t_col color)
+t_img image_pixel_put(int x, int y, t_img i, t_col c, t_res res)
 {
-	img.c_img[y * img.sl + x * (img.bpp / 8)] = (char)color.b;
-	img.c_img[y * img.sl + x * (img.bpp / 8) + 1] = (char)color.g;
-	img.c_img[y * img.sl + x * (img.bpp / 8) + 2] = (char)color.r;
-	return (img);
+	if (x > res.x || x < 0 || y > res.y || y < 0)
+		return (i);
+	i.c_img[y * i.sl + x * (i.bpp / 8)] = (char)c.b;
+	i.c_img[y * i.sl + x * (i.bpp / 8) + 1] = (char)c.g;
+	i.c_img[y * i.sl + x * (i.bpp / 8) + 2] = (char)c.r;
+	return (i);
 }
 
 t_col	shade_plane(t_col col, double dist, int in, int y)

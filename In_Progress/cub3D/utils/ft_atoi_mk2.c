@@ -33,7 +33,9 @@ int					atoi_mk2(const char *s, int start, int end)
 	res = 0;
 	while (power >= 0 && ft_isdigit(s[start]))
 	{
-		res = res + ((int)s[start] - 48) * ft_power(10, power);
+		int p = ft_power(10, power);
+		int sst = ((int)s[start] - 48);
+		res = res + sst * p;
 		start++;
 		power = end - start;
 	}
