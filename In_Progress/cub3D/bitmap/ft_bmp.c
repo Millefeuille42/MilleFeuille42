@@ -83,6 +83,7 @@ void				save(t_conf *conf)
 	cub = (t_win) {.conf = conf};
 	cub = keys_init(cub);
 	cub.mlx = mlx_init();
+	sprites_init(conf);
 	init_textures(&cub);
 	cub.img = create_image(cub);
 	raycasting(&cub);
