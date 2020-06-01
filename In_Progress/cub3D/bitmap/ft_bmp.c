@@ -86,6 +86,7 @@ void				save(t_conf *conf)
 	sprites_init(conf);
 	init_textures(&cub);
 	cub.img = create_image(cub);
+	reset_buffer(&cub);
 	raycasting(&cub);
 	ft_bmp(conf, cub.img);
 	mlx_destroy_image(cub.mlx, cub.conf->no.i.v_img);

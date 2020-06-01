@@ -108,6 +108,7 @@ void				reset_buffer(t_win *cub);
 t_win				keys_init(t_win cub);
 int					key_rhook(int key, t_win *cub);
 int					keyp_hook(int key, t_win *cub);
+int 				check(t_win **cub, char side);
 
 void				up(t_win **cub);
 void				down(t_win **cub);

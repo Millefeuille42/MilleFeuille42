@@ -25,8 +25,8 @@ void	left(t_win **cub)
 		n_pos.x += 0.1;
 	if (n_pos.y - floor(n_pos.y) == 0)
 		n_pos.y += 0.1;
-	if ((*cub)->conf->map[(int)(n_pos.y + dir.y / 5)]
-		[(int)(n_pos.x + dir.x / 5)] != '0')
+	if ((*cub)->conf->map[(int)(n_pos.y + dir.y / 2)]
+		[(int)(n_pos.x + dir.x / 2)] != '0')
 		return ;
 	(*cub)->conf->play.pos = n_pos;
 }
@@ -44,8 +44,8 @@ void	right(t_win **cub)
 		n_pos.x += dir.x / 10;
 	if (n_pos.y - floor(n_pos.y) == 0)
 		n_pos.y += dir.y / 10;
-	if ((*cub)->conf->map[(int)(n_pos.y + dir.y / 5)]
-	[(int)(n_pos.x + dir.x / 5)] != '0')
+	if ((*cub)->conf->map[(int)(n_pos.y + dir.y / 2)]
+	[(int)(n_pos.x + dir.x / 2)] != '0')
 		return ;
 	(*cub)->conf->play.pos = n_pos;
 }

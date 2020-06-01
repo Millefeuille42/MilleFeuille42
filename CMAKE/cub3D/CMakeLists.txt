@@ -42,7 +42,7 @@ set(    SOURCE_CUB3D
 
 		../../In_Progress/cub3D/bitmap/ft_bmp.c
 
-		)
+		../../In_Progress/cub3D/graphical/hooks/collisions.c)
 
 add_executable(cub3D ${SOURCE_CUB3D})
 
