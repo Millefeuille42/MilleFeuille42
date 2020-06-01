@@ -12,28 +12,6 @@
 
 #include "../../includes/graphical.h"
 
-inline static void	key_f(int key, t_win **cub)
-{
-	if (key == UP)
-		up(cub);
-	else if (key == DOWN)
-		down(cub);
-	else if (key == LEFT)
-		left(cub);
-	else if (key == RIGHT)
-		right(cub);
-	else if (key == R_UP)
-		r_up(cub);
-	else if (key == R_DOWN)
-		r_down(cub);
-	else if (key == R_LEFT)
-		r_left(cub);
-	else if (key == R_RIGHT)
-		r_right(cub);
-	else if (key == ESCAPE)
-		escape(cub);
-}
-
 inline static int	key_check(int key)
 {
 	if (key == UP
@@ -58,12 +36,8 @@ int					key_rhook(int key, t_win *cub)
 
 int					keyp_hook(int key, t_win *cub)
 {
-	cub->img = create_image(*cub);
-	cub->keys.keyc[key] = 1;
-	if (cub->keys.keyc[key] && key_check(key))
-		key_f(key, &cub);
-	else
-		return (0);
+	if (key_check(key))
+		cub->keys.keyc[key] = 1;
 	return (0);
 }
 

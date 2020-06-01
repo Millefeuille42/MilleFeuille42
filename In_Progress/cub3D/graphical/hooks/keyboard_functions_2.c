@@ -14,38 +14,28 @@
 
 void	r_left(t_win **cub)
 {
-	rotate_2(&(*cub)->conf->play.dir, &(*cub)->conf->play.plan, 10);
-	raycasting(*cub);
-	mlx_clear_window((*cub)->mlx, (*cub)->win);
-	mlx_put_image_to_window((*cub)->mlx, (*cub)->win, (*cub)->img.v_img, 0, 0);
+	rotate_2(&(*cub)->conf->play.dir, &(*cub)->conf->play.plan,
+			15 * ((1.0/FPS) * ROT));
 }
 
 void	r_right(t_win **cub)
 {
-	rotate_2(&(*cub)->conf->play.dir, &(*cub)->conf->play.plan, -10);
-	raycasting(*cub);
-	mlx_clear_window((*cub)->mlx, (*cub)->win);
-	mlx_put_image_to_window((*cub)->mlx, (*cub)->win, (*cub)->img.v_img, 0, 0);
+	rotate_2(&(*cub)->conf->play.dir, &(*cub)->conf->play.plan,
+			-15 * ((1.0/FPS) * ROT));
 }
 
 void	r_up(t_win **cub)
 {
 	if ((*cub)->inc_u < 100)
-		(*cub)->inc_u += 20;
+		(*cub)->inc_u += (int)((1.0/FPS) * (ROT + 2025));
 	if ((*cub)->inc_d < 100)
-		(*cub)->inc_d += 20;
-	raycasting(*cub);
-	mlx_clear_window((*cub)->mlx, (*cub)->win);
-	mlx_put_image_to_window((*cub)->mlx, (*cub)->win, (*cub)->img.v_img, 0, 0);
+		(*cub)->inc_d += (int)((1.0/FPS) * (ROT + 2025));
 }
 
 void	r_down(t_win **cub)
 {
 	if ((*cub)->inc_u > -100)
-		(*cub)->inc_u -= 20;
+		(*cub)->inc_u -= (int)((1.0/FPS) * (ROT + 2025));
 	if ((*cub)->inc_d > -100)
-		(*cub)->inc_d -= 20;
-	raycasting(*cub);
-	mlx_clear_window((*cub)->mlx, (*cub)->win);
-	mlx_put_image_to_window((*cub)->mlx, (*cub)->win, (*cub)->img.v_img, 0, 0);
+		(*cub)->inc_d -= (int)((1.0/FPS) * (ROT + 2025));
 }

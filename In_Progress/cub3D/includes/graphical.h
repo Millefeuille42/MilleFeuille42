@@ -15,7 +15,8 @@
 
 # include "cub3d.h"
 # include <X11/X.h>
-
+# include <mlx.h>
+# include <time.h>
 # define TPI 0.017453292519943295
 
 # if __APPLE__
@@ -80,6 +81,8 @@ typedef struct		s_draw
 	double			dist;
 }					t_draw;
 
+int					loop(t_win *cub);
+int					update(t_win *cub);
 int					raycasting(t_win *cub);
 
 t_img				create_image(t_win cub);

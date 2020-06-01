@@ -18,7 +18,7 @@ static inline void	write_img_to_bitmap(t_conf *conf, t_img img, int fd)
 	int y;
 	int img_index;
 
-	y = conf->res.y;
+	y = conf->res.y - 2;
 	while (y)
 	{
 		x = 0;

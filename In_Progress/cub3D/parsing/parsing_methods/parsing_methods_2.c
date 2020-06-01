@@ -35,15 +35,15 @@ int					plan_p(struct s_plan *plan, char *line)
 	int i;
 
 	i = 2;
-	if (line[i] != ' ' && !(ft_isdigit(line[i])))
+	if (!ft_cinset(line[i], "\n\r\t\v\f ") && !(ft_isdigit(line[i])))
 		return (-23);
-	while (line[i] == ' ' && line[i])
+	while (ft_cinset(line[i], "\n\r\t\v\f ") && line[i])
 		i++;
-	if (rgb_parsing(&(plan->r), &i, line, " ,"))
+	if (rgb_parsing(&(plan->r), &i, line, "\n\r\t\v\f ,"))
 		return (-23);
-	if (rgb_parsing(&(plan->g), &i, line, " ,"))
+	if (rgb_parsing(&(plan->g), &i, line, "\n\r\t\v\f ,"))
 		return (-23);
-	if (rgb_parsing(&(plan->b), &i, line, " \n\t\r"))
+	if (rgb_parsing(&(plan->b), &i, line, "\n\r\t\v\f "))
 		return (-23);
 	return (0);
 }

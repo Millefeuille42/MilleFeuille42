@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/18 11:12:45 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/06/01 17:36:26 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,27 @@ int					atoi_mk2(const char *s, int start, int end)
 	}
 	return (res);
 }
+
+char	*ft_itoa(int n)
+{
+	char	*s;
+	long	tmp;
+	int		length;
+
+	tmp = n;
+	length = (n <= 0 ? 2 : 1);
+	while (n && ++length)
+		n /= 10;
+	if (!(s = (char *)malloc(sizeof(char) * length)))
+		return (NULL);
+	s[--length] = '\0';
+	if (tmp <= 0)
+		s[0] = (char)(tmp < 0 ? '-' : '0');
+	while (tmp)
+	{
+		s[--length] = (char)((tmp < 0 ? -tmp : tmp) % 10 + '0');
+		tmp /= 10;
+	}
+	return (s);
+}
+

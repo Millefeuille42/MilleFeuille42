@@ -6,7 +6,7 @@
 #    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/07 12:19:51 by mlabouri          #+#    #+#              #
-#    Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr        #
+#    Updated: 2020/06/01 17:37:46 by mlabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS	= 	./main.c											\
         	./graphical/hooks/keyboard_hooks.c					\
         	./graphical/hooks/keyboard_functions.c				\
         	./graphical/hooks/keyboard_functions_2.c			\
+		./graphical/hooks/game_loop.c	\
         	./graphical/rays/ray.c								\
 			./graphical/rays/sprites_calculations.c				\
 			./graphical/minimap.c								\
@@ -63,7 +64,7 @@ LX		=	-lX11 -lmlx -lXext
 LMLX	=	-L /usr/local/lib/ -lmlx
 
 COMPILE	=	clang
-FLAGS	=	-Wall -Wextra -Werror -std=c99 -pedantic-errors -Ofast
+FLAGS	=	-Wall -Wextra -Werror -Ofast
 
 RM		=	rm -f
 

@@ -18,7 +18,10 @@
 # include <string.h>
 # include <stdlib.h>
 # include <math.h>
-# include <mlx.h>
+
+# define FPS 60
+# define MOV 12
+# define ROT 20
 
 typedef struct		s_res
 {
@@ -117,6 +120,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				**ft_split(char const *s, char c);
 void				ft_putstr_fd(char *s, int fd);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+char				*ft_itoa(int n);
 void				rotate(t_dvec *vector, double angle);
 void				rotate_2(t_dvec *vector, t_dvec *vector_2, double angle);
 #endif

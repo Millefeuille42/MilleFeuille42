@@ -29,6 +29,7 @@ set(    SOURCE_CUB3D
 		../../In_Progress/cub3D/graphical/drawing/drawing_utils.c
 		../../In_Progress/cub3D/graphical/drawing/drawing_utils_2.c
 		../../In_Progress/cub3D/graphical/hooks/events.c
+		../../In_Progress/cub3D/graphical/hooks/game_loop.c
 		../../In_Progress/cub3D/graphical/hooks/keyboard_hooks.c
 		../../In_Progress/cub3D/graphical/hooks/keyboard_functions.c
 		../../In_Progress/cub3D/graphical/hooks/keyboard_functions_2.c

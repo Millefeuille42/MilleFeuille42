@@ -1,26 +1,24 @@
-R 3000 3000
+R 		500 500
 
 
+NO 	textures/eagle.xpm
 
+SO	 textures/blueeagle.xpm
 
-NO textures/eagle.xpm
+WE	 textures/bluebrick.xpm
 
-SO textures/blueeagle.xpm
+EA	 textures/redbrick.xpm
 
-WE textures/bluebrick.xpm
-
-EA textures/redbrick.xpm
-
-   S1    textures/cage.xpm
-	S2    textures/barrel.xpm
+ 	  S1  	  textures/cage.xpm
+		S2  	  textures/barrel.xpm
 
 
 
 
 
-F 100, 100, 100
+F 	100,	 100,    100
 
-C 50,50,50
+C 	50   ,50,	50
 
 
 
