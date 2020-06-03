@@ -19,8 +19,8 @@ void	left(t_win **cub)
 
 	dir = (*cub)->conf->play.dir;
 	rotate(&dir, 90);
-	n_pos.x = (*cub)->conf->play.pos.x + dir.x * ((1.0/FPS) * MOV);
-	n_pos.y = (*cub)->conf->play.pos.y + dir.y * ((1.0/FPS) * MOV);
+	n_pos.x = (*cub)->conf->play.pos.x + dir.x * ((1.0 / FPS) * MOV);
+	n_pos.y = (*cub)->conf->play.pos.y + dir.y * ((1.0 / FPS) * MOV);
 	if (n_pos.x - floor(n_pos.x) == 0)
 		n_pos.x += 0.1;
 	if (n_pos.y - floor(n_pos.y) == 0)
@@ -38,8 +38,8 @@ void	right(t_win **cub)
 
 	dir = (*cub)->conf->play.dir;
 	rotate(&dir, -90);
-	n_pos.x = (*cub)->conf->play.pos.x + dir.x * ((1.0/FPS) * MOV);
-	n_pos.y = (*cub)->conf->play.pos.y + dir.y * ((1.0/FPS) * MOV);
+	n_pos.x = (*cub)->conf->play.pos.x + dir.x * ((1.0 / FPS) * MOV);
+	n_pos.y = (*cub)->conf->play.pos.y + dir.y * ((1.0 / FPS) * MOV);
 	if (n_pos.x - floor(n_pos.x) == 0)
 		n_pos.x += dir.x / 10;
 	if (n_pos.y - floor(n_pos.y) == 0)
@@ -56,8 +56,8 @@ void	up(t_win **cub)
 	t_dvec	dir;
 
 	dir = (*cub)->conf->play.dir;
-	n_pos.x = (*cub)->conf->play.pos.x + dir.x * ((1.0/FPS) * MOV);
-	n_pos.y = (*cub)->conf->play.pos.y + dir.y * ((1.0/FPS) * MOV);
+	n_pos.x = (*cub)->conf->play.pos.x + dir.x * ((1.0 / FPS) * MOV);
+	n_pos.y = (*cub)->conf->play.pos.y + dir.y * ((1.0 / FPS) * MOV);
 	if (n_pos.x - floor(n_pos.x) == 0)
 		n_pos.x += dir.x / 10;
 	if (n_pos.y - floor(n_pos.y) == 0)
@@ -74,8 +74,8 @@ void	down(t_win **cub)
 	t_dvec	dir;
 
 	dir = (*cub)->conf->play.dir;
-	n_pos.x = (*cub)->conf->play.pos.x - dir.x * ((1.0/FPS) * MOV);
-	n_pos.y = (*cub)->conf->play.pos.y - dir.y * ((1.0/FPS) * MOV);
+	n_pos.x = (*cub)->conf->play.pos.x - dir.x * ((1.0 / FPS) * MOV);
+	n_pos.y = (*cub)->conf->play.pos.y - dir.y * ((1.0 / FPS) * MOV);
 	if (n_pos.x - floor(n_pos.x) == 0)
 		n_pos.x -= dir.x / 10;
 	if (n_pos.y - floor(n_pos.y) == 0)

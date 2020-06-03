@@ -45,7 +45,7 @@ inline static int	event_hooks(t_win *cub)
 	mlx_hook(cub->win, KeyPress, KeyPressMask,
 			&keyp_hook, cub);
 	mlx_hook(cub->win, KeyRelease, KeyReleaseMask,
-			 &key_rhook, cub);
+			&key_rhook, cub);
 	mlx_hook(cub->win, DestroyNotify, StructureNotifyMask,
 			&quit, cub);
 	mlx_hook(cub->win, VisibilityNotify, VisibilityChangeMask,

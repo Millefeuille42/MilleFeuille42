@@ -20,7 +20,7 @@ int	res_p(t_conf *conf, char *line)
 	i = 2;
 	if (!ft_cinset(line[i], "\n\r\t\v\f ") && !(ft_isdigit(line[i])))
 		return (-20);
-	while (ft_cinset(line[i], "\n\r\t\v\f ")  && line[i])
+	while (ft_cinset(line[i], "\n\r\t\v\f ") && line[i])
 		i++;
 	i2 = i;
 	while (ft_isdigit(line[i2]))

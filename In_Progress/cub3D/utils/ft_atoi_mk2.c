@@ -40,7 +40,7 @@ int					atoi_mk2(const char *s, int start, int end)
 	return (res);
 }
 
-char	*ft_itoa(int n)
+char				*ft_itoa(int n)
 {
 	char	*s;
 	long	tmp;
@@ -62,4 +62,3 @@ char	*ft_itoa(int n)
 	}
 	return (s);
 }
-
