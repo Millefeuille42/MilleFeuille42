@@ -3,46 +3,79 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
+#    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/05/07 12:19:51 by mlabouri          #+#    #+#              #
-#    Updated: 2020/05/14 15:58:05 by mlabouri         ###   ########.fr        #
+#    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
+#    Updated: 2020/06/10 11:42:42 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= 	./main.c
+NAME    			=	minishell
 
-OBJS	=	${SRCS:.c=.o}
-# INCL	=	./includes/
+SRCS    			=	./srcs/ft_getcwd.c \
+						./srcs/pwd.c
 
-LSTDRT	=	-L /usr/lib/ -lX11 -lbsd -lm -lc
+LIBFT_PATH			= 	"./libs/libft/"
+LIB_FT_LIST_PATH	= 	"./libs/lib_ft_list/"
+LIB_FTSTRING_PATH	= 	"./libs/libft_string/"
 
-COMPILE	=	clang
-FLAGS	=	-Wall -Wextra -Werror
+MAIN 				= 	srcs/main.c
 
-RM		=	rm -f
+OBJS_MAIN 			= 	$(MAIN:.c=.o)
+OBJS    			= 	$(SRCS:.c=.o)
 
-NAME	=	Minishell
+LIBRARY	 			=	-L ./libs/lib_ft_list -lftlist	\
+		  				-L ./libs/libft -lft			\
+		  				-L ./libs/libft -lftstring		\
 
-.c.o	:
-			${COMPILE} ${FLAGS} -c $< -o $@ -O3
+CC      			= 	clang
 
-${NAME} :	${OBJS}
-			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS} ${LSTDRT} ${LX} ${LMLX} -O3
+RM      			= 	rm -f
 
-all		:	${NAME}
+HEADERS 			= 	-I ./includes/ -I ./libs/libft/includes -I ./libs/lib_ft_list/includes
 
-clean	:
-			${RM} ${OBJS}
+CFLAGS  			= 	-Werror -Wall -Wextra -Ofast -pedantic-errors ${HEADERS}
 
-fclean	:	clean
-			${RM} ${NAME}
+INCS = ./libs/libft/includes/libft.h ./libs/lib_ft_list/includes/ft_list.h ./includes/minishell.h 
 
-re		:	fclean all
+################################################################################
+#									cube3d make
+################################################################################
 
-o		:	re
-			${MAKE} clean
+%.o: %.c ${INCS}
+	$(CC) $(CFLAGS) -c $< -o $@
 
-norm	:	${SRCS} #${INCL}
-			~/.norminette/norminette.rb $^
-.PHONY	:	all clean fclean re norm
+all     :	$(NAME)
+
+$(NAME) : $(OBJS) $(OBJS_MAIN)
+	make -C $(LIBFT_PATH)
+	make -C $(LIB_FT_LIST_PATH)
+	make -C $(LIB_FTSTRING_PATH)
+	${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_MAIN} ${LIBRARY}
+
+clean   :
+	make clean -C $(LIBFT_PATH)
+	make clean -C $(LIB_FT_LIST_PATH)
+	make clean -C $(LIB_FTSTRING_PATH)
+	$(RM) $(OBJS)
+	$(RM) ${OBJS_MAIN}
+
+fclean  : clean
+	make fclean -C $(LIBFT_PATH)
+	make fclean -C $(LIB_FT_LIST_PATH)
+	make fclean -C $(LIB_FTSTRING_PATH)
+	$(RM) $(NAME)
+
+run 	: all
+	./${NAME}
+
+re      : fclean all
+
+################################################################################
+#												Extra make
+################################################################################
+
+norm: fclean
+	~/.norminette/norminette.rb
+
+.PHONY  :	all clean fclean re bonus%
