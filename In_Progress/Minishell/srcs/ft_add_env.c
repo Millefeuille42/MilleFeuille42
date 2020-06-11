@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_add_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/10 11:20:36 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/11 16:20:56 by dboyer           ###   ########.fr       */
+/*   Created: 2020/06/11 15:42:12 by dboyer            #+#    #+#             */
+/*   Updated: 2020/06/11 16:07:06 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+# include "minishell.h"
 
-int main(void)
+void ft_add_env(t_shell *shell, char *key, char *value)
 {
-    t_shell shell;
+    t_env new;
 
-    shell = ft_shell();
-    return (shell.run(&shell));
+    new.key = key;
+    new.value = value;
+    shell->env.append(&shell->env, &new);
 }

@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_shell.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/10 11:20:36 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/11 16:20:56 by dboyer           ###   ########.fr       */
+/*   Created: 2020/06/11 15:59:09 by dboyer            #+#    #+#             */
+/*   Updated: 2020/06/11 16:30:57 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+# include "minishell.h"
 
-int main(void)
+t_shell ft_shell(void)
 {
-    t_shell shell;
+    t_shell this;
 
-    shell = ft_shell();
-    return (shell.run(&shell));
+    this.ret = 0;
+    this.cwd = NULL;
+    this.env = ft_list();
+    this.print_env = ft_display_env;
+    this.add_env = ft_add_env;
+    this.run = run;
+    this.show_prompt = ft_show_prompt;
+    return (this);
 }

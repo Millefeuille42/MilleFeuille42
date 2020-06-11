@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pwd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/10 11:20:36 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/11 16:20:56 by dboyer           ###   ########.fr       */
+/*   Created: 2020/06/10 16:16:41 by dboyer            #+#    #+#             */
+/*   Updated: 2020/06/10 17:15:21 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#   ifndef PWD_H
+#   define PWD_H
+#   include "libft.h"
+#	include "libft_string.h"
 
-int main(void)
-{
-    t_shell shell;
+t_string	ft_getcwd(void);   /* Fonction qui retourne le chemin courant*/
+void		pwd(void);          /* Fonction qui affiche le chemin courant avec un \n <- identique au vrai pwd */
 
-    shell = ft_shell();
-    return (shell.run(&shell));
-}
+#   endif
+

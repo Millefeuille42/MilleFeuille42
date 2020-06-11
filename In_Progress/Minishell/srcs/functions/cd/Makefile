@@ -6,50 +6,32 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/06/11 16:32:31 by dboyer           ###   ########.fr        #
+#    Updated: 2020/06/11 11:50:26 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    			=	minishell
+NAME    			=	cd
 
-SRCS    			=	./srcs/ft_getcwd.c \
-						./srcs/ft_add_env.c \
-						./srcs/ft_display_env.c \
-						./srcs/ft_shell.c \
-						./srcs/run.c \
-						./srcs/ft_show_prompt.c \
+LIBFT_PATH			= 	"../../../libs/libft/"
 
-LIBFT_PATH			= 	"./libs/libft/"
-LIB_FT_LIST_PATH	= 	"./libs/lib_ft_list/"
-LIB_FTSTRING_PATH	= 	"./libs/libft_string/"
-
-MAIN 				= 	srcs/main.c
+MAIN 				= 	main.c
 
 OBJS_MAIN 			= 	$(MAIN:.c=.o)
-OBJS    			= 	$(SRCS:.c=.o)
 
-LIBRARY	 			=	-L ./libs/lib_ft_list -lftlist	\
-		  				-L ./libs/libft -lft			\
-		  				-L ./libs/libft_string -lftstring		\
+LIBRARY	 			=	-L ../../../libs/libft -lft
 
 CC      			= 	clang
 
 RM      			= 	rm -f
 
-HEADERS 			= 	-I ./includes/ \
-						-I ./libs/libft/includes \
-						-I ./libs/lib_ft_list/includes \
-						-I ./libs/libft_string/srcs/includes
+HEADERS 			=   -I ../../../libs/libft/includes
 
 CFLAGS  			= 	-Werror -Wall -Wextra -Ofast -pedantic-errors ${HEADERS}
 
-INCS = 	./libs/libft/includes/libft.h \
-		./libs/lib_ft_list/includes/ft_list.h \
-		./includes/minishell.h \
-		./libs/libft_string/srcs/includes/libft_string.h
+INCS				= ../../../libs/libft/includes/libft.h
 
 ################################################################################
-#									cube3d make
+#									cd make
 ################################################################################
 
 %.o: %.c ${INCS}
@@ -57,23 +39,16 @@ INCS = 	./libs/libft/includes/libft.h \
 
 all     :	$(NAME)
 
-$(NAME) : $(OBJS) $(OBJS_MAIN)
+$(NAME) : $(OBJS_MAIN)
 	make -C $(LIBFT_PATH)
-	make -C $(LIB_FT_LIST_PATH)
-	make -C $(LIB_FTSTRING_PATH)
-	${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_MAIN} ${LIBRARY}
+	${CC} ${CFLAGS} -o ${NAME} ${OBJS_MAIN} ${LIBRARY}
 
 clean   :
 	make clean -C $(LIBFT_PATH)
-	make clean -C $(LIB_FT_LIST_PATH)
-	make clean -C $(LIB_FTSTRING_PATH)
-	$(RM) $(OBJS)
 	$(RM) ${OBJS_MAIN}
 
 fclean  : clean
 	make fclean -C $(LIBFT_PATH)
-	make fclean -C $(LIB_FT_LIST_PATH)
-	make fclean -C $(LIB_FTSTRING_PATH)
 	$(RM) $(NAME)
 
 run 	: all

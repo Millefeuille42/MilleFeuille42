@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   ft_show_prompt.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/10 11:40:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/10 11:43:20 by dboyer           ###   ########.fr       */
+/*   Created: 2020/06/11 16:29:28 by dboyer            #+#    #+#             */
+/*   Updated: 2020/06/11 16:32:40 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+# include "minishell.h"
 
-void pwd(void)
+
+void    ft_show_prompt(t_shell *shell)
 {
-    t_string dir;
-
-    dir = ft_getcwd();
-    ft_putstr(dir.content);
-    ft_putchar('\n');
-    dir.clear(&dir);
+    shell->prompt = ft_getcwd();
+    ft_printf("(minishell) %s $ ", shell->prompt.content);
+    shell->prompt.clear(&shell->prompt);
 }
