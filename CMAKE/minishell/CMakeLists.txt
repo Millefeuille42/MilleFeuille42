@@ -141,7 +141,7 @@ set(    SOURCE_MINISHELL
 		../../In_Progress/Minishell/srcs/main.c
 
 		../../In_Progress/Minishell/includes/minishell.h
-		../../In_Progress/Minishell/srcs/functions/echo/echo.c ../../In_Progress/Minishell/srcs/functions/echo/echo.h)
+		../../In_Progress/Minishell/srcs/functions/echo/echo.c ../../In_Progress/Minishell/srcs/functions/echo/echo.h ../../In_Progress/Minishell/srcs/parsing/parse_line.c)
 
 add_executable(minishell
 		${SOURCE_MINISHELL}

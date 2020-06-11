@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/06/10 11:42:42 by dboyer           ###   ########.fr        #
+#    Updated: 2020/06/10 15:14:29 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,17 +26,23 @@ OBJS    			= 	$(SRCS:.c=.o)
 
 LIBRARY	 			=	-L ./libs/lib_ft_list -lftlist	\
 		  				-L ./libs/libft -lft			\
-		  				-L ./libs/libft -lftstring		\
+		  				-L ./libs/libft_string -lftstring		\
 
 CC      			= 	clang
 
 RM      			= 	rm -f
 
-HEADERS 			= 	-I ./includes/ -I ./libs/libft/includes -I ./libs/lib_ft_list/includes
+HEADERS 			= 	-I ./includes/ \
+						-I ./libs/libft/includes \
+						-I ./libs/lib_ft_list/includes \
+						-I ./libs/libft_string/srcs/includes
 
 CFLAGS  			= 	-Werror -Wall -Wextra -Ofast -pedantic-errors ${HEADERS}
 
-INCS = ./libs/libft/includes/libft.h ./libs/lib_ft_list/includes/ft_list.h ./includes/minishell.h 
+INCS = 	./libs/libft/includes/libft.h \
+		./libs/lib_ft_list/includes/ft_list.h \
+		./includes/minishell.h \
+		./libs/libft_string/srcs/includes/libft_string.h
 
 ################################################################################
 #									cube3d make

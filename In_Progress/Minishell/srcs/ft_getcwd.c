@@ -26,7 +26,13 @@ static inline char *getdir(size_t size)
     return (path);
 }
 
-char *ft_getcwd(void)
+t_string ft_getcwd(void)
 {
-    return (getdir(1));
+	char		*dir;
+	t_string	ret;
+
+	dir = getdir(1);
+	ret = ft_string(dir);
+	free(dir);
+    return (ret);
 }

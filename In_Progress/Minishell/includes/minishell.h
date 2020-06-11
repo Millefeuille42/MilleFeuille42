@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 11:20:46 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/10 11:49:17 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/10 15:10:28 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #   include "ft_list.h"
 #	include "libft_string.h"
 
-char    *ft_getcwd(void);   /* Fonction qui retourne le chemin courant*/
+t_string	ft_getcwd(void);   /* Fonction qui retourne le chemin courant*/
 
-void    pwd(void);          /* Fonction qui affiche le chemin courant avec un \n <- identique au vrai pwd */
+void		pwd(void);          /* Fonction qui affiche le chemin courant avec un \n <- identique au vrai pwd */
 
 #	define MINISHELL_H
 #	endif

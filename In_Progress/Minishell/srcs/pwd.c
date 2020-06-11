@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
 void pwd(void)
 {
-    char *dir;
+    t_string dir;
+
     dir = ft_getcwd();
-    ft_putstr(dir);
+    ft_putstr(dir.content);
     ft_putchar('\n');
-    free(dir);
+    dir.clear(&dir);
 }
