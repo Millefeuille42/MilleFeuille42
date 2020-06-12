@@ -75,7 +75,7 @@ RM      			= 	rm -f
 
 all     :	$(NAME)
 
-$(NAME) :	libs $(OBJS) $(OBJS_MAIN)
+$(NAME) :	$(OBJS) $(OBJS_MAIN)
 	make -C "./libs/libft/"
 	make -C "./libs/lib_ft_list/"
 	make -C "./libs/libft_string/"
