@@ -1,6 +1,6 @@
 #ifndef ECHO_H
-#	define ECHO_H
+# define ECHO_H
 
-#   include "libft.h"
+# include "libft.h"
 
 #endif

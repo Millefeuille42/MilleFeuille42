@@ -12,10 +12,10 @@
 
 #include "minishell.h"
 
-int main(void)
+int	main(void)
 {
-    t_shell shell;
+	t_shell shell;
 
-    shell = ft_shell();
-    return (shell.run(&shell));
+	shell = ft_shell();
+	return (shell.run(&shell));
 }

@@ -12,12 +12,12 @@
 
 #include "pwd.h"
 
-void pwd(void)
+void	pwd(void)
 {
-    t_string dir;
+	t_string dir;
 
-    dir = ft_getcwd();
-    ft_putstr(dir.content);
-    ft_putchar('\n');
-    dir.clear(&dir);
+	dir = ft_getcwd();
+	ft_putstr(dir.content);
+	ft_putchar('\n');
+	dir.clear(&dir);
 }

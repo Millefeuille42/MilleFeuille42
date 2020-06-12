@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.c                                              :+:      :+:    :+:   */
+/*   ft_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/11 16:18:02 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/12 12:32:27 by dboyer           ###   ########.fr       */
+/*   Created: 2020/06/12 11:00:05 by dboyer            #+#    #+#             */
+/*   Updated: 2020/06/12 12:29:32 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	run(t_shell *shell)
+void	ft_exec(t_shell *shell, char **cmd)
 {
-	char *input;
-	//char *cmd[] = {"/bin/python", "test.py", NULL};
-	char **cmd;
+	pid_t		pid;
+	const char	*env[] = { NULL };
 
-	shell->show_prompt(shell);
-	get_next_line(0, &input);
-	if (!ft_str_isequal(input, "exit"))
+	pid = fork();
+	if (pid == -1)
 	{
-		cmd = ft_split(input, ' ');
-		shell->exec(shell, cmd);
-		ft_split_clean(cmd);
-		free(input);
-		return (run(shell));
+		ft_putstr_fd(strerror(errno), 2);
+		exit(1);
 	}
-	shell->clear_env(shell);
-	free(input);
-	return (0);
+	if (pid == 0)
+		shell->ret = (int)ft_abs(execve(cmd[0], cmd, (char **)env));
+	wait(&pid);
 }

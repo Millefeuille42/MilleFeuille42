@@ -10,13 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#   ifndef PWD_H
-#   define PWD_H
-#   include "libft.h"
-#	include "libft_string.h"
+#ifndef PWD_H
+# define PWD_H
+# include "libft.h"
+# include "libft_string.h"
 
-t_string	ft_getcwd(void);   /* Fonction qui retourne le chemin courant*/
-void		pwd(void);          /* Fonction qui affiche le chemin courant avec un \n <- identique au vrai pwd */
+t_string	ft_getcwd(void);	/* Fonction qui retourne le chemin courant*/
+void		pwd(void);			/* Fonction qui affiche le chemin courant avec un \n <- identique au vrai pwd */
 
-#   endif
-
+#endif

@@ -135,13 +135,26 @@ add_library( LIB_FT_LIST
 
 set(    SOURCE_MINISHELL
 
+		../../In_Progress/Minishell/srcs/ft_add_env.c
+		../../In_Progress/Minishell/srcs/ft_clear_env.c
+		../../In_Progress/Minishell/srcs/ft_display_env.c
+		../../In_Progress/Minishell/srcs/ft_env_get.c
+		../../In_Progress/Minishell/srcs/ft_env_remove.c
+		../../In_Progress/Minishell/srcs/run.c
+
+		../../In_Progress/Minishell/srcs/ft_exec.c
 		../../In_Progress/Minishell/srcs/ft_getcwd.c
-		../../In_Progress/Minishell/srcs/pwd.c
+		../../In_Progress/Minishell/srcs/ft_shell.c
+		../../In_Progress/Minishell/srcs/ft_show_prompt.c
+
+		../../In_Progress/Minishell/srcs/parsing/parse_line.c
+
+		../../In_Progress/Minishell/srcs/utils/array_len.c
+		../../In_Progress/Minishell/srcs/utils/ft_delete_entry.c
 
 		../../In_Progress/Minishell/srcs/main.c
 
-		../../In_Progress/Minishell/includes/minishell.h
-		../../In_Progress/Minishell/srcs/functions/echo/echo.c ../../In_Progress/Minishell/srcs/functions/echo/echo.h ../../In_Progress/Minishell/srcs/parsing/parse_line.c)
+		)
 
 add_executable(minishell
 		${SOURCE_MINISHELL}

@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
-
-void    ft_show_prompt(t_shell *shell)
+void	ft_show_prompt(t_shell *shell)
 {
-    shell->prompt = ft_getcwd();
-    ft_printf("(minishell) %s $ ", shell->prompt.content);
-    shell->prompt.clear(&shell->prompt);
+	shell->prompt = ft_getcwd();
+	ft_printf("(minishell) %s $ ", shell->prompt.content);
+	shell->prompt.clear(&shell->prompt);
 }

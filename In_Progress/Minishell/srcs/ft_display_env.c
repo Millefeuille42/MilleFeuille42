@@ -6,23 +6,24 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 15:48:06 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/11 16:08:22 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/11 17:08:45 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
-static inline void display(t_element *element)
+static inline void	display(t_element *element)
 {
-    t_env *env;
+	t_env *env;
 
-    env = (t_env *)element->content;
-    ft_putstr(env->key);
-    ft_putchar('=');
-    ft_putstr(env->value);
+	env = (t_env *)element->content;
+	ft_putstr(env->key);
+	ft_putchar('=');
+	ft_putstr(env->value);
+	ft_putchar('\n');
 }
 
-void ft_display_env(t_shell *shell)
+void				ft_display_env(t_shell *shell)
 {
-    shell->env.iter(shell->env.first, display);
+	shell->env.iter(shell->env.first, display);
 }

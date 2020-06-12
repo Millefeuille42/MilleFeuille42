@@ -1,0 +1,1 @@
+print(f"hello from this python script -> {__file__ } !")

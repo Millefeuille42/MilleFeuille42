@@ -1,7 +1,7 @@
-# include "pwd.h"
+#include "pwd.h"
 
-int main(void)
+int	main(void)
 {
-    pwd();
-    return (0);
+	pwd();
+	return (0);
 }

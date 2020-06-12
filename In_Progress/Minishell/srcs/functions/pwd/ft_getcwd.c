@@ -10,23 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "pwd.h"
+#include "pwd.h"
 
-static inline char *getdir(size_t size)
+static inline char	*getdir(size_t size)
 {
-    char *path;
+	char *path;
 
-    if (!(path = malloc(sizeof(char) * (size + 1))))
-        return NULL;
-    if (!getcwd(path, size))
-    {
-        free(path);
-        return (getdir(size + sizeof(char)));
-    }
-    return (path);
+	if (!(path = malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	if (!getcwd(path, size))
+	{
+		free(path);
+		return (getdir(size + sizeof(char)));
+	}
+	return (path);
 }
 
-t_string ft_getcwd(void)
+t_string			ft_getcwd(void)
 {
 	char		*dir;
 	t_string	ret;
@@ -34,5 +34,5 @@ t_string ft_getcwd(void)
 	dir = getdir(1);
 	ret = ft_string(dir);
 	free(dir);
-    return (ret);
+	return (ret);
 }
