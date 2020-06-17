@@ -54,8 +54,8 @@ int	main(int argc, char *argv[], char *envp[])
 	shell = ft_shell();
 	start_env(&shell, envp);
 	cwd = ft_getcwd();
-	shell.env_remove(&shell, "SHELL");
-	shell.add_env(&shell, ft_strdup("SHELL"), ft_strjoin(cwd.content, "/minishell"));
+	shell.replace_env(&shell, ft_strdup("SHELL"),
+			ft_strjoin(cwd.content, "/minishell"));
 	cwd.clear(&cwd);
 	rc_parser(&shell, 0);
 	//shell.print_env(&shell);
