@@ -3,7 +3,7 @@ project(42)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_COMPILER /usr/bin/clang)
-set(CMAKE_CXX_COMPILER /usr/bin/g++)
+set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 
 #if (${WFLAGS})
 #    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror -std=c99 -pedantic-errors")

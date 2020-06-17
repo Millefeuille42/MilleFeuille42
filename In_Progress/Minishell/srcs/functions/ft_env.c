@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_shell.c                                         :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/11 15:59:09 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/15 11:35:58 by dboyer           ###   ########.fr       */
+/*   Created: 2020/06/16 16:56:08 by dboyer            #+#    #+#             */
+/*   Updated: 2020/06/16 17:00:52 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_shell	ft_shell(void)
+int	ft_env(t_shell *shell, char *argv[])
 {
-	t_shell this;
+	size_t argc;
 
-	this.ret = 0;
-	this.env = ft_list();
-	this.print_env = ft_display_env;
-	this.add_env = ft_add_env;
-	this.run = run;
-	this.show_prompt = ft_show_prompt;
-	this.clear_env = ft_clear_env;
-	this.env_get = ft_env_get;
-	this.env_remove = ft_env_remove;
-	this.replace_env = ft_replace_env;
-	this.exec = ft_exec;
-	return (this);
+	argc = ft_len(argv);
+	if (argc == 1)
+	{
+		shell->print_env(shell);
+		return (0);
+	}
+	ft_printf("env: too much arguments\n");
+	return (1);
 }

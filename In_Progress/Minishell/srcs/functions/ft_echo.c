@@ -1,15 +1,17 @@
-#include "echo.h"
+#include "minishell.h"
 
-int	main(int argc, char *argv[])
+int		ft_echo(char *argv[])
 {
 	int		i;
 	char	n;
+	int		argc;
 
 	i = 1;
 	n = 1;
-	while (i < argc)
+	argc = ft_len(argv);
+	while (argv[i])
 	{
-		if (i == 1 && !ft_strncmp("-n", argv[i], 2))
+		if (i == 1 && ft_str_isequal("-n", argv[i]))
 			n = 0;
 		else
 		{
@@ -21,4 +23,5 @@ int	main(int argc, char *argv[])
 	}
 	if (n == 1)
 		ft_putchar('\n');
+	return (0);
 }

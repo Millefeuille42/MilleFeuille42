@@ -14,7 +14,12 @@
 
 void	ft_show_prompt(t_shell *shell)
 {
+	char	*home;
+
+	home = shell->env_get(shell, "HOME");
 	shell->prompt = ft_getcwd();
-	ft_printf("(minishell) %s $ ", shell->prompt.content);
+	if (home)
+		shell->prompt.replace(&shell->prompt, home, "~", -1);
+	ft_printf("(minishell) [%s] - $ ", shell->prompt.content);
 	shell->prompt.clear(&shell->prompt);
 }

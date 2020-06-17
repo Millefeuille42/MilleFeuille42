@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getcwd.c                                        :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 11:13:30 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/10 16:30:26 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/16 14:56:54 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pwd.h"
+#include "minishell.h"
 
-static inline char	*getdir(size_t size)
+int	ft_pwd(void)
 {
-	char *path;
+	t_string dir;
 
-	if (!(path = malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	if (!getcwd(path, size))
-	{
-		free(path);
-		return (getdir(size + sizeof(char)));
-	}
-	return (path);
-}
-
-t_string			ft_getcwd(void)
-{
-	char		*dir;
-	t_string	ret;
-
-	dir = getdir(1);
-	ret = ft_string(dir);
-	free(dir);
-	return (ret);
+	dir = ft_getcwd();
+	ft_putstr(dir.content);
+	ft_putchar('\n');
+	dir.clear(&dir);
+	return (0);
 }

@@ -6,17 +6,42 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 11:00:05 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/12 12:29:32 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/13 15:38:46 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "signal.h"
 
-void	ft_exec(t_shell *shell, char **cmd)
+char	**ret_env(t_shell *shell)
+{
+	t_element *cur;
+	char **envs;
+	char *key;
+	int i;
+
+	if (!(envs = malloc(sizeof(char *) * (shell->env.size + 1))))
+		return (NULL);
+	cur = shell->env.first;
+	i = 0;
+	while (cur)
+	{
+		key = ft_strjoin(((t_env *)cur->content)->key, "=");
+		envs[i] = ft_strjoin(key, ((t_env *)cur->content)->value);
+		free(key);
+		i++;
+		cur = cur->next;
+	}
+	envs[i] = NULL;
+	return (envs);
+}
+
+void	ft_exec(t_shell *shell, t_command *cmd, int i)
 {
 	pid_t		pid;
-	const char	*env[] = { NULL };
+	char		**env;
 
+	env = ret_env(shell);
 	pid = fork();
 	if (pid == -1)
 	{
@@ -24,6 +49,26 @@ void	ft_exec(t_shell *shell, char **cmd)
 		exit(1);
 	}
 	if (pid == 0)
-		shell->ret = (int)ft_abs(execve(cmd[0], cmd, (char **)env));
-	wait(&pid);
+	{
+		shell->ret = (int)ft_abs(execve(cmd[i].command.content, cmd[i].argv,
+				env));
+		while (cmd[i].end != 1)
+		{
+			if (cmd[i].argv)
+				clear(cmd[i].argv);
+			cmd[i].command.clear(&cmd[i].command);
+			i++;
+		}
+		free(cmd);
+		clear(env);
+		shell->clear_env(shell);
+		exit(0);
+	}
+	clear(env);
+	wait(&shell->ret);
 }
+	/*
+	 * En fait, _wait_ attend par default le child process (tous en fait)
+	 * Et il stocke la valeur de retour du dernier child process a se finir
+	 * Dans le INT pointe par le INT* que tu lui passe
+	*/

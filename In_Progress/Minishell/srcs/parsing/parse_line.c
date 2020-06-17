@@ -7,7 +7,7 @@ static void			*safe_exit(char **commands, t_command *ret)
 	if (commands)
 		clear(commands);
 	i = 0;
-	while (ret && ret[i].end != 1)
+	while (ret && ret[i].end != 1 && ret[i].command.content)
 	{
 		ret[i].command.clear(&ret[i].command);
 		i++;
@@ -61,7 +61,7 @@ static char			**trim_array(char **array)
 	return (array);
 }
 
-int					clean_command(t_command *commands)
+int					clean_command(t_shell *shell, t_command *commands)
 {
 	int i;
 	int i2;
@@ -69,11 +69,13 @@ int					clean_command(t_command *commands)
 	i = 0;
 	while (commands && !commands[i].end)
 	{
-		if (!commands[i].command.content[0])
+		if (!(i2 = 0) && !commands[i].command.content[0])
 			return ((int)safe_exit(NULL, commands) - 1);
-		i2 = 0;
 		while (commands[i].argv[i2] != NULL)
 		{
+			if (commands[i].argv[i2][0] == '$' &&
+			!(commands[i].argv[i2] = swap_var(shell, commands[i].argv[i2])))
+				return ((int)safe_exit(NULL, commands) - 1);
 			if (!commands[i].argv[i2][0])
 			{
 				if (!(commands[i].argv = ft_delete_entry(commands[i].argv, i2)))

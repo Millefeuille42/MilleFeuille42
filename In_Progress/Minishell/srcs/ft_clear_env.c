@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 17:09:36 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/12 08:48:05 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/15 11:34:26 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,20 @@
 
 static inline void	clear_element(t_element *element)
 {
-	free(element->content);
+	t_env	*content;
+
+	content = (t_env *)element->content;
+	if (content->value)
+	{
+		free(content->value);
+		content->value = NULL;
+	}
+	if (content->key)
+	{
+		free(content->key);
+		content->key = NULL;
+	}
+	free(content);
 }
 
 void				ft_clear_env(t_shell *shell)

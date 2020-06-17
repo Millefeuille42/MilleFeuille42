@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   ft_len.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/10 11:40:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/10 16:22:56 by dboyer           ###   ########.fr       */
+/*   Created: 2020/06/15 18:58:34 by dboyer            #+#    #+#             */
+/*   Updated: 2020/06/15 18:58:42 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pwd.h"
+#include "minishell.h"
 
-void	pwd(void)
+size_t	ft_len(char **str)
 {
-	t_string dir;
+	size_t i;
 
-	dir = ft_getcwd();
-	ft_putstr(dir.content);
-	ft_putchar('\n');
-	dir.clear(&dir);
+	i = 0;
+	if (str)
+	{
+		while (str[i])
+			i++;
+	}
+	return (i);
 }

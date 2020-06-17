@@ -27,7 +27,7 @@ SRCS 	=	srcs/ft_add_back.c\
 OBJS    =       $(SRCS:.c=.o)
 HEADERS = -I ./includes/
 
-CFLAGS  = -Werror -Wall -Wextra -O3 ${HEADERS} 
+CFLAGS  = -Werror -Wall -Wextra -Ofast ${HEADERS}
 
 CC              = clang
 
