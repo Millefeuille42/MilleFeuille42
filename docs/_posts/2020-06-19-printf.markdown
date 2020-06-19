@@ -10,25 +10,26 @@ This project is pretty straight forward. You will recode printf. You will then b
 
 ---
 
-### Walkthrough
-#### The function
-##### Inputs
+## Walkthrough
+### The function
+#### Inputs
 ft_printf takes two inputs
 - `char *format` which is the same as `printf()`.
 - A `va_list` containing every arguments required for conversions.
-##### Output
+
+#### Output
 ft_printf outputs an `int`, this `int` will permit the caller to determine how many characters were printed.
 
-#### The concept
+### The concept
 The concept of ft_printf is as follows:
 - Parse the format and define conversions, flags and flags arguments;
 - Print the appropriate output.
 
-#### Syntax
+### Syntax
 A conversion specification consists of optional and mandatory fields formatted as follows:
 `%[flags][width][.precision][size]Conversion`
 
-##### Conversions
+#### Conversions
 - c = Character;
 - s = String;
 - p = Pointer Type;
@@ -37,13 +38,13 @@ A conversion specification consists of optional and mandatory fields formatted a
 - u = Unsigned int;
 - x = Hexadecimal number;
 - X = Hexadecimal number;
-##### Flags
+#### Flags
 - \- = Add `[width]` minus the length of the conversion
 
 
-### Tips
+## Tips
 
-### References and Knowledge
+## References and Knowledge
 - `man 3 printf `
 - `man 3 stdarg`
 
