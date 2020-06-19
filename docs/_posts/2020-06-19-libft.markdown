@@ -15,7 +15,7 @@ This project will require a lot of reading, rigor, and attention.
 
 #### First Part
 The first part is about copying functions from the standard LibC.
-For this part, you have to copy everything exept `Undefined Behaviors`; Most of them are segfaults because of `NULL Strings`. It's up to you how you handle these behaviors, you can crash, exit the function early with an error return value, etc...
+For this part, you have to copy everything except `Undefined Behaviors`; Most of them are segfaults because of `NULL Strings`. It's up to you how you handle these behaviors, you can crash, exit the function early with an error return value, etc...
 #### Second part
 The second part is about creating unexisting functions.
 For this part, there is no `Undefined behavior`, your function is not supposed to crash, you have to protect your function for every case, and return an error return value (`NULL`, `0`, etc...).
