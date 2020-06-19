@@ -21,8 +21,8 @@ The second part is about creating unexisting functions.
 For this part, there is no `Undefined behavior`, your function is not supposed to crash, you have to protect your function for every case, and return an error return value (`NULL`, `0`, etc...).
 
 ### Tips
-- Pay attention to every possible case ! Most cases of retries are because of a unique case that you have not seen! So, don't rush.
-- Do the bonuses, chained lists are very useful and a properly coded Libft will help you a lot in your future projects
+- Pay attention to every possible case! Most cases of retries are because of a unique case that you have not seen! So, don't rush.
+- Do the bonuses, linked lists are very useful and a properly coded Libft will help you a lot in your future projects.
 - For the same reason as above, don't hesitate to add custom functions, even if they do not count as bonuses, they might be very helpful!
 
 ### References

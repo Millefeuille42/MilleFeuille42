@@ -1,0 +1,46 @@
+---
+layout: post
+title: "Get Next Line"
+permalink: /gnl/
+categories: entries
+author: Millefeuille
+---
+---
+Whether it's a file, standard input, or even later a network connection, you'll still need to read content line by line. It is therefore time to tackle this function, which is essential for a number of your next projects.
+
+---
+
+### Walkthrough
+For this project, you'll have to design a function that reads a line from a file descriptor.
+
+#### The function
+##### Inputs
+GNL takes two inputs
+- `char **line` which is a string pointer where you'll store the address of the line you've read.
+- `int fd` which is the file descriptor you'll have to read from.
+##### Output
+GNL outputs an `int`, this `int` will permit the caller to determine whether:
+- An error happened;
+- A line have been read;
+- A line have been read and reached EOF.
+
+#### Buffer
+A preprocessed `BUFFER_SIZE` variable is provided at compilation, this variable will define how may `char` you'll have to read per `read()` call.
+
+#### The concept
+The concept of GNL is as follows:
+- Read the remainder / the `file descriptor`;
+- Read until `Line-Terminator` is found;
+- Create a string containing the whole line (without the `Line-Terminator`);
+- Store the remainder for subsequent calls.
+
+### Tips
+- The difficulty comes from the remainder, `read()` uses a cursor to read the file, and the cursor is persistent between subsequent calls. So you'll have to store what is after the `Line-Terminator`.
+- Most cases of retries are because of leaks! Do not malloc if a static array is suitable, and keep track of your allocated memory!
+- Make your GNL as fast as possible, you don't want to fail because of a timeout.
+
+### References and Knowledge
+- `man open`
+- `man read`
+- Static variables
+- File Descriptor
