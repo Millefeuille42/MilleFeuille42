@@ -135,37 +135,42 @@ add_library( LIB_FT_LIST
 
 set(    SOURCE_MINISHELL
 
-		../../In_Progress/Minishell/srcs/main.c
 		../../In_Progress/Minishell/srcs/ft_add_env.c
 		../../In_Progress/Minishell/srcs/ft_clear_env.c
 		../../In_Progress/Minishell/srcs/ft_display_env.c
 		../../In_Progress/Minishell/srcs/ft_env_get.c
 		../../In_Progress/Minishell/srcs/ft_env_remove.c
 		../../In_Progress/Minishell/srcs/ft_replace_env.c
-		../../In_Progress/Minishell/srcs/run.c
+		../../In_Progress/Minishell/srcs/ft_extract_env.c
+
+		../../In_Progress/Minishell/srcs/parsing/check_command.c
+		../../In_Progress/Minishell/srcs/parsing/path_parsing.c
+		../../In_Progress/Minishell/srcs/parsing/get_next.c
+		../../In_Progress/Minishell/srcs/parsing/get_next_arg.c
+		../../In_Progress/Minishell/srcs/parsing/parsing_utils.c
+		../../In_Progress/Minishell/srcs/parsing/get_next_command.c
+		../../In_Progress/Minishell/srcs/parsing/parsing.c
+
+		../../In_Progress/Minishell/srcs/utils/file_exists.c
+		../../In_Progress/Minishell/srcs/utils/ft_len.c
+
+		../../In_Progress/Minishell/srcs/functions/ft_pwd.c
+		../../In_Progress/Minishell/srcs/functions/ft_export.c
+		../../In_Progress/Minishell/srcs/functions/ft_unset.c
+		../../In_Progress/Minishell/srcs/functions/ft_env.c
+		../../In_Progress/Minishell/srcs/functions/ft_cd.c
+		../../In_Progress/Minishell/srcs/functions/ft_echo.c
+
+		../../In_Progress/Minishell/srcs/ft_test_builtin.c
+		../../In_Progress/Minishell/srcs/ft_read_input.c
+		../../In_Progress/Minishell/srcs/ft_remove_char.c
 		../../In_Progress/Minishell/srcs/ft_exec.c
 		../../In_Progress/Minishell/srcs/ft_getcwd.c
 		../../In_Progress/Minishell/srcs/ft_shell.c
 		../../In_Progress/Minishell/srcs/ft_show_prompt.c
-		../../In_Progress/Minishell/srcs/parsing/check_command.c
-		../../In_Progress/Minishell/srcs/parsing/parse_line.c
-		../../In_Progress/Minishell/srcs/parsing/path_parsing.c
-		../../In_Progress/Minishell/srcs/parsing/rc_parser.c
-		../../In_Progress/Minishell/srcs/parsing/swap_var.c
-		../../In_Progress/Minishell/srcs/utils/array_len.c
-		../../In_Progress/Minishell/srcs/utils/ft_delete_entry.c
-		../../In_Progress/Minishell/srcs/utils/file_exists.c
-		../../In_Progress/Minishell/srcs/functions/ft_cd.c
-		../../In_Progress/Minishell/srcs/functions/ft_echo.c
-		../../In_Progress/Minishell/srcs/ft_len.c
-		../../In_Progress/Minishell/srcs/functions/ft_pwd.c
-		../../In_Progress/Minishell/srcs/ft_extract_env.c
-		../../In_Progress/Minishell/srcs/functions/ft_export.c
-		../../In_Progress/Minishell/srcs/functions/ft_unset.c
-		../../In_Progress/Minishell/srcs/functions/ft_env.c
-		../../In_Progress/Minishell/srcs/ft_test_builtin.c
-
-		../../In_Progress/Minishell/srcs/ft_replace_env.c)
+		../../In_Progress/Minishell/srcs/run.c
+		../../In_Progress/Minishell/srcs/main.c
+		)
 
 add_executable(minishell
 		${SOURCE_MINISHELL}

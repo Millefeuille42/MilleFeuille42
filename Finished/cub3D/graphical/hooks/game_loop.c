@@ -34,30 +34,42 @@ int		framer(clock_t t, t_win *cub)
 	return (0);
 }
 
+static int	g_loop(t_win *cub)
+{
+	int upd;
+
+	upd = 0;
+	if (cub->keys.keyc[UP] && (upd = 1))
+		up(&cub);
+	else if (cub->keys.keyc[DOWN] && (upd = 1))
+		down(&cub);
+	if (cub->keys.keyc[LEFT] && (upd = 1))
+		left(&cub);
+	else if (cub->keys.keyc[RIGHT] && (upd = 1))
+		right(&cub);
+	if (cub->keys.keyc[R_UP] && (upd = 1))
+		r_up(&cub);
+	else if (cub->keys.keyc[R_DOWN] && (upd = 1))
+		r_down(&cub);
+	if (cub->keys.keyc[R_LEFT] && (upd = 1))
+		r_left(&cub);
+	else if (cub->keys.keyc[R_RIGHT] && (upd = 1))
+		r_right(&cub);
+	if (cub->keys.keyc[ESCAPE] && (upd = 1))
+		escape(&cub);
+	return (upd);
+}
+
 int		loop(t_win *cub)
 {
 	clock_t t;
 
 	t = clock();
 	cub->img = create_image(*cub);
-	if (cub->keys.keyc[UP])
-		up(&cub);
-	else if (cub->keys.keyc[DOWN])
-		down(&cub);
-	if (cub->keys.keyc[LEFT])
-		left(&cub);
-	else if (cub->keys.keyc[RIGHT])
-		right(&cub);
-	if (cub->keys.keyc[R_UP])
-		r_up(&cub);
-	else if (cub->keys.keyc[R_DOWN])
-		r_down(&cub);
-	if (cub->keys.keyc[R_LEFT])
-		r_left(&cub);
-	else if (cub->keys.keyc[R_RIGHT])
-		r_right(&cub);
-	if (cub->keys.keyc[ESCAPE])
-		escape(&cub);
-	update(cub);
-	return (framer(t, cub));
+	if (g_loop(cub))
+	{
+		update(cub);
+		return (framer(t, cub));
+	}
+	return (0);
 }

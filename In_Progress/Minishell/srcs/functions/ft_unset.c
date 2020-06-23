@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-inline static void unset(t_shell *shell, char **envp)
+inline static void	unset(t_shell *shell, char **envp)
 {
 	int i;
 
@@ -24,7 +24,7 @@ inline static void unset(t_shell *shell, char **envp)
 	}
 }
 
-inline static char*	check_args(char **envp)
+inline static char	*check_args(char **envp)
 {
 	int i;
 
@@ -38,7 +38,7 @@ inline static char*	check_args(char **envp)
 	return (NULL);
 }
 
-int	ft_unset(t_shell *shell, char *argv[])
+int					ft_unset(t_shell *shell, char *argv[])
 {
 	size_t	argc;
 	char	*arg_checked;

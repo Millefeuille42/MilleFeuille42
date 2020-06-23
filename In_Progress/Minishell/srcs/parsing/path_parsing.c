@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-char **parse_path(t_shell *shell)
+char	**parse_path(t_shell *shell)
 {
 	char	*env;
 	char	**path_parsed;

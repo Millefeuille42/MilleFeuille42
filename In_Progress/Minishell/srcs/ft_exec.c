@@ -15,10 +15,10 @@
 
 char	**ret_env(t_shell *shell)
 {
-	t_element *cur;
-	char **envs;
-	char *key;
-	int i;
+	t_element	*cur;
+	char		**envs;
+	char		*key;
+	int			i;
 
 	if (!(envs = malloc(sizeof(char *) * (shell->env.size + 1))))
 		return (NULL);
@@ -50,13 +50,13 @@ void	ft_exec(t_shell *shell, t_command *cmd, int i)
 	}
 	if (pid == 0)
 	{
-		shell->ret = (int)ft_abs(execve(cmd[i].command.content, cmd[i].argv,
+		shell->ret = (int)ft_abs(execve(cmd[i].command, cmd[i].argv,
 				env));
 		while (cmd[i].end != 1)
 		{
 			if (cmd[i].argv)
 				clear(cmd[i].argv);
-			cmd[i].command.clear(&cmd[i].command);
+			free(cmd[i].command);
 			i++;
 		}
 		free(cmd);
@@ -67,8 +67,3 @@ void	ft_exec(t_shell *shell, t_command *cmd, int i)
 	clear(env);
 	wait(&shell->ret);
 }
-	/*
-	 * En fait, _wait_ attend par default le child process (tous en fait)
-	 * Et il stocke la valeur de retour du dernier child process a se finir
-	 * Dans le INT pointe par le INT* que tu lui passe
-	*/

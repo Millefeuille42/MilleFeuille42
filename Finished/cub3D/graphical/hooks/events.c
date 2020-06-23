@@ -42,6 +42,7 @@ int					quit(void)
 inline static int	event_hooks(t_win *cub)
 {
 	cub->img = create_image(*cub);
+	update(cub);
 	mlx_hook(cub->win, KeyPress, KeyPressMask,
 			&keyp_hook, cub);
 	mlx_hook(cub->win, KeyRelease, KeyReleaseMask,
@@ -66,7 +67,7 @@ int					graphics(t_conf *conf)
 	cub = (t_win) {.conf = conf};
 	cub = keys_init(cub);
 	cub.mlx = mlx_init();
-	mlx_get_screen_size(cub.mlx, &ssize.x, &ssize.y);
+	//mlx_get_screen_size(cub.mlx, &ssize.x, &ssize.y);
 	cub.conf->res.x = cub.conf->res.x > ssize.x ? ssize.x : cub.conf->res.x;
 	cub.conf->res.y = cub.conf->res.y > ssize.y ? ssize.y : cub.conf->res.y;
 	init_textures(&cub);

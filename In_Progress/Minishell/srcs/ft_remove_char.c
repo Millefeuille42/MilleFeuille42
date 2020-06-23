@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_extract_env.c                                   :+:      :+:    :+:   */
+/*   ft_remove_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/16 15:09:00 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/16 16:23:42 by dboyer           ###   ########.fr       */
+/*   Created: 2020/06/18 09:35:13 by dboyer            #+#    #+#             */
+/*   Updated: 2020/06/18 09:40:28 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**ft_extract_env(char *str)
+char	*ft_remove_char(char *input, char c)
 {
-	char	**result;
+	char	**splitted;
+	char	*result;
+	char	*tmp;
 	int		i;
 
 	i = 0;
-	while (str[i] && str[i] != '=')
-		i++;
-	if (str[i])
+	result = NULL;
+	splitted = ft_split(input, c);
+	while (splitted[i])
 	{
-		if (!(result = (char **)malloc(sizeof(char *) * 3)))
-			return (NULL);
-		result[0] = ft_substr(str, 0, i);
-		result[1] = ft_strdup(&str[i + 1]);
-		result[2] = NULL;
-		return (result);
+		printf("I = %d\n", i);
+		if (result)
+		{
+			tmp = ft_strjoin(result, splitted[i]);
+			free(result);
+			result = tmp;
+		}
+		else
+			result = ft_strdup(splitted[i]);
+		i++;
 	}
-	return (NULL);
+	ft_split_clean(splitted);
+	return (result);
 }

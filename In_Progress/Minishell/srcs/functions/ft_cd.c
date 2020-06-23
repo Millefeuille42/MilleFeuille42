@@ -33,7 +33,7 @@ static inline int	change_to_home(t_shell *shell)
 	return (1);
 }
 
-char *correct_path(t_shell *shell, char *path)
+char				*correct_path(t_shell *shell, char *path)
 {
 	char *home;
 
@@ -57,7 +57,8 @@ int					ft_cd(t_shell *shell, char *argv[])
 		ft_printf("cd: string not in pwd: %s\n", argv[1]);
 		return (1);
 	}
-	if (argc == 1 || (argc == 2 && (ft_str_isequal("~", argv[1]) || ft_str_isequal("~/", argv[1]))))
+	if (argc == 1 || (argc == 2 && (ft_str_isequal("~", argv[1])
+	|| ft_str_isequal("~/", argv[1]))))
 		return (change_to_home(shell));
 	path = correct_path(shell, argv[1]);
 	if (argc == 2 && chdir(path))

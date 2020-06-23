@@ -1,25 +1,16 @@
-R 		720 720
+R	720 720
 
+NO	textures/jolane.xpm
+SO	textures/ghalem.xpm
 
-NO 	textures/eagle.xpm
-SO	 textures/blueeagle.xpm
+WE	textures/levekteur.xpm
+EA	textures/teofile.xpm
 
-WE	 textures/bluebrick.xpm
+S1	textures/Bietrix.xpm
+S2	textures/so6.xpm
 
-EA	 textures/redbrick.xpm
-
- 	  S1  	  textures/cage.xpm
-		S2  	  textures/barrel.xpm
-
-
-
-
-
-F 	100,	 100,    100
-
-C 	50   ,,50,	50
-
-
+F	100,	100,	100
+C	50,		50,		50
 
 11111111111111111111111111111
        1000000000001111111111

@@ -27,6 +27,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 #add_subdirectory(CMAKE/Libft)
 #add_subdirectory(CMAKE/GNL)
 #add_subdirectory(CMAKE/ft_printf)
-#add_subdirectory(CMAKE/cub3D)
+add_subdirectory(CMAKE/cub3D)
 
 add_subdirectory(CMAKE/minishell)

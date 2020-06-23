@@ -42,7 +42,7 @@ inline static void	export(t_shell *shell, char **envp)
 	}
 }
 
-int	ft_export(t_shell *shell, char *argv[])
+int					ft_export(t_shell *shell, char *argv[])
 {
 	size_t argc;
 

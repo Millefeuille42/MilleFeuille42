@@ -39,7 +39,7 @@ SRCS	= 	./main.c											\
         	./graphical/hooks/keyboard_hooks.c					\
         	./graphical/hooks/keyboard_functions.c				\
         	./graphical/hooks/keyboard_functions_2.c			\
-		./graphical/hooks/game_loop.c	\
+			./graphical/hooks/game_loop.c						\
         	./graphical/rays/ray.c								\
 			./graphical/rays/sprites_calculations.c				\
 			./graphical/minimap.c								\
@@ -57,10 +57,8 @@ HEAD	=	./includes/cub3d.h									\
 OBJS	=	${SRCS:.c=.o}
 
 INCL	=	-I ./includes/
-I_MLX	=	-I /usr/include -I /usr/local/include
+I_MLX	=	-I /usr/local/include
 
-LSTDRT	=	-L /usr/lib/ -lbsd -lm -lc
-LX		=	-lX11 -lmlx -lXext
 LMLX	=	-L /usr/local/lib/ -lmlx
 
 COMPILE	=	clang
@@ -74,7 +72,7 @@ NAME	=	cub3D
 			${COMPILE} ${FLAGS} ${INCL} ${I_MLX} -c $< -o $@
 
 ${NAME} :	${OBJS} ${HEAD}
-			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS} ${INCL} ${LSTDRT} ${LX} ${LMLX} ${INCL} ${I_MLX}
+			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS} ${LMLX} ${INCL} ${I_MLX} -framework OpenGL -framework Appkit
 
 all		:	${NAME}
 

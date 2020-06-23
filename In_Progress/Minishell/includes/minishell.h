@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 11:20:46 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/16 17:05:58 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/18 09:35:50 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,20 @@
 **  - prompt:  le prompt  du shell
 **  - env: une liste chainée contenant les variables d'environnement (système clef/valeur)
 */
+
+typedef struct s_redirect
+{
+    int         type;
+    char        *arg;
+}               t_redirect;
+
 typedef struct	s_command
 {
-	t_string	command;
+	char		*command;
 	char		**argv;
 	char		end;
+    int         pipe;
+    t_redirect  redirect;
 }				t_command;
 
 typedef struct  s_shell
@@ -74,24 +83,20 @@ typedef struct s_env
 }               t_env;
 
 
-
+int			parse(t_shell *shell, t_command **parsed);
 int			array_len(char **array);
-int			clean_command(t_shell *shell, t_command *commands);
-int			check_command(t_shell *shell, t_string *command);
-int			rc_parser(t_shell *shell, int fd);
+int			check_command(t_shell *shell, char **command);
 int         ft_test_builtin(t_shell *shell, t_command *cmd_lst);
+
+char        *ft_read_input(t_shell *shell, char *next_input);
+char        *ft_remove_char(char *input, char c);
 
 char		file_exists(const char *filename);
 
-char		**ft_delete_entry(char **array, int index);
 char        **ft_extract_env(char *str);
 char		**parse_path(t_shell *shell);
-char		*swap_var(t_shell *shell, char *str);
 
 size_t      ft_len(char **str);                                     /* Fonction qui calcul la taille d'un char** */
-
-t_command	*parse_command(char *line);
-
 t_string	ft_getcwd(void);                                        /* Fonction qui retourne le chemin courant*/
 
 /* 
@@ -104,4 +109,5 @@ int         ft_pwd(void);                                           /*  Comme la
 int         ft_export(t_shell *shell, char *argv[]);                /*  Comme la vraie fonction export  */
 int         ft_unset(t_shell *shell, char *argv[]);                 /*  Comme la vraie fonction unset   */
 int         ft_env(t_shell *shell, char *argv[]);                   /*  Comme la vraie fonction env     */
+
 #	endif

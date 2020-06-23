@@ -25,7 +25,7 @@ static inline int	condition(t_element *element, void *key)
 void				ft_env_remove(t_shell *shell, char *key)
 {
 	t_element	*element;
-	t_env	*content;
+	t_env		*content;
 
 	if (shell->env.size)
 	{

@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/06/16 17:06:20 by dboyer           ###   ########.fr        #
+#    Updated: 2020/06/18 09:36:08 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,33 +36,35 @@ NAME    			=	minishell
 MAIN				= 	./srcs/main.c
 
 SRCS    			=	./srcs/ft_add_env.c									\
-                     	./srcs/ft_clear_env.c								\
-                     	./srcs/ft_display_env.c								\
-                     	./srcs/ft_env_get.c									\
-                     	./srcs/ft_env_remove.c								\
-                     	./srcs/ft_replace_env.c								\
-                     	./srcs/run.c										\
-                        ./srcs/ft_exec.c									\
-                     	./srcs/ft_getcwd.c									\
-                     	./srcs/ft_shell.c									\
-                     	./srcs/ft_show_prompt.c								\
-                     	./srcs/parsing/check_command.c						\
-                        ./srcs/parsing/parse_line.c							\
+                        ./srcs/ft_clear_env.c								\
+                        ./srcs/ft_display_env.c								\
+                        ./srcs/ft_env_get.c									\
+                        ./srcs/ft_env_remove.c								\
+                        ./srcs/ft_replace_env.c								\
+                        ./srcs/ft_extract_env.c								\
+                        ./srcs/parsing/check_command.c						\
                         ./srcs/parsing/path_parsing.c						\
-                        ./srcs/parsing/rc_parser.c							\
-                        ./srcs/parsing/swap_var.c							\
-                        ./srcs/utils/array_len.c							\
-                     	./srcs/utils/ft_delete_entry.c						\
-                     	./srcs/utils/file_exists.c							\
-						./srcs/functions/ft_cd.c							\
-						./srcs/functions/ft_echo.c							\
-						./srcs/ft_len.c										\
-						./srcs/functions/ft_pwd.c							\
-						./srcs/ft_extract_env.c								\
-						./srcs/functions/ft_export.c						\
-						./srcs/functions/ft_unset.c							\
-						./srcs/functions/ft_env.c							\
-						./srcs/ft_test_builtin.c
+                        ./srcs/parsing/get_next.c							\
+                        ./srcs/parsing/get_next_arg.c						\
+                        ./srcs/parsing/parsing_utils.c						\
+                        ./srcs/parsing/get_next_command.c					\
+                        ./srcs/parsing/parsing.c							\
+                        ./srcs/utils/file_exists.c							\
+                        ./srcs/utils/ft_len.c								\
+                        ./srcs/functions/ft_pwd.c							\
+                        ./srcs/functions/ft_export.c						\
+                        ./srcs/functions/ft_unset.c							\
+                        ./srcs/functions/ft_env.c							\
+                        ./srcs/functions/ft_cd.c							\
+                        ./srcs/functions/ft_echo.c							\
+                        ./srcs/ft_test_builtin.c							\
+                        ./srcs/ft_read_input.c								\
+                        ./srcs/ft_remove_char.c								\
+                        ./srcs/ft_exec.c									\
+                        ./srcs/ft_getcwd.c									\
+                        ./srcs/ft_shell.c									\
+                        ./srcs/ft_show_prompt.c								\
+                        ./srcs/run.c
 
 INCLUDES			=	-I ./includes/										\
 						${LIBRARY_INCLUDES}

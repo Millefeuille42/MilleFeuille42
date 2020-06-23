@@ -6,12 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 11:20:36 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/16 15:09:25 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/22 17:08:08 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 void start_env(t_shell *shell, char **envp)
 {
@@ -31,19 +30,6 @@ void start_env(t_shell *shell, char **envp)
 	}
 }
 
-void 	c_handler(int sig)
-{
-	printf("%d SIGINT", sig);
-	//shell->show_prompt;
-}
-
-void	q_handler(int sig)
-{
-	(void)sig;
-	//(ONLY IF PROCESS RUNNING)
-		//printf("Quit: %d\n", sig);
-}
-
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_shell		shell;
@@ -57,10 +43,10 @@ int	main(int argc, char *argv[], char *envp[])
 	shell.replace_env(&shell, ft_strdup("SHELL"),
 			ft_strjoin(cwd.content, "/minishell"));
 	cwd.clear(&cwd);
-	rc_parser(&shell, 0);
 	//shell.print_env(&shell);
-	signal(SIGINT, c_handler);
-	signal(SIGQUIT, q_handler);
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 	shell.ret = 0;
+
 	return (shell.run(&shell));
 }
