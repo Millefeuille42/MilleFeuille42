@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:18:34 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:31:06 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 15:57:45 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ size_t	ft_strlen(const char *str)
 {
 	int	i;
 
+	i = 0;
 	if (str != NULL)
 	{
-		i = 0;
 		while (str[i])
 			i++;
 		return (i);
 	}
-	return (0);
+	return (i);
 }

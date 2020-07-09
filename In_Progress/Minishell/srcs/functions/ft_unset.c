@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 16:39:39 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/16 16:58:21 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-inline static void	unset(t_shell *shell, char **envp)
+ static void	unset(t_shell *shell, char **envp)
 {
 	int i;
 
@@ -24,7 +24,7 @@ inline static void	unset(t_shell *shell, char **envp)
 	}
 }
 
-inline static char	*check_args(char **envp)
+ static char	*check_args(char **envp)
 {
 	int i;
 

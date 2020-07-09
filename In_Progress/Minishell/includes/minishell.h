@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 11:20:46 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/18 09:35:50 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/07/09 10:17:54 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@
 
 typedef struct s_redirect
 {
-    int         type;
-    char        *arg;
+    int			src;
+    int			dest;
+    char		type;
 }               t_redirect;
 
 typedef struct	s_command
@@ -84,12 +85,12 @@ typedef struct s_env
 
 
 int			parse(t_shell *shell, t_command **parsed);
-int			array_len(char **array);
 int			check_command(t_shell *shell, char **command);
 int         ft_test_builtin(t_shell *shell, t_command *cmd_lst);
 
-char        *ft_read_input(t_shell *shell, char *next_input);
+int			ft_read_input(t_shell *shell, char *next_input, char **ret);
 char        *ft_remove_char(char *input, char c);
+char        *ft_replace_input(t_shell *shell, char *input);
 
 char		file_exists(const char *filename);
 
@@ -110,4 +111,7 @@ int         ft_export(t_shell *shell, char *argv[]);                /*  Comme la
 int         ft_unset(t_shell *shell, char *argv[]);                 /*  Comme la vraie fonction unset   */
 int         ft_env(t_shell *shell, char *argv[]);                   /*  Comme la vraie fonction env     */
 
+void		ft_swap_int(int *i1, int *i2);
+int			delete_char(char **str, int pos);
+int			clean_escape(t_command *cmd_lst);
 #	endif

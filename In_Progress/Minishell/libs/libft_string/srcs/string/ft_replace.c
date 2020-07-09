@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_replace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 10:58:51 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/18 10:58:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/string_object.h"
 
-inline static size_t	diff(const char *str1, const char *str2)
+ static size_t	diff(const char *str1, const char *str2)
 {
 	return (ft_strlen(str1) - ft_strlen(str2));
 }
 
-inline static void		ft_prog(int *i, char *ret, const char *tmp,
+ static void		ft_prog(int *i, char *ret, const char *tmp,
 		const char *str)
 {
 	*i = 0;
@@ -28,7 +28,7 @@ inline static void		ft_prog(int *i, char *ret, const char *tmp,
 	}
 }
 
-inline static char		*copy(t_string *str, char *ret, const char *tmp,
+ static char		*copy(t_string *str, char *ret, const char *tmp,
 		const char *new)
 {
 	int i;
@@ -56,7 +56,7 @@ inline static char		*copy(t_string *str, char *ret, const char *tmp,
 	return (ret);
 }
 
-inline static char		replace(t_string *str, const char *old, const char *new)
+ static char		replace(t_string *str, const char *old, const char *new)
 {
 	char *tmp;
 	char *ret;

@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 12:28:11 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:50:57 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline t_format	ft_minmax_str(t_format format, char *arg)
+ t_format	ft_minmax_str(t_format format, char *arg)
 {
 	int	strlen;
 

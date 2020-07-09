@@ -11,7 +11,7 @@ int		get_next_command(char *input, int *s, char **str)
 		return (-ERRSYMBOL);
 	if (ft_strnstr(input, ";;", ft_strlen(input)))
 		return (-ERRDBSYMBOL);
-	while (input[i] != ';' && input[i])
+	while (input[i] && !(input[i] == ';' && !is_escape(input, i)))
 	{
 		if ((input[i] == '"' || input[i] == '\'') && !is_escape(input, i))
 			i = skip_quote(input, i, input[i]) - 1;

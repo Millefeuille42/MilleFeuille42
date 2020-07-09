@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 22:04:21 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/18 10:58:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft_string.h"
 
-inline static char		*ft_copy(const char *src, char del)
+ static char		*ft_copy(const char *src, char del)
 {
 	int		i;
 	char	*dst;

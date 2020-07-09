@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/06/18 09:36:08 by dboyer           ###   ########.fr        #
+#    Updated: 2020/07/09 10:18:18 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ SRCS    			=	./srcs/ft_add_env.c									\
                         ./srcs/parsing/parsing_utils.c						\
                         ./srcs/parsing/get_next_command.c					\
                         ./srcs/parsing/parsing.c							\
+                        ./srcs/parsing/parse_redir.c						\
+                        ./srcs/parsing/parse_redir_2.c						\
                         ./srcs/utils/file_exists.c							\
                         ./srcs/utils/ft_len.c								\
                         ./srcs/functions/ft_pwd.c							\
@@ -64,6 +66,8 @@ SRCS    			=	./srcs/ft_add_env.c									\
                         ./srcs/ft_getcwd.c									\
                         ./srcs/ft_shell.c									\
                         ./srcs/ft_show_prompt.c								\
+						./srcs/ft_replace_input.c							\
+						./srcs/utils/ft_swap.c								\
                         ./srcs/run.c
 
 INCLUDES			=	-I ./includes/										\
@@ -143,8 +147,15 @@ libs_fclean	:
 #									Extra Rules
 ################################################################################
 
+clean_2	:
+	$(RM) $(OBJS)
+	$(RM) ${OBJS_MAIN}
+
 run 	:	all
 	./${NAME}
+
+test 	:
+	python3 main.py
 
 norm	:	fclean
 	~/.norminette/norminette.rb ${SRCS} ${HEADERS}

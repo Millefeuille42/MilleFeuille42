@@ -6,20 +6,20 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 10:49:57 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:52:46 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static inline void	ft_display(t_format format, int arg)
+static  void	ft_display(t_format format, int arg)
 {
 	if (format.point && format.max == 0 && arg == 0)
 		return ;
 	ft_putnbr_fd(arg, 1);
 }
 
-inline int			ft_print_nb(t_format format, va_list *va)
+ int			ft_print_nb(t_format format, va_list *va)
 {
 	int		arg;
 	int		result;

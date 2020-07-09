@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 13:42:55 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/12 16:12:23 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-static inline void	append(t_list *list1, t_list *list2)
+static  void	append(t_list *list1, t_list *list2)
 {
 	t_element *next;
 

@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 10:45:44 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:48:43 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline t_format	ft_format(char *flag, va_list *va)
+ t_format	ft_format(char *flag, va_list *va)
 {
 	t_format format;
 

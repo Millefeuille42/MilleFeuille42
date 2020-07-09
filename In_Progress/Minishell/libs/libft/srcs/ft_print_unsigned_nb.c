@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 13:03:32 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/09 13:55:54 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static inline void	ft_display(t_format format, unsigned int arg)
+static  void	ft_display(t_format format, unsigned int arg)
 {
 	if (format.point && format.max == 0 && arg == 0)
 		return ;

@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 17:09:36 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/15 11:34:26 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static inline void	clear_element(t_element *element)
+static  void	clear_element(t_element *element)
 {
 	t_env	*content;
 

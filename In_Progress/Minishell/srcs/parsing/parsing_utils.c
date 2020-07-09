@@ -1,20 +1,31 @@
+#include <AudioUnit/AudioUnit.h>
 #include "minishell.h"
 #include "parsing.h"
 
+int		iter_until_set(char *str, char *set)
+{
+	int i;
+
+	i = 0;
+	while (str[i] && !ft_cinset(str[i], set))
+		i++;
+	return (i);
+}
+
 char	is_escape(const char *str, int i)
 {
-	char bool;
+	char is;
 
-	bool = 0;
+	is = 0;
 	if (i == 0)
 		return (0);
 	i--;
 	while (i >= 0 && str[i] == '\\')
 	{
-		bool = (char)!bool;
+		is = (char)!is;
 		i--;
 	}
-	return (bool);
+	return (is);
 }
 
 int		skip_wp(char *input, int i)
@@ -27,27 +38,36 @@ int		skip_wp(char *input, int i)
 int		skip_quote(const char *input, int i, char quote)
 {
 	i++;
-	while ((input[i] && input[i] != quote) && !is_escape(input, i))
+	while (input[i] && !(input[i] == quote && !is_escape(input, i)))
 		i++;
 	if (input[i])
 		i++;
 	return (i);
 }
 
-int		get_input(t_shell *shell, char **input)
+char	**delete_entry(char **arr, int entry)
 {
-	if (get_next_line(0, input) == 0)
+	char	**ret;
+	int		len;
+	int		i;
+	int		i2;
+
+	len = ft_len(arr);
+	if (!(ret = malloc(sizeof(char *) * (len))))
+		return (NULL);
+	ret[len - 1] = NULL;
+	i = 0;
+	i2 = 0;
+	while (arr[i])
 	{
-		input = NULL;
-		shell->clear_env(shell);
-		ft_putchar('\n');
-		return (ERRCTRLD);
+		if (i != entry)
+		{
+			ret[i2] = arr[i];
+			i2++;
+		}
+		else if (i == entry)
+			free(arr[i]);
+		i++;
 	}
-	if (!input || !input[0])
-	{
-		free(input);
-		input = NULL;
-		return (ERREMPTY);
-	}
-	return (0);
+	return (ret);
 }

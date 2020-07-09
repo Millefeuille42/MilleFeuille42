@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 11:35:32 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/22 17:17:30 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/07/01 16:55:55 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static inline int		append_stock(char **stock, char *buffer)
+static  int		append_stock(char **stock, char *buffer)
 {
 	char	*new;
 
@@ -31,7 +31,7 @@ static inline int		append_stock(char **stock, char *buffer)
 	return (0);
 }
 
-static inline void		update_stock(char **stock, int i)
+static  void		update_stock(char **stock, int i)
 {
 	char *temp;
 
@@ -48,7 +48,7 @@ static inline void		update_stock(char **stock, int i)
 	}
 }
 
-static inline int		append_line(char **line, char **stock)
+static  int		append_line(char **line, char **stock)
 {
 	int		i;
 
@@ -77,9 +77,11 @@ int						get_next_line(int fd, char **line)
 
 	if (fd >= 0 && line != NULL && !read(fd, buffer, 0))
 	{
-		while ((ret = read(fd, buffer, 1)))
+		while ((ret = read(fd, buffer, 1)) >= 0)
 		{
 			buffer[ret] = '\0';
+			if (ret == 0)
+				ft_putstr_fd("  \b\b", 0);
 			append_stock(&stock, buffer);
 			if (append_line(line, &stock))
 				return (1);

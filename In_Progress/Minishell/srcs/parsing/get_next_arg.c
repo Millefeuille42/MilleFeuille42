@@ -7,7 +7,7 @@ int		get_next_arg(char *input, int *s, char **str)
 
 	*s = skip_wp(input, *s);
 	i = *s;
-	while (!ft_isspace(input[i]) && input[i])
+	while (input[i] && !(ft_isspace(input[i]) && !is_escape(input, i)))
 	{
 		if ((input[i] == '"' || input[i] == '\'') && !is_escape(input, i))
 		{

@@ -163,6 +163,7 @@ set(    SOURCE_MINISHELL
 
 		../../In_Progress/Minishell/srcs/ft_test_builtin.c
 		../../In_Progress/Minishell/srcs/ft_read_input.c
+		../../In_Progress/Minishell/srcs/ft_replace_input.c
 		../../In_Progress/Minishell/srcs/ft_remove_char.c
 		../../In_Progress/Minishell/srcs/ft_exec.c
 		../../In_Progress/Minishell/srcs/ft_getcwd.c
@@ -170,7 +171,7 @@ set(    SOURCE_MINISHELL
 		../../In_Progress/Minishell/srcs/ft_show_prompt.c
 		../../In_Progress/Minishell/srcs/run.c
 		../../In_Progress/Minishell/srcs/main.c
-		)
+		../../In_Progress/Minishell/srcs/parsing/parse_redir.c ../../In_Progress/Minishell/srcs/parsing/parse_redir_2.c ../../In_Progress/Minishell/srcs/utils/ft_swap.c ../../In_Progress/Minishell/srcs/parsing/clean_escape.c ../../In_Progress/Minishell/srcs/parsing/delete_char.c)
 
 add_executable(minishell
 		${SOURCE_MINISHELL}

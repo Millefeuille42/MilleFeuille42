@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 12:29:35 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:53:29 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline int	ft_print(t_format format, va_list *va)
+ int	ft_print(t_format format, va_list *va)
 {
 	if (format.converter == 'c')
 		return (ft_print_char(format, va));

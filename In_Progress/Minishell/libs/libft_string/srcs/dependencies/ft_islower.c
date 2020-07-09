@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 12:05:53 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/18 10:58:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft_string.h"
 
-inline int	ft_islower(int c)
+ int	ft_islower(int c)
 {
 	return (c >= 'a' && c <= 'z');
 }

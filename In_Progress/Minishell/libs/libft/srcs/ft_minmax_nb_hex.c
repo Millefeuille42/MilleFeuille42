@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/27 13:13:53 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:50:45 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline t_format	ft_minmax_nb_hex(t_format format, int arg)
+ t_format	ft_minmax_nb_hex(t_format format, int arg)
 {
 	int	nbrlen;
 

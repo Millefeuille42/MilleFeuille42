@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:00:48 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:50:02 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline int	ft_isprint(int c)
+ int	ft_isprint(int c)
 {
 	return (c >= 32 && c <= 126);
 }

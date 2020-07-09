@@ -6,19 +6,19 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 19:58:03 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/16 18:33:13 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static inline void	update_env(t_shell *shell, char *path)
+static  void	update_env(t_shell *shell, char *path)
 {
 	shell->env_remove(shell, "PWD");
 	shell->add_env(shell, ft_strdup("PWD"), path);
 }
 
-static inline int	change_to_home(t_shell *shell)
+static  int	change_to_home(t_shell *shell)
 {
 	char *home;
 

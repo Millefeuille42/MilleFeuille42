@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/27 13:14:11 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:52:39 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static inline void	ft_display(t_format format, int arg)
+static  void	ft_display(t_format format, int arg)
 {
 	if (format.point && format.max == 0 && arg == 0)
 		return ;
@@ -22,7 +22,7 @@ static inline void	ft_display(t_format format, int arg)
 		ft_putnbr_hex(arg, "0123456789ABCDEF", "FFFFFFFF");
 }
 
-inline int			ft_print_nb_hex(t_format format, va_list *va)
+ int			ft_print_nb_hex(t_format format, va_list *va)
 {
 	int		arg;
 	int		result;

@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 12:29:19 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/13 10:05:42 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-static inline void	correct_index(t_element *element)
+static  void	correct_index(t_element *element)
 {
 	element->index++;
 }

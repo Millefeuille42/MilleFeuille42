@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:12:44 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/09 13:55:16 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static inline size_t	get_n_word(const char *s, char c)
+static  size_t	get_n_word(const char *s, char c)
 {
 	size_t i;
 	size_t j;
@@ -29,7 +29,7 @@ static inline size_t	get_n_word(const char *s, char c)
 	return (i);
 }
 
-static inline char		*extract_word(const char *s, char c)
+static  char		*extract_word(const char *s, char c)
 {
 	int end;
 

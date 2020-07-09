@@ -19,7 +19,7 @@
 char	**ft_parse(char *str, char del);
 char	*ft_strjoin(const char *s1, const char *s2);
 
-char	*ft_move_until(char *str, char *bool, int (*f)(int));
+char	*ft_move_until(char *str, char *bbool, int (*f)(int));
 int		ft_str_isequal(char *str1, char *str2);
 size_t	count_lines(const char *str, char del);
 size_t	ft_strlen(const char *str);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_delete.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 10:58:51 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/18 10:58:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/string_object.h"
 
-inline static char	*f_delete2(t_string *str, char *ret, const char *tmp)
+ static char	*f_delete2(t_string *str, char *ret, const char *tmp)
 {
 	int i;
 	int i2;
@@ -37,7 +37,7 @@ inline static char	*f_delete2(t_string *str, char *ret, const char *tmp)
 	return (ret);
 }
 
-inline static char	f_delete(t_string *str, const char *str2)
+ static char	f_delete(t_string *str, const char *str2)
 {
 	char *tmp;
 	char *ret;

@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 15:01:46 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/16 16:39:14 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-inline static void	update_env(t_shell *shell, char *key, char *value)
+ static void	update_env(t_shell *shell, char *key, char *value)
 {
 	char *val;
 
@@ -22,7 +22,7 @@ inline static void	update_env(t_shell *shell, char *key, char *value)
 	shell->add_env(shell, key, value);
 }
 
-inline static void	export(t_shell *shell, char **envp)
+ static void	export(t_shell *shell, char **envp)
 {
 	int		i;
 	char	**splitted;

@@ -6,11 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 11:20:36 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/22 17:08:08 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/07/09 10:16:56 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static t_shell shell;
 
 void start_env(t_shell *shell, char **envp)
 {
@@ -30,10 +32,22 @@ void start_env(t_shell *shell, char **envp)
 	}
 }
 
-int	main(int argc, char *argv[], char *envp[])
+void ft_handle_sigint(int sig)
 {
-	t_shell		shell;
-	t_string	cwd;
+	(void)sig;
+	ft_putstr_fd("\b\b   \n", 0);
+	shell.show_prompt(&shell);
+}
+
+void ft_handle_sigquit(int sig)
+{
+	(void)sig;
+	ft_putstr_fd("\b\b  \b\b", 0);
+}
+
+int main(int argc, char *argv[], char *envp[])
+{
+	t_string cwd;
 
 	(void)argc;
 	(void)argv;
@@ -41,12 +55,9 @@ int	main(int argc, char *argv[], char *envp[])
 	start_env(&shell, envp);
 	cwd = ft_getcwd();
 	shell.replace_env(&shell, ft_strdup("SHELL"),
-			ft_strjoin(cwd.content, "/minishell"));
+					  ft_strjoin(cwd.content, "/minishell"));
 	cwd.clear(&cwd);
-	//shell.print_env(&shell);
-	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, SIG_IGN);
-	shell.ret = 0;
-
+	signal(SIGINT, ft_handle_sigint);
+	signal(SIGQUIT, ft_handle_sigquit);
 	return (shell.run(&shell));
 }

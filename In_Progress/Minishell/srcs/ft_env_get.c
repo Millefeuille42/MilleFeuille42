@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 17:26:10 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/12 08:59:49 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static inline int	condition(t_element *element, void *key)
+static  int	condition(t_element *element, void *key)
 {
 	t_env	*content;
 	char	*key_in_list;

@@ -6,14 +6,14 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 16:18:02 by dboyer            #+#    #+#             */
-/*   Updated: 2020/06/18 10:42:35 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/07/07 17:21:18 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parsing.h"
 
-int check_run_err(int err)
+static int check_run_err(int err)
 {
 	if (err == ERRCTRLD)
 		return (1);
@@ -46,7 +46,8 @@ int	run(t_shell *shell)
 		return (0);
 	else if (err == 2)
 		return (run(shell));
-
+	err = parse_redir(cmd_lst);
+	err = clean_escape(cmd_lst);
 	i = 0;
 	exit = 0;
 	while (cmd_lst && cmd_lst[i].end != 1)

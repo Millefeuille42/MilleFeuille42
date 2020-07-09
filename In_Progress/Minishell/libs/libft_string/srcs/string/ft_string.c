@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 19:08:35 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/18 10:58:51 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/string_object.h"
 
-static inline void	init_string(t_string *this)
+static  void	init_string(t_string *this)
 {
 	this->clear = ft_clear_string;
 	this->push = ft_push_string;

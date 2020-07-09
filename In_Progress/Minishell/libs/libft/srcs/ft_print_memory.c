@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 12:33:30 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:52:27 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:00:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline int	ft_print_memory(t_format format, va_list *va)
+ int	ft_print_memory(t_format format, va_list *va)
 {
 	long	arg;
 	int		result;

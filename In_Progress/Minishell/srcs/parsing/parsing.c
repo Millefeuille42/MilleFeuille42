@@ -7,7 +7,8 @@ static int	parse_commands(t_shell *shell, char ***command, t_command **parsed)
 	int		err;
 	int		len;
 
-	err = get_input(shell, &input);
+	input = "";
+	err = ft_read_input(shell, NULL, &input);
 	if (err)
 		return (err);
 	if (!input)
