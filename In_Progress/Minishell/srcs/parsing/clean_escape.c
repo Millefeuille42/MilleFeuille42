@@ -5,6 +5,27 @@
 #include "parsing.h"
 #include "minishell.h"
 
+int		clean_escape_in_quote(char **str, int *i, char quote)
+{
+	int err;
+
+	if ((err = delete_char(str, *i)))
+		return (err);
+	while (*i > 0 && !((*str)[*i] == quote && !is_escape(*str, *i)))
+	{
+		if (((*str)[*i]) == '\\' && is_escape(*str, *i))
+		{
+			if ((err = delete_char(str, *i)))
+				return (err);
+		}
+		*i -= 1;
+	}
+	if ((*str)[*i] == quote && !is_escape(*str, *i))
+		if ((err = delete_char(str, *i)))
+			return (err);
+	return (0);
+}
+
 int		clean_escape_str(char **str)
 {
 	int	i;
@@ -13,6 +34,11 @@ int		clean_escape_str(char **str)
 	i = ft_strlen(*str);
 	while (i > 0)
 	{
+		if (ft_cinset((*str)[i], "\"'") && !is_escape(*str, i))
+		{
+			clean_escape_in_quote(str, &i, (*str)[i]);
+			continue ;
+		}
 		if (is_escape(*str, i))
 		{
 			if ((err = delete_char(str, i-1)))

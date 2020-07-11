@@ -6,9 +6,23 @@
 #    By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/07 12:19:51 by mlabouri          #+#    #+#              #
-#    Updated: 2020/06/01 17:37:46 by mlabouri         ###   ########.fr        #
+#    Updated: 2020/06/24 14:53:31 by mlabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+############################### OS DETECTOR ####################################
+LIBS	=	-L . -lmlx
+FRW		:=
+INCL	:=	-I ./includes/ -I /usr/local/include
+
+UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S),Linux)
+		LIBS += -L /usr/lib/ -lbsd -lm -lc -lX11 -lmlx -lXext
+	endif
+	ifeq ($(UNAME_S),Darwin)
+		FRW += -L. -lmlx -framework OpenGL -framework Appkit
+	endif
+################################################################################
 
 SRCS	= 	./main.c											\
         	./init_conf.c										\
@@ -56,11 +70,6 @@ HEAD	=	./includes/cub3d.h									\
 
 OBJS	=	${SRCS:.c=.o}
 
-INCL	=	-I ./includes/
-I_MLX	=	-I /usr/local/include
-
-LMLX	=	-L /usr/local/lib/ -lmlx
-
 COMPILE	=	clang
 FLAGS	=	-Wall -Wextra -Werror -Ofast
 
@@ -69,10 +78,10 @@ RM		=	rm -f
 NAME	=	cub3D
 
 .c.o	:
-			${COMPILE} ${FLAGS} ${INCL} ${I_MLX} -c $< -o $@
+			${COMPILE} ${FLAGS} ${INCL} -c $< -o $@
 
 ${NAME} :	${OBJS} ${HEAD}
-			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS} ${LMLX} ${INCL} ${I_MLX} -framework OpenGL -framework Appkit
+			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS} ${LIBS} ${INCL} ${FRW}
 
 all		:	${NAME}
 
@@ -87,7 +96,7 @@ re		:	fclean all
 o		:	re
 			${MAKE} clean
 
-play	:	${NAME} clean
+play	:	${NAME}
 			./cub3D ./sample.cub
 
 norm	:	${SRCS} ${HEAD}

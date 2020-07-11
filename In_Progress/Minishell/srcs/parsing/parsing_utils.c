@@ -1,4 +1,3 @@
-#include <AudioUnit/AudioUnit.h>
 #include "minishell.h"
 #include "parsing.h"
 

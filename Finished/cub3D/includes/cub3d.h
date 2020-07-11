@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
+/*   Updated: 2020/07/10 15:47:10 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # include <stdlib.h>
 # include <math.h>
 
-# define FPS 60
+# include "mlx.h"
+
+# define FPS 90
 # define MOV 12
 # define ROT 20
 
