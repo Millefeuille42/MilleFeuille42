@@ -1,7 +1,8 @@
-R 		720 720
+R 		500 500
 
 
 NO 	textures/eagle.xpm
+
 SO	 textures/blueeagle.xpm
 
 WE	 textures/bluebrick.xpm

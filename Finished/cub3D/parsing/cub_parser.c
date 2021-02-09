@@ -30,8 +30,6 @@ inline static int	parse_head(char *line)
 	err = -2;
 	while (i < PARAMSNB && err == -2)
 	{
-		if (ft_cinset(*(line + skip_wp(line) + 1), "\n\r\t\v\f "))
-			*(line + skip_wp(line) + 1) = ' ';
 		if ((ft_strnstr(line + skip_wp(line), charset[i], 2)))
 			err = i;
 		else

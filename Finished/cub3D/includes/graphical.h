@@ -14,17 +14,10 @@
 # define GRAPHICAL_H
 
 # include "cub3d.h"
+# include <X11/X.h>
+# include <mlx.h>
 # include <time.h>
 # define TPI 0.017453292519943295
-
-# define KeyPressMask (1L<<0)
-# define KeyReleaseMask (1L<<1)
-# define VisibilityChangeMask (1L<<16)
-# define StructureNotifyMask (1L<<17)
-# define KeyPress 2
-# define KeyRelease 3
-# define VisibilityNotify 15
-# define DestroyNotify 17
 
 # if __APPLE__
 
@@ -33,9 +26,9 @@
 #  define DOWN		1
 #  define RIGHT		2
 #  define R_UP		126
-#  define R_LEFT	123
+#  define R_LEFT	124
 #  define R_DOWN	125
-#  define R_RIGHT	124
+#  define R_RIGHT	123
 #  define ESCAPE	53
 
 # else
