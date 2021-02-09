@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+  labels:
+    run: phpmyadmin
+    app: ft_services
+spec:
+    selector:
+      matchLabels:
+        run: phpmyadmin
+    template:
+      metadata:
+        labels:
+          run: phpmyadmin
+      spec:
+        containers:
+          - name: phpmyadmin
+            image: services_phpmyadmin
+            imagePullPolicy: Never
+            ports:
+              - name: http-phpmyadmin
+                containerPort: 5000
+        restartPolicy: Always

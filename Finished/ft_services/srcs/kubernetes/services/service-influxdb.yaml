@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb
+  labels:
+    app: ft_services
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8086
+      protocol: TCP
+      name: influxdb
+      targetPort: 8086
+  selector:
+      run: influxdb

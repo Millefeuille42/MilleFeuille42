@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ftps
+  labels:
+    app: ft_services
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 21
+      protocol: TCP
+      name: ftp-ftps
+      targetPort: 21
+      nodePort: 30021
+    - port: 20
+      protocol: TCP
+      name: ftptw-ftps
+      targetPort: 20
+      nodePort: 30020
+    - port: 30100
+      name: ftp-one
+      nodePort: 30100 
+    - port: 30101
+      name: ftp-two
+      nodePort: 30101
+    - port: 30102
+      name: ftp-thr
+      nodePort: 30102
+    - port: 30103
+      nodePort: 30103
+      name: ftp-fou
+  selector:
+      run: ftps

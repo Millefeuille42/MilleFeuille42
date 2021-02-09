@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    run: wordpress
+    app: ft_services
+spec:
+  selector:
+    matchLabels:
+      run: wordpress
+  template:
+    metadata:
+      labels:
+        run: wordpress
+    spec:
+      containers:
+        - name: wordpress
+          image: services_wordpress
+          imagePullPolicy: Never
+          ports:
+            - name: https-wordpress
+              containerPort: 5050
+      restartPolicy: Always        
