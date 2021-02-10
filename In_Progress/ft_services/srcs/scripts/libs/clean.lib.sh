@@ -2,7 +2,7 @@
 
 function del_docker() {
 	echo -ne "\t$1...               \r"
-	docker build $2 --quiet -t services_$1 ./$1 > /dev/null
+	docker rmi $2 services_$1 > /dev/null
 }
 
 function del_dep() {

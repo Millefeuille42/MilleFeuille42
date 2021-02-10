@@ -78,6 +78,9 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 
+define('FORCE_SSL_ADMIN', false);
+define('FORCE_SSL_LOGIN', false);
+
 define( 'WP_DEBUG', false );
 
 /* That's all, stop editing! Happy publishing. */

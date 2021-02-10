@@ -9,8 +9,8 @@ spec:
   ports:
     - port: 5000
       protocol: TCP
-      name: http-phpmyadmin
-      targetPort: 80
+      name: https-phpmyadmin
+      targetPort: 443
       nodePort: 30500
   selector:
     run: phpmyadmin
