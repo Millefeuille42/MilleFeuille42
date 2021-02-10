@@ -22,7 +22,7 @@ RUN ln -s /usr/share/wordpress /var/www/wordpress
 
 ADD --chown=www:www ./data/localhost.cert /localhost.cert
 ADD --chown=www:www ./data/localhost.key /localhost.key
-ADD --chown=www:www ./data/lol.conf /etc/nginx/nginx.conf
+ADD --chown=www:www ./data/nginx.conf /etc/nginx/nginx.conf
 ADD --chown=www:www ./data/wp-config.php /var/www/wordpress/wp-config.php
 
 
