@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  labels:
+    run: grafana
+    app: ft_services
+spec:
+  selector:
+    matchLabels:
+      run: grafana
+  template:
+    metadata:
+      labels:
+        run: grafana
+    spec:
+      containers:
+        - name: grafana
+          image: services_grafana
+          imagePullPolicy: Never
+          ports:
+            - name: https-grafana
+              containerPort: 3000
+      restartPolicy: Always        
