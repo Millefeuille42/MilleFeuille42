@@ -1,2 +1,0 @@
-CREATE database telegraf;
-CREATE user telegraf with password 'password';
