@@ -1,0 +1,12 @@
+//
+// Created by millefeuille on 2/16/21.
+//
+
+#include "../philo_one.h"
+
+long	get_time_since(long tm) {
+	long			ret;
+
+	ret = get_cur_time() - tm;
+	return (ret);
+}

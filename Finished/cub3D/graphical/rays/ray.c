@@ -14,11 +14,11 @@
 
 inline static t_ray	init_ray(t_play p, double cam)
 {
-	t_ray r;
+	t_ray	r;
 
 	r = (t_ray){.origin = p.pos};
-	r.dir = (t_dvec) {p.dir.x + p.plan.x * cam, p.dir.y + p.plan.y * cam};
-	r.mpos = (t_ivec) {(int)p.pos.x, (int)p.pos.y};
+	r.dir = (t_dvec){p.dir.x + p.plan.x * cam, p.dir.y + p.plan.y * cam};
+	r.mpos = (t_ivec){(int)p.pos.x, (int)p.pos.y};
 	r.dist = (t_dvec){(r.dir.x == 0) ? 1 : 0, (r.dir.y == 0) ? 1 : 0};
 	if (r.dir.x && r.dir.y)
 		r.dist = (t_dvec){fabs(1 / r.dir.x), fabs(1 / r.dir.y)};
@@ -61,16 +61,16 @@ inline static t_ray	cast_ray(t_win *cub, t_ray r)
 		}
 		if (cub->conf->map[r.mpos.y][r.mpos.x] == '1')
 			r.hit = 1;
-		else if (cub->conf->map[r.mpos.y][r.mpos.x] == '2' ||
+		else if (cub->conf->map[r.mpos.y][r.mpos.x] == '2' || \
 		cub->conf->map[r.mpos.y][r.mpos.x] == '3')
 			tag_sprite(r.mpos, cub->conf->sp_list,
-					cub->conf->map[r.mpos.y][r.mpos.x]);
+				cub->conf->map[r.mpos.y][r.mpos.x]);
 	}
 	def_text(cub, r);
 	return (r);
 }
 
-int					raycasting(t_win *cub)
+int	raycasting(t_win *cub)
 {
 	t_ray	r;
 	int		x;

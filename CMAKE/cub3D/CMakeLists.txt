@@ -40,11 +40,12 @@ set(    SOURCE_CUB3D
 		../../Finished/cub3D/graphical/drawing/sprites_rendering.c
 		../../Finished/cub3D/graphical/drawing/buffer_commands.c
 
-		../../Finished/cub3D/bitmap/ft_bmp.c ../../In_Progress/Minishell/includes/parsing.h)
+		../../Finished/cub3D/bitmap/ft_bmp.c
+		)
 
 add_executable(cub3D ${SOURCE_CUB3D})
 
 #add_link_options()
-#target_link_libraries(cub3D LINK_PUBLIC libm.so libc.so libmlx.a libX11.so libXext.so bsd.so)
+target_link_libraries(cub3D LINK_PUBLIC libm.so libc.so libmlx.a libX11.so libXext.so bsd.so)
 
-set_target_properties(cub3D PROPERTIES COMPILE_FLAGS "-Ofast -L /usr/local/lib/ -lmlx -I /usr/local/include -I ./includes/ -framework OpenGL -framework Appkit")
+set_target_properties(cub3D PROPERTIES COMPILE_FLAGS "-Ofast -L /usr/lib/ -lmlx -I /usr/include -I ./includes/")
