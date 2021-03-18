@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 13:32:17 by mlabouri          #+#    #+#             */
+/*   Updated: 2021/03/18 13:32:17 by mlabouri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/commons.h"
 
 static char	rotate(t_stack *stack)
@@ -21,17 +33,19 @@ static char	rotate(t_stack *stack)
 	return (0);
 }
 
-char	rotate_a(t_stack *a, t_stack *b)
+char		rotate_a(t_stack *a, t_stack *b)
 {
+	(void)b;
 	return (rotate(a));
 }
 
-char	rotate_b(t_stack *a, t_stack *b)
+char		rotate_b(t_stack *a, t_stack *b)
 {
+	(void)a;
 	return (rotate(b));
 }
 
-char	rotate_r(t_stack *a, t_stack *b)
+char		rotate_r(t_stack *a, t_stack *b)
 {
 	return ((char)(rotate(a) || rotate(b)));
 }

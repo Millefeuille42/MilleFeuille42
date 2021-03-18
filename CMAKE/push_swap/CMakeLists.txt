@@ -2,7 +2,6 @@ set(    SOURCE_COMMONS
 
         ../../In_Progress/push_swap/commons/utils/ft_atoi.c
         ../../In_Progress/push_swap/commons/utils/ft_strncmp.c
-        ../../In_Progress/push_swap/commons/utils/ft_itoa.c
         ../../In_Progress/push_swap/commons/utils/ft_isdigit.c
         ../../In_Progress/push_swap/commons/utils/ft_is_string_digit.c
 

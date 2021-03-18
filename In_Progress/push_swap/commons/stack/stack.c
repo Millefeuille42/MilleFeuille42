@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 13:32:20 by mlabouri          #+#    #+#             */
+/*   Updated: 2021/03/18 13:32:20 by mlabouri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/commons.h"
 
 char	stack_pop(t_stack *stack, int *val)
@@ -34,19 +46,6 @@ char	check_stacks(t_stack *stack_a, t_stack *stack_b, char only_a)
 		i++;
 	}
 	return (0);
-}
-
-void	print_stack(t_stack stack, char name)
-{
-	int	i;
-
-	printf("STACK: %c -- LEN: %d\n", name, stack.len);
-	i = 0;
-	while (i < stack.len)
-	{
-		printf("\tINDEX[%d] -> %d\n", i, stack.arr[i]);
-		i++;
-	}
 }
 
 char	check_duplicates(t_stack *a)

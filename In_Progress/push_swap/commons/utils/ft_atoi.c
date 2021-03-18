@@ -35,7 +35,7 @@ static int	ft_isspace(const char c)
 	return (ft_cinset(c, "\t\n\r\v\f "));
 }
 
-int	ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	int	i;
 	int	result;

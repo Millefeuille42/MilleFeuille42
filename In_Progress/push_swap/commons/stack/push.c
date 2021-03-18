@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 13:32:12 by mlabouri          #+#    #+#             */
+/*   Updated: 2021/03/18 13:32:12 by mlabouri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/commons.h"
 
 static char	push(t_stack *stack1, t_stack *stack2)
@@ -13,12 +25,12 @@ static char	push(t_stack *stack1, t_stack *stack2)
 	return (0);
 }
 
-char	push_a(t_stack *a, t_stack *b)
+char		push_a(t_stack *a, t_stack *b)
 {
 	return (push(a, b));
 }
 
-char	push_b(t_stack *a, t_stack *b)
+char		push_b(t_stack *a, t_stack *b)
 {
 	return (push(b, a));
 }

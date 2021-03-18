@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   actions.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 13:32:10 by mlabouri          #+#    #+#             */
+/*   Updated: 2021/03/18 13:32:10 by mlabouri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/commons.h"
 
-t_stack	stack_copy(t_stack *stack, int *arr, int start_off, int index_offset)
+t_stack		stack_copy(t_stack *stack, int *arr, int start_off, int i_off)
 {
 	int	i;
 
 	i = start_off;
 	while (i < stack->len)
 	{
-		arr[i - start_off + index_offset] = stack->arr[i];
+		arr[i - start_off + i_off] = stack->arr[i];
 		i++;
 	}
 	return ((t_stack){.arr = arr, .len = stack->len});
 }
 
-char	stack_push(t_stack *stack, int val)
+char		stack_push(t_stack *stack, int val)
 {
 	int		*temp;
 	t_stack	temp_stack;
@@ -51,11 +63,11 @@ static char	do_action(t_stack *a, t_stack *b, int action_num)
 	return (actions[action_num](a, b));
 }
 
-char	select_action(t_stack *a, t_stack *b, char *action)
+char		select_action(t_stack *a, t_stack *b, char *action)
 {
 	int			i;
 	static char	*action_list[11] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb",
-									   "rr", "rra", "rrb", "rrr"};
+									"rr", "rra", "rrb", "rrr"};
 
 	i = 0;
 	while (i < 11)

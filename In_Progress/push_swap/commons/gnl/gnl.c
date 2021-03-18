@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gnl.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 13:30:20 by mlabouri          #+#    #+#             */
+/*   Updated: 2021/03/18 13:30:20 by mlabouri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/commons.h"
 
 static int	ft_init(char **line, char **mem_buffer, int fd)
@@ -69,7 +81,7 @@ static int	ft_extract(char **mem_buffer, char **line)
 	return (0);
 }
 
-int	get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line)
 {
 	static char	*mem_buffer;
 	int			status;

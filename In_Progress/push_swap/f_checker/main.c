@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 13:46:48 by mlabouri          #+#    #+#             */
+/*   Updated: 2021/03/18 13:46:48 by mlabouri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../commons/includes/commons.h"
 
 char	input_loop(t_stack *stack_a, t_stack *stack_b)
@@ -8,24 +20,24 @@ char	input_loop(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (select_action(stack_a, stack_b, stdin_buffer))
 		{
-			safe_free((void **) &stdin_buffer);
-			safe_free((void **) &(stack_a->arr));
-			safe_free((void **) &(stack_b->arr));
+			safe_free((void **)&stdin_buffer);
+			safe_free((void **)&(stack_a->arr));
+			safe_free((void **)&(stack_b->arr));
 			return (1);
 		}
-		safe_free((void **) &stdin_buffer);
+		safe_free((void **)&stdin_buffer);
 	}
-	safe_free((void **) &stdin_buffer);
+	safe_free((void **)&stdin_buffer);
 	return (0);
 }
 
-int	main(int argc, char *argv[])
+int		main(int argc, char *argv[])
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
 
-	stack_a = (t_stack){};
-	stack_b = (t_stack){};
+	stack_a = (t_stack) {.len = 0, .arr = NULL};
+	stack_b = (t_stack) {.len = 0, .arr = NULL};
 	if (generate_stacks(&stack_a, &stack_b, argc, argv))
 		return (print_error(1, "Error"));
 	if (check_duplicates(&stack_a))
