@@ -1,7 +1,3 @@
-//
-// Created by millefeuille on 17/03/2021.
-//
-
 #ifndef COMMONS_H
 # define COMMONS_H
 
@@ -9,15 +5,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct	s_stack {
+typedef struct s_stack {
 	int			*arr;
 	int			len;
 }				t_stack;
 
-typedef	char (*t_actions[11])(t_stack *a, t_stack *b);
-
-
-/*** GLOBAL UTILS ***/
+typedef char	(*t_actions[11])(t_stack *a, t_stack *b);
 
 void	safe_free(void **ptr);
 
@@ -36,18 +29,13 @@ char	*ft_itoa(int n);
 
 size_t	ft_strlen(const char *str);
 
-
-/*** STACK ***/
-
 void	print_stack(t_stack stack, char name);
 
 char	generate_stacks(t_stack *a, t_stack *b, int argc, char *argv[]);
-char	check_stacks(t_stack *stack_a, t_stack *stack_b);
+char	check_stacks(t_stack *stack_a, t_stack *stack_b, char only_a);
+char	check_duplicates(t_stack *a);
 
 t_stack	stack_copy(t_stack *stack, int *arr, int start_off, int index_offset);
-
-
-/*** ACTIONS ***/
 
 char	stack_push(t_stack *stack, int val);
 char	stack_pop(t_stack *stack, int *val);

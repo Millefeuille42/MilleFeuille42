@@ -1,7 +1,3 @@
-//
-// Created by millefeuille on 15/03/2021.
-//
-
 #include "../includes/commons.h"
 
 static char	push(t_stack *stack1, t_stack *stack2)

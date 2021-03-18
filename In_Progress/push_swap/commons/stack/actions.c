@@ -1,8 +1,37 @@
-//
-// Created by millefeuille on 17/03/2021.
-//
-
 #include "../includes/commons.h"
+
+t_stack	stack_copy(t_stack *stack, int *arr, int start_off, int index_offset)
+{
+	int	i;
+
+	i = start_off;
+	while (i < stack->len)
+	{
+		arr[i - start_off + index_offset] = stack->arr[i];
+		i++;
+	}
+	return ((t_stack){.arr = arr, .len = stack->len});
+}
+
+char	stack_push(t_stack *stack, int val)
+{
+	int		*temp;
+	t_stack	temp_stack;
+
+	temp = malloc(sizeof(int) * (stack->len + 1));
+	if (temp == NULL)
+		return (1);
+	temp_stack = stack_copy(stack, temp, 0, 1);
+	temp_stack.arr[0] = val;
+	if (stack->arr)
+	{
+		free(stack->arr);
+		stack->arr = NULL;
+	}
+	temp_stack.len += 1;
+	*stack = temp_stack;
+	return (0);
+}
 
 static char	do_action(t_stack *a, t_stack *b, int action_num)
 {

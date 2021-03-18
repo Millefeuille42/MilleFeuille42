@@ -1,7 +1,3 @@
-//
-// Created by millefeuille on 15/03/2021.
-//
-
 #include "../includes/commons.h"
 
 static int	ft_init(char **line, char **mem_buffer, int fd)

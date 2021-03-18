@@ -1,7 +1,3 @@
-//
-// Created by millefeuille on 15/03/2021.
-//
-
 #include "../commons/includes/commons.h"
 
 char	input_loop(t_stack *stack_a, t_stack *stack_b)
@@ -17,8 +13,6 @@ char	input_loop(t_stack *stack_a, t_stack *stack_b)
 			safe_free((void **) &(stack_b->arr));
 			return (1);
 		}
-		print_stack(*stack_a, 'a');
-		print_stack(*stack_b, 'b');
 		safe_free((void **) &stdin_buffer);
 	}
 	safe_free((void **) &stdin_buffer);
@@ -33,12 +27,18 @@ int	main(int argc, char *argv[])
 	stack_a = (t_stack){};
 	stack_b = (t_stack){};
 	if (generate_stacks(&stack_a, &stack_b, argc, argv))
-		print_error(1, "Error");
+		return (print_error(1, "Error"));
+	if (check_duplicates(&stack_a))
+	{
+		free(stack_a.arr);
+		free(stack_b.arr);
+		return (print_error(1, "Error"));
+	}
 	if (input_loop(&stack_a, &stack_b))
-		print_error(1, "Error");
-	if (check_stacks(&stack_a, &stack_b))
-		print_error(2, "KO");
-	printf("OK");
+		return (print_error(1, "Error"));
+	if (check_stacks(&stack_a, &stack_b, 0))
+		return (print_error(2, "KO"));
+	printf("OK\n");
 	if (stack_a.arr)
 		free(stack_a.arr);
 	if (stack_b.arr)

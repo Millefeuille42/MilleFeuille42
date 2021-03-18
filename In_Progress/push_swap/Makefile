@@ -45,7 +45,7 @@ PSHSWAP_NAME	=	push_swap
 
 COMPILE	=	clang
 FLAGS	=	-Ofast
-A_FLAGS = -Wall -Wextra -Werror
+A_FLAGS =	-Wall -Wextra -Werror
 RM		=	rm -f
 
 
