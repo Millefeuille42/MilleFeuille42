@@ -29,7 +29,7 @@ void			safe_free(void **ptr);
 char			print_error(char err_code, char *message);
 
 int				ft_isdigit(int c);
-int				ft_atoi(const char *str);
+long			ft_atoi(const char *str);
 int				ft_is_string_digit(char *str);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				get_next_line(int fd, char **line);

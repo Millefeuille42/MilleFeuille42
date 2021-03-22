@@ -1,19 +1,19 @@
 ######### Commons #########
 
-COMMONS_SRCS	=	../../In_Progress/push_swap/commons/utils/ft_atoi.c				\
-                   	../../In_Progress/push_swap/commons/utils/ft_strncmp.c			\
-                   	../../In_Progress/push_swap/commons/utils/ft_isdigit.c			\
-                   	../../In_Progress/push_swap/commons/utils/ft_is_string_digit.c	\
-                   	../../In_Progress/push_swap/commons/gnl/gnl.c					\
-                   	../../In_Progress/push_swap/commons/gnl/gnl_utils.c				\
-                   	../../In_Progress/push_swap/commons/stack/stack.c				\
-                   	../../In_Progress/push_swap/commons/stack/swap.c				\
-                   	../../In_Progress/push_swap/commons/stack/push.c				\
-                   	../../In_Progress/push_swap/commons/stack/rotate.c				\
-                   	../../In_Progress/push_swap/commons/stack/reverse_rotate.c		\
-                   	../../In_Progress/push_swap/commons/utils/safe_free.c			\
-                   	../../In_Progress/push_swap/commons/stack/actions.c				\
-                   	../../In_Progress/push_swap/commons/utils/print_error.c			\
+COMMONS_SRCS	=	./commons/utils/ft_atoi.c				\
+                   	./commons/utils/ft_strncmp.c			\
+                   	./commons/utils/ft_isdigit.c			\
+                   	./commons/utils/ft_is_string_digit.c	\
+                   	./commons/gnl/gnl.c					\
+                   	./commons/gnl/gnl_utils.c				\
+                   	./commons/stack/stack.c				\
+                   	./commons/stack/swap.c				\
+                   	./commons/stack/push.c				\
+                   	./commons/stack/rotate.c				\
+                   	./commons/stack/reverse_rotate.c		\
+                   	./commons/utils/safe_free.c			\
+                   	./commons/stack/actions.c				\
+                   	./commons/utils/print_error.c			\
 
 COMMONS_HEAD	=	./commons/includes/commons.h
 

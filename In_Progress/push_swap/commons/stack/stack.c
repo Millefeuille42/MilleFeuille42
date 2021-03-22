@@ -12,7 +12,7 @@
 
 #include "../includes/commons.h"
 
-char	stack_pop(t_stack *stack, int *val)
+char		stack_pop(t_stack *stack, int *val)
 {
 	int		*temp;
 	t_stack	temp_stack;
@@ -32,7 +32,7 @@ char	stack_pop(t_stack *stack, int *val)
 	return (0);
 }
 
-char	check_stacks(t_stack *stack_a, t_stack *stack_b, char only_a)
+char		check_stacks(t_stack *stack_a, t_stack *stack_b, char only_a)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ char	check_stacks(t_stack *stack_a, t_stack *stack_b, char only_a)
 	return (0);
 }
 
-char	check_duplicates(t_stack *a)
+char		check_duplicates(t_stack *a)
 {
 	int	i;
 	int	i2;
@@ -68,12 +68,22 @@ char	check_duplicates(t_stack *a)
 	return (0);
 }
 
-char	generate_stacks(t_stack *a, t_stack *b, int argc, char *argv[])
+static char	check_im(char *arg, int *val) {
+	long	ret;
+
+	ret = ft_atoi(arg);
+	if (ret > 2147483647)
+		return (1);
+	*val = (int)ret;
+	return (0);
+}
+
+char		generate_stacks(t_stack *a, t_stack *b, int argc, char *argv[])
 {
 	int	i;
 
 	i = 1;
-	if (argc <= 0)
+	if (argc <= 1)
 		return (1);
 	a->arr = malloc(sizeof(int) * argc);
 	if (!a->arr)
@@ -83,13 +93,13 @@ char	generate_stacks(t_stack *a, t_stack *b, int argc, char *argv[])
 		return (1);
 	while (i < argc)
 	{
-		if (!argv || !argv[i] || !ft_is_string_digit(argv[i]))
+		if (!argv || !argv[i] || !ft_is_string_digit(argv[i]) ||
+			check_im(argv[i], &a->arr[i - 1]))
 		{
 			free(a->arr);
 			free(b->arr);
 			return (1);
 		}
-		a->arr[i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
 	a->len = argc - 1;

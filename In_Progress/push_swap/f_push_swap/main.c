@@ -49,11 +49,6 @@ static void	sort_loop(t_stack *a, t_stack *b)
 			printf("sa\n");
 			swap_a(a, b);
 		}
-		else if (a->arr[a->len - 1] == top)
-		{
-			printf("rra\n");
-			r_rotate_a(a, b);
-		}
 		else
 		{
 			printf("ra\n");
