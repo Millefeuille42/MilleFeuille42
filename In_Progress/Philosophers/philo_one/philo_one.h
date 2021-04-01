@@ -39,14 +39,16 @@ typedef struct 		s_philo {
 	char            promise;
 	int				id;
 	int				status;
-	pthread_mutex_t	*speak_mutex;
+	int				time_ate;
 	pthread_t		thread_id;
+	pthread_mutex_t	*speak_mutex;
+	pthread_mutex_t	*death_mutex;
 	t_fork			*forks[2];
 }					t_philo;
 
 typedef struct		s_params {
     int				conf[5];
-    long			st_time;
+	unsigned long			st_time;
 	char			*stop;
 	t_philo			*philo;
 }					t_params;
@@ -59,6 +61,7 @@ typedef struct		s_app {
 	t_philo			*philos;
 }					t_app;
 
+typedef char		(*t_c_func)(t_params *);
 typedef void		(*t_p_func)(t_params *);
 
 typedef struct		s_do_params {
@@ -69,23 +72,24 @@ typedef struct		s_do_params {
 int					ft_atoi(const char *str);
 int					a_malloc(void **ptr, size_t size);
 
-void				ft_milli_sleep(long time);
-void				ft_milli_sleep_interrupt(long time, const char *interrupt);
-long				time_to_milli(struct timeval time);
-long				get_cur_time();
-long				get_time_since(long tm);
+void				ft_milli_sleep(unsigned long time);
+void				ft_milli_sleep_interrupt(unsigned long time, const char *interrupt);
+unsigned long		time_to_milli(struct timeval time);
+unsigned long		get_cur_time();
+unsigned long		get_time_since(unsigned long tm);
 
 void				destroy_forks(t_app *app);
 int					init_forks(t_app *app);
 t_fork				*get_fork_by_id(t_app *app, int id);
 
-void				philo_eat(t_params *params);
-void				philo_sleep(t_params *params);
+char				philo_eat(t_params *params);
+char				philo_sleep(t_params *params);
 void				philo_take_fork(t_params *params);
-void				philo_put_fork(t_params *params);
+char				philo_put_fork(t_params *params);
+char				philo_think(t_params *params);
 void				philo_speak(t_params *params, char *message);
 void				philo_start(t_app *app);
-char				philo_do_promise(t_params *params, t_p_func func);
+char philo_do_promise(t_params *params);
 int					init_philos(t_app *app);
 
 #endif //PHILO_ONE_H

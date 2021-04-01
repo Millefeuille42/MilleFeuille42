@@ -4,8 +4,8 @@
 
 #include "../philo_one.h"
 
-long	get_time_since(long tm) {
-	long			ret;
+unsigned long 	get_time_since(unsigned long  tm) {
+	unsigned long 			ret;
 
 	ret = get_cur_time() - tm;
 	return (ret);

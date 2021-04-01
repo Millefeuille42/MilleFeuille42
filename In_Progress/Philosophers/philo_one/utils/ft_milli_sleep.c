@@ -4,28 +4,20 @@
 
 #include "../philo_one.h"
 
-void	ft_milli_sleep_interrupt(long time, const char *interrupt) {
-	int i;
+void	ft_milli_sleep_interrupt(unsigned long	time, const char *interrupt) {
+	unsigned long tts;
 
-	i = 0;
-	if (time <= 0)
-		return ;
-	while (i < time || *interrupt) {
+	tts = get_cur_time() + time;
+	while (get_cur_time() < tts && *interrupt) {
 		usleep(1000);
-		i++;
 	}
-	if (!*interrupt)
-		printf("\tINTERRUPT\n");
 }
 
-void	ft_milli_sleep(long time) {
-	int i;
+void	ft_milli_sleep(unsigned long time) {
+	unsigned long tts;
 
-	i = 0;
-	if (time <= 0)
-		return ;
-	while (i < time) {
+	tts = get_cur_time() + time;
+	while (get_cur_time() < tts) {
 		usleep(1000);
-		i++;
 	}
 }

@@ -4,16 +4,59 @@
 
 #include "../philo_one.h"
 
-void	philo_eat(t_params *params) {
+char	philo_eat(t_params *params) {
+	char				die;
+	unsigned long		prom_time;
+	unsigned long		tst;
+
+	if (*params->stop)
+		return (1);
+	params->st_time = get_cur_time();
+	tst = get_time_since(params->st_time);
+	if (tst >= (unsigned long)params->conf[tt_die]) {
+		return (1);
+	}
+	prom_time = params->conf[tt_die] - tst;
+	die = (char)((unsigned long)params->conf[tt_eat] > prom_time);
+	if (!die)
+		prom_time = params->conf[tt_sleep];
+	params->philo->time_ate++;
 	params->philo->status = eating;
 	philo_speak(params, "is eating");
-	ft_milli_sleep(params->conf[tt_eat]);
+	ft_milli_sleep(prom_time);
+	return (die);
 }
 
-void	philo_sleep(t_params *params) {
+char	philo_think(t_params *params) {
+//	unsigned long		tst;
+
+//	tst = get_time_since(params->st_time);
+//	if (tst >= (unsigned long)params->conf[tt_die]) {
+//		return (1);
+//	}	params->philo->status = thinking;
+	philo_speak(params, "is thinking");
+	return (0);
+}
+
+char	philo_sleep(t_params *params) {
+	char				die;
+	unsigned long		prom_time;
+	unsigned long		tst;
+
+	if (*params->stop)
+		return (1);
+	tst = get_time_since(params->st_time);
+	if (tst >= (unsigned long)params->conf[tt_die]) {
+		return (1);
+	}
+	prom_time = params->conf[tt_die] - tst;
+	die = (char)((unsigned long)params->conf[tt_sleep] > prom_time);
+	if (!die)
+		prom_time = params->conf[tt_sleep];
 	params->philo->status = sleeping;
 	philo_speak(params, "is sleeping");
-	ft_milli_sleep(params->conf[tt_sleep]);
+	ft_milli_sleep(prom_time);
+	return (die);
 }
 
 void	philo_take_fork(t_params *params) {
@@ -30,7 +73,7 @@ void	philo_take_fork(t_params *params) {
 	}
 }
 
-void	philo_put_fork(t_params *params) {
+char	philo_put_fork(t_params *params) {
 	int		i;
 	t_philo *philo;
 
@@ -41,4 +84,5 @@ void	philo_put_fork(t_params *params) {
 		pthread_mutex_unlock(&philo->forks[i]->mutex);
 		i++;
 	}
+	return (0);
 }

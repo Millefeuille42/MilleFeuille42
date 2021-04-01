@@ -17,12 +17,10 @@ int		init_philos(t_app *app) {
 	while (i < p_num) {
 		app->philos[i] = (t_philo) {
 				.id = i, .last = 0, .status = thinking, .promise = 0,
-				.speak_mutex = &app->speak_mutex,
+				.speak_mutex = &app->speak_mutex, .time_ate = 0, .death_mutex = &app->death_mutex,
 		};
 		app->philos[i].forks[0] = get_fork_by_id(app, i);
-		app->philos[i].forks[1] = get_fork_by_id(app, p_num - 1);
-		if (i)
-			app->philos[i].forks[1] = get_fork_by_id(app, i - 1);
+		app->philos[i].forks[1] = get_fork_by_id(app, (i + 1) % p_num);
 		i++;
 	}
 	app->philos[i - 1].last = 1;
@@ -32,25 +30,49 @@ int		init_philos(t_app *app) {
 static void    *philo_routine(void *arg) {
 	char		dead;
 	int			i;
-	t_p_func	func_list[4];
-	t_params	params;
+	t_c_func	func_list[5];
+	t_params	*params;
 
-	params = *((t_params *)arg);
-//	printf("%d\n", params.philo->id);
+	params = ((t_params *)arg);
 	dead = 0;
-	func_list[0] = philo_take_fork;
+	func_list[0] = philo_do_promise;
 	func_list[1] = philo_eat;
 	func_list[2] = philo_put_fork;
 	func_list[3] = philo_sleep;
+	func_list[4] = philo_think;
 	i = 0;
-	while (!dead) {
-		dead = philo_do_promise(&params, func_list[i]);
-		printf("\t//%d - %d//\n", dead, i);
+	if (!((params->philo->id + 1) % 2))
+		i = 3;
+	while (*params->stop) {
+
+	}
+	while (!dead && !*params->stop) {
+		if (*params->stop)
+			break ;
+		if (params->philo->time_ate == params->conf[ts_eat] && i == 3) {
+			break ;
+		}
+		dead = func_list[i](params);
 		i = (i < 4) * (i + 1);
 	}
-	params.philo->status = ded;
-	*params.stop = 1;
+	params->philo->status = ded;
+	if ((params->philo->time_ate < params->conf[ts_eat] || params->conf[ts_eat] <= 0) && !*params->stop) {
+		philo_speak(params, "is dead");
+		pthread_mutex_lock(params->philo->death_mutex);
+		*params->stop = 1;
+		ft_milli_sleep(params->conf[tt_sleep] * 2);
+		pthread_mutex_unlock(params->philo->death_mutex);
+	}
+	free(params);
 	return (NULL);
+}
+
+void			philo_connard(t_params params) {
+	t_params	*new_params;
+
+	new_params = malloc(sizeof(t_params));
+	*new_params = params;
+	pthread_create(&new_params->philo->thread_id, NULL, philo_routine, new_params);
 }
 
 void			philo_start(t_app *app) {
@@ -63,19 +85,17 @@ void			philo_start(t_app *app) {
 	params.conf[tt_eat] = app->params[tt_eat];
 	params.conf[tt_sleep] = app->params[tt_sleep];
 	params.conf[ts_eat] = app->params[ts_eat];
-	stop = 0;
-	params.stop = &stop;
+	stop = 1;
 	i = 0;
-	params.philo = &app->philos[i];
-	params.st_time = get_cur_time();
-	pthread_create(&params.philo->thread_id, NULL, philo_routine, &params);
-
-	//while (i < params.conf[philo_num]) {
-	//	params.philo = &app->philos[i];
-	//	params.st_time = get_cur_time();
-	//	pthread_create(&params.philo->thread_id, NULL, philo_routine, &params);
-	//	ft_milli_sleep(app->params[tt_eat]);
-	//	i++;
-	//}
+	i = params.conf[philo_num] - 5;
+	while (i < params.conf[philo_num]) {
+		params.philo = &app->philos[i];
+		params.st_time = get_cur_time();
+		params.stop = &stop;
+		philo_connard(params);
+		i++;
+	}
+	printf("START\n\n");
+	stop = 0;
 	pthread_join(params.philo->thread_id, NULL);
 }
