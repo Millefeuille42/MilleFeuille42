@@ -41,7 +41,7 @@ PSHSWAP_NAME	=	push_swap
 ######### Globals #########
 
 COMPILE	=	clang
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	#-Wall -Wextra -Werror
 RM		=	rm -f
 
 
@@ -65,5 +65,8 @@ fclean	:	clean
 			${RM} ${CHECKER_NAME} ${PSHSWAP_NAME}
 
 re		:	fclean all
+
+test	:	re
+			pushSwapTester ./${PSHSWAP_NAME} ./${CHECKER_NAME} validity average
 
 .PHONY	:	all clean fclean re

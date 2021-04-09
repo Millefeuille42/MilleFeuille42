@@ -68,7 +68,8 @@ char		check_duplicates(t_stack *a)
 	return (0);
 }
 
-static char	check_im(char *arg, int *val) {
+static char	check_im(char *arg, int *val)
+{
 	long	ret;
 
 	ret = ft_atoi(arg);

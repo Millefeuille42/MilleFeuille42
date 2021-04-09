@@ -72,7 +72,7 @@ char		select_action(t_stack *a, t_stack *b, char *action)
 	i = 0;
 	while (i < 11)
 	{
-		if (!ft_strncmp(action, action_list[i], ft_strlen(action_list[i])))
+		if (!ft_strncmp(action, action_list[i], ft_strlen(action)))
 			return (do_action(a, b, i));
 		i++;
 	}
