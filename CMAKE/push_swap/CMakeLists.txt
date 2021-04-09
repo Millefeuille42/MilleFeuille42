@@ -27,7 +27,7 @@ set(    SOURCE_CHECKER
 
 set(    SOURCE_PUSH_SWAP
         ../../In_Progress/push_swap/f_push_swap/main.c
-        )
+        ../../In_Progress/push_swap/f_push_swap/sort_utils.c ../../In_Progress/push_swap/f_push_swap/selection_sort.c ../../In_Progress/push_swap/f_push_swap/push_swap.h ../../In_Progress/push_swap/f_push_swap/insertion_sort.c ../../In_Progress/push_swap/f_push_swap/insertion_sort_get_actions.c)
 
 add_executable(push_swap ${SOURCE_COMMONS} ${SOURCE_PUSH_SWAP})
 add_executable(checker ${SOURCE_COMMONS} ${SOURCE_CHECKER})

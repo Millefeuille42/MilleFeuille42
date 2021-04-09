@@ -28,12 +28,19 @@ CHECKER_OBJS	=	${CHECKER_SRCS:.c=.o}
 
 CHECKER_NAME	=	checker
 
-
 ######### Checker #########
 
-PSHSWAP_SRCS	=	./f_push_swap/main.c ${COMMONS_SRCS}
+PSHSWAP_SRCS	=	./f_push_swap/main.c \
+					./f_push_swap/selection_sort.c \
+					./f_push_swap/insertion_sort.c \
+					./f_push_swap/insertion_sort_get_actions.c \
+					./f_push_swap/sort_utils.c ${COMMONS_SRCS}
+
+PSHSWAP_HEAD	=	./f_push_swap/push_swap.h
 
 PSHSWAP_OBJS	=	${PSHSWAP_SRCS:.c=.o}
+
+PSHSWAP_INCL	=	-I ./f_push_swap/includes/
 
 PSHSWAP_NAME	=	push_swap
 
@@ -41,7 +48,7 @@ PSHSWAP_NAME	=	push_swap
 ######### Globals #########
 
 COMPILE	=	clang
-FLAGS	=	#-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror
 RM		=	rm -f
 
 
@@ -55,8 +62,8 @@ all		:	${CHECKER_NAME} ${PSHSWAP_NAME}
 ${CHECKER_NAME} :	${CHECKER_OBJS} ${COMMONS_OBJS} ${COMMONS_HEAD}
 			${COMPILE} ${FLAGS} -o ${CHECKER_NAME} ${CHECKER_OBJS} ${COMMONS_OBJS} ${COMMONS_INCL}
 
-${PSHSWAP_NAME} :	${PSHSWAP_OBJS} ${COMMONS_OBJS} ${COMMONS_HEAD}
-			${COMPILE} ${FLAGS} -o ${PSHSWAP_NAME} ${PSHSWAP_OBJS} ${COMMONS_OBJS} ${COMMONS_INCL}
+${PSHSWAP_NAME} :	${PSHSWAP_OBJS} ${COMMONS_OBJS} ${COMMONS_HEAD} ${PSHSWAP_HEAD}
+			${COMPILE} ${FLAGS} -o ${PSHSWAP_NAME} ${PSHSWAP_OBJS} ${PSHSWAP_INCL} ${COMMONS_OBJS} ${COMMONS_INCL}
 
 clean	:
 			${RM} ${CHECKER_OBJS} ${COMMONS_OBJS} ${PSHSWAP_OBJS}

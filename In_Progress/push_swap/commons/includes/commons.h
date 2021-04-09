@@ -23,6 +23,7 @@ typedef struct	s_stack {
 }				t_stack;
 
 typedef char	(*t_actions[11])(t_stack *a, t_stack *b);
+typedef char	(*t_action)(t_stack *a, t_stack *b);
 
 void			safe_free(void **ptr);
 
