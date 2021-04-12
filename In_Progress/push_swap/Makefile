@@ -24,11 +24,15 @@ COMMONS_INCL	=	-I ./commons/includes/
 
 CHECKER_SRCS	=	./f_checker/main.c ${COMMONS_SRCS}
 
+CHECKER_HEAD	=	${COMMONS_HEAD}
+
 CHECKER_OBJS	=	${CHECKER_SRCS:.c=.o}
+
+CHECKER_INCL	=	${COMMONS_INCL}
 
 CHECKER_NAME	=	checker
 
-######### Checker #########
+######### PUSH_SWAP #########
 
 PSHSWAP_SRCS	=	./f_push_swap/main.c \
 					./f_push_swap/selection_sort.c \
@@ -36,11 +40,11 @@ PSHSWAP_SRCS	=	./f_push_swap/main.c \
 					./f_push_swap/insertion_sort_get_actions.c \
 					./f_push_swap/sort_utils.c ${COMMONS_SRCS}
 
-PSHSWAP_HEAD	=	./f_push_swap/push_swap.h
+PSHSWAP_HEAD	=	./f_push_swap/push_swap.h ${COMMONS_HEAD}
 
 PSHSWAP_OBJS	=	${PSHSWAP_SRCS:.c=.o}
 
-PSHSWAP_INCL	=	-I ./f_push_swap/includes/
+PSHSWAP_INCL	=	-I ./f_push_swap/includes/ ${COMMONS_INCL}
 
 PSHSWAP_NAME	=	push_swap
 
@@ -55,23 +59,24 @@ RM		=	rm -f
 #########  Rules  #########
 
 .c.o	:
-			${COMPILE} ${FLAGS} ${COMMONS_INCL} -c $< -o $@
+			${COMPILE} ${FLAGS} -c $< -o $@
 
 all		:	${CHECKER_NAME} ${PSHSWAP_NAME}
 
-${CHECKER_NAME} :	${CHECKER_OBJS} ${COMMONS_OBJS} ${COMMONS_HEAD}
-			${COMPILE} ${FLAGS} -o ${CHECKER_NAME} ${CHECKER_OBJS} ${COMMONS_OBJS} ${COMMONS_INCL}
+${CHECKER_NAME} :	${CHECKER_OBJS} ${CHECKER_HEAD}
+			${COMPILE} ${FLAGS} -o ${CHECKER_NAME} ${CHECKER_OBJS} ${CHECKER_INCL}
 
-${PSHSWAP_NAME} :	${PSHSWAP_OBJS} ${COMMONS_OBJS} ${COMMONS_HEAD} ${PSHSWAP_HEAD}
-			${COMPILE} ${FLAGS} -o ${PSHSWAP_NAME} ${PSHSWAP_OBJS} ${PSHSWAP_INCL} ${COMMONS_OBJS} ${COMMONS_INCL}
+${PSHSWAP_NAME} :	${PSHSWAP_OBJS} ${PSHSWAP_HEAD}
+			${COMPILE} ${FLAGS} -o ${PSHSWAP_NAME} ${PSHSWAP_OBJS} ${PSHSWAP_INCL}
 
 clean	:
-			${RM} ${CHECKER_OBJS} ${COMMONS_OBJS} ${PSHSWAP_OBJS}
+			${RM} ${CHECKER_OBJS} ${PSHSWAP_OBJS}
 
 fclean	:	clean
 			${RM} ${CHECKER_NAME} ${PSHSWAP_NAME}
 
-re		:	fclean all
+re		:	fclean
+			make all -j
 
 test	:	re
 			pushSwapTester ./${PSHSWAP_NAME} ./${CHECKER_NAME} validity average

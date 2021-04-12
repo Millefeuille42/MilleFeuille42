@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   insertion_sort_get_actions.c                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/12 15:46:57 by mlabouri          #+#    #+#             */
+/*   Updated: 2021/04/12 15:46:57 by mlabouri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	i_s_select_reverse(t_stack *a, t_stack *b, t_b_move_set *move_set)
