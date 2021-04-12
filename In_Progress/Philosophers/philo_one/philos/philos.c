@@ -46,6 +46,7 @@ static void    *philo_routine(void *arg) {
 	while (*params->stop) {
 
 	}
+	params->st_time = get_cur_time();
 	while (!dead && !*params->stop) {
 		if (*params->stop)
 			break ;
@@ -87,10 +88,9 @@ void			philo_start(t_app *app) {
 	params.conf[ts_eat] = app->params[ts_eat];
 	stop = 1;
 	i = 0;
-	i = params.conf[philo_num] - 5;
+	//i = params.conf[philo_num] - 5;
 	while (i < params.conf[philo_num]) {
 		params.philo = &app->philos[i];
-		params.st_time = get_cur_time();
 		params.stop = &stop;
 		philo_connard(params);
 		i++;

@@ -18,5 +18,6 @@ char			should_reverse(t_stack *a, int val);
 char			selection_sort(t_stack *a, t_stack *b);
 int				get_highest(t_stack *b);
 void			i_s_select_actions(t_stack *a, t_stack *b, t_b_move_set *m_s);
+int				get_lowest(t_stack *a);
 
 #endif

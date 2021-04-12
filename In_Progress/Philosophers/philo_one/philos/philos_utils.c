@@ -16,11 +16,8 @@ static void	*philo_do_wrapper(void *params) {
 
 void    	philo_speak(t_params *params, char *message) {
 	pthread_mutex_lock(params->philo->death_mutex);
-	if (!*params->stop) {
-		pthread_mutex_lock(params->philo->speak_mutex);
+	if (!*params->stop)
 		printf("%lums Philo %d %s\n", get_time_since(params->st_time), params->philo->id, message);
-		pthread_mutex_unlock(params->philo->speak_mutex);
-	}
 	pthread_mutex_unlock(params->philo->death_mutex);
 }
 

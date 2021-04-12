@@ -16,7 +16,7 @@ static int	get_lowest_after(t_stack *a, int after)
 	return (lowest);
 }
 
-static int	get_lowest(t_stack *a)
+int			get_lowest(t_stack *a)
 {
 	int	lowest;
 	int	i;

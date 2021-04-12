@@ -9,7 +9,7 @@ void	ft_milli_sleep_interrupt(unsigned long	time, const char *interrupt) {
 
 	tts = get_cur_time() + time;
 	while (get_cur_time() < tts && *interrupt) {
-		usleep(1000);
+		usleep(500);
 	}
 }
 
@@ -18,6 +18,6 @@ void	ft_milli_sleep(unsigned long time) {
 
 	tts = get_cur_time() + time;
 	while (get_cur_time() < tts) {
-		usleep(1000);
+		usleep(500);
 	}
 }
