@@ -38,6 +38,8 @@ int		main(int argc, char *argv[])
 
 	stack_a = (t_stack) {.len = 0, .arr = NULL};
 	stack_b = (t_stack) {.len = 0, .arr = NULL};
+	if (argc <= 1)
+		return (0);
 	if (generate_stacks(&stack_a, &stack_b, argc, argv))
 		return (print_error(1, "Error"));
 	if (check_duplicates(&stack_a))
