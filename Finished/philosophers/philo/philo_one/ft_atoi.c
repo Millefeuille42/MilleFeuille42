@@ -5,16 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:22 by mlabouri         ###   ########.fr       */
+/*   Created: 2021/04/20 13:23:39 by mlabouri          #+#    #+#             */
+/*   Updated: 2021/04/20 13:23:39 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo_one.h"
+#include "philo_one.h"
 
-static	int		ft_cinset(const char c, const char *set)
+static t_bool	ft_isdigit(int c)
 {
-	int i;
+	return (c >= '0' && c <= '9');
+}
+
+t_bool			ft_isnum(const char *str)
+{
+	while (str && *str)
+	{
+		if (!ft_isdigit(*str))
+			return (false);
+		str++;
+	}
+	return (true);
+}
+
+static t_bool	ft_cinset(const char c, const char *set)
+{
+	int	i;
 
 	if (set != NULL)
 	{
@@ -22,22 +38,16 @@ static	int		ft_cinset(const char c, const char *set)
 		while (set[i])
 		{
 			if (c == set[i])
-				return (1);
+				return (true);
 			i++;
 		}
-		return (0);
 	}
-	return (-1);
+	return (false);
 }
 
-static	int		ft_isspace(const char c)
+static t_bool	ft_isspace(const char c)
 {
 	return (ft_cinset(c, "\t\n\r\v\f "));
-}
-
-static	int		ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
 }
 
 int				ft_atoi(const char *str)
@@ -45,16 +55,19 @@ int				ft_atoi(const char *str)
 	int	i;
 	int	result;
 
+	result = 0;
+	i = 0;
 	if (str != NULL)
 	{
-		result = 0;
 		while (ft_isspace(*str))
 			str++;
-		i = str[0] == '-' || str[0] == '+' ? 1 : 0;
+		if (*str == '-' || *str == '+')
+			i = 1;
 		while (str[i] && ft_isdigit(str[i]) != 0)
 			result = result * 10 + (str[i++] - '0');
-		return (str[0] == '-') ? result * -1 : result;
+		if (*str == '-')
+			return (-result);
+		return (result);
 	}
 	return (0);
 }
-

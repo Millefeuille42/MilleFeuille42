@@ -1,23 +1,23 @@
 ######### Commons #########
 
 SRCS	=			main.c					\
-                    utils/ft_atoi.c		\
-                    utils/ft_milli_sleep.c	\
-                    utils/a_malloc.c		\
-                    utils/get_time_since.c	\
-                    utils/time_to_milli.c	\
-                    forks/forks.c			\
-                    philos/philos.c		\
-                    philos/philos_utils.c	\
-                    philos/philos_func.c
+					args.c \
+					ft_atoi.c \
+					init_app.c \
+					philo.c \
+					philo_actions.c \
+					philo_setup.c \
+					philo_take_fork.c \
+					philo_utils.c \
+					timeval_to_ms.c \
 
-HEAD	=	        philo_one.h
+HEAD	=	        philo_two.h
 
 INCL	=	-I ./
 
 OBJS	=	${SRCS:.c=.o}
 
-NAME	=	philo_one
+NAME	=	philo_two
 
 COMPILE	=	clang
 FLAGS	=	-Wall -Wextra -Werror

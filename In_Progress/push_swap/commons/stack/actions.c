@@ -70,6 +70,8 @@ char		select_action(t_stack *a, t_stack *b, char *action)
 									"rr", "rra", "rrb", "rrr"};
 
 	i = 0;
+	if (ft_strlen(action) <= 1)
+		return (1);
 	while (i < 11)
 	{
 		if (!ft_strncmp(action, action_list[i], ft_strlen(action)))

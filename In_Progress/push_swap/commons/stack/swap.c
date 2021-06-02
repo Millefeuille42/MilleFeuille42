@@ -17,7 +17,7 @@ static char	swap(t_stack stack)
 	int	temp;
 
 	if (stack.len <= 1)
-		return (1);
+		return (0);
 	temp = stack.arr[0];
 	stack.arr[0] = stack.arr[1];
 	stack.arr[1] = temp;
