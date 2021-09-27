@@ -14,5 +14,5 @@ set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
 #add_subdirectory(CMAKE/cub3D)
 #add_subdirectory(CMAKE/minishell)
 
-add_subdirectory(CMAKE/philosophers)
+#add_subdirectory(CMAKE/philosophers)
 add_subdirectory(CMAKE/push_swap)
