@@ -40,6 +40,6 @@ Form *Intern::makeForm(std::string type, std::string target) const {
 			return actions[i](target);
 		}
 	}
-	std::cout << "Intern is confused, " + type + " forms do not exists..." << std::endl;
+	std::cout << "Intern is confused, " + type + " forms does not exists..." << std::endl;
 	return NULL;
 }

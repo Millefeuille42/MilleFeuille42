@@ -1,20 +1,30 @@
 //
-// Created by millefeuille on 31/03/2021.
+// Created by mlabouri on 9/27/21.
 //
 
-#include <iostream>
-#include "Sorcerer.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-int main()
-{
-	Sorcerer robert("Robert", "the Magnificent");
-	Victim jim("Jimmy");
-	Peon joe("Joe");
-	Knight bobby("Bobby");
+int main() {
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
 
-	std::cout << robert << jim << joe << bobby;
-	robert.polymorph(jim);
-	robert.polymorph(joe);
-	robert.polymorph(bobby);
-	return 0;
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+
+	delete meta;
+	delete i;
+	delete j;
+
+	const WrongAnimal* norminex = new WrongCat();
+
+	std::cout << norminex->getType() << " " << std::endl;
+	norminex->makeSound();
+
+	delete norminex;
 }

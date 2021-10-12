@@ -1,25 +1,35 @@
 //
-// Created by Millefeuille on 10/06/2021.
+// Created by mlabouri on 9/27/21.
 //
 
-#include "Squad.hpp"
-#include "TacticalMarine.hpp"
-#include "AssaultTerminator.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
 int main() {
-	ISpaceMarine* bob = new TacticalMarine;
-	ISpaceMarine* jim = new AssaultTerminator;
-	ISquad* vlc = new Squad;
+	const Cat* i = new Cat();
+	const Cat* j = new Cat();
 
-	vlc->push(bob);
-	vlc->push(jim);
-	for (int i = 0; i < vlc->getCount(); ++i)
-	{
-		ISpaceMarine* cur = vlc->getUnit(i);
-		cur->battleCry();
-		cur->rangedAttack();
-		cur->meleeAttack();
-	}
-	delete vlc;
-	return 0;
+	i->getBrain()->addIdea("potato");
+	i->getBrain()->addIdea("cheese");
+	i->getBrain()->addIdea("lobster");
+	i->getBrain()->addIdea("fish");
+
+	std::cout << std::endl;
+	i->getBrain()->displayIdeas();
+
+	j->getBrain()->deepCopy(*i->getBrain());
+	j->getBrain()->addIdea("chicken");
+
+	std::cout << std::endl;
+	j->getBrain()->displayIdeas();
+	std::cout << std::endl;
+	i->getBrain()->displayIdeas();
+	std::cout << std::endl;
+
+	delete i;
+	const Cat* k = new Cat(*j);
+	delete j;
+	k->getBrain()->addIdea("beef");
+	std::cout << std::endl;
+	k->getBrain()->displayIdeas();
 }

@@ -1,59 +1,35 @@
 //
-// Created by millefeuille on 18/05/2021.
+// Created by mlabouri on 9/27/21.
 //
 
-#include "PlasmaRifle.hpp"
-#include "PowerFist.hpp"
-
-#include "SuperMutant.hpp"
-#include "RadScorpion.hpp"
-
-#include "Character.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
 int main() {
-	Character* me = new Character("Norminet");
-	std::cout << *me;
+	const Cat* i = new Cat();
+	const Cat* j = new Cat();
 
-	Enemy* rc = new RadScorpion();
-	Enemy* sm = new SuperMutant();
-	AWeapon* pr = new PlasmaRifle();
-	AWeapon* pf = new PowerFist();
+	i->getBrain()->addIdea("potato");
+	i->getBrain()->addIdea("cheese");
+	i->getBrain()->addIdea("lobster");
+	i->getBrain()->addIdea("fish");
 
-	me->equip(pr);
-	std::cout << *me;
+	std::cout << std::endl;
+	i->getBrain()->displayIdeas();
 
-	me->equip(pf);
-	me->attack(rc);
-	std::cout << *me;
+	j->getBrain()->deepCopy(*i->getBrain());
+	j->getBrain()->addIdea("chicken");
 
-	me->equip(pr);
-	std::cout << *me;
+	std::cout << std::endl;
+	j->getBrain()->displayIdeas();
+	std::cout << std::endl;
+	i->getBrain()->displayIdeas();
+	std::cout << std::endl;
 
-	me->attack(rc);
-	std::cout << *me;
-
-	me->attack(rc);
-	std::cout << *me;
-
-	me->attack(sm);
-	std::cout << *me;
-
-	me->equip(pf);
-	me->attack(sm);
-	me->attack(sm);
-	me->attack(sm);
-
-	me->recoverAP();
-	me->recoverAP();
-	me->recoverAP();
-	me->recoverAP();
-	me->attack(sm);
-	me->attack(NULL);
-
-	me->equip(NULL);
-	me->attack(sm);
-
-	delete me;
-
-	return 0;
+	delete i;
+	const Cat* k = new Cat(*j);
+	delete j;
+	k->getBrain()->addIdea("beef");
+	std::cout << std::endl;
+	k->getBrain()->displayIdeas();
 }
