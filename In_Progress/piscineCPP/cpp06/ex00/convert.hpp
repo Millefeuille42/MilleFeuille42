@@ -6,35 +6,16 @@
 # define CONVERT_HPP
 
 # include <iostream>
+# include <string>
+# include <sstream>
+# include <cfloat>
+# include <climits>
 
+std::string trimWhiteSpaces(char* s);
 
-enum eTypeParam {
-	undType,
-	alpha,
-	num
-};
-
-enum eModeAnswer {
-	invalid,
-	valid,
-	displayable
-};
-
-struct sAllTypesModesAnswer {
-	char		c;
-	eModeAnswer	cA;
-	int			i;
-	eModeAnswer	iA;
-	float 		f;
-	eModeAnswer	fA;
-	double		d;
-	eModeAnswer	dA;
-};
-
-
-eTypeParam defineTypeParam(std::string arg);
-
-eModeAnswer defineModeAnswer(std::string arg, eTypeParam type, char* answer);
-eModeAnswer defineModeAnswer(std::string arg, eTypeParam type, int* answer);
+void display(std::string const & arg, char val, long buffer, bool fail);
+void display(std::string const & arg, int val, long buffer, bool fail);
+void display(std::string const & arg, float val, double buffer, bool fail);
+void display(std::string const & arg, double val, bool fail);
 
 #endif //CONVERT_HPP
