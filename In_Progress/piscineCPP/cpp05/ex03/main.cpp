@@ -117,7 +117,7 @@ void	formTestCreation() {
 	}
 }
 
-void	formTestSign() { //TODO END TESTS
+void	formTestSign() {
 	Bureaucrat	*lvl0Noob;
 	Bureaucrat	*lvl100Boss;
 	Form	*shrubTest;

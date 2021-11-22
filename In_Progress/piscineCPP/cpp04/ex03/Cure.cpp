@@ -10,12 +10,6 @@ Cure::Cure(const AMateria &src) : AMateria(src) {}
 
 Cure::~Cure() {}
 
-Cure &Cure::operator=(const Cure &rhs) {
-	if (this == &rhs)
-		std::cout << "CURE They are the same!" << std::endl;
-	return *this;
-}
-
 AMateria *Cure::clone() const {
 	Cure	*ret = new Cure();
 

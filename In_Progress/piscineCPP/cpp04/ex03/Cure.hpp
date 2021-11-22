@@ -13,7 +13,6 @@ public:
 	Cure();
 	Cure(const AMateria &src);
 	~Cure();
-	Cure & operator=(Cure const & rhs);
 
 	AMateria *clone() const;
 	void use(ICharacter &target);

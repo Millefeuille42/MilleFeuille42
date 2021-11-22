@@ -9,21 +9,20 @@
 # include "ICharacter.hpp"
 
 class AMateria {
-	public:
-		AMateria(const std::string &type);
-		AMateria();
-		AMateria(AMateria const & src);
-		virtual ~AMateria();
-		AMateria & operator=(AMateria const & rhs);
+public:
+	AMateria(const std::string &type);
 
-		unsigned int getXp() const;
-		const std::string &getType() const;
+	AMateria();
+	AMateria(AMateria const & src);
+	virtual ~AMateria();
+	AMateria & operator=(AMateria const & rhs);
 
-		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
+	const std::string &getType() const;
 
-	private:
-		unsigned int	_xp;
+	virtual AMateria* clone() const = 0;
+	virtual void use(ICharacter& target);
+
+protected:
 		std::string	_type;
 };
 

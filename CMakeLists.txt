@@ -8,9 +8,13 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
 
+#set(CMAKE_CXX_COMPILER /opt/homebrew/Cellar/llvm/12.0.0_1/bin/clang++)
+set(CMAKE_CXX_STANDARD 98)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra -fsanitize=leak -g")
+
 #add_subdirectory(CMAKE/Libft)
 #add_subdirectory(CMAKE/GNL)
-add_subdirectory(CMAKE/ft_printf)
+#add_subdirectory(CMAKE/ft_printf)
 #add_subdirectory(CMAKE/cub3D)
 #add_subdirectory(CMAKE/minishell)
 
@@ -18,5 +22,3 @@ add_subdirectory(CMAKE/ft_printf)
 #add_subdirectory(CMAKE/push_swap)
 
 add_subdirectory(In_Progress/piscineCPP)
-
-add_executable(GNL_TEST main.c)

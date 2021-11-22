@@ -10,12 +10,6 @@ Ice::Ice(const Ice &src) : AMateria(src) {}
 
 Ice::~Ice() {}
 
-Ice &Ice::operator=(const Ice &rhs) {
-	if (this == &rhs)
-		std::cout << "ICE They are the same!" << std::endl;
-	return *this;
-}
-
 AMateria *Ice::clone() const {
 	Ice	*ret = new Ice();
 

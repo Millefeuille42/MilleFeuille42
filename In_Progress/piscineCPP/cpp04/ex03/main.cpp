@@ -9,27 +9,25 @@
 
 int main()
 {
-	AMateria *ice = new Ice();
-	AMateria *cure = new Cure();
 	IMateriaSource* src = new MateriaSource();
-	ICharacter* patate = new Character("patate");
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
 	AMateria* tmp;
 
-	src->learnMateria(ice);
-	src->learnMateria(cure);
-
-	delete ice;
-	delete cure;
-
 	tmp = src->createMateria("ice");
-	patate->equip(tmp);
+	me->equip(tmp);
 	tmp = src->createMateria("cure");
-	patate->equip(tmp);
+	me->equip(tmp);
+
 	ICharacter* bob = new Character("bob");
-	patate->use(0, *bob);
-	patate->use(1, *bob);
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
 	delete bob;
-	delete patate;
+	delete me;
 	delete src;
+
 	return 0;
 }
