@@ -7,7 +7,7 @@
 
 int main() {
 	const Cat* i = new Cat();
-	const Cat* j = new Cat();
+	const Dog* j = new Dog();
 
 	i->getBrain()->addIdea("potato");
 	i->getBrain()->addIdea("cheese");
@@ -27,9 +27,10 @@ int main() {
 	std::cout << std::endl;
 
 	delete i;
-	const Cat* k = new Cat(*j);
+	const Dog* k = new Dog(*j);
 	delete j;
 	k->getBrain()->addIdea("beef");
 	std::cout << std::endl;
 	k->getBrain()->displayIdeas();
+	delete k;
 }

@@ -21,6 +21,7 @@ Cat::Cat(const Cat &src) : Animal(src) {
 
 Cat::~Cat() {
 	std::cout << "Destructor of Cat called!" << std::endl;
+	delete _brain;
 }
 
 void Cat::makeSound() const {

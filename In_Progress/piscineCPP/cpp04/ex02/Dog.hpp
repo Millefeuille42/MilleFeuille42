@@ -6,6 +6,7 @@
 # define INC_42_DOG_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Dog : public Animal {
 public:
@@ -16,6 +17,9 @@ public:
 	Dog &operator=(const Dog &src);
 
 	void makeSound() const;
+	Brain *getBrain() const;
+private:
+	Brain* _brain;
 };
 
 

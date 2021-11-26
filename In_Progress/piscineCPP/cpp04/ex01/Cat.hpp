@@ -17,11 +17,10 @@ public:
 	Cat &operator=(const Cat &src);
 
 	void makeSound() const;
+	Brain *getBrain() const;
 
 private:
 	Brain* _brain;
-public:
-	Brain *getBrain() const;
 };
 
 
