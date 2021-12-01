@@ -7,6 +7,7 @@
 
 # include <string>
 # include <iostream>
+# include "Brain.hpp"
 
 class Animal {
 public:
@@ -16,6 +17,7 @@ public:
 	Animal &operator=(Animal const &src);
 
 	const std::string &getType() const;
+	virtual Brain *getBrain() const = 0;
 	void setType(const std::string &type);
 
 protected:

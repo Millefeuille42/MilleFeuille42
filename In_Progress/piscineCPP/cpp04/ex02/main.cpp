@@ -6,31 +6,30 @@
 #include "Cat.hpp"
 
 int main() {
-	const Cat* i = new Cat();
-	const Dog* j = new Dog();
+	const Animal *animals[2];
+	Brain *brain;
 
-	i->getBrain()->addIdea("potato");
-	i->getBrain()->addIdea("cheese");
-	i->getBrain()->addIdea("lobster");
-	i->getBrain()->addIdea("fish");
+	for (int i = 0; i < 2; i++)
+	{
+		std::cout << i << std::endl;
+		if (i % 2) {
+			animals[i] = new Dog();
+			continue ;
+		}
+		animals[i] = new Cat();
+	}
+
+	brain = animals[1]->getBrain();
+	brain->addIdea("potato");
+	brain->addIdea("oh, squirrel");
+	brain->addIdea("*yawn*");
 
 	std::cout << std::endl;
-	i->getBrain()->displayIdeas();
-
-	j->getBrain()->deepCopy(*i->getBrain());
-	j->getBrain()->addIdea("chicken");
-
-	std::cout << std::endl;
-	j->getBrain()->displayIdeas();
-	std::cout << std::endl;
-	i->getBrain()->displayIdeas();
-	std::cout << std::endl;
-
-	delete i;
-	const Dog* k = new Dog(*j);
-	delete j;
-	k->getBrain()->addIdea("beef");
-	std::cout << std::endl;
-	k->getBrain()->displayIdeas();
-	delete k;
+	for (int i = 0; i < 2; i++) {
+		std::cout << i << std::endl;
+		brain->displayIdeas();
+		std::cout << "-----" << std::endl;
+		delete animals[i];
+		std::cout << std::endl;
+	}
 }
