@@ -39,3 +39,7 @@
 #add_executable(cpp06_ex00 cpp06/ex00 cpp06/ex00/main.cpp cpp06/ex00/convert.hpp cpp06/ex00/utils.cpp cpp06/ex00/display.cpp)
 #add_executable(cpp06_ex01 cpp06/ex01 cpp06/ex01/main.cpp)
 #add_executable(cpp06_ex02 cpp06/ex02 cpp06/ex02/main.cpp cpp06/ex02/main.cpp cpp06/ex02/Base.cpp cpp06/ex02/Base.hpp cpp06/ex02/A.cpp cpp06/ex02/A.hpp cpp06/ex02/B.cpp cpp06/ex02/B.hpp cpp06/ex02/C.cpp cpp06/ex02/C.hpp)
+
+#add_executable(cpp07_ex00 cpp07/ex00 cpp07/ex00/templates.hpp cpp07/ex00/main.cpp)
+#add_executable(cpp07_ex01 cpp07/ex01 cpp07/ex01/main.cpp)
+add_executable(cpp07_ex02 cpp07/ex02 cpp07/ex02/main.cpp cpp07/ex02/array.hpp)
