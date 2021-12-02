@@ -28,8 +28,7 @@ static AMateria **materiaInit() {
 
 static AMateria **materiaCopy(AMateria **materias) {
 	AMateria **ret = new AMateria *[4];
-	for (int i = 0; i < 4; i++)
-	{
+	for (int i = 0; i < 4; i++) {
 		ret[i] = materias[i];
 	}
 	return ret;

@@ -6,7 +6,7 @@
 
 Cure::Cure() : AMateria("cure") {}
 
-Cure::Cure(const AMateria &src) : AMateria(src) {}
+Cure::Cure(const Cure &src) : AMateria(src) {}
 
 Cure::~Cure() {}
 

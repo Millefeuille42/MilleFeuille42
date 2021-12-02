@@ -11,7 +11,7 @@
 class Cure : public AMateria {
 public:
 	Cure();
-	Cure(const AMateria &src);
+	Cure(const Cure &src);
 	~Cure();
 
 	AMateria *clone() const;
