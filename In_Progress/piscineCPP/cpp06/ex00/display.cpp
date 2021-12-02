@@ -13,6 +13,7 @@ void dispInvalid(){
 }
 
 void display(std::string const & arg, char val, long buffer, bool fail) {
+	(void) arg;
 	std::cout << "char: ";
 	if ((buffer < 32 || buffer > 126) && !fail)
 		std::cout << "Non displayable";
@@ -24,6 +25,7 @@ void display(std::string const & arg, char val, long buffer, bool fail) {
 }
 
 void display(std::string const & arg, int val, long buffer, bool fail) {
+	(void) arg;
 	std::cout << "int: ";
 	if (buffer > INT_MAX || buffer < INT_MIN || fail)
 		dispInvalid();

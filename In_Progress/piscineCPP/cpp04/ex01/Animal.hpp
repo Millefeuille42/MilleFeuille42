@@ -31,14 +31,3 @@ protected:
 
 
 #endif //INC_42_ANIMAL_HPP
-
-//	// default constructorx
-//	ClapTrap            ();
-//	// parameter constructor
-//	ClapTrap            (const std::string& name);
-//	// destructor
-//	~ClapTrap            ();
-//	// copy constructor
-//	ClapTrap            (ClapTrap const & src);
-//	// assignment operator
-//	ClapTrap             & operator=(ClapTrap const & src);

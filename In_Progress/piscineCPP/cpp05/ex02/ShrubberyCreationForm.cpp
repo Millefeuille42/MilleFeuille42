@@ -24,7 +24,8 @@ ShrubberyCreationForm::ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const throw(IFormException) {
 	Form::execute(executor);
-	std::ofstream newFile(std::string(std::string(getTarget() + "_shrubbery").c_str()));
+	std::string filename = std::string(std::string(getTarget() + "_shrubbery"));
+	std::ofstream newFile(filename.c_str());
 	newFile << tree << std::endl;
 	newFile.close();
 	std::cout << "Shrubbery Creation complete!" << std::endl;

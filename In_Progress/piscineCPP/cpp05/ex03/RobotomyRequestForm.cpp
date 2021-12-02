@@ -2,6 +2,7 @@
 // Created by Millefeuille on 16/07/2021.
 //
 
+#include <cstdlib>
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::~RobotomyRequestForm() {}

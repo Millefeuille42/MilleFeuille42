@@ -46,16 +46,19 @@ void identify(Base& p) {
 	try {
 		Base& eval = dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
+		(void)eval;
 		return ;
 	} catch (std::exception &e) {}
 	try {
 		Base& eval = dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
+		(void)eval;
 		return ;
 	} catch (std::exception &e) {}
 	try {
 		Base& eval = dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
+		(void)eval;
 		return ;
 	} catch (std::exception &e) {}
 }
