@@ -24,7 +24,7 @@
 #add_executable(cpp03_ex00 cpp03/ex00 cpp03/ex00/ClapTrap.cpp cpp03/ex00/ClapTrap.hpp cpp03/ex00/main.cpp)
 #add_executable(cpp03_ex01 cpp03/ex01 cpp03/ex01/ClapTrap.cpp cpp03/ex01/ClapTrap.hpp cpp03/ex01/main.cpp cpp03/ex01/ScavTrap.cpp cpp03/ex01/ScavTrap.hpp)
 #add_executable(cpp03_ex02 cpp03/ex02 cpp03/ex02/ClapTrap.cpp cpp03/ex02/ClapTrap.hpp cpp03/ex02/main.cpp cpp03/ex02/ScavTrap.cpp cpp03/ex02/ScavTrap.hpp cpp03/ex02/FragTrap.cpp cpp03/ex02/FragTrap.hpp)
-add_executable(cpp03_ex03 cpp03/ex03 cpp03/ex03/ClapTrap.cpp cpp03/ex03/ClapTrap.hpp cpp03/ex03/main.cpp cpp03/ex03/ScavTrap.cpp cpp03/ex03/ScavTrap.hpp cpp03/ex03/FragTrap.cpp cpp03/ex03/FragTrap.hpp cpp03/ex03/DiamondTrap.cpp cpp03/ex03/DiamondTrap.hpp)
+#add_executable(cpp03_ex03 cpp03/ex03 cpp03/ex03/ClapTrap.cpp cpp03/ex03/ClapTrap.hpp cpp03/ex03/main.cpp cpp03/ex03/ScavTrap.cpp cpp03/ex03/ScavTrap.hpp cpp03/ex03/FragTrap.cpp cpp03/ex03/FragTrap.hpp cpp03/ex03/DiamondTrap.cpp cpp03/ex03/DiamondTrap.hpp)
 
 #add_executable(cpp04_ex00 cpp04/ex00 cpp04/ex00/main.cpp cpp04/ex00/Animal.hpp cpp04/ex00/Animal.cpp cpp04/ex00/Dog.cpp cpp04/ex00/Dog.hpp cpp04/ex00/Cat.cpp cpp04/ex00/Cat.hpp cpp04/ex00/WrongAnimal.cpp cpp04/ex00/WrongAnimal.hpp cpp04/ex00/WrongCat.cpp cpp04/ex00/WrongCat.hpp)
 #add_executable(cpp04_ex01 cpp04/ex01 cpp04/ex01/main.cpp cpp04/ex01/Animal.hpp cpp04/ex01/Animal.cpp cpp04/ex01/Dog.cpp cpp04/ex01/Dog.hpp cpp04/ex01/Cat.cpp cpp04/ex01/Cat.hpp cpp04/ex01/Brain.cpp cpp04/ex01/Brain.hpp)
