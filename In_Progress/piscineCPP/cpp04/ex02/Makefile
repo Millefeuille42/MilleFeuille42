@@ -15,9 +15,9 @@ OBJS	=	${SRCS:.cpp=.o}
 
 NAME	=	animals
 
-COMPILE	=	clang++
+COMPILE	=	c++
 
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -pedantic -std=c++98
 
 RM	=	rm -f
 

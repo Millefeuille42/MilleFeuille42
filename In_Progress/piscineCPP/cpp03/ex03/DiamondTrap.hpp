@@ -24,9 +24,17 @@ public:
 	// assignment operator
 	DiamondTrap             & operator=(DiamondTrap const & src);
 
-	using ScavTrap::attack;
-	using ScavTrap::beRepaired;
-	using ScavTrap::takeDamage;
+	void attack(const std::string &target) {
+		ScavTrap::attack(target);
+	}
+
+	void beRepaired(unsigned int amount) {
+		ScavTrap::beRepaired(amount);
+	}
+
+	void takeDamage(unsigned int amount) {
+		ScavTrap::takeDamage(amount);
+	}
 
 	void whoAmI() const;
 };
