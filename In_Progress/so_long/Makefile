@@ -18,7 +18,7 @@ I_MLX	=	-I /usr/include/X11 -I ./mlx
 LMLX	=	-L /usr/lib/x86_64-linux-gnu -lXext -lX11 -L ./mlx -lmlx
 
 COMPILE	=	clang
-FLAGS	=	-Ofast -Wall -Wextra -Werror
+FLAGS	=	-Ofast -Wall -Wextra -Werror -pedantic
 
 RM		=	rm -f
 

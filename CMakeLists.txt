@@ -17,7 +17,6 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}  -Wall -Werror -Wextra -peda
 #add_subdirectory(CMAKE/ft_printf)
 #add_subdirectory(CMAKE/cub3D)
 #add_subdirectory(CMAKE/minishell)
-
 #add_subdirectory(CMAKE/philosophers)
 #add_subdirectory(CMAKE/push_swap)
 

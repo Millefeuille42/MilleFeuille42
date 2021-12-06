@@ -29,7 +29,7 @@
 #add_executable(cpp04_ex00 cpp04/ex00 cpp04/ex00/main.cpp cpp04/ex00/Animal.hpp cpp04/ex00/Animal.cpp cpp04/ex00/Dog.cpp cpp04/ex00/Dog.hpp cpp04/ex00/Cat.cpp cpp04/ex00/Cat.hpp cpp04/ex00/WrongAnimal.cpp cpp04/ex00/WrongAnimal.hpp cpp04/ex00/WrongCat.cpp cpp04/ex00/WrongCat.hpp)
 #add_executable(cpp04_ex01 cpp04/ex01 cpp04/ex01/main.cpp cpp04/ex01/Animal.hpp cpp04/ex01/Animal.cpp cpp04/ex01/Dog.cpp cpp04/ex01/Dog.hpp cpp04/ex01/Cat.cpp cpp04/ex01/Cat.hpp cpp04/ex01/Brain.cpp cpp04/ex01/Brain.hpp)
 #add_executable(cpp04_ex02 cpp04/ex02 cpp04/ex02/main.cpp cpp04/ex02/Animal.hpp cpp04/ex01/Animal.cpp cpp04/ex02/Dog.cpp cpp04/ex02/Dog.hpp cpp04/ex02/Cat.cpp cpp04/ex02/Cat.hpp cpp04/ex02/Brain.cpp cpp04/ex02/Brain.hpp)
-#add_executable(cpp04_ex03 cpp04/ex03 cpp04/ex03/AMateria.cpp cpp04/ex03/AMateria.hpp cpp04/ex03/ICharacter.hpp cpp04/ex03/MateriaSource.cpp cpp04/ex03/MateriaSource.hpp cpp04/ex03/Character.hpp cpp04/ex03/Character.cpp cpp04/ex03/Cure.cpp cpp04/ex03/Cure.hpp cpp04/ex03/Ice.cpp cpp04/ex03/Ice.hpp cpp04/ex03/IMateriaSource.hpp cpp04/ex03/main.cpp)
+add_executable(cpp04_ex03 cpp04/ex03 cpp04/ex03/AMateria.cpp cpp04/ex03/AMateria.hpp cpp04/ex03/ICharacter.hpp cpp04/ex03/MateriaSource.cpp cpp04/ex03/MateriaSource.hpp cpp04/ex03/Character.hpp cpp04/ex03/Character.cpp cpp04/ex03/Cure.cpp cpp04/ex03/Cure.hpp cpp04/ex03/Ice.cpp cpp04/ex03/Ice.hpp cpp04/ex03/IMateriaSource.hpp cpp04/ex03/main.cpp)
 
 #add_executable(cpp05_ex00 cpp05/ex00 cpp05/ex00/Bureaucrat.cpp cpp05/ex00/Bureaucrat.hpp cpp05/ex00/main.cpp)
 #add_executable(cpp05_ex01 cpp05/ex01 cpp05/ex01/Bureaucrat.cpp cpp05/ex01/Bureaucrat.hpp cpp05/ex01/main.cpp cpp05/ex01/Form.cpp cpp05/ex01/Form.hpp)
