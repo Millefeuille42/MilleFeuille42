@@ -58,17 +58,12 @@ int get_next_line_opti(char **line, int fd) {
 	return (r);
 }
 
-struct s_prout {
-	char machin;
-	int prout;
-};
 
 // get_next_line_nul c de la merde
 int get_next_line_nul(char **line, int fd) {
 	int length = 1, ret, i;
 	char c;
 	char *tmp;
-	struct s_prout *pdt = NULL;
 
 	pdt->machin;
 	if (!(*line = malloc(length))) // Malloc line vide
