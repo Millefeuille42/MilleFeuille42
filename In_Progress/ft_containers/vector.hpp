@@ -8,7 +8,6 @@
 namespace ft {
 	//https://www.cplusplus.com/reference/vector/vector
 	template<class T, class Alloc = std::allocator<T> > class vector {
-/** @public */
 	public:
 /** @section Member Types */
 		typedef T value_type;
@@ -29,6 +28,41 @@ namespace ft {
 		typedef std::ptrdiff_t difference_type;
 		typedef size_t size_type;
 
+/** @section Inner Classes */
+	/** @subsection Iterators */
+	// https://www.cplusplus.com/reference/iterator/
+	class iterator {
+	public:
+		/** @subsubsection Constructors */
+		iterator();
+		iterator(const iterator& src);
+		/** @subsubsection Members Function*/
+			/** @subsubsubsection Member Operator Overloads */
+		iterator& operator=(const iterator& rhs);
+		iterator& operator++(); //prefix ++a
+		iterator operator++(int); // postfix a++ || int to differentiate between prefix and postfix increment operators.
+		bool operator==(const iterator& rhs) const;
+		bool operator!=(const iterator& rhs) const;
+		/* TODO Check if required
+		 *	iterator& operator*(); // dereference
+		 *	iterator* operator->();
+		*/
+		iterator& operator--(); //prefix --a
+		iterator operator--(int); // postfix a-- || int to differentiate between prefix and postfix increment operators.
+		iterator operator+(iterator rhs);
+		iterator operator-(iterator rhs);
+		iterator operator+(int i);
+		iterator operator-(int i);
+		bool operator<(const iterator& rhs);
+		bool operator>(const iterator& rhs);
+		bool operator<=(const iterator& rhs);
+		bool operator>=(const iterator& rhs);
+		iterator& operator+=(iterator rhs);
+		iterator& operator-=(iterator rhs);
+		iterator& operator+=(int i);
+		iterator& operator-=(int i);
+		iterator& operator[](unsigned int i);
+	};
 /** @section Constructors */
 		vector(); // Constructs an empty container, with no elements.
 		vector(size_type n, const value_type& val = value_type()); // Constructs a container with n elements. Each element is a copy of val.
