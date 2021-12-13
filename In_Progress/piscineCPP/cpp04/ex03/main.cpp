@@ -27,8 +27,25 @@ int main()
 	me->use(1, *bob);
 
 	delete bob;
-	delete me;
+
+	Character *bobby = new Character("bobby");
+	bobby->equip(src->createMateria("ice"));
+
+	Character *henry = new Character(*bobby);
+	henry->equip(src->createMateria("cure"));
+
+	henry->use(0, *bobby);
+	henry->use(1, *bobby);
+	bobby->use(1, *me);
+	bobby->use(0, *me);
+
 	delete src;
+	delete bobby;
+
+	henry->use(0, *me);
+
+	delete me;
+	delete henry;
 
 	return 0;
 }

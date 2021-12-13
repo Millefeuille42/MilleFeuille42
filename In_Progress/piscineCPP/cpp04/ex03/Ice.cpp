@@ -21,3 +21,8 @@ void Ice::use(ICharacter &target) {
 	std::cout << "* shoots an ice bolt at " + target.getName() + " *" << std::endl;
 	AMateria::use(target);
 }
+
+Ice &Ice::operator=(const Ice &rhs) {
+	_type = rhs.getType();
+	return *this;
+}

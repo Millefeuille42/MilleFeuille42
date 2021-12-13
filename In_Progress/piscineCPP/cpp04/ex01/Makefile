@@ -24,11 +24,10 @@ RM	=	rm -f
 
 #########  Rules  #########
 
-
-.c.o	:
-			${COMPILE} ${FLAGS} -c $< -o $@
-
 all		:	${NAME}
+
+.cpp.o	:
+			${COMPILE} ${FLAGS} -c $< -o $@
 
 ${NAME} :	${OBJS}
 			${COMPILE} ${FLAGS} -o ${NAME} ${OBJS}

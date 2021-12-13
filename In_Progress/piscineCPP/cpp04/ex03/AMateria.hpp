@@ -26,4 +26,9 @@ protected:
 		std::string	_type;
 };
 
+void materiaClean(AMateria **materias);
+
+AMateria **materiaInit();
+AMateria **materiaCopy(AMateria **materias);
+
 #endif //AMATERIA_HPP

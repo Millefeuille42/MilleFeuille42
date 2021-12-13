@@ -29,3 +29,34 @@ void AMateria::use(ICharacter &target) {
 	(void)target;
 }
 
+void materiaClean(AMateria **materias) {
+	if (materias) {
+		for (int i = 0; i < 4; i++) {
+			if (materias[i]) {
+				delete materias[i];
+				materias[i] = NULL;
+			}
+		}
+	}
+}
+
+AMateria **materiaInit() {
+	AMateria **ret = new AMateria *[4];
+	for (int i = 0; i < 4; i++)
+		ret[i] = NULL;
+	return ret;
+}
+
+AMateria **materiaCopy(AMateria **materias) {
+	AMateria **ret = new AMateria *[4];
+	if (!materias)
+		return NULL;
+	for (int i = 0; i < 4; i++) {
+		if (!materias[i]) {
+			ret[i] = NULL;
+			continue ;
+		}
+		ret[i] = materias[i]->clone();
+	}
+	return ret;
+}

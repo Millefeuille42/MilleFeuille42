@@ -21,3 +21,8 @@ void Cure::use(ICharacter &target) {
 	std::cout << "* heals " + target.getName() + "’s wounds *" << std::endl;
 	AMateria::use(target);
 }
+
+Cure &Cure::operator=(const Cure &rhs) {
+	_type = rhs.getType();
+	return *this;
+}

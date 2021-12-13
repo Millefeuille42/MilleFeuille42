@@ -29,6 +29,8 @@ private:
 	std::string	_name;
 
 	Character();
+
+	bool hasMateria(AMateria *m);
 };
 
 

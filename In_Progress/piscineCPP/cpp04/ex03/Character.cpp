@@ -4,43 +4,16 @@
 
 #include "Character.hpp"
 
-static void materiaClean(AMateria **materias) {
-	if (materias)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			if (materias[i]) {
-				delete materias[i];
-				materias[i] = NULL;
-			}
-		}
-	}
+Character::Character() : _materiasCount(0) {
+	_materias = materiaInit();
 }
-
-static AMateria **materiaInit() {
-	AMateria **ret = new AMateria *[4];
-	for (int i = 0; i < 4; i++)
-	{
-		ret[i] = NULL;
-	}
-	return ret;
-}
-
-static AMateria **materiaCopy(AMateria **materias) {
-	AMateria **ret = new AMateria *[4];
-	for (int i = 0; i < 4; i++) {
-		*ret[i] = *materias[i];
-	}
-	return ret;
-}
-
-Character::Character() {}
 
 Character::Character(const std::string &name)
 	: _materias(materiaInit()), _materiasCount(0), _name(name) {}
 
-Character::Character(const Character &src)
-	: _materias(materiaCopy(src._materias)), _materiasCount(src._materiasCount), _name(src._name) {}
+Character::Character(const Character &src) : _materias(NULL), _materiasCount(0) {
+	*this = src;
+}
 
 Character::~Character() {
 	materiaClean(_materias);
@@ -65,7 +38,7 @@ void Character::use(int idx, ICharacter &target) {
 }
 
 void Character::equip(AMateria *m) {
-	if (!m || _materiasCount >= 4)
+	if (!m || _materiasCount >= 4 || hasMateria(m))
 		return ;
 	for (int i = 0; i < 4; i++) {
 		if (!_materias[i]) {
@@ -74,7 +47,6 @@ void Character::equip(AMateria *m) {
 			break ;
 		}
 	}
-	return ;
 }
 
 void Character::unequip(int idx) {
@@ -85,4 +57,11 @@ void Character::unequip(int idx) {
 
 const std::string &Character::getName() const {
 	return _name;
+}
+
+bool Character::hasMateria(AMateria *m) {
+	for (int i = 0; i < 4; i++)
+		if (_materias[i] == m)
+			return true;
+	return false;
 }

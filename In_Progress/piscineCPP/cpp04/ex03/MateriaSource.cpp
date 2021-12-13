@@ -4,36 +4,6 @@
 
 #include "MateriaSource.hpp"
 
-static AMateria **materiaInit() {
-	AMateria **ret = new AMateria *[4];
-	for (int i = 0; i < 4; i++)
-	{
-		ret[i] = NULL;
-	}
-	return ret;
-}
-
-static AMateria **materiaCopy(AMateria **materias) {
-	AMateria **ret = new AMateria *[4];
-	for (int i = 0; i < 4; i++) {
-		*ret[i] = *materias[i];
-	}
-	return ret;
-}
-
-static void materiaClean(AMateria **materias) {
-	if (materias)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			if (materias[i]) {
-				delete materias[i];
-				materias[i] = NULL;
-			}
-		}
-	}
-}
-
 MateriaSource::MateriaSource()
 		: _materias(materiaInit()), _materiasCount(0) {}
 

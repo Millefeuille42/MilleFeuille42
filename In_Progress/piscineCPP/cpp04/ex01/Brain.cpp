@@ -27,8 +27,10 @@ Brain &Brain::operator=(const Brain &src) {
 }
 
 void Brain::addIdea(const std::string &idea) {
-	 _ideas[_lastIdea] = idea;
-	 _lastIdea++;
+	if (_lastIdea >= 100)
+		return ;
+	_ideas[_lastIdea] = idea;
+	_lastIdea++;
 }
 
 void Brain::displayIdeas() {
