@@ -5,11 +5,16 @@
 #ifndef INC_42_VECTOR_HPP
 # define INC_42_VECTOR_HPP
 
+#include <memory>
+#include "iterators/iterator.hpp"
+#include "iterators/iterator_tags.hpp"
+
 namespace ft {
 	//https://www.cplusplus.com/reference/vector/vector
-	template<class T, class Alloc = std::allocator<T> > class vector {
+	template<typename T, class Alloc = std::allocator<T> >
+	class vector {
 	public:
-/** @section Member Types */
+/**  Member Types */
 		typedef T value_type;
 		typedef Alloc allocator_type;
 
@@ -28,25 +33,24 @@ namespace ft {
 		typedef std::ptrdiff_t difference_type;
 		typedef size_t size_type;
 
-/** @section Inner Classes */
-	/** @subsection Iterators */
-	// https://www.cplusplus.com/reference/iterator/
-	class iterator {
+/** Inner Classes */
+	/** Iterators https://www.cplusplus.com/reference/iterator/ */
+	class iterator : public ft::iterator<random_access_iterator_tag, T> {
 	public:
-		/** @subsubsection Constructors */
+		/** Constructors */
 		iterator();
 		iterator(const iterator& src);
-		/** @subsubsection Members Function*/
-			/** @subsubsubsection Member Operator Overloads */
+		/** Members Function*/
+		/** Member Operator Overloads */
 		iterator& operator=(const iterator& rhs);
-		iterator& operator++(); //prefix ++a
-		iterator operator++(int); // postfix a++ || int to differentiate between prefix and postfix increment operators.
+		/** prefix ++a */
+		iterator& operator++();
+		/** postfix a++ || int to differentiate between prefix and postfix increment operators. */
+		iterator operator++(int);
 		bool operator==(const iterator& rhs) const;
 		bool operator!=(const iterator& rhs) const;
-		/* TODO Check if required
-		 *	iterator& operator*(); // dereference
-		 *	iterator* operator->();
-		*/
+		iterator& operator*(); // dereference
+		iterator* operator->(); // structure dereference
 		iterator& operator--(); //prefix --a
 		iterator operator--(int); // postfix a-- || int to differentiate between prefix and postfix increment operators.
 		iterator operator+(iterator rhs);
@@ -63,22 +67,24 @@ namespace ft {
 		iterator& operator-=(int i);
 		iterator& operator[](unsigned int i);
 	};
-/** @section Constructors */
+/**  Constructors */
 		vector(); // Constructs an empty container, with no elements.
 		vector(size_type n, const value_type& val = value_type()); // Constructs a container with n elements. Each element is a copy of val.
 		template <class InputIterator> vector(InputIterator first, InputIterator last); // Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range, in the same order.
 		vector(const vector& x); // Constructs a container with a copy of each of the elements in x, in the same order.
 
-/** @section Destructor */
+/**  Destructor */
 		~vector(); // This destroys all container elements, and deallocates all the storage capacity allocated by the vector using its allocator.
 
-/** @section Members Function*/
-	/** @subsection Member Operator Overloads */
+/**  Members Function*/
+	/** Member Operator Overloads */
 		vector& operator=(const vector& x); // https://www.cplusplus.com/reference/vector/vector/operator=/
 
-	/** @subsection Iterators Members Function*/
+	/** Iterators Members Function*/
+		void begin();
+		void end();
 
-	/** @subsection Capacity Members Function */
+	/** Capacity Members Function */
 		size_type size() const; // Returns the number of elements in the vector.
 		size_type max_size() const; // Returns the maximum number of elements that the vector can hold.
 		void resize (size_type n, value_type val = value_type()); // https://www.cplusplus.com/reference/vector/vector/resize/
