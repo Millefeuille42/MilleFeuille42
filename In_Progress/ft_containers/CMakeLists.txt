@@ -4,4 +4,5 @@ add_executable(ft_containers
         iterators/iterator_traits.hpp
         iterators/iterator.hpp
         stddef.hpp
-        iterators/iterator_tags.hpp iterators/interfaces/Irandom_access_iterator.hpp)
+        iterators/iterator_tags.hpp
+        iterators/normal_iterator.hpp iterators/reverse_normal_iterator.hpp)

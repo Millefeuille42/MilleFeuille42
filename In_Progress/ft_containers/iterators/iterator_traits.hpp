@@ -8,10 +8,8 @@
 #include "../stddef.hpp"
 #include "iterator_tags.hpp"
 
+/// Defines the iterator_traits class
 namespace ft {
-	template<typename _iterator>
-	struct iterator_traits;
-
 	template<typename _iterator>
 	struct iterator_traits {
 		typedef typename _iterator::iterator_category iterator_category;

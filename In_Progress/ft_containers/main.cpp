@@ -62,9 +62,7 @@ int main(int argc, char** argv) {
 	const int seed = atoi(argv[1]);
 	srand(seed);
 
-	ft::iterator_traits<int *>;
 	ft::vector<std::string> vector_str;
-	vector_str.end();
 	ft::vector<int> vector_int;
 	ft::stack<int> stack_int;
 	ft::vector<Buffer> vector_buffer;

@@ -24,10 +24,10 @@
 #add_executable(cpp04_ex02 cpp04/ex02 cpp04/ex02/main.cpp cpp04/ex02/Animal.hpp cpp04/ex01/Animal.cpp cpp04/ex02/Dog.cpp cpp04/ex02/Dog.hpp cpp04/ex02/Cat.cpp cpp04/ex02/Cat.hpp cpp04/ex02/Brain.cpp cpp04/ex02/Brain.hpp)
 #add_executable(cpp04_ex03 cpp04/ex03 cpp04/ex03/AMateria.cpp cpp04/ex03/AMateria.hpp cpp04/ex03/ICharacter.hpp cpp04/ex03/MateriaSource.cpp cpp04/ex03/MateriaSource.hpp cpp04/ex03/Character.hpp cpp04/ex03/Character.cpp cpp04/ex03/Cure.cpp cpp04/ex03/Cure.hpp cpp04/ex03/Ice.cpp cpp04/ex03/Ice.hpp cpp04/ex03/IMateriaSource.hpp cpp04/ex03/main.cpp)
 
-add_executable(cpp05_ex00 cpp05/ex00 cpp05/ex00/Bureaucrat.cpp cpp05/ex00/Bureaucrat.hpp cpp05/ex00/main.cpp)
-add_executable(cpp05_ex01 cpp05/ex01 cpp05/ex01/Bureaucrat.cpp cpp05/ex01/Bureaucrat.hpp cpp05/ex01/main.cpp cpp05/ex01/Form.cpp cpp05/ex01/Form.hpp)
-add_executable(cpp05_ex02 cpp05/ex02 cpp05/ex02/Bureaucrat.cpp cpp05/ex02/Bureaucrat.hpp cpp05/ex02/main.cpp cpp05/ex02/Form.cpp cpp05/ex02/Form.hpp cpp05/ex02/ShrubberyCreationForm.cpp cpp05/ex02/ShrubberyCreationForm.hpp cpp05/ex02/RobotomyRequestForm.cpp cpp05/ex02/RobotomyRequestForm.hpp cpp05/ex02/PresidentialPardonForm.cpp cpp05/ex02/PresidentialPardonForm.hpp)
-add_executable(cpp05_ex03 cpp05/ex03 cpp05/ex03/Bureaucrat.cpp cpp05/ex03/Bureaucrat.hpp cpp05/ex03/main.cpp cpp05/ex03/Form.cpp cpp05/ex03/Form.hpp cpp05/ex03/ShrubberyCreationForm.cpp cpp05/ex03/ShrubberyCreationForm.hpp cpp05/ex03/RobotomyRequestForm.cpp cpp05/ex03/RobotomyRequestForm.hpp cpp05/ex03/PresidentialPardonForm.cpp cpp05/ex03/PresidentialPardonForm.hpp cpp05/ex03/Intern.cpp cpp05/ex03/Intern.hpp)
+#add_executable(cpp05_ex00 cpp05/ex00 cpp05/ex00/Bureaucrat.cpp cpp05/ex00/Bureaucrat.hpp cpp05/ex00/main.cpp)
+#add_executable(cpp05_ex01 cpp05/ex01 cpp05/ex01/Bureaucrat.cpp cpp05/ex01/Bureaucrat.hpp cpp05/ex01/main.cpp cpp05/ex01/Form.cpp cpp05/ex01/Form.hpp)
+#add_executable(cpp05_ex02 cpp05/ex02 cpp05/ex02/Bureaucrat.cpp cpp05/ex02/Bureaucrat.hpp cpp05/ex02/main.cpp cpp05/ex02/Form.cpp cpp05/ex02/Form.hpp cpp05/ex02/ShrubberyCreationForm.cpp cpp05/ex02/ShrubberyCreationForm.hpp cpp05/ex02/RobotomyRequestForm.cpp cpp05/ex02/RobotomyRequestForm.hpp cpp05/ex02/PresidentialPardonForm.cpp cpp05/ex02/PresidentialPardonForm.hpp)
+#add_executable(cpp05_ex03 cpp05/ex03 cpp05/ex03/Bureaucrat.cpp cpp05/ex03/Bureaucrat.hpp cpp05/ex03/main.cpp cpp05/ex03/Form.cpp cpp05/ex03/Form.hpp cpp05/ex03/ShrubberyCreationForm.cpp cpp05/ex03/ShrubberyCreationForm.hpp cpp05/ex03/RobotomyRequestForm.cpp cpp05/ex03/RobotomyRequestForm.hpp cpp05/ex03/PresidentialPardonForm.cpp cpp05/ex03/PresidentialPardonForm.hpp cpp05/ex03/Intern.cpp cpp05/ex03/Intern.hpp)
 
 #add_executable(cpp06_ex00 cpp06/ex00 cpp06/ex00/main.cpp cpp06/ex00/convert.hpp cpp06/ex00/utils.cpp cpp06/ex00/display.cpp)
 #add_executable(cpp06_ex01 cpp06/ex01 cpp06/ex01/main.cpp)
