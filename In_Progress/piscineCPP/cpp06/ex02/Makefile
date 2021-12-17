@@ -1,21 +1,19 @@
 ######### Commons #########
 
-SRCS	=	Animal.cpp	\
-	Cat.cpp	\
-	Dog.cpp	\
-	WrongAnimal.cpp	\
-	WrongCat.cpp	\
+SRCS	=	A.cpp	\
+	B.cpp	\
+	Base.cpp	\
+	C.cpp	\
 	main.cpp	\
 
-HEAD	=	Animal.hpp	\
-	Cat.hpp	\
-	Dog.hpp	\
-	WrongAnimal.hpp	\
-	WrongCat.hpp	\
+HEAD	=	A.hpp	\
+	B.hpp	\
+	Base.hpp	\
+	C.hpp	\
 
 OBJS	=	${SRCS:.cpp=.o}
 
-NAME	=	animals
+NAME	=	ex02
 
 COMPILE	=	c++
 

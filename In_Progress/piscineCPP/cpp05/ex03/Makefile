@@ -1,21 +1,23 @@
 ######### Commons #########
 
-SRCS	=	Animal.cpp	\
-	Cat.cpp	\
-	Dog.cpp	\
-	WrongAnimal.cpp	\
-	WrongCat.cpp	\
+SRCS	=	Bureaucrat.cpp	\
+	Form.cpp	\
+	Intern.cpp	\
+	PresidentialPardonForm.cpp	\
+	RobotomyRequestForm.cpp	\
+	ShrubberyCreationForm.cpp	\
 	main.cpp	\
 
-HEAD	=	Animal.hpp	\
-	Cat.hpp	\
-	Dog.hpp	\
-	WrongAnimal.hpp	\
-	WrongCat.hpp	\
+HEAD	=	Bureaucrat.hpp	\
+	Form.hpp	\
+	Intern.hpp	\
+	PresidentialPardonForm.hpp	\
+	RobotomyRequestForm.hpp	\
+	ShrubberyCreationForm.hpp	\
 
 OBJS	=	${SRCS:.cpp=.o}
 
-NAME	=	animals
+NAME	=	bureau
 
 COMPILE	=	c++
 

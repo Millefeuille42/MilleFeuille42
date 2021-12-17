@@ -15,12 +15,15 @@ public:
 	Animal(const std::string &type);
 	Animal(const Animal &src);
 
-	virtual ~Animal();
-	virtual void makeSound() const;
+	~Animal();
+	void makeSound() const;
 
 	Animal &operator=(Animal const &src);
 
-	virtual Brain *getBrain() const = 0;
+	Brain *getBrain() const {
+		return NULL;
+	}
+
 	const std::string &getType() const;
 
 	void setType(const std::string &type);
