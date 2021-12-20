@@ -31,7 +31,7 @@ namespace ft {
 		template<class _t>
 		class normal_iterator : public ft::normal_iterator<_t> {}; //TODO Define content
 		template<class _t>
-		class reverse_normal_iterator : public ft::normal_iterator<_t> {}; //TODO Define content
+		class reverse_normal_iterator : public ft::reverse_iterator<normal_iterator<_t> > {}; //TODO Define content
 	public:
 		typedef normal_iterator<pointer>					iterator;
 		typedef normal_iterator<const_pointer>				const_iterator;
