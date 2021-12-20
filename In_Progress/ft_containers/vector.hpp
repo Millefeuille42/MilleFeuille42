@@ -9,7 +9,7 @@
 #include "stddef.hpp"
 
 #include "iterators/normal_iterator.hpp"
-#include "iterators/reverse_normal_iterator.hpp"
+#include "iterators/reverse_iterator.hpp"
 
 namespace ft {
 	//https://www.cplusplus.com/reference/vector/vector
