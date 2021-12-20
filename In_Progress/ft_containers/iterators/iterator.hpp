@@ -22,14 +22,13 @@ namespace ft {
 		typedef Category  iterator_category;
 	};
 
-	template <class Category, class T, class Distance = ptrdiff_t,
-			class Pointer = T*, class Reference = T&>
-	struct iterator<Category, const T, Distance, const T*, const T&> {
+	template <class Category, class T>
+	struct iterator<Category, const T> {
 	protected:
 		typedef T         value_type;
-		typedef Distance  difference_type;
-		typedef Pointer   pointer;
-		typedef Reference reference;
+		typedef ptrdiff_t difference_type;
+		typedef const T*		  pointer;
+		typedef const T&        reference;
 		typedef Category  iterator_category;
 	};
 }
