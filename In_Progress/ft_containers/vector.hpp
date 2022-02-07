@@ -6,7 +6,7 @@
 # define INC_42_VECTOR_HPP
 
 #include <memory>
-#include "stddef.hpp"
+#include "utils/stddef.hpp"
 
 #include "iterators/normal_iterator.hpp"
 #include "iterators/reverse_iterator.hpp"
@@ -29,15 +29,21 @@ namespace ft {
 /**  Iterators */
 	private:
 		template<class _t>
-		class normal_iterator : public ft::normal_iterator<_t> {}; //TODO Define content
+		class normal_iterator : public ft::normal_iterator<iterator<random_access_iterator_tag, _t> > {
+		}; //TODO Define content
+
 		template<class _t>
-		class reverse_normal_iterator : public ft::reverse_iterator<normal_iterator<_t> > {}; //TODO Define content
+		class reverse_normal_iterator : public ft::reverse_iterator<normal_iterator<iterator<random_access_iterator_tag, _t> > > {
+
+		}; //TODO Define content
+
 	public:
 		typedef normal_iterator<pointer>					iterator;
 		typedef normal_iterator<const_pointer>				const_iterator;
 		typedef reverse_normal_iterator<pointer>			reverse_iterator;
 		typedef reverse_normal_iterator<const_pointer>		const_reverse_iterator;
 
+		// TODO Define member functions
 /**  Constructors */
 	public:
 		vector(); // no elements
