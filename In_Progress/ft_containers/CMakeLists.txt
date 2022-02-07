@@ -3,6 +3,6 @@ add_executable(ft_containers
         vector.hpp
         iterators/iterator_traits.hpp
         iterators/iterator.hpp
-        stddef.hpp
+        utils/stddef.hpp
         iterators/iterator_tags.hpp
         iterators/normal_iterator.hpp iterators/reverse_iterator.hpp)

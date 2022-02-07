@@ -6,11 +6,12 @@
 #define INC_42_NORMAL_ITERATOR_HPP
 
 #include "iterator.hpp"
+#include "iterator_traits.hpp"
 
 /// Has no interest as is, it's just for reference when building iterators
 namespace ft {
 	template<typename _iT>
-	class normal_iterator : public iterator<typename iterator_traits<_iterator>::iterator_category> {
+class normal_iterator : public iterator<typename iterator_traits<_iT>::iterator_category, typename iterator_traits<_iT>::value_type> {
 	public:
 	/** Constructors */
 		normal_iterator() {};
