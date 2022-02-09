@@ -99,7 +99,7 @@ namespace ft {
 		};
 
 		reference operator[](difference_type n) const {
-			return *(*this + n);
+			return *(base() - n);
 		};
 	};
 
