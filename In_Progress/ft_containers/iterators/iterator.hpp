@@ -6,7 +6,6 @@
 #define INC_42_ITERATOR_HPP
 
 #include "../utils/stddef.hpp"
-#include "iterator_tags.hpp"
 
 /// Defines the iterator base class, with all the required member types
 namespace ft {

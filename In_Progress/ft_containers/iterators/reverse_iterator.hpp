@@ -2,10 +2,10 @@
 // Created by mlabouri on 12/17/21.
 //
 
-#ifndef INC_42_REVERSE_ITERATOR_HPP
-#define INC_42_REVERSE_ITERATOR_HPP
+#ifndef REVERSE_ITERATOR_HPP
+#define REVERSE_ITERATOR_HPP
 
-#include "normal_iterator.hpp"
+#include "normal_iterators.hpp"
 #include "iterator_traits.hpp"
 
 namespace ft {
@@ -30,10 +30,10 @@ namespace ft {
 
 		/** Constructors */
 		reverse_iterator()
-				: current(_iterator_type()) {}
+				: current(iterator_type()) {}
 
 		explicit reverse_iterator(iterator_type it)
-				: current(_iterator_type(it)) {}
+				: current(iterator_type(it)) {}
 
 		template<class _iter>
 		reverse_iterator(const reverse_iterator<_iter> &rev_it)
@@ -152,5 +152,7 @@ namespace ft {
 			const reverse_iterator<Iterator> &rev_it) {
 		return rev_it + n;
 	}
+
+	//TODO S'assurer que tout est ok si bidirectionnal iterator
 }
-#endif //INC_42_REVERSE_ITERATOR_HPP
+#endif //REVERSE_ITERATOR_HPP

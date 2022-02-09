@@ -6,7 +6,9 @@
 #include <string>
 #include <deque>
 
-#if 1 //CREATE A REAL STL EXAMPLE
+
+
+#if 0 //CREATE A REAL STL EXAMPLE
 # include <map>
 # include <stack>
 # include <vector>
@@ -66,7 +68,6 @@ int main(int argc, char** argv) {
 	ft::vector<int> vector_int;
 	ft::stack<int> stack_int;
 	ft::vector<Buffer> vector_buffer;
-	ft::vector<int>::iterator;
 	ft::stack<Buffer, std::deque<Buffer> > stack_deq_buffer;
 	ft::map<int, int> map_int;
 	for (int i = 0; i < COUNT; i++)
