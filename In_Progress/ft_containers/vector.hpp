@@ -70,7 +70,7 @@ namespace ft {
 			}
 		} // Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range, in the same order.
 
-		vector(const vector& x) {
+		vector(const vector& x) : _size(), _capacity() {
 			*this = x;
 		} // copy
 
@@ -82,7 +82,14 @@ namespace ft {
 /**  Members Function */
 	/** Member Operator Overloads */
 	//TODO Needs all other functions
-		vector& operator=(const vector& x); // https://www.cplusplus.com/reference/vector/vector/operator=/
+		vector& operator=(const vector& x) {
+			_allocator.deallocate(_data, _capacity);
+			_data = _allocator.allocate(x._capacity);
+			_size = x._size;
+			_capacity = x._capacity;
+			_const_data = _data;
+			sameSizeCopy(x._data, _data, x._size);
+		} // https://www.cplusplus.com/reference/vector/vector/operator=/
 
 	/** Iterators Members Function */
 	//TODO Needs iterators
@@ -107,7 +114,24 @@ namespace ft {
 			return _allocator.max_size;
 		} // Returns the maximum number of elements that the vector can hold.
 
-		void resize (size_type n, value_type val = value_type()); // https://www.cplusplus.com/reference/vector/vector/resize/
+		void resize (size_type n, value_type val = value_type()) {
+			if (n < _size) {
+				_allocator.deallocate(_data + n, _capacity - n);
+				_capacity = n;
+			} else {
+				if (n > _capacity) {
+					pointer newData = _allocator.allocate(n);
+					sameSizeCopy(_data, newData, _size); // TODO make sure data needs to be at same address or not
+					_allocator.deallocate(_data, _capacity);
+					_capacity = n;
+					_data = newData;
+				}
+				for (size_type i = _size; i < n; i++) {
+					_data[i] = val;
+				}
+			}
+			_size = n;
+		} // https://www.cplusplus.com/reference/vector/vector/resize/
 
 		size_type capacity() const {
 			return _capacity;
@@ -117,7 +141,15 @@ namespace ft {
 			return _size <= 0;
 		}
 
-		void reserve (size_type n);
+		void reserve (size_type n) {
+			if (n < _capacity)
+				return ;
+			pointer newData = _allocator.allocate(n);
+			sameSizeCopy(_data, newData, _size); // TODO make sure data needs to be at same address or not
+			_allocator.deallocate(_data, _capacity);
+			_capacity = n;
+			_data = newData;
+		};
 
 	/** Access Members Function */
 		reference operator[] (size_type n) {
@@ -193,6 +225,12 @@ namespace ft {
 		const_pointer	_const_data;
 		size_type		_size;
 		size_type 		_capacity;
+
+		void sameSizeCopy(const_pointer src, pointer dest, size_type s) {
+			for (size_type i = 0; i < s; i++) {
+				dest[i] = src[i];
+			}
+		}
 	};
 
 	template <class T>

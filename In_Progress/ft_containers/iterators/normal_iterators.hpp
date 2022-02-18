@@ -8,6 +8,7 @@
 #include "iterator.hpp"
 #include "iterator_traits.hpp"
 #include "iterator_tags.hpp"
+#include <typeinfo>
 
 /// Has no interest as is, it's just for reference when building iterators
 namespace ft {
