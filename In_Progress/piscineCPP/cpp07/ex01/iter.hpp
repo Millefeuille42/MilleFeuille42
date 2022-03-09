@@ -14,10 +14,4 @@ void iter(T *address, unsigned int len, void (*func)(T &)) {
 	}
 }
 
-
-
-//Write a function template iter that take 3 parameters and returns nothing. The first
-//parameter is the address of an array, the second one is the length of the array and the
-//third one is a function called for each element of the array
-
 #endif //INC_42_ITER_HPP

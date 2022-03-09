@@ -26,12 +26,14 @@ void Span::addNumber(int n) {
 unsigned int Span::shortestSpan() {
 	if (_numbers.size() <= 1)
 		throw std::length_error("not enough values in list");
-	std::sort(_numbers.begin(), _numbers.end());
 
-	int min = _numbers.at(1) - _numbers.front();
-	for (unsigned int i = 0; i < _numbers.size() - 1; i++)
-		if (min > (_numbers.at(i + 1) - _numbers.at(i)))
-			min = (_numbers.at(i + 1) - _numbers.at(i));
+	std::vector<int> tmp(_numbers);
+	std::sort(tmp.begin(), tmp.end());
+
+	int min = tmp.at(1) - tmp.front();
+	for (unsigned int i = 0; i < tmp.size() - 1; i++)
+		if (min > (tmp.at(i + 1) - tmp.at(i)))
+			min = (tmp.at(i + 1) - tmp.at(i));
 
 	return min;
 }
@@ -39,9 +41,8 @@ unsigned int Span::shortestSpan() {
 unsigned int Span::longestSpan() {
 	if (_numbers.size() <= 1)
 		throw std::length_error("not enough values in list");
+	std::vector<int> tmp(_numbers);
+	std::sort(tmp.begin(), tmp.end());
 
-	std::sort(_numbers.begin(), _numbers.end());
-
-
-	return _numbers.back() - _numbers.front();
+	return tmp.back() - tmp.front();
 }

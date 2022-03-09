@@ -35,8 +35,8 @@
 
 #add_executable(cpp07_ex00 cpp07/ex00 cpp07/ex00/templates.hpp cpp07/ex00/main.cpp)
 #add_executable(cpp07_ex01 cpp07/ex01 cpp07/ex01/main.cpp)
-#add_executable(cpp07_ex02 cpp07/ex02 cpp07/ex02/main.cpp cpp07/ex02/Array.hpp)
+#add_executable(cpp07_ex02 cpp07/ex02 cpp07/ex02/main.cpp cpp07/ex02/Array.hpp cpp07/ex02/Array.tpp)
 
-#add_executable(cpp08_ex00 cpp08/ex00 cpp08/ex00/main.cpp cpp08/ex00/easyfind.hpp)
-#add_executable(cpp08_ex01 cpp08/ex01 cpp08/ex01/main.cpp cpp08/ex01/Span.cpp cpp08/ex01/Span.hpp)
-#add_executable(cpp08_ex02 cpp08/ex02 cpp08/ex02/main.cpp cpp08/ex02/MutantStack.hpp)
+add_executable(cpp08_ex00 cpp08/ex00 cpp08/ex00/main.cpp cpp08/ex00/easyfind.hpp)
+add_executable(cpp08_ex01 cpp08/ex01 cpp08/ex01/main.cpp cpp08/ex01/Span.cpp cpp08/ex01/Span.hpp)
+add_executable(cpp08_ex02 cpp08/ex02 cpp08/ex02/main.cpp cpp08/ex02/MutantStack.hpp)

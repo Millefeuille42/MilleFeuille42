@@ -9,6 +9,9 @@ int main(int, char**)
 	Array<int> numbers(MAX_VAL);
 	int* mirror = new int[MAX_VAL];
 
+	int * a = new int();
+	std::cout << *a << std::endl;
+
 	srand(time(NULL));
 	for (int i = 0; i < MAX_VAL; i++) {
 		const int value = rand();

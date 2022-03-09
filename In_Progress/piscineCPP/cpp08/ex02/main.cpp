@@ -53,7 +53,7 @@ void listMain() {
 	mstack.push_back(5);
 	mstack.push_back(17);
 	std::cout << "Front: ";
-	std::cout << mstack.front() << std::endl;
+	std::cout << mstack.back() << std::endl;
 	std::cout << "Size: ";
 	std::cout << mstack.size() << std::endl;
 	mstack.push_back(3);
