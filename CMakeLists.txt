@@ -21,5 +21,5 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}  -Wall -Werror -Wextra -peda
 #add_subdirectory(CMAKE/philosophers)
 #add_subdirectory(CMAKE/push_swap)
 
-add_subdirectory(In_Progress/piscineCPP)
-#add_subdirectory(In_Progress/ft_containers)
+#add_subdirectory(In_Progress/piscineCPP)
+add_subdirectory(In_Progress/ft_containers)
