@@ -13,25 +13,18 @@ class MutantStack : public std::stack<type> {
 public:
 	typedef typename std::deque<type>::iterator iterator;
 
-	MutantStack(): std::stack<type>() {}
+	MutantStack();
 
-	MutantStack(const MutantStack& src) {*this = src;}
+	MutantStack(const MutantStack& src);
 
-	~MutantStack() {}
+	~MutantStack();
 
-	MutantStack& operator=(const MutantStack& rhs) {
-		this->c = rhs.c;
-		return (*this);
-	}
+	MutantStack& operator=(const MutantStack& rhs);
 
-	iterator begin() {
-		return this->c.begin();
-	}
-
-	iterator end() {
-		return this->c.end();
-	}
+	iterator begin();
+	iterator end();
 };
 
+#include "MutantStack.tpp"
 
 #endif //INC_42_MUTANTSTACK_HPP
