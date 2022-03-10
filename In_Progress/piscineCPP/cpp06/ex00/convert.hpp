@@ -12,6 +12,7 @@
 # include <climits>
 
 std::string trimWhiteSpaces(char* s);
+char	cInSet(char c, const char* set);
 
 void display(std::string const & arg, char val, long buffer, bool fail);
 void display(std::string const & arg, int val, long buffer, bool fail);

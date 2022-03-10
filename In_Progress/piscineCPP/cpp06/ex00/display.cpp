@@ -61,4 +61,5 @@ void display(std::string const & arg, double val, bool fail) {
 		dispInvalid();
 	else
 		std::cout << val;
+	dispNl();
 }

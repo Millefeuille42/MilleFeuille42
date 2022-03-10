@@ -29,6 +29,10 @@ int main(int argc, char* argv[]) {
 	bool working = false;
 	int c = manageWhiteSpace(argString[0]);
 
+	if (!cInSet(argString[0], "0123456789")) {
+		c = static_cast<int>(argString[0]);
+	}
+
 	if (c) {
 		bufferDouble = static_cast<double>(c);
 	} else {

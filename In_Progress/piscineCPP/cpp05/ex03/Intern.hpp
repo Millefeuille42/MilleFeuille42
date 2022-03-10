@@ -12,6 +12,9 @@
 class Intern {
 public:
 	Intern();
+	Intern(const Intern & src);
+
+	Intern& operator=(const Intern & rhs);
 
 	Form *makeForm(std::string type, std::string target) const;
 

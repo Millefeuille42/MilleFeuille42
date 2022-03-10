@@ -11,10 +11,10 @@ int main() {
 	for (int i = 0; i <= 100; i++)
 		l.push_back(i);
 
-	easyfind<std::list<int> >(l, 42);
-	easyfind<std::list<int> >(l, 99);
-	easyfind<std::list<int> >(l, 100);
-	easyfind<std::list<int> >(l, -1);
+	std::cout << easyfind<std::list<int> >(l, 42) << std::endl;
+	std::cout << easyfind<std::list<int> >(l, 99) << std::endl;
+	std::cout << easyfind<std::list<int> >(l, 100) << std::endl;
+	std::cout << easyfind<std::list<int> >(l, -1) << std::endl;
 
 	return (0);
 }

@@ -43,3 +43,11 @@ Form *Intern::makeForm(std::string type, std::string target) const {
 	std::cout << "Intern is confused, " + type + " forms does not exists..." << std::endl;
 	return NULL;
 }
+
+Intern::Intern(const Intern &src) {
+	*this = src;
+}
+
+Intern &Intern::operator=(const Intern &rhs) {
+	return *this;
+}
