@@ -40,42 +40,33 @@ namespace ft {
 			c.pop_back();
 		}
 
-		friend bool operator== (const stack<T,Container>& lhs, const stack<T,Container>& rhs);
-		friend bool operator<  (const stack<T,Container>& lhs, const stack<T,Container>& rhs);
+		bool operator== (const stack<T,Container>& rhs) {
+			return c == rhs.c;
+		}
+
+		bool operator!= (const stack<T,Container>& rhs) {
+			return c != rhs.c;
+		}
+
+		bool operator>  (const stack<T,Container>& rhs) {
+			return c > rhs.c;
+		}
+
+		bool operator< (const stack<T,Container>& rhs) {
+			return c < rhs.c;
+		}
+
+		bool operator<= (const stack<T,Container>& rhs) {
+			return c <= rhs.c;
+		}
+
+		bool operator>= (const stack<T,Container>& rhs) {
+			return c >= rhs.c;
+		}
 
 	protected:
 		container_type c;
 	};
-
-	template <class T, class Container>
-	bool operator== (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		return lhs.c == rhs.c;
-	}
-
-	template <class T, class Container>
-	bool operator<  (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		return lhs.c < rhs.c;
-	}
-
-	template <class T, class Container>
-	bool operator!= (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		return !(rhs == lhs);
-	}
-
-	template <class T, class Container>
-	bool operator>  (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		return rhs < lhs;
-	}
-
-	template <class T, class Container>
-	bool operator<= (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		return !(lhs > rhs);
-	}
-
-	template <class T, class Container>
-	bool operator>= (const stack<T,Container>& lhs, const stack<T,Container>& rhs) {
-		return !(lhs < rhs);
-	}
 }
 
 #endif //STACK_HPP

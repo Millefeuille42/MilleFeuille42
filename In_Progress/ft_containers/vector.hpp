@@ -7,6 +7,7 @@
 
 #include <memory>
 #include "utils/stddef.hpp"
+#include "utils/algorithm.hpp"
 
 #include "iterators/normal_iterators.hpp"
 #include "iterators/reverse_iterator.hpp"
@@ -144,10 +145,11 @@ namespace ft {
 
 			normal_iterator& operator-=(const int i) {
 				_base -= i;
+				return *this;
 			}
 
 			normal_iterator& operator[](const unsigned int i) {
-				_base[i];
+				return _base[i];
 			}
 
 		private:
@@ -171,8 +173,6 @@ namespace ft {
 		typedef reverse_normal_iterator<const_iterator>		const_reverse_iterator;
 
 		// TODO Define member functions
-		// TODO Construct!!
-		// TODO Lexicographical_compare && Equal
 /**  Constructors */
 	public:
 		explicit vector(const allocator_type& alloc = allocator_type())
@@ -181,7 +181,7 @@ namespace ft {
 		explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type())
 		: _allocator(alloc), _data(_allocator.allocate(n + 5)), _size(n), _capacity(_size + 5) {
 			for (size_type i = 0; i < n; i++) {
-				_data[i] = val;
+				_allocator.construct(_data + i, val);
 			}
 		} // n elements at value val
 
@@ -193,23 +193,30 @@ namespace ft {
 			_capacity = _size + 5;
 			_data = _allocator.allocate(_capacity);
 			for (size_type i = 0; first != last; first++) {
-				_data[i] = *first;
+				_allocator.construct(_data + i, *first);
+				i++;
 			}
 		} // Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range, in the same order.
 
-		vector(const vector& x) : _size(), _capacity() {
+		vector(const vector& x) : _data(NULL), _size(), _capacity() {
 			*this = x;
 		} // copy
 
 /**  Destructor */
 		~vector() {
-			_allocator.deallocate(_data, _capacity);
+			if (_data != NULL) {
+				_allocator.deallocate(_data, _capacity);
+				_data = NULL;
+			}
 		};
 
 /**  Members Function */
 	/** Member Operator Overloads */
 		vector& operator=(const vector& x) {
-			_allocator.deallocate(_data, _capacity);
+			if (_data != NULL) {
+				_allocator.deallocate(_data, _capacity);
+				_data = NULL;
+			}
 			_data = _allocator.allocate(x._capacity);
 			_size = x._size;
 			_capacity = x._capacity;
@@ -218,7 +225,9 @@ namespace ft {
 
 	/** Iterators Members Function */
 		iterator begin() {
-			return iterator(_data);
+			iterator it;
+			it = iterator(_data);
+			return it;
 		}
 
 		const_iterator begin() const {
@@ -268,7 +277,7 @@ namespace ft {
 			}
 
 			for (size_type i = _size; i < n; i++) {
-				_data[i] = val;
+				_allocator.construct(_data + i, val);
 			}
 			_size = n;
 		} // https://www.cplusplus.com/reference/vector/vector/resize/
@@ -286,7 +295,10 @@ namespace ft {
 				return ;
 			pointer newData = _allocator.allocate(n);
 			sameSizeCopy(_data, newData, _size);
-			_allocator.deallocate(_data, _capacity);
+			if (_data != NULL) {
+				_allocator.deallocate(_data, _capacity);
+				_data = NULL;
+			}
 			_capacity = n;
 			_data = newData;
 		};
@@ -342,7 +354,7 @@ namespace ft {
 			this->clear();
 			resize(dist);
 			for (size_type i = 0; first != last; first++) {
-				_data[i] = *first;
+				_allocator.construct(_data + i, *first);
 			}
 		} // range
 
@@ -364,10 +376,10 @@ namespace ft {
 		}
 
 		void swap (vector& x) {
-			pointer tmp = _data;
+			vector tmp(*this);
 
-			_data = x._data;
-			x._data = tmp;
+			*this = x;
+			x = tmp;
 		};
 
 		void clear() {
@@ -387,7 +399,7 @@ namespace ft {
 
 		void sameSizeCopy(const_pointer src, pointer dest, size_type s) {
 			for (size_type i = 0; i < s; i++) {
-				dest[i] = src[i];
+				_allocator.construct(dest + i, src[i]);
 			}
 		}
 
@@ -411,35 +423,15 @@ namespace ft {
 
 	template <class T>
 	bool operator== (const vector<T>& lhs, const vector<T>& rhs) {
-		typedef typename ft::vector<T>::iterator iterator;
-
 		if (lhs.size() != rhs.size())
 			return false;
 
-		iterator r = rhs.begin();
-
-		for (iterator l = lhs.begin(); l != lhs.end(); l++) {
-			if (++r != l)
-				return false;
-		}
-		return true;
+		return  equal(lhs.begin(), lhs.end(), rhs.begin());
 	}
 
 	template <class T>
 	bool operator<  (const vector<T>& lhs, const vector<T>& rhs) {
-		typedef typename ft::vector<T>::iterator iterator;
-		iterator l = lhs.begin();
-		iterator r = rhs.begin();
-
-		while (l != lhs.end()) {
-			if (*l > *r || r == rhs.end())
-				return false;
-			if (*l < *r)
-				return true;
-			l++;
-			r++;
-		}
-		return true;
+		lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
 	}
 
 	template <class T>

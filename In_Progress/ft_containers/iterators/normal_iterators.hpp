@@ -101,40 +101,7 @@ namespace ft {
 	};
 
 	template<typename type>
-class normal_random_access_iterator : public iterator<random_access_iterator_tag, type> {
-	public:
-	/** Constructors */
-		normal_random_access_iterator() {};
-		normal_random_access_iterator(const normal_random_access_iterator& src) {(void)src;};
-	/** Destructor */
-		~normal_random_access_iterator() {};
-	/** Members Function*/
-		/** Member Operator Overloads */
-		normal_random_access_iterator& operator=(const normal_random_access_iterator& rhs) {(void)rhs;};
-			/** prefix ++a */
-		virtual normal_random_access_iterator& operator++() {};
-			/** postfix a++ || int to differentiate between prefix and postfix increment operators. */
-		virtual normal_random_access_iterator operator++(const int) {};
-		virtual bool operator==(const normal_random_access_iterator& rhs) const {(void)rhs;};
-		virtual bool operator!=(const normal_random_access_iterator& rhs) const {(void)rhs;};
-		virtual type& operator*() {}; // dereference
-		virtual type* operator->() {}; // structure dereference
-		virtual normal_random_access_iterator& operator--() {}; //prefix --a
-		virtual normal_random_access_iterator operator--(const int) {}; // postfix a-- || int to differentiate between prefix and postfix increment operators.
-		virtual normal_random_access_iterator operator+(normal_random_access_iterator rhs) {(void)rhs;};
-		virtual normal_random_access_iterator operator-(normal_random_access_iterator rhs) {(void)rhs;};
-		virtual normal_random_access_iterator operator+(const int i) {(void)i;};
-		virtual normal_random_access_iterator operator-(const int i) {(void)i;};
-		virtual bool operator<(const normal_random_access_iterator& rhs) {(void)rhs;};
-		virtual bool operator>(const normal_random_access_iterator& rhs) {(void)rhs;};
-		virtual bool operator<=(const normal_random_access_iterator& rhs) {(void)rhs;};
-		virtual bool operator>=(const normal_random_access_iterator& rhs) {(void)rhs;};
-		virtual normal_random_access_iterator& operator+=(normal_random_access_iterator rhs) {(void)rhs;};
-		virtual normal_random_access_iterator& operator-=(normal_random_access_iterator rhs) {(void)rhs;};
-		virtual normal_random_access_iterator& operator+=(const int i) {(void)i;};
-		virtual normal_random_access_iterator& operator-=(const int i) {(void)i;};
-		virtual normal_random_access_iterator& operator[](const unsigned int i) {(void)i;};
-	};
+class normal_random_access_iterator : public iterator<random_access_iterator_tag, type> {};
 
 	template <class InputIterator, class Distance>
 	void advance (InputIterator& it, Distance n) {
