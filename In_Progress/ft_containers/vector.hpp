@@ -344,27 +344,54 @@ namespace ft {
 
 	/** Modifiers Members Function */
 		void assign (size_type n, const value_type& val) {
-			this->clear();
-			resize(n, val);
+			this->destroy_data();
+			this->resize(n, val);
 		} // fill
 
 		template <class InputIterator>
 		void assign (InputIterator first, InputIterator last) {
 			difference_type dist = distance(first, last);
 			this->clear();
-			resize(dist);
+			this->resize(dist);
 			for (size_type i = 0; first != last; first++) {
 				_allocator.construct(_data + i, *first);
 			}
 		} // range
 
-		iterator insert (iterator position, const value_type& val); // single element
-		void insert (iterator position, size_type n, const value_type& val); // fill
-		template <class InputIterator>
-		void insert (iterator position, InputIterator first, InputIterator last); // range
+		iterator insert (iterator position, const value_type& val) {
+			fullRightShift(position);
+			_allocator.construct(&(*position), val);
+		} // single element
 
-		iterator erase (iterator position);
-		iterator erase (iterator first, iterator last); // range
+		void insert (iterator position, size_type n, const value_type& val) {
+			fullRightShift(position, n);
+			for (size_type i = 0; i < n; i++) {
+				_allocator.construct(&(*position), val);
+				position++;
+			}
+		} // fill
+
+		template <class InputIterator>
+		void insert (iterator position, InputIterator first, InputIterator last) {
+			difference_type dist = distance(first, last);
+			fullRightShift(position, dist);
+			for (; first != last; first++) {
+				_allocator.construct(position, *first);
+				position++;
+			}
+		} // range
+
+		iterator erase (iterator position) {
+			_allocator.destroy(&(*position));
+			fullLeftShift(position);
+		}
+
+		iterator erase (iterator first, iterator last) {
+			for (; first != last; first++) {
+				_allocator.destroy(&(*first));
+			}
+			fullLeftShift(last, distance(first, last));
+		} // range
 
 		void push_back (const value_type& val) {
 			this->resize(_size + 1, val);
@@ -410,6 +437,32 @@ namespace ft {
 		void destroy_data() {
 			for (size_type i = 0; i < _size; i++)
 				_allocator.destroy(_data + i);
+		}
+
+		void fullRightShift(iterator position, size_type times = 1) {
+			if (_size + times > _capacity) {
+				this->resize(_size + times);
+			}
+			iterator curBegin = this->begin();
+			iterator curEnd = this->end() - 1;
+			for (; curEnd != curBegin; curEnd--) {
+				*(curEnd + times) = *curEnd;
+				if (curEnd == position)
+					break;
+			}
+			_size += times;
+		}
+
+		void fullLeftShift(iterator position, size_type times = 1) {
+			position += times;
+			iterator curBegin = this->begin();
+			iterator curEnd = this->end();
+			for (; position != curEnd; position++) {
+				*(position - times) = *position;
+				if (curEnd == position)
+					break;
+			}
+			_size -= times;
 		}
 	};
 
