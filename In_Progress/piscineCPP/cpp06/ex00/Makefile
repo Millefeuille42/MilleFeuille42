@@ -1,19 +1,14 @@
 ######### Commons #########
 
-SRCS	=	A.cpp	\
-	B.cpp	\
-	Base.cpp	\
-	C.cpp	\
+SRCS	=	display.cpp	\
 	main.cpp	\
+	utils.cpp	\
 
-HEAD	=	A.hpp	\
-	B.hpp	\
-	Base.hpp	\
-	C.hpp	\
+HEAD	=	convert.hpp	\
 
 OBJS	=	${SRCS:.cpp=.o}
 
-NAME	=	identify
+NAME	=	convert
 
 COMPILE	=	c++
 

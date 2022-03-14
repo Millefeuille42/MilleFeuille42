@@ -1,19 +1,11 @@
 ######### Commons #########
 
-SRCS	=	A.cpp	\
-	B.cpp	\
-	Base.cpp	\
-	C.cpp	\
-	main.cpp	\
+SRCS	=	main.cpp	\
 
-HEAD	=	A.hpp	\
-	B.hpp	\
-	Base.hpp	\
-	C.hpp	\
 
 OBJS	=	${SRCS:.cpp=.o}
 
-NAME	=	identify
+NAME	=	serialize
 
 COMPILE	=	c++
 

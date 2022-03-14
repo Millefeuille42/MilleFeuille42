@@ -16,7 +16,7 @@ struct Data
 	int age;
 };
 
-uintptr_t serialize(Data* ptr) {
+uintptr_t true_serialize(Data* ptr) {
 	std::stringstream encodingStream;
 
 	encodingStream << ptr->name << '\1' << ptr->login << '\1' << ptr->age << '\0' << '\1' << '\1';
@@ -34,7 +34,7 @@ int writeStringToStream(std::stringstream* stream, char* str) {
 	return ++len;
 }
 
-Data* deserialize(uintptr_t raw) {
+Data* true_deserialize(uintptr_t raw) {
 	Data* decoded = new Data;
 	std::string* data = reinterpret_cast<std::string*>(raw);
 	char *dataStock = const_cast<char *>(data->data());
@@ -55,20 +55,28 @@ Data* deserialize(uintptr_t raw) {
 	return decoded;
 }
 
+uintptr_t serialize(Data *ptr) {
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
+
+Data *deserialize(uintptr_t data) {
+	return (reinterpret_cast<Data *>(data));
+}
+
 int main() {
 	Data* test = new Data;
 	Data* ret;
 
 	test->name = "Millefeuille";
 	test->login = "mlabouri";
-	test->age = 20;
+	test->age = 20;\
 
 	ret = deserialize(serialize(test));
 
-	std::cout << test->name + "/" + test->login + "/" << test->age << std::endl;
-	std::cout << ret->name + "/" + ret->login + "/" << ret->age << std::endl;
+	std::cout << test->name + "/" + test->login + "/" << test->age << " (" << test << ")" << std::endl;
+	std::cout << ret->name + "/" + ret->login + "/" << ret->age << " (" << ret << ")" << std::endl;
 
 	delete test;
-	delete ret;
+	//delete ret;
 	return 0;
 }
