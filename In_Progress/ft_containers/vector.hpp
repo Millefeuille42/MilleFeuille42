@@ -8,6 +8,7 @@
 #include <memory>
 #include "utils/stddef.hpp"
 #include "utils/algorithm.hpp"
+#include "utils/exceptions.hpp"
 
 #include "iterators/normal_iterators.hpp"
 #include "iterators/reverse_iterator.hpp"
@@ -33,14 +34,14 @@ namespace ft {
 		class normal_iterator : public normal_random_access_iterator<_t> {
 		public:
 			/** Constructors */
-			normal_iterator() : _base(pointer(value_type())) {}
+			normal_iterator() : _base(pointer()) {}
 
 			normal_iterator(const normal_iterator& src) {
 				*this = src;
 			}
 
 			explicit normal_iterator(pointer ptr) : _base(ptr) {
-				if (ptr == NULL)
+				if (ptr == 0)
 					_base = pointer();
 			}
 
@@ -61,7 +62,7 @@ namespace ft {
 			}
 
 			/** postfix a++ || int to differentiate between prefix and postfix increment operators. */
-			normal_iterator operator++(const int) {
+			const normal_iterator operator++(const int) {
 				normal_iterator temp = *this;
 				_base++;
 				return temp;
@@ -75,11 +76,11 @@ namespace ft {
 				return _base != rhs._base;
 			}
 
-			_t& operator*() {
+			reference operator*() {
 				return *_base;
 			} // dereference
 
-			_t* operator->() {
+			pointer operator->() {
 				return &(this->operator*());
 			} // structure dereference
 
@@ -113,19 +114,19 @@ namespace ft {
 			}
 
 			bool operator<(const normal_iterator& rhs) {
-				return _base < rhs;
+				return _base < rhs._base;
 			}
 
 			bool operator>(const normal_iterator& rhs) {
-				return _base > rhs;
+				return _base > rhs._base;
 			}
 
 			bool operator<=(const normal_iterator& rhs) {
-				return _base <= rhs;
+				return _base <= rhs._base;
 			}
 
 			bool operator>=(const normal_iterator& rhs) {
-				return _base >= rhs;
+				return _base >= rhs._base;
 			}
 
 			normal_iterator& operator+=(normal_iterator rhs) {
@@ -161,22 +162,17 @@ namespace ft {
 			}
 		};
 
-		template<class _t>
-		class reverse_normal_iterator : public reverse_iterator<normal_iterator<_t> > {
-
-		};
-
 	public:
 		typedef normal_iterator<value_type>					iterator;
 		typedef normal_iterator<const value_type>			const_iterator;
-		typedef reverse_normal_iterator<iterator>			reverse_iterator;
-		typedef reverse_normal_iterator<const_iterator>		const_reverse_iterator;
+		typedef reverse_iterator<iterator>					reverse_iterator;
+		typedef ft::reverse_iterator<const_iterator>		const_reverse_iterator;
 
 		// TODO Define member functions
 /**  Constructors */
 	public:
 		explicit vector(const allocator_type& alloc = allocator_type())
-		: _allocator(alloc), _data(NULL), _size(0), _capacity(0) {} // no elements
+		: _allocator(alloc), _data(0), _size(0), _capacity(0) {} // no elements
 
 		explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type())
 		: _allocator(alloc), _data(_allocator.allocate(n + 5)), _size(n), _capacity(_size + 5) {
@@ -188,7 +184,8 @@ namespace ft {
 		template <class InputIterator>
 		vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type())
 		: _allocator(alloc) {
-			difference_type dist = distance(first, last);
+			typedef typename std::__is_integer<InputIterator>::__type _Integral
+			difference_type dist = ft::distance(first, last);
 			_size = dist;
 			_capacity = _size + 5;
 			_data = _allocator.allocate(_capacity);
@@ -198,29 +195,30 @@ namespace ft {
 			}
 		} // Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range, in the same order.
 
-		vector(const vector& x) : _data(NULL), _size(), _capacity() {
+		vector(const vector& x) : _data(0), _size(), _capacity() {
 			*this = x;
 		} // copy
 
 /**  Destructor */
 		~vector() {
-			if (_data != NULL) {
+			if (_data != 0) {
 				_allocator.deallocate(_data, _capacity);
-				_data = NULL;
+				_data = 0;
 			}
 		};
 
 /**  Members Function */
 	/** Member Operator Overloads */
 		vector& operator=(const vector& x) {
-			if (_data != NULL) {
+			if (_data != 0) {
 				_allocator.deallocate(_data, _capacity);
-				_data = NULL;
+				_data = 0;
 			}
 			_data = _allocator.allocate(x._capacity);
 			_size = x._size;
 			_capacity = x._capacity;
 			sameSizeCopy(x._data, _data, x._size);
+			return *this;
 		}
 
 	/** Iterators Members Function */
@@ -295,9 +293,9 @@ namespace ft {
 				return ;
 			pointer newData = _allocator.allocate(n);
 			sameSizeCopy(_data, newData, _size);
-			if (_data != NULL) {
+			if (_data != 0) {
 				_allocator.deallocate(_data, _capacity);
-				_data = NULL;
+				_data = 0;
 			}
 			_capacity = n;
 			_data = newData;
@@ -314,14 +312,14 @@ namespace ft {
 
 		reference at (size_type n) {
 			if (n >= _size) {
-				throw std::out_of_range("out of range");
+				throw ft::out_of_range();
 			}
 			return _data[n];
 		}
 
 		const_reference at (size_type n) const {
 			if (n >= _size) {
-				throw std::out_of_range("out of range");
+				throw ft::out_of_range();
 			}
 			return _data[n];
 		}
@@ -350,7 +348,7 @@ namespace ft {
 
 		template <class InputIterator>
 		void assign (InputIterator first, InputIterator last) {
-			difference_type dist = distance(first, last);
+			difference_type dist = ft::distance(first, last);
 			this->clear();
 			this->resize(dist);
 			for (size_type i = 0; first != last; first++) {
@@ -361,6 +359,7 @@ namespace ft {
 		iterator insert (iterator position, const value_type& val) {
 			fullRightShift(position);
 			_allocator.construct(&(*position), val);
+			return position;
 		} // single element
 
 		void insert (iterator position, size_type n, const value_type& val) {
@@ -373,10 +372,10 @@ namespace ft {
 
 		template <class InputIterator>
 		void insert (iterator position, InputIterator first, InputIterator last) {
-			difference_type dist = distance(first, last);
+			difference_type dist = ft::distance(first, last);
 			fullRightShift(position, dist);
 			for (; first != last; first++) {
-				_allocator.construct(position, *first);
+				_allocator.construct(&(*position), *first);
 				position++;
 			}
 		} // range
@@ -384,13 +383,15 @@ namespace ft {
 		iterator erase (iterator position) {
 			_allocator.destroy(&(*position));
 			fullLeftShift(position);
+			return position;
 		}
 
 		iterator erase (iterator first, iterator last) {
 			for (; first != last; first++) {
 				_allocator.destroy(&(*first));
 			}
-			fullLeftShift(last, distance(first, last));
+			fullLeftShift(last, ft::distance(first, last));
+			return first;
 		} // range
 
 		void push_back (const value_type& val) {
@@ -479,12 +480,12 @@ namespace ft {
 		if (lhs.size() != rhs.size())
 			return false;
 
-		return  equal(lhs.begin(), lhs.end(), rhs.begin());
+		return  ft::equal(lhs.begin(), lhs.end(), rhs.begin());
 	}
 
 	template <class T>
 	bool operator<  (const vector<T>& lhs, const vector<T>& rhs) {
-		lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+		return ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
 	}
 
 	template <class T>

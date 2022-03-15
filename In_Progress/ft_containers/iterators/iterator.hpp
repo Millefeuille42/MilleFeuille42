@@ -13,7 +13,7 @@ namespace ft {
 	template <class Category, class T, class Distance = ptrdiff_t,
 			class Pointer = T*, class Reference = T&>
 	struct iterator {
-	protected:
+	public:
 		typedef T         value_type;
 		typedef Distance  difference_type;
 		typedef Pointer   pointer;
@@ -23,7 +23,7 @@ namespace ft {
 
 	template <class Category, class T>
 	struct iterator<Category, const T> {
-	protected:
+	public:
 		typedef T         value_type;
 		typedef ptrdiff_t difference_type;
 		typedef const T*		  pointer;

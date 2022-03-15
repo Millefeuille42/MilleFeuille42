@@ -8,4 +8,4 @@ add_executable(ft_containers
         iterators/iterator.hpp
         utils/stddef.hpp
         iterators/iterator_tags.hpp
-        iterators/normal_iterators.hpp iterators/reverse_iterator.hpp)
+        iterators/normal_iterators.hpp iterators/reverse_iterator.hpp utils/exceptions.hpp utils/type_traits.hpp)

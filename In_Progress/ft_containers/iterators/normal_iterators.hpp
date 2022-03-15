@@ -8,7 +8,8 @@
 #include "iterator.hpp"
 #include "iterator_traits.hpp"
 #include "iterator_tags.hpp"
-#include <typeinfo>
+#include "../utils/exceptions.hpp"
+#include "../utils/type_traits.hpp"
 
 /// Has no interest as is, it's just for reference when building iterators
 namespace ft {
@@ -107,13 +108,13 @@ class normal_random_access_iterator : public iterator<random_access_iterator_tag
 	void advance (InputIterator& it, Distance n) {
 		typedef iterator_traits<InputIterator> traits;
 
-		if (typeid(typename traits::iterator_category) == typeid(bidirectional_iterator_tag)
-			|| typeid(typename traits::iterator_category) == typeid(random_access_iterator_tag)) {
+		if (is_bidirectional_iterator<typename traits::iterator_category>::value
+			|| is_random_access_iterator<typename traits::iterator_category>::value) {
 			if (n <  0)
-				throw std::out_of_range("cannot be negative");
+				throw ft::out_of_range();
 		}
 
-		if (typeid(typename traits::iterator_category) == typeid(random_access_iterator_tag)) {
+		if (is_random_access_iterator<typename traits::iterator_category>::value) {
 			it += n;
 			return;
 		}
@@ -127,18 +128,14 @@ class normal_random_access_iterator : public iterator<random_access_iterator_tag
 	distance (InputIterator first, InputIterator last) {
 		typedef iterator_traits<InputIterator> traits;
 
-		if (typeid(typename traits::iterator_category) == typeid(output_iterator_tag)) {
-			throw std::invalid_argument("Iterator is not at least input iterator");
+		if (is_output_iterator<typename traits::iterator_category>::value) {
+			throw ft::invalid_argument();
 		}
 
-		typename traits::difference_type diff;
-		if (typeid(typename traits::iterator_category) == typeid(random_access_iterator_tag)) {
-			diff = first - last;
-		} else {
+		typename traits::difference_type diff = 0;
 			for (; first != last ; first++) {
 				diff++;
 			}
-		}
 		return diff;
 	}
 }
