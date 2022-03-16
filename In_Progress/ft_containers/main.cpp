@@ -22,7 +22,9 @@ namespace ft = std;
 #endif
 
 void vectorMain() {
-	ft::vector<int> vec(10, 11);
+
+	int tab[]={0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	ft::vector<int> vec(tab, tab+10);
 }
 
 int main() {

@@ -102,7 +102,7 @@ namespace ft {
 	};
 
 	template<typename type>
-class normal_random_access_iterator : public iterator<random_access_iterator_tag, type> {};
+class normal_random_access_iterator : public iterator<ft::random_access_iterator_tag, type> {};
 
 	template <class InputIterator, class Distance>
 	void advance (InputIterator& it, Distance n) {
@@ -131,6 +131,8 @@ class normal_random_access_iterator : public iterator<random_access_iterator_tag
 		if (is_output_iterator<typename traits::iterator_category>::value) {
 			throw ft::invalid_argument();
 		}
+		if (is_random_access_iterator<typename traits::iterator_category>::value)
+			return (last - first);
 
 		typename traits::difference_type diff = 0;
 			for (; first != last ; first++) {

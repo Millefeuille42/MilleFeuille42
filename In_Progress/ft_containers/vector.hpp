@@ -9,6 +9,7 @@
 #include "utils/stddef.hpp"
 #include "utils/algorithm.hpp"
 #include "utils/exceptions.hpp"
+#include "utils/type_traits.hpp"
 
 #include "iterators/normal_iterators.hpp"
 #include "iterators/reverse_iterator.hpp"
@@ -80,7 +81,15 @@ namespace ft {
 				return *_base;
 			} // dereference
 
+			const_reference operator*() const {
+				return *_base;
+			} // dereference
+
 			pointer operator->() {
+				return &(this->operator*());
+			} // structure dereference
+
+			const_pointer operator->() const {
 				return &(this->operator*());
 			} // structure dereference
 
@@ -100,9 +109,10 @@ namespace ft {
 				return normal_iterator(_base + diff);
 			}
 
-			normal_iterator operator-(normal_iterator rhs) {
+			difference_type operator-(normal_iterator rhs) {
 				difference_type diff = this->abs(_base - rhs._base);
-				return normal_iterator(_base - diff);
+
+				return diff;
 			}
 
 			normal_iterator operator+(const int i) {
@@ -176,16 +186,18 @@ namespace ft {
 
 		explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type())
 		: _allocator(alloc), _data(_allocator.allocate(n + 5)), _size(n), _capacity(_size + 5) {
+			if (n < 0)
+				return ;
 			for (size_type i = 0; i < n; i++) {
 				_allocator.construct(_data + i, val);
 			}
 		} // n elements at value val
 
 		template <class InputIterator>
-		vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type())
+		vector(typename enable_if<!is_integral<InputIterator>::value, InputIterator>::type first, InputIterator last, const allocator_type& alloc = allocator_type())
 		: _allocator(alloc) {
-			typedef typename std::__is_integer<InputIterator>::__type _Integral
 			difference_type dist = ft::distance(first, last);
+
 			_size = dist;
 			_capacity = _size + 5;
 			_data = _allocator.allocate(_capacity);
@@ -264,6 +276,9 @@ namespace ft {
 		} // Returns the maximum number of elements that the vector can hold.
 
 		void resize (size_type n, value_type val = value_type()) {
+			if (n < 0)
+				return ;
+
 			if (n <= _size) {
 				while (n < _size)
 					this->pop_back();
@@ -312,6 +327,7 @@ namespace ft {
 
 		reference at (size_type n) {
 			if (n >= _size) {
+				return *new value_type();
 				throw ft::out_of_range();
 			}
 			return _data[n];
@@ -319,6 +335,7 @@ namespace ft {
 
 		const_reference at (size_type n) const {
 			if (n >= _size) {
+				return *new value_type();
 				throw ft::out_of_range();
 			}
 			return _data[n];
@@ -363,6 +380,8 @@ namespace ft {
 		} // single element
 
 		void insert (iterator position, size_type n, const value_type& val) {
+			if (n < 0)
+				return ;
 			fullRightShift(position, n);
 			for (size_type i = 0; i < n; i++) {
 				_allocator.construct(&(*position), val);
@@ -373,6 +392,8 @@ namespace ft {
 		template <class InputIterator>
 		void insert (iterator position, InputIterator first, InputIterator last) {
 			difference_type dist = ft::distance(first, last);
+			if (dist < 0)
+				return;
 			fullRightShift(position, dist);
 			for (; first != last; first++) {
 				_allocator.construct(&(*position), *first);
@@ -387,6 +408,9 @@ namespace ft {
 		}
 
 		iterator erase (iterator first, iterator last) {
+			if (ft::distance(first, last) < 0)
+				return first;
+
 			for (; first != last; first++) {
 				_allocator.destroy(&(*first));
 			}
