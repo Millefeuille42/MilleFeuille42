@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 14:06:41 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/18 11:12:44 by mlabouri         ###   ########.fr       */
+/*   Updated: 2022/03/18 13:52:24 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "cub3d.h"
 # include <X11/X.h>
-# include <mlx.h>
+# include "mlx.h"
 # include <time.h>
 # define TPI 0.017453292519943295
 

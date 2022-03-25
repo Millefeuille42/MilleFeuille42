@@ -1,108 +1,142 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 18:30:22 by mlabouri          #+#    #+#             */
-/*   Updated: 2020/05/07 12:19:23 by mlabouri         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
+#include <string.h>
+#include <malloc.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <sys/wait.h>
 
-int get_next_line_compact(char **line, int fd) {
-	int l = 1, r, i;
-	char c;
-	char *tmp;
+#define TP_PIPE 1
+#define TP_NONE 0
 
-	if (!(*line = malloc(l)) || ((*line)[0] = '\0'))
-		return (-1);
-	while ((r = read(fd, &c, 1)) && l++ && c != '\n' && (i = -1)) {
-		if (!(tmp = malloc(l)))
-			return (-1);
-		while (++i < l - 2)
-			tmp[i] = (*line)[i];
-		tmp[i] = c;
-		tmp[i + 1] = 0;
-		free(*line);
-		*line = tmp;
-	}
-	return (r);
+typedef struct s_cmd {
+	char **args;
+	int argLen;
+	int type;
+	int curPos;
+} t_cmd;
+
+typedef struct s_list {
+	t_cmd cmd;
+	struct s_list *next;
+	struct s_list *prev;
+	struct s_list *first;
+} t_list;
+
+void fPutStr(int fd, char *s) {
+	if (!s)
+		return ;
+	for (; *s; s++)
+		write(fd, s, 1);
 }
 
-int get_next_line_opti(char **line, int fd) {
-	int l = 1, r, i;
-	char c;
-	char *tmp;
+t_list *chainEnd(t_list *lst) {
+	t_list *cur;
 
-	if (!(*line = malloc(1)))
-		return (-1);
-	(*line)[0] = '\0';
-	while ((r = read(fd, &c, 1))) {
-		l++;
-		i = -1;
-		if (!(tmp = malloc(l)) || (c == '\n' && (i = r)))
-			return (i);
-		while (++i < l - 2)
-			tmp[i] = (*line)[i];
-		tmp[i] = c;
-		tmp[i + 1] = 0;
-		free(*line);
-		*line = tmp;
-	}
-	return (r);
+	for (cur = lst; cur->next; cur = cur->next) {}
+	return cur;
 }
 
+void deleteChain(t_list *lst) {
+	t_list *cur;
+	t_list *next;
 
-// get_next_line_nul c de la merde
-int get_next_line_nul(char **line, int fd) {
-	int length = 1, ret, i;
-	char c;
-	char *tmp;
-
-	pdt->machin;
-	if (!(*line = malloc(length))) // Malloc line vide
-		return (-1);
-	(*line)[0] = '\0';
-	while ((ret = read(fd, &c, 1)) && c != '\n') { // Lire jusque EOF ou /n
-		if (!(tmp = malloc(++length))) // malloc length + 1 pour inclure le prochain char
-			return (-1);
-		i = 0;
-		while (i < length - 2) { // copier line dans tmp moins l'espace supp
-			tmp[i] = (*line)[i];
-			i++;
-		}
-		tmp[i] = c; // ajouter le dernier char lu
-		tmp[i + 1] = 0;
-		free(*line);
-		*line = tmp; // mettre line a jour
+	for (cur = lst; cur ; cur = next) {
+		next = cur->next;
+		free(cur->cmd.args);
+		free(cur);
 	}
-	return (ret); // retourner !0 si lecture 0 si EOF
 }
 
-__attribute__((destructor)) void ptdrTNul() {printf("Rip ta correction\n");}
+int pushChain(t_list *lst) {
+	t_list *newChain = malloc(sizeof(t_list));
+	if (!newChain) {
+		deleteChain(lst);
+		exit(-1);
+	}
 
-int main(void) {
-	char *line;
-	int fd;
+	newChain->cmd = (t_cmd) {
+			.args = NULL, .argLen = 0, .type = 0, .curPos = 0
+	};
 
-	//fd = open("./CMakeLists.txt", O_RDONLY);
-	//while (get_next_line_opti(&line, fd) > 0)
-	//	printf("-%s-\n", line);
-	//printf("|||||-----|||||\n");
-	//close(fd);
-	//fd = open("./CMakeLists.txt", O_RDONLY);
-	//while (get_next_line_compact(&line, fd) > 0)
-	//	printf("-%s-\n", line);
-	//printf("|||||-----|||||\n");
-	//close(fd);
-	fd = open("./CMakeLists.txt", O_RDONLY);
-	while (get_next_line_nul(&line, fd) > 0)
-		printf("-%s-\n", line);
+	t_list *end = chainEnd(lst);
+	end->next = newChain;
+	newChain->prev = end;
 	return 0;
+}
+
+int getBoardSize(int argc, char** argv, int offset) {
+	int i = offset;
+
+	for (; i < argc ; i++) {
+		int isBreak = !strcmp(";", argv[i]);
+		int isPipe = !strcmp("|", argv[i]);
+		if (isBreak || isPipe) {
+			break;
+		}
+	}
+	return (i - offset);
+}
+
+void exec(t_cmd cmd, char **envp) {
+	pid_t pid;
+
+	if ((pid = fork()) < 0)
+		exit(2);
+
+	if (!pid) {
+		int ret = execve(cmd.args[0], cmd.args, envp);
+		if (ret) {
+			fPutStr(2, "error: exec -> ");
+			fPutStr(2, cmd.args[0]);
+			fPutStr(2, "\n");
+		}
+		exit(ret);
+	}
+
+	int retVal = 0;
+	waitpid(pid, &retVal, 0);
+}
+
+int main(int argc, char **argv, char **envp) {
+	if (argc <= 1)
+		goto END;
+
+	t_cmd cmd = (t_cmd) {
+		.args = NULL, .argLen = 0, .type = 0, .curPos = 0
+	};
+
+	for (int i = 1; i < argc ; i++) {
+		if (!cmd.args) {
+			cmd.argLen = getBoardSize(argc, argv, i);
+			cmd.args = malloc((cmd.argLen + 1) * sizeof(char *));
+			if (!cmd.args)
+				goto MALLOC_ERROR;
+			cmd.args[cmd.argLen] = NULL;
+		}
+
+		int isBreak = !strcmp(";", argv[i]);
+		if (isBreak) {
+			exec(cmd, envp);
+			free(cmd.args);
+			cmd = (t_cmd) {
+				.args = NULL, .argLen = 0, .type = 0, .curPos = 0
+			};
+			continue ;
+		}
+
+		int isPipe = !strcmp("|", argv[i]);
+		if (isPipe) {
+			// Set type to PIPE
+			// Create new entry in list; go next
+			continue ;
+		}
+
+		cmd.args[cmd.curPos] = argv[i];
+		cmd.curPos++;
+	}
+
+	exec(cmd, envp);
+	free(cmd.args);
+
+	END: return 0;
+	MALLOC_ERROR: fPutStr(2, "error: fatal\n"); return -1;
 }

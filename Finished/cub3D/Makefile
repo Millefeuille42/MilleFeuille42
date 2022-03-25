@@ -61,7 +61,7 @@ I_MLX	=	-I /usr/include -I /usr/local/include
 
 LSTDRT	=	-L /usr/lib/ -lbsd -lm -lc
 LX		=	-lX11 -lmlx -lXext
-LMLX	=	-L /usr/local/lib/ -lmlx
+LMLX	=	-L ./mlx -lmlx
 
 COMPILE	=	clang
 FLAGS	=	-Wall -Wextra -Werror -Ofast

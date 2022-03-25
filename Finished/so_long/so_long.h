@@ -6,7 +6,7 @@
 /*   By: mlabouri <mlabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:34:49 by mlabouri          #+#    #+#             */
-/*   Updated: 2021/12/03 13:34:49 by mlabouri         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:02:23 by mlabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/fcntl.h>
 # include <stdio.h>
 
-# include "mlx/X.h"
+# include <X11/X.h>
 # include "mlx/mlx.h"
 # include "utils/GNL/get_next_line.h"
 # include "utils/lists/lists.h"

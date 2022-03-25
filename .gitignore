@@ -1,4 +1,16 @@
 cmake-build-debug
 cmake-build-debug-coverage
 .idea
+
+
+*.o
+*.d
+a.out
+
+/Finished/cub3D/cub3D
+/Finished/so_long/so_long
+
+Finished/so_long/mlx/
+Finished/cub3D/mlx/
+tests/
 /In_Progress/ft_containers/containers_test/
