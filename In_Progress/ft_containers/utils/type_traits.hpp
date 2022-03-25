@@ -47,23 +47,23 @@ namespace ft {
 
 	/**  iterator_checks */
 	template <typename T> struct is_input_iterator {
-		const static bool value = is_type_equal<T, input_iterator_tag>::value;
+		const static bool value = is_type_equal<T, std::input_iterator_tag>::value;
 	};
 
 	template <typename T> struct is_output_iterator {
-		const static bool value = is_type_equal<T, output_iterator_tag>::value;
+		const static bool value = is_type_equal<T, std::output_iterator_tag>::value;
 	};
 
 	template <typename T> struct is_forward_iterator {
-		const static bool value = is_type_equal<T, forward_iterator_tag>::value;
+		const static bool value = is_type_equal<T, std::forward_iterator_tag>::value;
 	};
 
 	template <typename T> struct is_bidirectional_iterator {
-		const static bool value = is_type_equal<T, bidirectional_iterator_tag>::value;
+		const static bool value = is_type_equal<T, std::bidirectional_iterator_tag>::value;
 	};
 
 	template <typename T> struct is_random_access_iterator {
-		const static bool value = is_type_equal<T, random_access_iterator_tag>::value;
+		const static bool value = is_type_equal<T, std::random_access_iterator_tag>::value;
 	};
 
 

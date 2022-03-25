@@ -10,6 +10,7 @@
 #include "utils/algorithm.hpp"
 #include "utils/exceptions.hpp"
 #include "utils/type_traits.hpp"
+#include <stdexcept>
 
 #include "iterators/normal_iterators.hpp"
 #include "iterators/reverse_iterator.hpp"
@@ -32,48 +33,53 @@ namespace ft {
 /**  Iterators */
 	private:
 		template<class _t>
-		class normal_iterator : public normal_random_access_iterator<_t> {
+		class vector_iterator : public normal_random_access_iterator<_t> {
 		public:
-			/** Constructors */
-			normal_iterator() : _base(pointer()) {}
 
-			normal_iterator(const normal_iterator& src) {
+			typedef typename vector_iterator<_t>::iterator::value_type value_type;
+			typedef typename vector_iterator<_t>::iterator::pointer pointer;
+			typedef typename vector_iterator<_t>::iterator::reference reference;
+
+			/** Constructors */
+			vector_iterator() : _base(pointer()) {}
+
+			vector_iterator(const vector_iterator& src) {
 				*this = src;
 			}
 
-			explicit normal_iterator(pointer ptr) : _base(ptr) {
+			vector_iterator(pointer ptr) : _base(ptr) {
 				if (ptr == 0)
 					_base = pointer();
 			}
 
 			/** Destructor */
-			~normal_iterator() {}
+			~vector_iterator() {}
 
 			/** Members Function*/
-			/** Member Operator Overloads */
-			normal_iterator& operator=(const normal_iterator& rhs) {
+			virtual /** Member Operator Overloads */
+			vector_iterator& operator=(const vector_iterator& rhs) {
 				_base = rhs._base;
 				return *this;
 			}
 
 			/** prefix ++a */
-			normal_iterator& operator++() {
+			vector_iterator& operator++() {
 				_base++;
 				return *this;
 			}
 
 			/** postfix a++ || int to differentiate between prefix and postfix increment operators. */
-			const normal_iterator operator++(const int) {
-				normal_iterator temp = *this;
+			const vector_iterator operator++(const int) {
+				vector_iterator temp = *this;
 				_base++;
 				return temp;
 			}
 
-			bool operator==(const normal_iterator& rhs) const {
+			bool operator==(const vector_iterator& rhs) const {
 				return _base == rhs._base;
 			}
 
-			bool operator!=(const normal_iterator& rhs) const {
+			bool operator!=(const vector_iterator& rhs) const {
 				return _base != rhs._base;
 			}
 
@@ -81,7 +87,7 @@ namespace ft {
 				return *_base;
 			} // dereference
 
-			const_reference operator*() const {
+			const reference operator*() const {
 				return *_base;
 			} // dereference
 
@@ -89,83 +95,87 @@ namespace ft {
 				return &(this->operator*());
 			} // structure dereference
 
-			const_pointer operator->() const {
+			const pointer operator->() const {
 				return &(this->operator*());
 			} // structure dereference
 
-			normal_iterator& operator--() {
+			vector_iterator& operator--() {
 				_base--;
 				return *this;
 			} //prefix --a
 
-			normal_iterator operator--(const int) {
-				normal_iterator temp = *this;
+			const vector_iterator operator--(const int) {
+				vector_iterator temp = *this;
 				_base--;
 				return temp;
 			} // postfix a-- || int to differentiate between prefix and postfix increment operators.
 
-			normal_iterator operator+(normal_iterator rhs) {
+			vector_iterator operator+(vector_iterator rhs) const {
 				difference_type diff = this->abs(_base - rhs._base);
-				return normal_iterator(_base + diff);
+				return vector_iterator(_base + diff);
 			}
 
-			difference_type operator-(normal_iterator rhs) {
+			difference_type operator-(vector_iterator rhs) const {
 				difference_type diff = this->abs(_base - rhs._base);
 
 				return diff;
 			}
 
-			normal_iterator operator+(const int i) {
-				return normal_iterator(_base + i);
+			vector_iterator operator+(const int i) {
+				return vector_iterator(_base + i);
 			}
 
-			normal_iterator operator-(const int i) {
-				return normal_iterator(_base - i);
+			vector_iterator operator-(const int i) {
+				return vector_iterator(_base - i);
 			}
 
-			bool operator<(const normal_iterator& rhs) {
+			bool operator<(const vector_iterator& rhs) {
 				return _base < rhs._base;
 			}
 
-			bool operator>(const normal_iterator& rhs) {
+			bool operator>(const vector_iterator& rhs) {
 				return _base > rhs._base;
 			}
 
-			bool operator<=(const normal_iterator& rhs) {
+			bool operator<=(const vector_iterator& rhs) {
 				return _base <= rhs._base;
 			}
 
-			bool operator>=(const normal_iterator& rhs) {
+			bool operator>=(const vector_iterator& rhs) {
 				return _base >= rhs._base;
 			}
 
-			normal_iterator& operator+=(normal_iterator rhs) {
+			vector_iterator& operator+=(vector_iterator rhs) {
 				_base = (this + rhs)._base;
 				return *this;
 			}
 
-			normal_iterator& operator-=(normal_iterator rhs) {
+			vector_iterator& operator-=(vector_iterator rhs) {
 				_base = (this - rhs)._base;
 				return *this;
 			}
 
-			normal_iterator& operator+=(const int i) {
+			vector_iterator& operator+=(const int i) {
 				_base += i;
 				return *this;
 			}
 
-			normal_iterator& operator-=(const int i) {
+			vector_iterator& operator-=(const int i) {
 				_base -= i;
 				return *this;
 			}
 
-			normal_iterator& operator[](const unsigned int i) {
+			value_type & operator[](const unsigned int i) {
 				return _base[i];
 			}
 
-		private:
+			operator vector_iterator<const _t> const() {
+				return (vector_iterator<const _t>(_base));
+			};
+
+		protected:
 			pointer		_base;
-			difference_type abs(difference_type x) {
+			difference_type abs(difference_type x) const {
 				if (x > 0)
 					return x;
 				return x * -1;
@@ -173,8 +183,8 @@ namespace ft {
 		};
 
 	public:
-		typedef normal_iterator<value_type>					iterator;
-		typedef normal_iterator<const value_type>			const_iterator;
+		typedef vector_iterator<value_type>					iterator;
+		typedef vector_iterator<const value_type>				const_iterator;
 		typedef reverse_iterator<iterator>					reverse_iterator;
 		typedef ft::reverse_iterator<const_iterator>		const_reverse_iterator;
 
@@ -272,7 +282,7 @@ namespace ft {
 		} // Returns the number of elements in the vector.
 
 		size_type max_size() const {
-			return _allocator.max_size;
+			return _allocator.max_size();
 		} // Returns the maximum number of elements that the vector can hold.
 
 		void resize (size_type n, value_type val = value_type()) {
@@ -291,6 +301,7 @@ namespace ft {
 
 			for (size_type i = _size; i < n; i++) {
 				_allocator.construct(_data + i, val);
+				//_data[i] = val;
 			}
 			_size = n;
 		} // https://www.cplusplus.com/reference/vector/vector/resize/
@@ -327,17 +338,18 @@ namespace ft {
 
 		reference at (size_type n) {
 			if (n >= _size) {
-				return *new value_type();
-				throw ft::out_of_range();
+				throw std::out_of_range("");
+				//throw ft::out_of_range();
 			}
 			return _data[n];
 		}
 
 		const_reference at (size_type n) const {
 			if (n >= _size) {
-				return *new value_type();
-				throw ft::out_of_range();
+				throw std::out_of_range("");
+				//throw ft::out_of_range();
 			}
+
 			return _data[n];
 		}
 
@@ -359,17 +371,18 @@ namespace ft {
 
 	/** Modifiers Members Function */
 		void assign (size_type n, const value_type& val) {
-			this->destroy_data();
+			this->clear();
 			this->resize(n, val);
 		} // fill
 
 		template <class InputIterator>
-		void assign (InputIterator first, InputIterator last) {
+		void assign (typename enable_if<!is_integral<InputIterator>::value, InputIterator>::type first, InputIterator last) {
 			difference_type dist = ft::distance(first, last);
 			this->clear();
 			this->resize(dist);
 			for (size_type i = 0; first != last; first++) {
 				_allocator.construct(_data + i, *first);
+				i++;
 			}
 		} // range
 
@@ -390,7 +403,7 @@ namespace ft {
 		} // fill
 
 		template <class InputIterator>
-		void insert (iterator position, InputIterator first, InputIterator last) {
+		void insert (iterator position, typename enable_if<!is_integral<InputIterator>::value, InputIterator>::type first, InputIterator last) {
 			difference_type dist = ft::distance(first, last);
 			if (dist < 0)
 				return;
@@ -408,13 +421,14 @@ namespace ft {
 		}
 
 		iterator erase (iterator first, iterator last) {
-			if (ft::distance(first, last) < 0)
+			difference_type dist = ft::distance(first, last);
+			if (dist < 0)
 				return first;
 
-			for (; first != last; first++) {
-				_allocator.destroy(&(*first));
+			for (iterator cur = first; cur != last; cur++) {
+				_allocator.destroy(&(*cur));
 			}
-			fullLeftShift(last, ft::distance(first, last));
+			fullLeftShift(last, dist);
 			return first;
 		} // range
 
@@ -428,10 +442,20 @@ namespace ft {
 		}
 
 		void swap (vector& x) {
-			vector tmp(*this);
+			pointer tmp_d = this->_data;
+			size_type tmp_s = this->_size;
+			size_type tmp_c = this->_capacity;
+			allocator_type tmp_a = this->_allocator;
 
-			*this = x;
-			x = tmp;
+			this->_data = x._data;
+			this->_size = x._size;
+			this->_capacity = x._capacity;
+			this->_allocator = x._allocator;
+
+			x._data = tmp_d;
+			x._size = tmp_s;
+			x._capacity = tmp_c;
+			x._allocator = tmp_a;
 		};
 
 		void clear() {
@@ -479,8 +503,9 @@ namespace ft {
 		}
 
 		void fullLeftShift(iterator position, size_type times = 1) {
-			position += times;
-			iterator curBegin = this->begin();
+			if (times == 1) {
+				position++;
+			}
 			iterator curEnd = this->end();
 			for (; position != curEnd; position++) {
 				*(position - times) = *position;

@@ -27,9 +27,9 @@ namespace ft {
 	template <class Category, class T>
 	struct iterator<Category, const T> : default_iterator {
 	public:
-		typedef T         value_type;
+		typedef const T   value_type;
 		typedef ptrdiff_t difference_type;
-		typedef const T*		  pointer;
+		typedef T*		  pointer;
 		typedef const T&        reference;
 		typedef Category  iterator_category;
 	};
