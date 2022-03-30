@@ -8,63 +8,35 @@
 #include "../iterators/iterator.hpp"
 
 namespace ft {
-	/**  is_derived_from */
-	template <typename Derived, typename Base> struct is_derived_from {
-		template <typename T> struct check {
-			const static bool value = false;
-		};
 
-		template <> struct check<Base *> {
-			const static bool value = true;
-		};
+	/** @struct enable_if
+	 *
+	 * @brief https://www.cplusplus.com/reference/type_traits/enable_if/
+	 *
+	 * Rend disponible la variable interne type, étant T si la condition B est true.
+	 * Ne compilant donc pas si B est faux.
+	 * Cette version est la spécialisation de template ou B est false, donc ou type n'existe pas
+	 *
+	 * @tparam B < La condition évaluée
+	 * @tparam T < Le type que l'on souhaite rendre, ou non, disponible
+	 */
 
-		template <> struct check<void *> {
-			const static bool value = false;
-		};
-
-		const static bool value = check<Derived *>::value;
-	};
-
-
-	/**  enable_if */
 	template <bool B, class T = void> struct enable_if { };
+
+	/** @struct enable_if
+     *
+     * @brief https://www.cplusplus.com/reference/type_traits/enable_if/
+     *
+     * Rend disponible la variable interne type, étant T si la condition B est true.
+     * Ne compilant donc pas si B est faux.
+     * Cette version est la spécialisation de template ou B est true, donc où type existe
+     *
+     * @tparam T < Le type que l'on souhaite rendre, ou non, disponible
+     */
 
 	template <class T> struct enable_if<true, T> {
 		typedef T type;
 	};
-
-
-	/**  is_type_equal */
-	template <typename T, typename U> struct is_type_equal {
-		const static bool value = false;
-	};
-
-	template <typename T> struct is_type_equal<T, T> {
-		const static bool value = true;
-	};
-
-
-	/**  iterator_checks */
-	template <typename T> struct is_input_iterator {
-		const static bool value = is_type_equal<T, std::input_iterator_tag>::value;
-	};
-
-	template <typename T> struct is_output_iterator {
-		const static bool value = is_type_equal<T, std::output_iterator_tag>::value;
-	};
-
-	template <typename T> struct is_forward_iterator {
-		const static bool value = is_type_equal<T, std::forward_iterator_tag>::value;
-	};
-
-	template <typename T> struct is_bidirectional_iterator {
-		const static bool value = is_type_equal<T, std::bidirectional_iterator_tag>::value;
-	};
-
-	template <typename T> struct is_random_access_iterator {
-		const static bool value = is_type_equal<T, std::random_access_iterator_tag>::value;
-	};
-
 
 	/** is_integral */
 	template <bool B, typename T> struct is_integral_type {
