@@ -11,6 +11,8 @@ namespace ft {
 
 	/** @struct iterator
 	 *
+	 * @brief https://www.cplusplus.com/reference/iterator/iterator
+	 *
 	 * Définis la struct de base de l'iterator, avec tout les types membres requis
 	 *
 	 * @tparam Category		< Catégorie de l'iterator, usuellement on y met des iterator_tags
@@ -34,6 +36,8 @@ namespace ft {
 
 	/** @struct iterator spécialisation de template pour const type
 	 *
+	 * @brief https://www.cplusplus.com/reference/iterator/iterator
+	 *
 	 * Définis la struct de base de l'iterator, avec tout les types membres requis.
 	 * Spécialisation de template pour const type
 	 *
@@ -41,6 +45,7 @@ namespace ft {
 	 * @tparam T 		< Type sur lequel l'iterator pointe
 	 *
 	 */
+
 	template <class Category, class T>
 	struct iterator<Category, const T> {
 	public:

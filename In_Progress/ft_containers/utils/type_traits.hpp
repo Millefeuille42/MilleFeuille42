@@ -5,7 +5,6 @@
 #ifndef INC_42_TYPE_TRAITS_HPP
 #define INC_42_TYPE_TRAITS_HPP
 
-#include "../iterators/iterator_tags.hpp"
 #include "../iterators/iterator.hpp"
 
 namespace ft {

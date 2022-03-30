@@ -8,7 +8,6 @@
 #include "../utils/stddef.hpp"
 #include "../utils/type_traits.hpp"
 
-#include "iterator_tags.hpp"
 
 
 /// Defines the iterator_traits class

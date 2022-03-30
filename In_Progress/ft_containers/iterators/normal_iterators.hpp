@@ -7,7 +7,6 @@
 
 #include "iterator.hpp"
 #include "iterator_traits.hpp"
-#include "iterator_tags.hpp"
 #include "../utils/exceptions.hpp"
 #include "../utils/type_traits.hpp"
 
