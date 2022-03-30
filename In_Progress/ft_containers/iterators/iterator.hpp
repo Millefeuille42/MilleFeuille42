@@ -15,11 +15,11 @@ namespace ft {
 	 *
 	 * Définis la struct de base de l'iterator, avec tout les types membres requis
 	 *
-	 * @tparam Category		< Catégorie de l'iterator, usuellement on y met des iterator_tags
-	 * @tparam T			< Type sur lequel l'iterator pointe
-	 * @tparam Distance		< Default: ptrdiff_t. Type entier utilisé pour les operations arithmétiques
-	 * @tparam Pointer		< Default: T*. Usuellement un pointeur sur type
-	 * @tparam Reference	< Default: T&. Usuellement une reference sur type
+	 * @tparam Category < Catégorie de l'iterator, usuellement on y met des iterator_tags
+	 * @tparam T < Type sur lequel l'iterator pointe
+	 * @tparam Distance < Default: ptrdiff_t. Type entier utilisé pour les operations arithmétiques
+	 * @tparam Pointer < Default: T*. Usuellement un pointeur sur type
+	 * @tparam Reference < Default: T&. Usuellement une reference sur type
 	 *
 	 */
 
