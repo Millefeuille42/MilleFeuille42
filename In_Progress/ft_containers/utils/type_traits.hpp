@@ -89,39 +89,6 @@ namespace ft {
 	template <> struct is_integral<unsigned int> : is_integral_type<true, unsigned int> { };
 	template <> struct is_integral<long int> : is_integral_type<true, long int> { };
 	template <> struct is_integral<unsigned long int> : is_integral_type<true, unsigned long int> { };
-
-
-	/** is_iterable */
-	template <bool B, typename T> struct is_iterable_type {
-		typedef T type;
-		static const bool value = B;
-	};
-
-	template <typename T = void> struct is_iterable : is_iterable_type<is_derived_from<T, default_iterator>::value, T> { };
-
-	template <> struct is_iterable<bool> : is_iterable_type<false, bool> { };
-
-	template <> struct is_iterable<char> : is_iterable_type<true, char> { };
-	template <> struct is_iterable<signed char> : is_iterable_type<true, signed char> { };
-	template <> struct is_iterable<unsigned char> : is_iterable_type<true, unsigned char> { };
-
-	template <> struct is_iterable<wchar_t> : is_iterable_type<true, wchar_t> { };
-	template <> struct is_iterable<short int> : is_iterable_type<true, short int> { };
-	template <> struct is_iterable<unsigned short int> : is_iterable_type<true, unsigned short int> { };
-	template <> struct is_iterable<int> : is_iterable_type<true, int> { };
-	template <> struct is_iterable<unsigned int> : is_iterable_type<true, unsigned int> { };
-	template <> struct is_iterable<long int> : is_iterable_type<true, long int> { };
-	template <> struct is_iterable<unsigned long int> : is_iterable_type<true, unsigned long int> { };
-
-	/** diff_type or size_t */
-	template <bool B, typename T> struct diff_type_or_t_type {
-		typedef T type;
-	};
-
-	template <bool B, typename T> struct diff_type_or_t : diff_type_or_t_type<B, T> { };
-
-	template <typename T> struct diff_type_or_t<false, T> : diff_type_or_t_type<false, ft::size_t> { };
-	template <typename T> struct diff_type_or_t<true, T> : diff_type_or_t_type<false, typename T::difference_type> { };
 }
 
 #endif //INC_42_TYPE_TRAITS_HPP

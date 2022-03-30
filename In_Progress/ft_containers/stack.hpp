@@ -44,27 +44,27 @@ namespace ft {
 			c.pop_back();
 		}
 
-		bool operator== (const stack<T,Container>& rhs) {
+		bool operator== (const stack<T,Container>& rhs) const {
 			return c == rhs.c;
 		}
 
-		bool operator!= (const stack<T,Container>& rhs) {
+		bool operator!= (const stack<T,Container>& rhs) const {
 			return c != rhs.c;
 		}
 
-		bool operator>  (const stack<T,Container>& rhs) {
+		bool operator>  (const stack<T,Container>& rhs) const {
 			return c > rhs.c;
 		}
 
-		bool operator< (const stack<T,Container>& rhs) {
+		bool operator< (const stack<T,Container>& rhs) const {
 			return c < rhs.c;
 		}
 
-		bool operator<= (const stack<T,Container>& rhs) {
+		bool operator<= (const stack<T,Container>& rhs) const {
 			return c <= rhs.c;
 		}
 
-		bool operator>= (const stack<T,Container>& rhs) {
+		bool operator>= (const stack<T,Container>& rhs) const {
 			return c >= rhs.c;
 		}
 

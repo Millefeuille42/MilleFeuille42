@@ -1,142 +1,209 @@
 #include <string.h>
-#include <malloc.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/wait.h>
 
-#define TP_PIPE 1
-#define TP_NONE 0
+#define TYPE_PIPE 1
 
-typedef struct s_cmd {
+#define SIDE_OUT	0
+#define SIDE_IN		1
+
+#define STDIN		0
+#define STDOUT		1
+#define STDERR		2
+
+typedef struct s_data {
 	char **args;
-	int argLen;
-	int type;
-	int curPos;
-} t_cmd;
+	char type;
+	int argCount;
+} t_data;
 
 typedef struct s_list {
-	t_cmd cmd;
-	struct s_list *next;
-	struct s_list *prev;
-	struct s_list *first;
+		t_data data;
+		char hasData;
+		int pipes[2];
+		struct s_list* next;
+		struct s_list* previous;
 } t_list;
 
 void fPutStr(int fd, char *s) {
-	if (!s)
-		return ;
 	for (; *s; s++)
 		write(fd, s, 1);
 }
 
-t_list *chainEnd(t_list *lst) {
-	t_list *cur;
-
-	for (cur = lst; cur->next; cur = cur->next) {}
-	return cur;
+void exitFatal() {
+	fPutStr(2, "Error: Fatal\n");
+	exit(1);
 }
 
-void deleteChain(t_list *lst) {
-	t_list *cur;
-	t_list *next;
+int argLen(int argc, char **argv) {
+	int len = 1;
 
-	for (cur = lst; cur ; cur = next) {
-		next = cur->next;
-		free(cur->cmd.args);
-		free(cur);
-	}
-}
-
-int pushChain(t_list *lst) {
-	t_list *newChain = malloc(sizeof(t_list));
-	if (!newChain) {
-		deleteChain(lst);
-		exit(-1);
-	}
-
-	newChain->cmd = (t_cmd) {
-			.args = NULL, .argLen = 0, .type = 0, .curPos = 0
-	};
-
-	t_list *end = chainEnd(lst);
-	end->next = newChain;
-	newChain->prev = end;
-	return 0;
-}
-
-int getBoardSize(int argc, char** argv, int offset) {
-	int i = offset;
-
-	for (; i < argc ; i++) {
+	for (int i = 0; i < argc; i++) {
 		int isBreak = !strcmp(";", argv[i]);
 		int isPipe = !strcmp("|", argv[i]);
+
 		if (isBreak || isPipe) {
 			break;
 		}
+		len++;
 	}
-	return (i - offset);
+	return len;
 }
 
-void exec(t_cmd cmd, char **envp) {
-	pid_t pid;
+void clearList(t_list *cur) {
+	for (t_list *next; cur;) {
+		next = cur->next;
+		free(cur->data.args);
+		free(cur);
+		cur = next;
+	}
+}
 
-	if ((pid = fork()) < 0)
-		exit(2);
+int newData(t_list *cur, int argc, char **argv) {
+		int len = argLen(argc, argv);
+	cur->data.args = malloc(sizeof(char*) * len);
+	cur->data.type = 0;
+	cur->data.argCount = 0;
+	cur->hasData = 1;
+	if (!cur->data.args) {
+		return 1;
+	}
+	for (int i = 0; i < len; i++) {
+		cur->data.args[i] = NULL;
+	}
+	return 0;
+}
 
+int createElement(t_list **cur) {
+	*cur = malloc(sizeof(t_list));
+	if (!*cur)
+		return 1;
+	**cur = (t_list) {.hasData = 0};
+	return 0;
+}
+
+int exec(t_list *cur, char **envp) {
+
+	if (cur->data.type == TYPE_PIPE || (cur->previous && cur->previous->data.type == TYPE_PIPE)) {
+		if (pipe(cur->pipes))
+			return 1;
+	}
+
+	pid_t pid = fork();
+
+	if (pid < 0)
+		return 1;
 	if (!pid) {
-		int ret = execve(cmd.args[0], cmd.args, envp);
+		if (cur->data.type == TYPE_PIPE) {
+			if (dup2(cur->pipes[SIDE_IN], STDOUT) < 0) {
+				fPutStr(2, "Error: Fatal\n");
+				exit(1);
+			}
+		}
+
+		if (cur->previous && cur->previous->data.type == TYPE_PIPE) {
+			if (dup2(cur->previous->pipes[SIDE_OUT], STDIN) < 0) {
+				fPutStr(2, "Error: Fatal\n");
+				exit(1);
+			}
+		}
+
+		int ret = execve(cur->data.args[0], cur->data.args, envp);
 		if (ret) {
-			fPutStr(2, "error: exec -> ");
-			fPutStr(2, cmd.args[0]);
+			fPutStr(2, "error: cannot execute ");
+			fPutStr(2, cur->data.args[0]);
 			fPutStr(2, "\n");
 		}
 		exit(ret);
+	} else {
+		int stat;
+		waitpid(pid, &stat, 0);
+		if (cur->data.type == TYPE_PIPE || (cur->previous && cur->previous->data.type == TYPE_PIPE)) {
+			close(cur->pipes[SIDE_IN]);
+			if (!cur->next)
+				close(cur->pipes[SIDE_OUT]);
+		}
+		if (cur->previous && cur->previous->data.type == TYPE_PIPE) {
+			close(cur->previous->pipes[SIDE_OUT]);
+		}
 	}
+	return 0;
+}
 
-	int retVal = 0;
-	waitpid(pid, &retVal, 0);
+void execLst(t_list *fst, char **envp) {
+	for (t_list *lcur = fst; lcur; lcur = lcur->next) {
+		int ret = exec(lcur, envp);
+		if (ret) {
+			clearList(fst);
+			exitFatal();
+		}
+	}
+}
+
+int parse(int argc, char **argv, char **envp) {
+	t_list *cur = NULL;
+	t_list *fst = NULL;
+
+	for (int i = 1; i < argc; i++) {
+		int isBreak = !strcmp(";", argv[i]);
+		int isPipe = !strcmp("|", argv[i]);
+
+		if (isBreak) {
+			if (!cur)
+				continue;
+			execLst(fst, envp);
+			clearList(fst);
+			cur = NULL;
+			fst = NULL;
+			continue;
+		}
+		if (isPipe) {
+			if (!cur)
+				continue;
+			cur->data.type = TYPE_PIPE;
+			if (createElement(&cur->next)) {
+				clearList(fst);
+				exitFatal();
+				return 1;
+			}
+			cur->next->previous = cur;
+			cur = cur->next;
+			continue;
+		}
+
+		if (!cur && createElement(&cur)) {
+			exitFatal();
+			return 1;
+		}
+		if (!fst)
+			fst = cur;
+
+		if (!cur->hasData) {
+			if (newData(cur, argc, argv)) {
+				clearList(fst);
+				exitFatal();
+				return 1;
+			}
+		}
+
+		cur->data.args[cur->data.argCount] = argv[i];
+		cur->data.argCount++;
+	}
+	if (!cur)
+		return 0;
+	execLst(fst, envp);
+	clearList(fst);
+	cur = NULL;
+	fst = NULL;
+	return 0;
 }
 
 int main(int argc, char **argv, char **envp) {
-	if (argc <= 1)
-		goto END;
-
-	t_cmd cmd = (t_cmd) {
-		.args = NULL, .argLen = 0, .type = 0, .curPos = 0
-	};
-
-	for (int i = 1; i < argc ; i++) {
-		if (!cmd.args) {
-			cmd.argLen = getBoardSize(argc, argv, i);
-			cmd.args = malloc((cmd.argLen + 1) * sizeof(char *));
-			if (!cmd.args)
-				goto MALLOC_ERROR;
-			cmd.args[cmd.argLen] = NULL;
-		}
-
-		int isBreak = !strcmp(";", argv[i]);
-		if (isBreak) {
-			exec(cmd, envp);
-			free(cmd.args);
-			cmd = (t_cmd) {
-				.args = NULL, .argLen = 0, .type = 0, .curPos = 0
-			};
-			continue ;
-		}
-
-		int isPipe = !strcmp("|", argv[i]);
-		if (isPipe) {
-			// Set type to PIPE
-			// Create new entry in list; go next
-			continue ;
-		}
-
-		cmd.args[cmd.curPos] = argv[i];
-		cmd.curPos++;
+	if (argc <= 1) {
+		return 0;
 	}
 
-	exec(cmd, envp);
-	free(cmd.args);
-
-	END: return 0;
-	MALLOC_ERROR: fPutStr(2, "error: fatal\n"); return -1;
+	parse(argc, argv, envp);
+	return 0;
 }

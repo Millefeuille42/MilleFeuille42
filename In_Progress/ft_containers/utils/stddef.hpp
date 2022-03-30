@@ -6,8 +6,8 @@
 #define INC_42_STDDEF_HPP
 
 namespace ft {
-	typedef __SIZE_TYPE__ size_t;
-	typedef size_t ptrdiff_t;
+	typedef std::size_t size_t;
+	typedef std::ptrdiff_t ptrdiff_t;
 }
 
 #endif //INC_42_STDDEF_HPP
