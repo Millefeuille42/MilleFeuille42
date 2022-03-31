@@ -19,11 +19,16 @@ namespace ft {
 
 	template<typename _iterator>
 	struct iterator_traits {
-		typedef typename _iterator::iterator_category iterator_category;	/// < @brief Catégorie de l'iterator, usuellement un des iterator_tags
-		typedef typename _iterator::value_type        value_type;			/// < @brief Type sur lequel l'iterator pointe
-		typedef typename _iterator::difference_type   difference_type;		/// < @brief Type entier utilisé pour les operations arithmétiques
-		typedef typename _iterator::pointer           pointer;				/// < @brief Usuellement un pointeur sur type
-		typedef typename _iterator::reference         reference;			/// < @brief Usuellement une reference sur type
+		/// @typedef < Catégorie de l'iterator, usuellement un des iterator_tags
+		typedef typename _iterator::iterator_category iterator_category;
+		/// @typedef < Type sur lequel l'iterator pointe
+		typedef typename _iterator::value_type        value_type;
+		/// @typedef < Type entier utilisé pour les operations arithmétiques
+		typedef typename _iterator::difference_type   difference_type;
+		/// @typedef < Usuellement un pointeur sur type
+		typedef typename _iterator::pointer           pointer;
+		/// @typedef < Usuellement une reference sur type
+		typedef typename _iterator::reference         reference;
 	};
 
 	/** @struct iterator_traits
@@ -37,11 +42,16 @@ namespace ft {
 
 	template<typename _t>
 	struct iterator_traits<_t*> {
-		typedef std::random_access_iterator_tag iterator_category;	/// < @brief Catégorie de l'iterator, un pointeur est un random_access_iterator
-		typedef _t                         value_type;				/// < @brief Type du pointeur
-		typedef ptrdiff_t                   difference_type;		/// < @brief Type entier utilisé pour les operations arithmétiques, par défaut ptrdiff_t
-		typedef _t*                        pointer;					/// < @brief Pointeur sur type
-		typedef _t&                        reference;				/// < @brief Référence sur type
+		/// @typedef < Catégorie de l'iterator, un pointeur est un random_access_iterator
+		typedef std::random_access_iterator_tag iterator_category;
+		/// @typedef < Type du pointeur
+		typedef _t                         value_type;
+		/// @typedef < Type entier utilisé pour les operations arithmétiques, par défaut ptrdiff_t
+		typedef ptrdiff_t                   difference_type;
+		/// @typedef < Pointeur sur type
+		typedef _t*                        pointer;
+		/// @typedef < Référence sur type
+		typedef _t&                        reference;
 	};
 
 	/** @struct iterator_traits
@@ -55,11 +65,16 @@ namespace ft {
 
 	template<typename _t>
 	struct iterator_traits<const _t*> {
-		typedef std::random_access_iterator_tag iterator_category;	/// < @brief Catégorie de l'iterator, un pointeur est un random_access_iterator
-		typedef const _t                         value_type;		/// < @brief Type const du pointeur
-		typedef ptrdiff_t                   difference_type;		/// < @brief Type entier utilisé pour les operations arithmétiques, par défaut ptrdiff_t
-		typedef const _t*                  pointer;					/// < @brief Pointeur sur const type
-		typedef const _t&                  reference;				/// < @brief Référence sur const type
+		/// @typedef < Catégorie de l'iterator, un pointeur est un random_access_iterator
+		typedef std::random_access_iterator_tag iterator_category;
+		/// @typedef < Type const du pointeur
+		typedef const _t                         value_type;
+		/// @typedef < Type entier utilisé pour les operations arithmétiques, par défaut ptrdiff_t
+		typedef ptrdiff_t                   difference_type;
+		/// @typedef < Pointeur sur const type
+		typedef const _t*                  pointer;
+		/// @typedef < Référence sur const type
+		typedef const _t&                  reference;
 	};
 }
 

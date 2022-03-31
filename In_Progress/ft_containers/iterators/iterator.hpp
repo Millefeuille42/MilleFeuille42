@@ -27,11 +27,16 @@ namespace ft {
 			class Pointer = T*, class Reference = T&>
 	struct iterator {
 	public:
-		typedef T         value_type;			/// < @brief Type sur lequel l'iterator pointe (T)
-		typedef Distance  difference_type;		/// < @brief Type entier utilisé pour les operations arithmétiques
-		typedef Pointer   pointer;				/// < @brief Usuellement un pointeur sur type (T*)
-		typedef Reference reference;			/// < @brief Usuellement une reference sur type (T&)
-		typedef Category  iterator_category;	/// < @brief Catégorie de l'iterator, usuellement un des iterator_tags
+		/// @typedef < Type sur lequel l'iterator pointe (T)
+		typedef T         value_type;
+		/// @typedef < Type entier utilisé pour les operations arithmétiques
+		typedef Distance  difference_type;
+		/// @typedef < Usuellement un pointeur sur type (T*)
+		typedef Pointer   pointer;
+		/// @typedef < Usuellement une reference sur type (T&)
+		typedef Reference reference;
+		/// @typedef < Catégorie de l'iterator, usuellement un des iterator_tags
+		typedef Category  iterator_category;
 	};
 
 	/** @struct iterator spécialisation de template pour const type
@@ -49,11 +54,16 @@ namespace ft {
 	template <class Category, class T>
 	struct iterator<Category, const T> {
 	public:
-		typedef const T   value_type;			/// < @brief Type sur lequel l'iterator pointe, en const (const T)
-		typedef ptrdiff_t difference_type;		/// < @brief Type entier utilisé pour les operations arithmétiques
-		typedef const T*		  pointer;		/// < @brief Usuellement un pointeur sur const type (const T*)
-		typedef const T&        reference;		/// < @brief Usuellement une reference sur const type (const T&)
-		typedef Category  iterator_category;	/// < @brief Catégorie de l'iterator, usuellement un des iterator_tags
+		/// @typedef < Type sur lequel l'iterator pointe, en const (const T)
+		typedef const T   value_type;
+		/// @typedef < Type entier utilisé pour les operations arithmétiques
+		typedef ptrdiff_t difference_type;
+		/// @typedef < Usuellement un pointeur sur const type (const T*)
+		typedef const T*		  pointer;
+		/// @typedef < Usuellement une reference sur const type (const T&)
+		typedef const T&        reference;
+		/// @typedef < Catégorie de l'iterator, usuellement un des iterator_tags
+		typedef Category  iterator_category;
 	};
 }
 
