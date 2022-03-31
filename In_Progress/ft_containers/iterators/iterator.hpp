@@ -15,11 +15,11 @@ namespace ft {
 	 *
 	 * Définis la struct de base de l'iterator, avec tout les types membres requis
 	 *
-	 * @tparam Category < Catégorie de l'iterator, usuellement on y met des iterator_tags
-	 * @tparam T < Type sur lequel l'iterator pointe
-	 * @tparam Distance < Default: ptrdiff_t. Type entier utilisé pour les operations arithmétiques
-	 * @tparam Pointer < Default: T*. Usuellement un pointeur sur type
-	 * @tparam Reference < Default: T&. Usuellement une reference sur type
+	 * @tparam Category Catégorie de l'iterator, usuellement on y met des iterator_tags
+	 * @tparam T Type sur lequel l'iterator pointe
+	 * @tparam Distance Default: ptrdiff_t. Type entier utilisé pour les operations arithmétiques
+	 * @tparam Pointer Default: T*. Usuellement un pointeur sur type
+	 * @tparam Reference Default: T&. Usuellement une reference sur type
 	 *
 	 */
 
@@ -27,15 +27,15 @@ namespace ft {
 			class Pointer = T*, class Reference = T&>
 	struct iterator {
 	public:
-		/// @typedef < Type sur lequel l'iterator pointe (T)
+		/// @typedef Type sur lequel l'iterator pointe (T)
 		typedef T         value_type;
-		/// @typedef < Type entier utilisé pour les operations arithmétiques
+		/// @typedef Type entier utilisé pour les operations arithmétiques
 		typedef Distance  difference_type;
-		/// @typedef < Usuellement un pointeur sur type (T*)
+		/// @typedef Usuellement un pointeur sur type (T*)
 		typedef Pointer   pointer;
-		/// @typedef < Usuellement une reference sur type (T&)
+		/// @typedef Usuellement une reference sur type (T&)
 		typedef Reference reference;
-		/// @typedef < Catégorie de l'iterator, usuellement un des iterator_tags
+		/// @typedef Catégorie de l'iterator, usuellement un des iterator_tags
 		typedef Category  iterator_category;
 	};
 
@@ -46,23 +46,23 @@ namespace ft {
 	 * Définis la struct de base de l'iterator, avec tout les types membres requis.
 	 * Spécialisation de template pour const type
 	 *
-	 * @tparam Category	< Catégorie de l'iterator, usuellement on y met des iterator_tags
-	 * @tparam T 		< Type sur lequel l'iterator pointe
+	 * @tparam Category	Catégorie de l'iterator, usuellement on y met des iterator_tags
+	 * @tparam T 		Type sur lequel l'iterator pointe
 	 *
 	 */
 
 	template <class Category, class T>
 	struct iterator<Category, const T> {
 	public:
-		/// @typedef < Type sur lequel l'iterator pointe, en const (const T)
+		/// @typedef Type sur lequel l'iterator pointe, en const (const T)
 		typedef const T   value_type;
-		/// @typedef < Type entier utilisé pour les operations arithmétiques
+		/// @typedef Type entier utilisé pour les operations arithmétiques
 		typedef ptrdiff_t difference_type;
-		/// @typedef < Usuellement un pointeur sur const type (const T*)
+		/// @typedef Usuellement un pointeur sur const type (const T*)
 		typedef const T*		  pointer;
-		/// @typedef < Usuellement une reference sur const type (const T&)
+		/// @typedef Usuellement une reference sur const type (const T&)
 		typedef const T&        reference;
-		/// @typedef < Catégorie de l'iterator, usuellement un des iterator_tags
+		/// @typedef Catégorie de l'iterator, usuellement un des iterator_tags
 		typedef Category  iterator_category;
 	};
 }

@@ -17,8 +17,8 @@ namespace ft {
 	 * Ne compilant donc pas si l'on accède au champ "type" alors que B est faux.
 	 * Cette version est la spécialisation de template ou B est false, donc ou type n'existe pas
 	 *
-	 * @tparam B < La condition évaluée
-	 * @tparam T < Le type que l'on souhaite rendre, ou non, disponible
+	 * @tparam B La condition évaluée
+	 * @tparam T Le type que l'on souhaite rendre, ou non, disponible
 	 */
 
 	template <bool B, class T = void> struct enable_if { };
@@ -31,10 +31,11 @@ namespace ft {
      * Ne compilant donc pas si l'on accède au champ "type" alors que B est faux.
      * Cette version est la spécialisation de template ou B est true, donc où type existe
      *
-     * @tparam T < Le type que l'on souhaite rendre, ou non, disponible
+     * @tparam T Le type que l'on souhaite rendre, ou non, disponible
      */
 
 	template <class T> struct enable_if<true, T> {
+		/// @typedef Le type passé en paramètre de template
 		typedef T type;
 	};
 
@@ -44,13 +45,15 @@ namespace ft {
 	 * Ceci constitue du squelette de is_integral, l'attribution du champ value se fera a l'aide des spécialisations de template.
 	 * Exemples disponible dans la définition de is_integral
 	 *
-	 * @tparam B < a l'initialisation de la struct, préciser true si l'on considère que le type est intégral, false le cas contraire
-	 * @tparam T < Le type concerné, rangé au cas ou on voudrait accéder a celui-ci
+	 * @tparam B a l'initialisation de la struct, préciser true si l'on considère que le type est intégral, false le cas contraire
+	 * @tparam T Le type concerné, rangé au cas ou on voudrait accéder a celui-ci
 	 */
 
 	template <bool B, typename T> struct is_integral_type {
-		typedef T type; /// < Le type concerné, rangé au cas ou on voudrait accéder a celui-ci
-		static const bool value = B; /// < true si intégral, false le cas contraire
+		/// @typedef Le type concerné, rangé au cas ou on voudrait accéder a celui-ci
+		typedef T type;
+		/// @var true si intégral, false le cas contraire
+		static const bool value = B;
 	};
 
 	/** @struct is_integral
@@ -68,7 +71,7 @@ namespace ft {
 	 * on va créer une spécialisation de template de is_integral pour char, puis on va préciser true dans le paramètre B du parent.
 	 * De ce fait, a la compilation, is_integral<char>::value va retourner true
 	 *
-	 * @tparam T < Le type que l'on souhaite évaluer
+	 * @tparam T Le type que l'on souhaite évaluer
 	 */
 
 	template <typename T = void> struct is_integral : is_integral_type<false, T> { };

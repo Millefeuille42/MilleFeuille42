@@ -17,7 +17,7 @@ namespace ft {
 	 *
 	 * @inherit Hérite de iterator, avec random_access_iterator_tag comme catégorie
 	 *
-	 * @tparam type < Type sur lequel on souhaite faire pointer l'iterator
+	 * @tparam type Type sur lequel on souhaite faire pointer l'iterator
 	 */
 
 	template<typename type>
@@ -30,10 +30,10 @@ namespace ft {
      * Fonction interne, calculant la distance entre deux iterators, en allant de first a last,
      * le random_access_iterator étant le seul a avoir operator -
      *
-     * @tparam InputIterator < Le type des deux paramètres, doit être un iterator
-     * @param first < Un des deux iterator a comparer, usuellement "avant" le second
-     * @param last  < Un des deux iterator a comparer, usuellement "après" le premier
-     * @param tag < Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
+     * @tparam InputIterator Le type des deux paramètres, doit être un iterator
+     * @param first Un des deux iterator a comparer, usuellement "avant" le second
+     * @param last  Un des deux iterator a comparer, usuellement "après" le premier
+     * @param tag Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
      * @return Retourne la distance entre first et last, sous le type membre "difference_type" des iterators fournis
      *
      */
@@ -55,10 +55,10 @@ namespace ft {
 	 * Fonction interne, permettant de gérer la distance selon le type d'iterator,
 	 * ici la spécialisation pour les non random_access_iterator et les non output_iterator, utilisant la fonction iterDistance
 	 *
-	 * @tparam InputIterator < Le type des deux paramètres, doit être un iterator
-	 * @param first < Un des deux iterator a comparer, usuellement "avant" le second
-	 * @param last  < Un des deux iterator a comparer, usuellement "après" le premier
-	 * @param tag < Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
+	 * @tparam InputIterator Le type des deux paramètres, doit être un iterator
+	 * @param first Un des deux iterator a comparer, usuellement "avant" le second
+	 * @param last  Un des deux iterator a comparer, usuellement "après" le premier
+	 * @param tag Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
 	 * @return Retourne la distance entre first et last, sous le type membre "difference_type" des iterators fournis
      *
      */
@@ -77,10 +77,10 @@ namespace ft {
 	 * Fonction interne, permettant de gérer la distance selon le type d'iterator,
 	 * ici la spécialisation pour les output_iterator, retournant une erreur, la fonction distance ne devant pas fonctionner
 	 *
-	 * @tparam InputIterator < Le type des deux paramètres, doit être un iterator
-	 * @param first < Un des deux iterator a comparer, usuellement "avant" le second
-	 * @param last  < Un des deux iterator a comparer, usuellement "après" le premier
-	 * @param tag < Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
+	 * @tparam InputIterator Le type des deux paramètres, doit être un iterator
+	 * @param first Un des deux iterator a comparer, usuellement "avant" le second
+	 * @param last  Un des deux iterator a comparer, usuellement "après" le premier
+	 * @param tag Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
 	 * @return throw une erreur indiquant que l'argument est invalide
 	 *
 	 */
@@ -101,10 +101,10 @@ namespace ft {
    	  * Fonction interne, permettant de gérer la distance selon le type d'iterator,
    	  * ici la spécialisation pour les non random_access_iterator et les non output_iterator, utilisant la fonction iterDistance
    	  *
-   	  * @tparam InputIterator < Le type des deux paramètres, doit être un iterator
-   	  * @param first < Un des deux iterator a comparer, usuellement "avant" le second
-   	  * @param last  < Un des deux iterator a comparer, usuellement "après" le premier
-   	  * @param tag < Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
+   	  * @tparam InputIterator Le type des deux paramètres, doit être un iterator
+   	  * @param first Un des deux iterator a comparer, usuellement "avant" le second
+   	  * @param last  Un des deux iterator a comparer, usuellement "après" le premier
+   	  * @param tag Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
    	  * @return Retourne la distance entre first et last, sous le type membre "difference_type" des iterators fournis
 	  *
   	  */
@@ -123,10 +123,10 @@ namespace ft {
   	 * Fonction interne, permettant de gérer la distance selon le type d'iterator,
   	 * ici la spécialisation pour les non random_access_iterator et les non output_iterator, utilisant la fonction iterDistance
   	 *
-  	 * @tparam InputIterator < Le type des deux paramètres, doit être un iterator
-  	 * @param first < Un des deux iterator a comparer, usuellement "avant" le second
-  	 * @param last  < Un des deux iterator a comparer, usuellement "après" le premier
-  	 * @param tag < Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
+  	 * @tparam InputIterator Le type des deux paramètres, doit être un iterator
+  	 * @param first Un des deux iterator a comparer, usuellement "avant" le second
+  	 * @param last  Un des deux iterator a comparer, usuellement "après" le premier
+  	 * @param tag Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
   	 * @return Retourne la distance entre first et last, sous le type membre "difference_type" des iterators fournis
   	 *
  	 */
@@ -145,10 +145,10 @@ namespace ft {
  	  * Fonction interne, permettant de gérer la distance selon le type d'iterator,
  	  * ici la spécialisation pour les random_access_iterator, utilisant operator-
  	  *
- 	  * @tparam InputIterator < Le type des deux paramètres, doit être un iterator
- 	  * @param first < Un des deux iterator a comparer, usuellement "avant" le second
- 	  * @param last  < Un des deux iterator a comparer, usuellement "après" le premier
- 	  * @param tag < Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
+ 	  * @tparam InputIterator Le type des deux paramètres, doit être un iterator
+ 	  * @param first Un des deux iterator a comparer, usuellement "avant" le second
+ 	  * @param last  Un des deux iterator a comparer, usuellement "après" le premier
+ 	  * @param tag Paramètre vide ne servant qu'a différencier les plusieurs prototypes de la fonction
  	  * @return Retourne la distance entre first et last, sous le type membre "difference_type" des iterators fournis
  	  *
  	*/
@@ -168,9 +168,9 @@ namespace ft {
 	 *
 	 * Donne la distance entre deux itérateurs
 	 *
-	 * @tparam InputIterator < Le type des deux paramètres, doit être un iterator
-	 * @param first < Un des deux iterator a comparer, usuellement "avant" le second
-	 * @param last  < Un des deux iterator a comparer, usuellement "après" le premier
+	 * @tparam InputIterator Le type des deux paramètres, doit être un iterator
+	 * @param first Un des deux iterator a comparer, usuellement "avant" le second
+	 * @param last  Un des deux iterator a comparer, usuellement "après" le premier
 	 * @return Retourne la distance entre first et last, sous le type membre "difference_type" des iterators fournis
 	 *
 	 */
