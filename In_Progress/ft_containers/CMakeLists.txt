@@ -4,8 +4,13 @@ add_executable(ft_containers
         stack.hpp
 
         utils/algorithm.hpp
+        utils/stddef.hpp
+        utils/exceptions.hpp
+        utils/type_traits.hpp
+
         iterators/iterator_traits.hpp
         iterators/iterator.hpp
-        utils/stddef.hpp
-        iterators/iterator_tags.hpp
-        iterators/normal_iterators.hpp iterators/reverse_iterator.hpp utils/exceptions.hpp utils/type_traits.hpp iterators/vector_iterator.hpp)
+        iterators/normal_iterators.hpp
+        iterators/reverse_iterator.hpp
+        iterators/vector_iterator.hpp
+        map.hpp utils/functional.hpp utils/utility.hpp)
