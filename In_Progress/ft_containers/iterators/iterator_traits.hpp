@@ -5,8 +5,8 @@
 #ifndef INC_42_ITERATOR_TRAITS_HPP
 # define INC_42_ITERATOR_TRAITS_HPP
 
-#include "../utils/stddef.hpp"
-#include "../utils/type_traits.hpp"
+#include "../libs/stddef.hpp"
+#include "../libs/type_traits.hpp"
 
 namespace ft {
 	/** @struct iterator_traits

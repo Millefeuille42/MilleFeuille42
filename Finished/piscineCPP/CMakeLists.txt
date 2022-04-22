@@ -29,7 +29,7 @@
 #add_executable(cpp05_ex02 cpp05/ex02 cpp05/ex02/Bureaucrat.cpp cpp05/ex02/Bureaucrat.hpp cpp05/ex02/main.cpp cpp05/ex02/Form.cpp cpp05/ex02/Form.hpp cpp05/ex02/ShrubberyCreationForm.cpp cpp05/ex02/ShrubberyCreationForm.hpp cpp05/ex02/RobotomyRequestForm.cpp cpp05/ex02/RobotomyRequestForm.hpp cpp05/ex02/PresidentialPardonForm.cpp cpp05/ex02/PresidentialPardonForm.hpp)
 #add_executable(cpp05_ex03 cpp05/ex03 cpp05/ex03/Bureaucrat.cpp cpp05/ex03/Bureaucrat.hpp cpp05/ex03/main.cpp cpp05/ex03/Form.cpp cpp05/ex03/Form.hpp cpp05/ex03/ShrubberyCreationForm.cpp cpp05/ex03/ShrubberyCreationForm.hpp cpp05/ex03/RobotomyRequestForm.cpp cpp05/ex03/RobotomyRequestForm.hpp cpp05/ex03/PresidentialPardonForm.cpp cpp05/ex03/PresidentialPardonForm.hpp cpp05/ex03/Intern.cpp cpp05/ex03/Intern.hpp)
 
-#add_executable(cpp06_ex00 cpp06/ex00 cpp06/ex00/main.cpp cpp06/ex00/convert.hpp cpp06/ex00/utils.cpp cpp06/ex00/display.cpp)
+#add_executable(cpp06_ex00 cpp06/ex00 cpp06/ex00/main.cpp cpp06/ex00/convert.hpp cpp06/ex00/libs.cpp cpp06/ex00/display.cpp)
 #add_executable(cpp06_ex01 cpp06/ex01 cpp06/ex01/main.cpp)
 #add_executable(cpp06_ex02 cpp06/ex02 cpp06/ex02/main.cpp cpp06/ex02/main.cpp cpp06/ex02/Base.cpp cpp06/ex02/Base.hpp cpp06/ex02/A.cpp cpp06/ex02/A.hpp cpp06/ex02/B.cpp cpp06/ex02/B.hpp cpp06/ex02/C.cpp cpp06/ex02/C.hpp)
 

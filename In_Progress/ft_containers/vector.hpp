@@ -8,16 +8,16 @@
 #include <iostream>
 
 #include <memory>
-#include "utils/stddef.hpp"
-#include "utils/algorithm.hpp"
-#include "utils/exceptions.hpp"
-#include "utils/type_traits.hpp"
+#include "libs/stddef.hpp"
+#include "libs/algorithm.hpp"
+#include "libs/exceptions.hpp"
+#include "libs/type_traits.hpp"
 #include <stdexcept>
 #include <cstdio>
 
 #include "iterators/normal_iterators.hpp"
 #include "iterators/reverse_iterator.hpp"
-#include "iterators/vector_iterator.hpp"
+#include "utils/vector_iterator.hpp"
 
 namespace ft {
 	//https://www.cplusplus.com/reference/vector/vector
@@ -31,7 +31,6 @@ namespace ft {
 		typedef typename allocator_type::const_reference 	const_reference;
 		typedef typename allocator_type::pointer 			pointer;
 		typedef typename allocator_type::const_pointer 		const_pointer;
-		typedef ptrdiff_t									difference_type;
 		typedef size_t										size_type;
 
 /**  Iterators */
@@ -40,6 +39,7 @@ namespace ft {
 		typedef vector_iterator<const value_type>			const_iterator;
 		typedef reverse_iterator<iterator>					reverse_iterator;
 		typedef ft::reverse_iterator<const_iterator>		const_reverse_iterator;
+		typedef typename iterator::difference_type 			difference_type;
 
 		// TODO Define member functions
 /**  Constructors */
