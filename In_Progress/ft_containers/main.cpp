@@ -7,4 +7,5 @@ int main() {
 	mapTest mySecondMap(myMap);
 
 	myMap.max_size();
+	mySecondMap.max_size();
 }

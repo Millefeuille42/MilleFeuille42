@@ -7,17 +7,18 @@
 
 #include "../iterators/normal_iterators.hpp"
 #include "tree.hpp"
-#include "../map.hpp"
+#include "default_container.hpp"
 
 namespace ft {
-	template<class _t, class Container = map<_t, _t>, class Compare = ft::less<typename Container::value_type> >
+	template<class _t, class Container = default_container<_t>, class Compare = ft::less<typename Container::value_type> >
 	class map_iterator : public normal_bidirectional_iterator<_t> {
 	public:
-		typedef typename map_iterator<_t>::iterator::value_type value_type;
-		typedef typename map_iterator<_t>::iterator::pointer pointer;
-		typedef typename map_iterator<_t>::iterator::reference reference;
-		typedef typename map_iterator<_t>::iterator::difference_type difference_type;
-		typedef typename map_iterator<_t>::iterator::iterator_category iterator_category;
+		//TODO check if need pair or value
+		typedef typename normal_bidirectional_iterator<_t>::iterator::value_type value_type;
+		typedef typename normal_bidirectional_iterator<_t>::iterator::pointer pointer;
+		typedef typename normal_bidirectional_iterator<_t>::iterator::reference reference;
+		typedef typename normal_bidirectional_iterator<_t>::iterator::difference_type difference_type;
+		typedef typename normal_bidirectional_iterator<_t>::iterator::iterator_category iterator_category;
 
 	private:
 		typedef tree<Container, Compare> _tree;

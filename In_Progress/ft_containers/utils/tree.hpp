@@ -19,10 +19,14 @@ namespace ft {
 		/// Member Types
 		typedef Compare compare;
 
-		typedef pair<const typename Container::key_type, typename Container::mapped_type> value_type;
-		typedef typename std::allocator<typename value_type::second_type>::pointer pointer;
-		typedef typename std::allocator<typename value_type::second_type>::reference reference;
 
+		//typedef pair<const typename Container::key_type, typename Container::mapped_type> value_type;
+		//typedef typename std::allocator<typename value_type::second_type>::pointer pointer;
+		//typedef typename std::allocator<typename value_type::second_type>::reference reference;
+
+		typedef typename Container::value_type value_type;
+		typedef typename Container::pointer pointer;
+		typedef typename Container::pointer reference;
 		typedef typename Container::allocator_type allocator_type;
 		typedef typename Container::size_type size_type;
 
@@ -35,17 +39,23 @@ namespace ft {
 
 		class node {
 		public:
+			typedef typename Container::value_type value_type;
 			typedef typename Container::pointer pointer;
+			typedef typename Container::pointer reference;
+			typedef typename Container::allocator_type allocator_type;
+			typedef typename Container::size_type size_type;
 
 		public:
-			node(pointer ptr = pointer()) : parent(NULL) {
+			node(pointer ptr = pointer(), allocator_type alloc = allocator_type()) : parent(NULL){
 				_children[_left] = NULL;
 				_children[_right] = NULL;
 				data = ptr;
 				at = -1;
+				_allocator = alloc;
 			}
 
 			node(const node & src) { *this = src; }
+			node(const node & src, int) { this->deepCopy(src); }
 
 			~node() {
 				delete _children[_left];
@@ -55,10 +65,10 @@ namespace ft {
 			node& operator=(const node& rhs) {
 				if (&rhs == this)
 					return *this;
+				_allocator = rhs._allocator;
 				data = rhs.data;
 				if (!rhs.parent)
 					parent = NULL;
-
 				delete _children[_left];
 				_children[_left] = NULL;
 				delete _children[_right];
@@ -69,6 +79,30 @@ namespace ft {
 				}
 				if (rhs._children[_right]) {
 					node *newC = new node(*rhs._children[_right]);
+					setChild(newC, _right);
+				}
+				return *this;
+			}
+
+			node& deepCopy(const node& rhs) {
+				if (&rhs == this)
+					return *this;
+				_allocator = rhs._allocator;
+				data = _allocator.allocate(1);
+				_allocator.construct(data, *rhs.data);
+				if (!rhs.parent)
+					parent = NULL;
+
+				delete _children[_left];
+				_children[_left] = NULL;
+				delete _children[_right];
+				_children[_right] = NULL;
+				if (rhs._children[_left]) {
+					node *newC = new node(*rhs._children[_left], int());
+					setChild(newC, _left);
+				}
+				if (rhs._children[_right]) {
+					node *newC = new node(*rhs._children[_right], int());
 					setChild(newC, _right);
 				}
 				return *this;
@@ -94,6 +128,7 @@ namespace ft {
 			int at;
 		private:
 			node *_children[2];
+			allocator_type _allocator;
 		};
 
 	public:
@@ -107,9 +142,15 @@ namespace ft {
 			pastTheEnd = false;
 			beforeBegin = false;
 			_comp = compare();
+			_allocator = alloc;
 		}
 
 		tree(const tree & src) {
+			*this = src;
+			_comp = compare();
+		}
+
+		tree(const tree & src, int) {
 			*this = src;
 			_comp = compare();
 		}
@@ -123,6 +164,19 @@ namespace ft {
 			_size = rhs._size;
 			delete origin;
 			origin = new node(*rhs.origin);
+			this->resetCurrent();
+			pastTheEnd = rhs.pastTheEnd;
+			beforeBegin = rhs.beforeBegin;
+			return *this;
+		}
+
+		tree& deepCopy(const tree &rhs) {
+			if (&rhs == this)
+				return *this;
+			_allocator = rhs._allocator;
+			_size = rhs._size;
+			delete origin;
+			origin = new node(*rhs.origin, int());
 			this->resetCurrent();
 			pastTheEnd = rhs.pastTheEnd;
 			beforeBegin = rhs.beforeBegin;

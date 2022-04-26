@@ -67,43 +67,66 @@ namespace ft {
 
 		/// Member Functions
 		/// Constructors
-		map(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type());
+		// TODO Constructors
+		map(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type())
+		: _val_comp(value_compare(comp)) {
+			_k_comp = comp;
+			_allocator = alloc;
+			_size = 0;
+			_data = new _tree();
+		}
 
 		template <class InputIterator>
 		map(InputIterator first, InputIterator last, const key_compare& comp = key_compare(),
 			 const allocator_type& alloc = allocator_type());
 
-		map(const map& x) {
+		map(const map& x)
+		: _val_comp(value_compare(key_compare())) {
 			*this = x;
 		};
 
 		/// Destructor
-		~map();
+		~map() {
+			for (; !_data->pastTheEnd; _data->next()) {
+				_allocator.destroy(_data->current->data);
+			}
+			_data->resetCurrent();
+			delete _data;
+		}
 
 		/// Member Operator Overloads
-		map& operator=(const map& x);
+		map& operator=(const map& x) {
+			if (this == &x)
+				return *this;
+			_k_comp = x._k_comp;
+			_val_comp = x._val_comp;
+			_size = x._size;
+			_allocator = x._allocator;
+			_data->deepCopy(*x._data);
+			return *this;
+		}
 
 		///Iterators
 		iterator begin() {
-			_tree tmp = _data;
+			_tree tmp = *_data;
 			tmp.leftmost();
 			return iterator(tmp);
 		};
 
 		const_iterator begin() const {
-			_tree tmp = _data;
+			_tree tmp = *_data;
 			tmp.leftmost();
-			return const_iterator(_data);
+			return const_iterator(tmp);
 		};
 
 		iterator end() {
-			_tree tmp = _data;
+			_tree tmp = *_data;
 			tmp.pastTheEnd();
 			return iterator(tmp);
 		};
 
 		const_iterator end() const {
-			_tree tmp = _data;
+			_tree tmp = *_data;
 			tmp.pastTheEnd();
 			return const_iterator(tmp);
 		}
@@ -194,6 +217,7 @@ namespace ft {
 				_allocator.deallocate(_data->current->data);
 			_data->resetCurrent();
 			delete _data;
+			_size = 0;
 			_data = new _tree();
 		}
 
@@ -266,7 +290,7 @@ namespace ft {
 	private:
 		typedef tree<map, key_compare> _tree;
 
-		_tree * _data;
+		_tree *_data;
 		size_type _size;
 		allocator_type _allocator;
 		key_compare _k_comp;
