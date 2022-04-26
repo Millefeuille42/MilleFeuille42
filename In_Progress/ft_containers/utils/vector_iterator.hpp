@@ -5,13 +5,12 @@
 #ifndef INC_42_VECTOR_ITERATOR_HPP
 #define INC_42_VECTOR_ITERATOR_HPP
 
-#include "normal_iterators.hpp"
+#include "../iterators/normal_iterators.hpp"
 
 namespace ft {
 	template<class _t>
 	class vector_iterator : public normal_random_access_iterator<_t> {
 	public:
-
 		typedef typename vector_iterator<_t>::iterator::value_type value_type;
 		typedef typename vector_iterator<_t>::iterator::pointer pointer;
 		typedef typename vector_iterator<_t>::iterator::reference reference;

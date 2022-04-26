@@ -7,10 +7,22 @@
 
 #include "iterator.hpp"
 #include "iterator_traits.hpp"
-#include "../utils/exceptions.hpp"
-#include "../utils/type_traits.hpp"
+#include "../libs/exceptions.hpp"
+#include "../libs/type_traits.hpp"
 
 namespace ft {
+	/** @class normal_bidirectional_iterator
+	 *
+	 * Un wrapper vide sur iterator, permettant de simplifier la syntaxe lorsque l'on construit un bidirectional_iterator
+	 *
+	 * @inherit Hérite de iterator, avec bidirectional_iterator_tag comme catégorie
+	 *
+	 * @tparam type Type sur lequel on souhaite faire pointer l'iterator
+	 */
+
+	template<typename type>
+	class normal_bidirectional_iterator : public iterator<std::bidirectional_iterator_tag, type> {};
+
 	/** @class normal_random_access_iterator
 	 *
 	 * Un wrapper vide sur iterator, permettant de simplifier la syntaxe lorsque l'on construit un random_access_iterator

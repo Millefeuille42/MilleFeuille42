@@ -30,7 +30,7 @@ namespace ft {
 	 */
 
 	class invalid_argument : public IException {
-		const char *what() const throw() {
+		virtual const char *what() const throw() {
 			return "invalid argument";
 		}
 	};

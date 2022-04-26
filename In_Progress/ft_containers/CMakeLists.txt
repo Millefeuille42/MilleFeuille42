@@ -2,15 +2,20 @@ add_executable(ft_containers
         main.cpp
         vector.hpp
         stack.hpp
+        map.hpp
 
-        utils/algorithm.hpp
-        utils/stddef.hpp
-        utils/exceptions.hpp
-        utils/type_traits.hpp
+        libs/algorithm.hpp
+        libs/stddef.hpp
+        libs/exceptions.hpp
+        libs/type_traits.hpp
+        libs/functional.hpp
+        libs/utility.hpp
 
         iterators/iterator_traits.hpp
         iterators/iterator.hpp
         iterators/normal_iterators.hpp
         iterators/reverse_iterator.hpp
-        iterators/vector_iterator.hpp
-        map.hpp utils/functional.hpp utils/utility.hpp)
+        utils/vector_iterator.hpp
+
+        utils/tree.hpp
+        utils/map_iterator.hpp)
