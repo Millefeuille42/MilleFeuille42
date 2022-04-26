@@ -67,7 +67,6 @@ namespace ft {
 
 		/// Member Functions
 		/// Constructors
-		// TODO Constructors
 		map(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type())
 		: _val_comp(value_compare(comp)) {
 			_k_comp = comp;
@@ -76,6 +75,7 @@ namespace ft {
 			_data = new _tree();
 		}
 
+		// TODO Range Constructor
 		template <class InputIterator>
 		map(InputIterator first, InputIterator last, const key_compare& comp = key_compare(),
 			 const allocator_type& alloc = allocator_type());
@@ -148,11 +148,11 @@ namespace ft {
 
 		/// Capacity
 		bool empty() const {
-			return _size == 0;
+			return _data->getSize() == 0;
 		}
 
 		size_type size() const {
-			return _size;
+			return _data->getSize();
 		}
 
 		size_type max_size() const {
@@ -268,6 +268,8 @@ namespace ft {
 			_data->current = _data->tmp;
 			return 1;
 		}
+
+		// TODO Accessors
 
 		iterator lower_bound (const key_type& k);
 

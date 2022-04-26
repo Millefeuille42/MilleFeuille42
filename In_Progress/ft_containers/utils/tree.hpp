@@ -132,13 +132,15 @@ namespace ft {
 		};
 
 	public:
-		// TODO Manage empty tree
+		// TODO Add Node Deletion
 
 		tree(pointer ptr = pointer(), allocator_type alloc = allocator_type())
-		: _allocator(alloc) {
-			origin = new node(ptr, _allocator);
-			this->resetCurrent();
-			_size = 1;
+		: _size(0), _allocator(alloc) {
+			if (ptr != pointer()) {
+				origin = new node(ptr, _allocator);
+				this->resetCurrent();
+				_size = 1;
+			}
 			pastTheEnd = false;
 			beforeBegin = false;
 			_comp = compare();
@@ -151,7 +153,7 @@ namespace ft {
 		}
 
 		tree(const tree & src, int) {
-			*this = src;
+			deepCopy(src);
 			_comp = compare();
 		}
 
@@ -184,16 +186,22 @@ namespace ft {
 		}
 
 		void toPastTheEnd() {
+			if (!_size)
+				return ;
 			pastTheEnd = true;
 			beforeBegin = false;
 		}
 
 		void toBeforeBegin() {
+			if (!_size)
+				return ;
 			pastTheEnd = false;
 			beforeBegin = true;
 		}
 
 		void next() {
+			if (!_size)
+				return ;
 			if (pastTheEnd)
 				return;
 
@@ -235,6 +243,8 @@ namespace ft {
 		}
 
 		void prev() {
+			if (!_size)
+				return ;
 			if (beforeBegin)
 				return ;
 
@@ -276,6 +286,12 @@ namespace ft {
 		}
 
 		void append(pointer ptr) {
+			if (!_size) {
+				origin = new node(ptr, _allocator);
+				this->resetCurrent();
+				return ;
+			}
+
 			if (!_comp(*ptr, *current->data) && !_comp(*current->data, *ptr)) {
 				_allocator.deallocate(current->data);
 				current->data = ptr;
@@ -287,11 +303,13 @@ namespace ft {
 				this->append(ptr);
 				return ;
 			}
-			// TODO Add child creation
-			current->setChild(nextPos);
+			current->setChild(new node(ptr), nextPos);
+			_size++;
 		}
 
 		bool find(const value_type & val) {
+			if (!_size)
+				return false;
 			if (!_comp(val, *current->data) && !_comp(*current->data, val))
 				return true;
 
@@ -324,6 +342,8 @@ namespace ft {
 		} // structure dereference
 
 		void leftmost() {
+			if (!_size)
+				return ;
 			this->resetCurrent();
 			if (this->isSideEmpty(_left))
 				return ;
@@ -332,6 +352,8 @@ namespace ft {
 		}
 
 		void rightmost() {
+			if (!_size)
+				return ;
 			this->resetCurrent();
 			if (this->isSideEmpty(_right))
 				return ;
@@ -383,8 +405,8 @@ namespace ft {
 		bool pastTheEnd;
 		bool beforeBegin;
 	private:
-		allocator_type _allocator;
 		size_type _size;
+		allocator_type _allocator;
 		compare _comp;
 	};
 }

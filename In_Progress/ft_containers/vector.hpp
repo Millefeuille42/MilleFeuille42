@@ -41,7 +41,6 @@ namespace ft {
 		typedef ft::reverse_iterator<const_iterator>		const_reverse_iterator;
 		typedef typename iterator::difference_type 			difference_type;
 
-		// TODO Define member functions
 /**  Constructors */
 	public:
 		explicit vector(const allocator_type& alloc = allocator_type())
