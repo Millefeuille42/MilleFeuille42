@@ -1,23 +1,26 @@
+#include "utils/Tree.hpp"
+#include "libs/utility.hpp"
+#include "utils/map_iterator.hpp"
 #include "map.hpp"
 
-#define mapTest ft::map<std::string, int>
-
 int main() {
-	mapTest myMap;
-	mapTest mySecondMap(myMap);
+	typedef ft::pair<int, int> pairType;
+	typedef ft::Tree<pairType> treeType;
+	typedef ft::map_iterator<pairType> itType;
+	typedef ft::map<int, int> mapType;
 
+	mapType myMap = mapType();
+	treeType tst = treeType(pairType(1, 2));
+	itType it = itType(tst.origin);
 
-	mySecondMap.max_size();
-	mySecondMap.swap(myMap);
+	tst.leftmost();
+	tst.rightmost();
+	tst.resetCurrent();
+	tst.next();
+	tst.prev();
 
-	myMap.size();
-	myMap.max_size();
-	myMap.begin();
-	myMap.end();
-	myMap.rbegin();
-	myMap.rend();
-	myMap.get_allocator();
-	myMap.clear();
-	myMap.empty();
-	myMap["test"];
+	pairType testVal = pairType(1, 2);
+
+	tst.append(testVal);
+	tst.find(testVal);
 }

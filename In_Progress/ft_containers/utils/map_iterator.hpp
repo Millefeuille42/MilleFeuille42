@@ -6,29 +6,25 @@
 #define INC_42_MAP_ITERATOR_HPP
 
 #include "../iterators/normal_iterators.hpp"
-#include "tree.hpp"
-#include "default_container.hpp"
+#include "Tree.hpp"
 
 namespace ft {
-	template<class _t, class Container = default_container<_t>, class Compare = ft::less<typename Container::value_type> >
+	template<class _t>
 	class map_iterator : public normal_bidirectional_iterator<_t> {
-	public:
-		typedef typename normal_bidirectional_iterator<_t>::iterator::value_type value_type;
-		typedef typename normal_bidirectional_iterator<_t>::iterator::pointer pointer;
-		typedef typename normal_bidirectional_iterator<_t>::iterator::reference reference;
-		typedef typename normal_bidirectional_iterator<_t>::iterator::difference_type difference_type;
-		typedef typename normal_bidirectional_iterator<_t>::iterator::iterator_category iterator_category;
-
 	private:
-		typedef tree<Container, Compare> _tree;
-
+		typedef typename Node<_t>::node_pointer node_pointer;
+		typedef normal_bidirectional_iterator<_t> base_iterator;
 	public:
-		/** Constructors */
-		map_iterator(_tree t = _tree()) : _base(t) {}
+		typedef typename base_iterator::value_type value_type;
+		typedef typename base_iterator::pointer pointer;
+		typedef typename base_iterator::reference reference;
+		typedef typename base_iterator::difference_type difference_type;
+		typedef typename base_iterator::iterator_category iterator_category;
 
-		map_iterator(const map_iterator &src) {
-			*this = src;
-		}
+		/** Constructors */
+		map_iterator(node_pointer ptr = node_pointer()) : _base(ptr) {}
+
+		map_iterator(const map_iterator &src) { *this = src; }
 
 		/** Destructor */
 		~map_iterator() {}
@@ -37,31 +33,26 @@ namespace ft {
 		/** Member Operator Overloads */
 		map_iterator &operator=(const map_iterator &rhs) {
 			if (this == &rhs)
-				return ;
+				return *this;
 			_base = rhs._base;
 			return *this;
 		}
 
 		/** prefix ++a */
 		map_iterator &operator++() {
-			_base->next();
+			_base = _base->next();
 			return *this;
 		}
 
 		/** postfix a++ || int to differentiate between prefix and postfix increment operators. */
 		const map_iterator operator++(const int) {
 			map_iterator temp = *this;
-			_base->next();
+			_base = _base->next();
 			return temp;
 		}
 
 		bool operator==(const map_iterator &rhs) const {
-			if ((_base.pastTheEnd && rhs._base.pastTheEnd) || (_base.beforeBegin && rhs._base.beforeBegin))
-				return true;
-			if (_base.beforeBegin != rhs._base.beforeBegin || _base.pastTheEnd != rhs._base.pastTheEnd)
-				return false;
-
-			return _base.operator->() == &rhs.operator->();
+			return _base == rhs._base;
 		}
 
 		bool operator!=(const map_iterator &rhs) const {
@@ -69,63 +60,48 @@ namespace ft {
 		}
 
 		reference operator*() {
-			return *_base;
+			return _base->data;
 		} // dereference
 
 		const reference operator*() const {
-			return *_base;
+			return _base->data;
 		} // dereference
 
 		pointer operator->() {
-			return _base.operator->();
+			return &_base->data;
 		} // structure dereference
 
 		const pointer operator->() const {
-			return _base.operator->();
+			return &_base->data;
 		} // structure dereference
 
 		map_iterator &operator--() {
-			_base->prev();
+			_base = _base->prev();
 			return *this;
 		} //prefix --a
 
 		const map_iterator operator--(const int) {
 			map_iterator temp = *this;
-			_base->prev();
+			_base = _base->prev();
 			return temp;
 		} // postfix a-- || int to differentiate between prefix and postfix increment operators.
 
 	private:
-		_tree _base;
+		node_pointer _base;
 	};
 
 	template <class T>
 	bool operator== (const map_iterator<T> & lhs, const map_iterator<T> & rhs) {
-		if ((lhs._base.pastTheEnd && rhs._base.pastTheEnd) || (lhs._base.beforeBegin && rhs._base.beforeBegin))
-			return true;
-		if (lhs._base.beforeBegin != rhs._base.beforeBegin || lhs._base.pastTheEnd != rhs._base.pastTheEnd)
-			return false;
-
 		return lhs._base.operator->() == &rhs.operator->();
 	}
 
 	template <class T>
 	bool operator== (const map_iterator<const T> & lhs, const map_iterator<T> & rhs) {
-		if ((lhs._base.pastTheEnd && rhs._base.pastTheEnd) || (lhs._base.beforeBegin && rhs._base.beforeBegin))
-			return true;
-		if (lhs._base.beforeBegin != rhs._base.beforeBegin || lhs._base.pastTheEnd != rhs._base.pastTheEnd)
-			return false;
-
 		return lhs._base.operator->() == &rhs.operator->();
 	}
 
 	template <class T>
 	bool operator== (const map_iterator<T> & lhs, const map_iterator<const T> & rhs) {
-		if ((lhs._base.pastTheEnd && rhs._base.pastTheEnd) || (lhs._base.beforeBegin && rhs._base.beforeBegin))
-			return true;
-		if (lhs._base.beforeBegin != rhs._base.beforeBegin || lhs._base.pastTheEnd != rhs._base.pastTheEnd)
-			return false;
-
 		return lhs._base.operator->() == &rhs.operator->();
 	}
 

@@ -24,6 +24,7 @@ namespace ft {
 		pair& operator=(const pair& rhs) {
 			first = rhs.first;
 			second = rhs.second;
+			return *this;
 		}
 
 		/// Member Variables

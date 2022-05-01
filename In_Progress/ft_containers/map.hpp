@@ -33,14 +33,8 @@ namespace ft {
 		typedef ft::size_t size_type;
 
 	private:
-		enum e_status {
-			_left = 0,
-			_right = 1,
-			_parent = 2
-		};
-
 		/// Nested Classes
-		class _value_compare : binary_function<value_type, value_type, bool> {
+		class _value_compare : private binary_function<value_type, value_type, bool> {
 			friend class map;
 		protected:
 			Compare comp;
@@ -54,16 +48,27 @@ namespace ft {
 			}
 		};
 
+		class _duct_tape : private binary_function<value_type, value_type, bool> {
+		public:
+			_duct_tape() : comp(Compare()) {}  // constructed with map's comparison object
+			typedef bool result_type;
+			typedef value_type first_argument_type;
+			typedef value_type second_argument_type;
+			result_type operator() (const first_argument_type& x, const second_argument_type& y) const {
+				return comp(x.first, y.first);
+			}
+			Compare comp;
+		};
+
 	public:
 		/// Member Types
 		typedef _value_compare value_compare;
 		///  Iterators
-	public:
-		typedef map_iterator<value_type, map, key_compare>						iterator;
-		typedef map_iterator<const value_type, map, key_compare>				const_iterator;
-		typedef reverse_iterator<iterator>										reverse_iterator;
-		typedef ft::reverse_iterator<const_iterator>							const_reverse_iterator;
-		typedef typename iterator::difference_type 								difference_type;
+		typedef map_iterator<value_type>						iterator;
+		typedef map_iterator<const value_type>					const_iterator;
+		typedef reverse_iterator<iterator>						reverse_iterator;
+		typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
+		typedef typename iterator::difference_type 				difference_type;
 
 		/// Member Functions
 		/// Constructors
@@ -72,7 +77,7 @@ namespace ft {
 			_k_comp = comp;
 			_allocator = alloc;
 			_size = 0;
-			_data = new _tree();
+			_data = _tree_type();
 		}
 
 		// TODO Range Constructor
@@ -81,18 +86,13 @@ namespace ft {
 			 const allocator_type& alloc = allocator_type());
 
 		map(const map& x)
-		: _val_comp(value_compare(key_compare())) {
-			*this = x;
-		};
+		: _val_comp(value_compare(key_compare())) { *this = x; }
 
 		/// Destructor
 		~map() {
-			for (; !_data->pastTheEnd; _data->next()) {
-				_allocator.destroy(_data->current->data);
-			}
-			_data->resetCurrent();
-			delete _data;
+			_treeAllocator.destroy(&_data);
 		}
+		// TODO Fix map according to new version of node and tree
 
 		/// Member Operator Overloads
 		map& operator=(const map& x) {
@@ -290,11 +290,13 @@ namespace ft {
 
 		/// Member Variables
 	private:
-		typedef tree<map, key_compare> _tree;
+		typedef Tree<value_type, _duct_tape> _tree_type;
+		typedef std::allocator<_tree_type> _tree_allocator;
 
-		_tree *_data;
+		_tree_type _data;
 		size_type _size;
 		allocator_type _allocator;
+		_tree_allocator _treeAllocator;
 		key_compare _k_comp;
 		value_compare _val_comp;
 	};

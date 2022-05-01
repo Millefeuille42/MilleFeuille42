@@ -17,7 +17,6 @@ add_executable(ft_containers
         iterators/reverse_iterator.hpp
         utils/vector_iterator.hpp
 
-        utils/tree.hpp
         utils/map_iterator.hpp
         utils/default_container.hpp
-        )
+        utils/Node.hpp utils/Tree.hpp)
