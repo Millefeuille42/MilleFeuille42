@@ -12,12 +12,12 @@
 
 // TODO Delete operation
 namespace ft {
-	template <class T, class Compare = ft::less<T> >
+	template <class T, class Compare = ft::less<T>, class Alloc = std::allocator<T> >
 	class Tree {
 	public:
 		typedef T value_type;
 		typedef Compare comp;
-		typedef Node<value_type>node_val;
+		typedef Node<value_type, Alloc> node_val;
 
 		typedef typename node_val::allocator_type allocator_type;
 		typedef typename allocator_type::pointer pointer;
@@ -38,7 +38,7 @@ namespace ft {
 		Tree() : _comp(comp()) {
 			_nodeAllocator = node_allocator();
 			origin = node_pointer();
-			current = origin;
+			resetCurrent();
 		}
 
 		Tree(value_type val) {
@@ -46,7 +46,7 @@ namespace ft {
 			_comp = comp();
 			origin = _nodeAllocator.allocate(1);
 			*origin = node_val(val);
-			current = origin;
+			resetCurrent();
 		}
 
 		~Tree() {
@@ -65,30 +65,32 @@ namespace ft {
 			_nodeAllocator.deallocate(origin, 1);
 			origin = _nodeAllocator.allocate(1);
 			*origin = node_val(*rhs.origin);
-			current = origin;
+			resetCurrent();
 			return *this;
 		}
 
-		void append(value_type val) {
+		pair<node_pointer, bool> append(value_type val) {
+			resetCurrent();
 			if (!_comp(val, current->data)
 			&& !_comp(current->data, val)) {
-				current->data = val;
-				return ;
+				return ft::make_pair(current, false);
 			}
 			int nextPos = evalNextPos(val);
 			if (!isSideEmpty(nextPos)) {
 				moveTo(nextPos);
-				append(val);
-				return ;
+				return append(val);
 			}
 			node_pointer newC = _nodeAllocator.allocate(1);
 			*newC = node_val(val);
 			current->setChild(newC, nextPos);
+			moveTo(nextPos);
+			return ft::make_pair(current, true);
 		}
 
 		bool find(const value_type & val) {
+			resetCurrent();
 			if (!_comp(val, current->data)
-			&& !_comp(current->data, val))
+				&& !_comp(current->data, val))
 				return true;
 
 			int nextPos = this->evalNextPos(val);
@@ -98,6 +100,25 @@ namespace ft {
 			}
 			return false ;
 		}
+
+		// TODO make find compatible with const keyword
+		bool find(const value_type & val) const {
+			//resetCurrent();
+			if (!_comp(val, current->data)
+			&& !_comp(current->data, val))
+				return true;
+
+			int nextPos = this->evalNextPos(val);
+			if (!this->isSideEmpty(nextPos)) {
+				//this->moveTo(nextPos);
+				return this->find(val);
+			}
+			return false ;
+		}
+
+		bool empty() const {
+			return origin == node_pointer();
+		};
 
 		void next() {
 			current = current->next();
@@ -113,6 +134,14 @@ namespace ft {
 
 		void rightmost() {
 			current = current->rightmostFrom(origin);
+		}
+
+		node_pointer leftmost() const {
+			return current->leftmostFrom(origin);
+		}
+
+		node_pointer rightmost() const {
+			return current->rightmostFrom(origin);
 		}
 
 		void resetCurrent() {

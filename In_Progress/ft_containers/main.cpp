@@ -4,10 +4,10 @@
 #include "map.hpp"
 
 int main() {
-	typedef ft::pair<int, int> pairType;
+	typedef ft::pair<char, int> pairType;
 	typedef ft::Tree<pairType> treeType;
 	typedef ft::map_iterator<pairType> itType;
-	typedef ft::map<int, int> mapType;
+	typedef ft::map<char, int> mapType;
 
 	mapType myMap = mapType();
 	treeType tst = treeType(pairType(1, 2));
@@ -23,4 +23,5 @@ int main() {
 
 	tst.append(testVal);
 	tst.find(testVal);
+	myMap.find('a');
 }

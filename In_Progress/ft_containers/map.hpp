@@ -77,7 +77,8 @@ namespace ft {
 			_k_comp = comp;
 			_allocator = alloc;
 			_size = 0;
-			_data = _tree_type();
+			_data = _treeAllocator.allocate(1);
+			_treeAllocator.construct(_data, _tree_type());
 		}
 
 		// TODO Range Constructor
@@ -90,9 +91,8 @@ namespace ft {
 
 		/// Destructor
 		~map() {
-			_treeAllocator.destroy(&_data);
+			_treeAllocator.destroy(_data);
 		}
-		// TODO Fix map according to new version of node and tree
 
 		/// Member Operator Overloads
 		map& operator=(const map& x) {
@@ -102,33 +102,30 @@ namespace ft {
 			_val_comp = x._val_comp;
 			_size = x._size;
 			_allocator = x._allocator;
-			_data->deepCopy(*x._data);
+			_treeAllocator.destroy(_data);
+			_treeAllocator.construct(_data, *x._data);
 			return *this;
 		}
 
 		///Iterators
 		iterator begin() {
-			_tree tmp = *_data;
-			tmp.leftmost();
-			return iterator(tmp);
+			_data->leftmost();
+			return iterator(_data->current);
 		};
 
 		const_iterator begin() const {
-			_tree tmp = *_data;
-			tmp.leftmost();
-			return const_iterator(tmp);
+			_data->leftmost();
+			return const_iterator(_data->current);
 		};
 
 		iterator end() {
-			_tree tmp = *_data;
-			tmp.pastTheEnd();
-			return iterator(tmp);
+			_data->rightmost();
+			return iterator(_data->current);
 		};
 
 		const_iterator end() const {
-			_tree tmp = *_data;
-			tmp.pastTheEnd();
-			return const_iterator(tmp);
+			_data->rightmost();
+			return const_iterator(_data->current);
 		}
 
 		reverse_iterator rbegin() {
@@ -148,11 +145,11 @@ namespace ft {
 
 		/// Capacity
 		bool empty() const {
-			return _data->getSize() == 0;
+			return _data->empty();
 		}
 
 		size_type size() const {
-			return _data->getSize();
+			return _size;
 		}
 
 		size_type max_size() const {
@@ -161,38 +158,32 @@ namespace ft {
 
 		/// Access
 		mapped_type& operator[](const key_type& k) {
-			mapped_type &ret = mapped_type();
-			_data->tmp = _data->current;
-
-			if (!_data->find(make_pair(k,mapped_type()))) {
-				// Insert value
-				_size++;
-			} else
-				ret = (*_data->current->data).second;
-			_data->current = _data->tmp;
-			return ret;
+			// Get iterator on the newly inserted key, or existing key
+			iterator el = insert(ft::make_pair(k,mapped_type())).first;
+			// Isolate value_type from iterator
+			// Return reference on value of pair
+			return (*el).second;
 		}
 
 		/// Modifiers
 		pair<iterator,bool> insert(const value_type& val) {
-			_data->tmp = _data->current;
-			if (_data->find(val)) {
-				_data->current = _data->tmp;
-				return make_pair(iterator(_data), false);
-			}
-			_data->resetCurrent();
-			pointer valPtr = _allocator.allocate(1);
-			_allocator.construct(valPtr, val);
-			_data->append(valPtr);
-			_size++;
-			_data->current = _data->tmp;
-			return make_pair(iterator(_data), true);
+			pair<node_pointer, bool> ret = _data->append(val);
+			if (ret.second)
+				_size++;
+			return ft::make_pair(iterator(ret.first), ret.second);
 		}
 
-		iterator insert (iterator position, const value_type& val);
+		iterator insert (iterator position, const value_type& val) {
+			if (*position->first == val.first)
+				return position;
+			return insert(val).first;
+		}
 
 		template <class InputIterator>
-		void insert (InputIterator first, InputIterator last);
+		void insert (InputIterator first, InputIterator last) {
+			for (; first != last; first++)
+				insert(*first);
+		}
 
 		void erase (iterator position);
 
@@ -201,7 +192,7 @@ namespace ft {
 		void erase (iterator first, iterator last);
 
 		void swap (map& x) {
-			_tree *tmpData = _data;
+			_tree_type *tmpData = _data;
 			size_type tmpSize = _size;
 
 			_data = x._data;
@@ -212,13 +203,9 @@ namespace ft {
 		}
 
 		void clear() {
-			_data->leftmost();
-			for (; _data->pastTheEnd; _data->next())
-				_allocator.deallocate(_data->current->data);
-			_data->resetCurrent();
-			delete _data;
 			_size = 0;
-			_data = new _tree();
+			_treeAllocator.destroy(_data);
+			_treeAllocator.construct(_data, _tree_type());
 		}
 
 		/// Observers
@@ -232,40 +219,20 @@ namespace ft {
 
 		/// Operations
 		iterator find (const key_type& k) {
-			_data->tmp = _data->current;
-
-			if (!_data->find(make_pair(k,mapped_type()))) {
-				_data->current = _data->tmp;
-				return this->end();
-			}
-
-			iterator ret = iterator(_data);
-			_data->current = _data->tmp;
-			return ret;
+			if (!_data->find(ft::make_pair(k, mapped_type())))
+				return end();
+			return iterator(_data->current);
 		}
 
 		const_iterator find (const key_type& k) const {
-			_data->tmp = _data->current;
-
-			if (!_data->find(make_pair(k,mapped_type()))) {
-				_data->current = _data->tmp;
-				return this->end();
-			}
-
-			const_iterator ret = iterator(_data);
-			_data->current = _data->tmp;
-			return ret;
+			if (!_data->find(ft::make_pair(k, mapped_type())))
+				return end();
+			return const_iterator(_data->current);
 		}
 
 		size_type count (const key_type& k) const {
-			_data->tmp = _data->current;
-
-			if (!_data->find(make_pair(k,mapped_type()))) {
-				_data->current = _data->tmp;
+			if (!_data->find(ft::make_pair(k, mapped_type())))
 				return 0;
-			}
-
-			_data->current = _data->tmp;
 			return 1;
 		}
 
@@ -290,10 +257,11 @@ namespace ft {
 
 		/// Member Variables
 	private:
-		typedef Tree<value_type, _duct_tape> _tree_type;
+		typedef Tree<value_type, _duct_tape, allocator_type> _tree_type;
 		typedef std::allocator<_tree_type> _tree_allocator;
+		typedef typename _tree_type::node_pointer node_pointer;
 
-		_tree_type _data;
+		_tree_type *_data;
 		size_type _size;
 		allocator_type _allocator;
 		_tree_allocator _treeAllocator;

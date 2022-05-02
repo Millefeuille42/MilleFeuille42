@@ -86,6 +86,10 @@ namespace ft {
 			return temp;
 		} // postfix a-- || int to differentiate between prefix and postfix increment operators.
 
+		operator map_iterator<const _t> const() {
+			return (map_iterator<const _t>(_base));
+		};
+
 	private:
 		node_pointer _base;
 	};

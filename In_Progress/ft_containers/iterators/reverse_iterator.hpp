@@ -62,7 +62,7 @@ namespace ft {
 			return *this;
 		};
 
-		reverse_iterator operator++(int) {
+		const reverse_iterator operator++(int) {
 			reverse_iterator tmp = *this;
 			--current;
 			return tmp;
