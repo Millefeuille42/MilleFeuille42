@@ -26,18 +26,28 @@ namespace ft {
 		Node(value_type val = value_type()) : parent(node_pointer()) {
 			_children[_left] = node_pointer();
 			_children[_right] = node_pointer();
-			data = val;
+			allocator_type().construct(&data, val);
 			at = -1;
 			_nodeAllocator = node_allocator();
 		}
 
 		Node(const Node & src) : at() { *this = src; }
 
+		void deleteChildren() {
+			if (_children[_right]) {
+				_nodeAllocator.destroy(_children[_right]);
+				_nodeAllocator.deallocate(_children[_right], 1);
+				_children[_right] = node_pointer();
+			}
+			if (_children[_left]) {
+				_nodeAllocator.destroy(_children[_left]);
+				_nodeAllocator.deallocate(_children[_left], 1);
+				_children[_left] = node_pointer();
+			}
+		}
+
 		~Node() {
-			_nodeAllocator.destroy(_children[_left]);
-			_nodeAllocator.destroy(_children[_right]);
-			_nodeAllocator.deallocate(_children[_left], 1);
-			_nodeAllocator.deallocate(_children[_right], 1);
+			deleteChildren();
 		}
 
 		Node& operator=(const Node& rhs) {
@@ -48,10 +58,7 @@ namespace ft {
 			if (!rhs.parent)
 				parent = NULL;
 
-			_nodeAllocator.destroy(_children[_left]);
-			_nodeAllocator.destroy(_children[_right]);
-			_nodeAllocator.deallocate(_children[_left], 1);
-			_nodeAllocator.deallocate(_children[_right], 1);
+			deleteChildren();
 			if (rhs._children[_left]) {
 				node_pointer newC = _nodeAllocator.allocate(1);
 				*newC = Node(*rhs._children[_left]);

@@ -50,8 +50,11 @@ namespace ft {
 		}
 
 		~Tree() {
-			_nodeAllocator.destroy(origin);
-			_nodeAllocator.deallocate(origin, 1);
+			if (origin) {
+				_nodeAllocator.destroy(origin);
+				_nodeAllocator.deallocate(origin, 1);
+				origin = node_pointer();
+			}
 		}
 
 		Tree(const Tree &src) { *this = src;}
@@ -61,16 +64,29 @@ namespace ft {
 				return *this;
 			_comp = rhs._comp;
 			_nodeAllocator = rhs._nodeAllocator;
-			_nodeAllocator.destroy(origin);
-			_nodeAllocator.deallocate(origin, 1);
-			origin = _nodeAllocator.allocate(1);
-			*origin = node_val(*rhs.origin);
+			if (origin) {
+				_nodeAllocator.destroy(origin);
+				_nodeAllocator.deallocate(origin, 1);
+				origin = node_pointer();
+			}
+			if (rhs.origin) {
+				origin = _nodeAllocator.allocate(1);
+				*origin = node_val(*rhs.origin);
+				_nodeAllocator.construct(origin, *rhs.origin);
+			}
+			else
+				origin = node_pointer();
 			resetCurrent();
 			return *this;
 		}
 
 		pair<node_pointer, bool> append(value_type val) {
-			resetCurrent();
+			if (!origin) {
+				origin = _nodeAllocator.allocate(1);
+				_nodeAllocator.construct(origin, val);
+				resetCurrent();
+				return ft::make_pair(current, true);
+			}
 			if (!_comp(val, current->data)
 			&& !_comp(current->data, val)) {
 				return ft::make_pair(current, false);
@@ -81,38 +97,38 @@ namespace ft {
 				return append(val);
 			}
 			node_pointer newC = _nodeAllocator.allocate(1);
-			*newC = node_val(val);
+			_nodeAllocator.construct(newC, val);
 			current->setChild(newC, nextPos);
 			moveTo(nextPos);
 			return ft::make_pair(current, true);
 		}
 
 		bool find(const value_type & val) {
-			resetCurrent();
+			if (!origin)
+				return false;
 			if (!_comp(val, current->data)
 				&& !_comp(current->data, val))
 				return true;
-
 			int nextPos = this->evalNextPos(val);
 			if (!this->isSideEmpty(nextPos)) {
 				this->moveTo(nextPos);
 				return this->find(val);
 			}
-			return false ;
+			return false;
 		}
 
-		// TODO make find compatible with const keyword
-		bool find(const value_type & val) const {
-			//resetCurrent();
-			if (!_comp(val, current->data)
-			&& !_comp(current->data, val))
+		bool find(const value_type & val, node_pointer cur) const {
+			if (!origin)
+				return false;
+			if (cur == node_pointer())
+				cur = origin;
+			if (!_comp(val, cur->data)
+			&& !_comp(cur->data, val))
 				return true;
 
 			int nextPos = this->evalNextPos(val);
-			if (!this->isSideEmpty(nextPos)) {
-				//this->moveTo(nextPos);
-				return this->find(val);
-			}
+			if (!this->isSideEmpty(nextPos))
+				return this->find(val, cur->getChild(nextPos));
 			return false ;
 		}
 
@@ -136,11 +152,11 @@ namespace ft {
 			current = current->rightmostFrom(origin);
 		}
 
-		node_pointer leftmost() const {
+		node_pointer getLeftmost() const {
 			return current->leftmostFrom(origin);
 		}
 
-		node_pointer rightmost() const {
+		node_pointer getRightmost() const {
 			return current->rightmostFrom(origin);
 		}
 
@@ -167,12 +183,10 @@ namespace ft {
 			current = current->getChild(pos);
 		}
 
-		void leftmostFromCurrent() {
-			current = current->leftmostFrom(current);
-		}
-
-		void rightmostFromCurrent() {
-			current = current->rightmostFrom(current);
+		node_pointer getChild(int pos) const {
+			if (pos == _parent)
+				return current->parent;
+			return current->getChild(pos);
 		}
 
 	public:

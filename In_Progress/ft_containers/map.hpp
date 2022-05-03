@@ -87,11 +87,18 @@ namespace ft {
 			 const allocator_type& alloc = allocator_type());
 
 		map(const map& x)
-		: _val_comp(value_compare(key_compare())) { *this = x; }
+		: _val_comp(value_compare(key_compare())) {
+			_data = _treeAllocator.allocate(1);
+			_treeAllocator.construct(_data, _tree_type());
+			*this = x;
+		}
 
 		/// Destructor
 		~map() {
-			_treeAllocator.destroy(_data);
+			if (_data) {
+				_treeAllocator.destroy(_data);
+				_treeAllocator.deallocate(_data, 1);
+			}
 		}
 
 		/// Member Operator Overloads
@@ -102,29 +109,39 @@ namespace ft {
 			_val_comp = x._val_comp;
 			_size = x._size;
 			_allocator = x._allocator;
-			_treeAllocator.destroy(_data);
+			if (_data)
+				_treeAllocator.destroy(_data);
 			_treeAllocator.construct(_data, *x._data);
 			return *this;
 		}
 
 		///Iterators
 		iterator begin() {
-			_data->leftmost();
+			_data->resetCurrent();
+			if (!_data->empty())
+				_data->leftmost();
 			return iterator(_data->current);
 		};
 
 		const_iterator begin() const {
-			_data->leftmost();
+			_data->resetCurrent();
+			if (!_data->empty())
+				_data->leftmost();
 			return const_iterator(_data->current);
 		};
 
+		//TODO setup proper end
 		iterator end() {
-			_data->rightmost();
+			_data->resetCurrent();
+			if (!_data->empty())
+				_data->rightmost();
 			return iterator(_data->current);
 		};
 
 		const_iterator end() const {
-			_data->rightmost();
+			_data->resetCurrent();
+			if (!_data->empty())
+				_data->rightmost();
 			return const_iterator(_data->current);
 		}
 
@@ -167,6 +184,7 @@ namespace ft {
 
 		/// Modifiers
 		pair<iterator,bool> insert(const value_type& val) {
+			_data->resetCurrent();
 			pair<node_pointer, bool> ret = _data->append(val);
 			if (ret.second)
 				_size++;
@@ -174,7 +192,7 @@ namespace ft {
 		}
 
 		iterator insert (iterator position, const value_type& val) {
-			if (*position->first == val.first)
+			if (position->first == val.first)
 				return position;
 			return insert(val).first;
 		}
@@ -204,7 +222,8 @@ namespace ft {
 
 		void clear() {
 			_size = 0;
-			_treeAllocator.destroy(_data);
+			if (_data)
+				_treeAllocator.destroy(_data);
 			_treeAllocator.construct(_data, _tree_type());
 		}
 
@@ -219,19 +238,20 @@ namespace ft {
 
 		/// Operations
 		iterator find (const key_type& k) {
+			_data->resetCurrent();
 			if (!_data->find(ft::make_pair(k, mapped_type())))
 				return end();
 			return iterator(_data->current);
 		}
 
 		const_iterator find (const key_type& k) const {
-			if (!_data->find(ft::make_pair(k, mapped_type())))
+			if (!_data->find(ft::make_pair(k, mapped_type()), node_pointer()))
 				return end();
 			return const_iterator(_data->current);
 		}
 
 		size_type count (const key_type& k) const {
-			if (!_data->find(ft::make_pair(k, mapped_type())))
+			if (!_data->find(ft::make_pair(k, mapped_type()), node_pointer()))
 				return 0;
 			return 1;
 		}
