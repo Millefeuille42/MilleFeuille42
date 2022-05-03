@@ -23,7 +23,7 @@ namespace ft {
 		/// Member Types
 		typedef Key key_type;
 		typedef Type mapped_type;
-		typedef pair<const key_type, mapped_type> value_type;
+		typedef ft::pair<const key_type, mapped_type> value_type;
 		typedef Compare key_compare;
 		typedef Alloc allocator_type;
 		typedef typename allocator_type::reference reference;
@@ -129,7 +129,7 @@ namespace ft {
 			_data->resetCurrent();
 			if (!_data->empty())
 				_data->leftmost();
-			return const_iterator(_data->current);
+			return const_iterator(_data->current->toConst());
 		};
 
 		//TODO setup proper end
