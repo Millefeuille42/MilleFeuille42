@@ -53,11 +53,16 @@ namespace ft {
 			if (origin) {
 				_nodeAllocator.destroy(origin);
 				_nodeAllocator.deallocate(origin, 1);
-				origin = node_pointer();
 			}
+			origin = node_pointer();
+			resetCurrent();
 		}
 
-		Tree(const Tree &src) { *this = src;}
+		Tree(const Tree &src) {
+			origin = node_pointer();
+			resetCurrent();
+			*this = src;
+		}
 
 		Tree &operator=(const Tree &rhs) {
 			if (&rhs == this)
@@ -71,7 +76,6 @@ namespace ft {
 			}
 			if (rhs.origin) {
 				origin = _nodeAllocator.allocate(1);
-				*origin = node_val(*rhs.origin);
 				_nodeAllocator.construct(origin, *rhs.origin);
 			}
 			else

@@ -65,14 +65,17 @@ int main() {
 	myMap.value_comp();
 	myMap.key_comp();
 
-	//mapType mySecondMap(myMap);
-
-
-	//printIt( mySecondMap.find('e') ); // Expecting -> 49
-	//printIt( mySecondMap.insert(NS::make_pair('f', 1)).first ); // Expecting -> 1
-	//printIt( mySecondMap.insert(NS::make_pair('e', 1000)).first ); // Expecting -> 49
-	//printIt( mySecondMap.find('e') ); // Expecting -> 49
-	//printIt( myMap.find('f') ); // Expecting -> 49
+	std::cout << "--- Testing Copy ---" << std::endl;
+	mapType mySecondMap(myMap);
+	printIt( mySecondMap.find('e') ); // Expecting -> 49
+	printIt( mySecondMap.insert(NS::make_pair('f', 1)).first ); // Expecting -> 1
+	printIt( mySecondMap.insert(NS::make_pair('e', 1000)).first ); // Expecting -> 49
+	printIt( mySecondMap.insert(myMap.find('e'), NS::make_pair('e', 1000)) ); // Expecting -> 49
+	printIt( mySecondMap.find('e') ); // Expecting -> 49
+	printIt( mySecondMap.find('f') ); // Expecting -> 1
+	printIt( myMap.find('f') ); // Expecting -> 49
+	mySecondMap = myMap;
+	mySecondMap.clear();
 
 	std::cout << "--- Testing Clear ---" << std::endl;
 	myMap.clear();

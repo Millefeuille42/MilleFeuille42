@@ -31,19 +31,24 @@ namespace ft {
 			_nodeAllocator = node_allocator();
 		}
 
-		Node(const Node & src) : at() { *this = src; }
+		Node(const Node & src) : at() {
+			allocator_type().construct(&data, value_type());
+			_children[_left] = node_pointer();
+			_children[_right] = node_pointer();
+			*this = src;
+		}
 
 		void deleteChildren() {
-			if (_children[_right]) {
-				_nodeAllocator.destroy(_children[_right]);
-				_nodeAllocator.deallocate(_children[_right], 1);
-				_children[_right] = node_pointer();
-			}
 			if (_children[_left]) {
 				_nodeAllocator.destroy(_children[_left]);
 				_nodeAllocator.deallocate(_children[_left], 1);
-				_children[_left] = node_pointer();
 			}
+			if (_children[_right]) {
+				_nodeAllocator.destroy(_children[_right]);
+				_nodeAllocator.deallocate(_children[_right], 1);
+			}
+			_children[_left] = node_pointer();
+			_children[_right] = node_pointer();
 		}
 
 		~Node() {
@@ -56,17 +61,17 @@ namespace ft {
 			allocator_type().construct(&data, rhs.data);
 			_nodeAllocator = rhs._nodeAllocator;
 			if (!rhs.parent)
-				parent = NULL;
+				parent = node_pointer();
 
 			deleteChildren();
 			if (rhs._children[_left]) {
 				node_pointer newC = _nodeAllocator.allocate(1);
-				*newC = Node(*rhs._children[_left]);
+				_nodeAllocator.construct(newC, *rhs._children[_left]);
 				setChild(newC, _left);
 			}
 			if (rhs._children[_right]) {
 				node_pointer newC = _nodeAllocator.allocate(1);
-				*newC = Node(*rhs._children[_right]);
+				_nodeAllocator.construct(newC, *rhs._children[_right]);
 				setChild(newC, _right);
 			}
 			return *this;

@@ -88,8 +88,7 @@ namespace ft {
 
 		map(const map& x)
 		: _val_comp(value_compare(key_compare())) {
-			_data = _treeAllocator.allocate(1);
-			_treeAllocator.construct(_data, _tree_type());
+			_data = NULL;
 			*this = x;
 		}
 
@@ -99,6 +98,7 @@ namespace ft {
 				_treeAllocator.destroy(_data);
 				_treeAllocator.deallocate(_data, 1);
 			}
+			_data = NULL;
 		}
 
 		/// Member Operator Overloads
@@ -111,6 +111,8 @@ namespace ft {
 			_allocator = x._allocator;
 			if (_data)
 				_treeAllocator.destroy(_data);
+			else
+				_data = _treeAllocator.allocate(1);
 			_treeAllocator.construct(_data, *x._data);
 			return *this;
 		}
