@@ -1,84 +1,156 @@
-#include <iostream>
-#include "utils/Tree.hpp"
-#include "libs/utility.hpp"
-#include "utils/map_iterator.hpp"
-#include "map.hpp"
-#include <map>
+#ifndef BASE_HPP
+# define BASE_HPP
 
-#define NS ft
+# if !defined(USING_STD)
+#  define TESTED_NAMESPACE ft
+# else
+#  define TESTED_NAMESPACE std
+# endif /* !defined(STD) */
 
-typedef NS::map<char, int> mapType;
+# include <iostream>
+# include <string>
 
-void printIt(mapType::iterator it) {
-	std::cout << '(' << it.operator->() << ") " << it->first << " -> " << it->second << std::endl;
+// --- Class foo
+template <typename T>
+class foo {
+public:
+	typedef T	value_type;
+
+	foo(void) : value(), _verbose(false) { };
+	foo(value_type src, const bool verbose = false) : value(src), _verbose(verbose) { };
+	foo(foo const &src, const bool verbose = false) : value(src.value), _verbose(verbose) { };
+	~foo(void) { if (this->_verbose) std::cout << "~foo::foo()" << std::endl; };
+	void m(void) { std::cout << "foo::m called [" << this->value << "]" << std::endl; };
+	void m(void) const { std::cout << "foo::m const called [" << this->value << "]" << std::endl; };
+	foo &operator=(value_type src) { this->value = src; return *this; };
+	foo &operator=(foo const &src) {
+		if (this->_verbose || src._verbose)
+			std::cout << "foo::operator=(foo) CALLED" << std::endl;
+		this->value = src.value;
+		return *this;
+	};
+	value_type	getValue(void) const { return this->value; };
+	void		switchVerbose(void) { this->_verbose = !(this->_verbose); };
+
+	operator value_type(void) const {
+		return value_type(this->value);
+	}
+private:
+	value_type	value;
+	bool		_verbose;
+};
+
+template <typename T>
+std::ostream	&operator<<(std::ostream &o, foo<T> const &bar) {
+	o << bar.getValue();
+	return o;
+}
+// --- End of class foo
+
+template <typename T>
+T	inc(T it, int n)
+{
+	while (n-- > 0)
+		++it;
+	return (it);
 }
 
-void printEmpty(bool b) {
-	if (b)
-		std::cout << "Empty" << std::endl;
-	else
-		std::cout << "Filled" << std::endl;
+template <typename T>
+T	dec(T it, int n)
+{
+	while (n-- > 0)
+		--it;
+	return (it);
 }
 
-void printSize(mapType::size_type i) {
-	std::cout << "Size: " << i << std::endl;
+#endif /* BASE_HPP */
+
+#if !defined(USING_STD)
+# include "map.hpp"
+#else
+# include <map>
+#endif /* !defined(STD) */
+
+#define _pair TESTED_NAMESPACE::pair
+
+template <typename T>
+std::string	printPair(const T &iterator, bool nl = true, std::ostream &o = std::cout)
+{
+	o << "key: " << iterator->first << " | value: " << iterator->second;
+	if (nl)
+		o << std::endl;
+	return ("");
 }
 
-void printCount(mapType::size_type i) {
-	std::cout << "Found " << i << std::endl;
+template <typename T_MAP>
+void	printSize(T_MAP const &mp, bool print_content = 1)
+{
+	std::cout << "size: " << mp.size() << std::endl;
+	//std::cout << "max_size: " << mp.max_size() << std::endl;
+	if (print_content)
+	{
+		typename T_MAP::const_iterator it = mp.begin(), ite = mp.end();
+		std::cout << std::endl << "Content is:" << std::endl;
+		for (; it != ite; ++it)
+			std::cout << "- " << printPair(it, false) << std::endl;
+	}
+	std::cout << "###############################################" << std::endl;
 }
 
-void printVal(mapType::size_type i) {
-	std::cout << "Val:  " << i << std::endl;
+template <typename T1, typename T2>
+void	printReverse(TESTED_NAMESPACE::map<T1, T2> &mp)
+{
+	typename TESTED_NAMESPACE::map<T1, T2>::iterator it = mp.end(), ite = mp.begin();
+
+	std::cout << "printReverse:" << std::endl;
+	while (it != ite) {
+		it--;
+		std::cout << "-> " << printPair(it, false) << std::endl;
+	}
+	std::cout << "_______________________________________________" << std::endl;
 }
 
-int main() {
+// END OF COMMON
+#include <list>
 
-	mapType myMap = mapType();
+#define T1 char
+#define T2 int
+typedef _pair<const T1, T2> T3;
 
-	std::cout << "--- Testing Insert ---" << std::endl;
-	printSize( myMap.size() ); // Expecting -> 0
-	printIt( myMap.insert(NS::make_pair('c', 42)).first ); // Expecting -> 42
-	printIt( myMap.insert(NS::make_pair('a', 48)).first ); // Expecting -> 48
-	printIt( myMap.insert(myMap.find('e'), NS::make_pair('b', 41)) ); // Expecting -> 41
-	printIt( myMap.insert(NS::make_pair('d', 40)).first ); // Expecting -> 40
-	std::cout << "--- Testing Find ---" << std::endl;
-	printIt( myMap.find('a') ); // Expecting -> 48
-	printIt( myMap.find('e') ); // Expecting -> 40
-
-	std::cout << "--- Testing Count ---" << std::endl;
-	printCount( myMap.count('c') ); // Expecting -> 1
-	printCount( myMap.count('f') ); // Expecting -> 0
-
-	std::cout << "--- Testing [] ---" << std::endl;
-	myMap['a'] = 12;
-	myMap['e'] = 48;
-	myMap['e'] = 49;
-	printVal( myMap['a'] ); // Expecting -> 12
-	printIt( myMap.find('e') ); // Expecting -> 49
-
-	std::cout << "--- Testing Empty And Size ---" << std::endl;
-	printEmpty( myMap.empty() ); // Expecting -> Filled
-	printSize( myMap.size() ); // Expecting -> 5
-	myMap.get_allocator();
-	myMap.max_size();
-	myMap.value_comp();
-	myMap.key_comp();
-
-	std::cout << "--- Testing Copy ---" << std::endl;
-	mapType mySecondMap(myMap);
-	printIt( mySecondMap.find('e') ); // Expecting -> 49
-	printIt( mySecondMap.insert(NS::make_pair('f', 1)).first ); // Expecting -> 1
-	printIt( mySecondMap.insert(NS::make_pair('e', 1000)).first ); // Expecting -> 49
-	printIt( mySecondMap.insert(myMap.find('e'), NS::make_pair('e', 1000)) ); // Expecting -> 49
-	printIt( mySecondMap.find('e') ); // Expecting -> 49
-	printIt( mySecondMap.find('f') ); // Expecting -> 1
-	printIt( myMap.find('f') ); // Expecting -> 49
-	mySecondMap = myMap;
-	mySecondMap.clear();
-
-	std::cout << "--- Testing Clear ---" << std::endl;
-	myMap.clear();
-	printEmpty( myMap.empty() ); // Expecting -> Empty
-	printSize( myMap.size() ); // Expecting -> 0
+template <class T>
+void	is_empty(T const &mp)
+{
+	std::cout << "is_empty: " << mp.empty() << std::endl;
 }
+
+int		main(void)
+{
+	std::list<T3> lst;
+	unsigned int lst_size = 7;
+	for (unsigned int i = 0; i < lst_size; ++i)
+		lst.push_back(T3('a' + i, lst_size - i));
+
+	TESTED_NAMESPACE::map<T1, T2> mp(lst.begin(), lst.end()), mp2;
+	TESTED_NAMESPACE::map<T1, T2>::iterator it;
+
+	lst.clear();
+	is_empty(mp);
+	printSize(mp);
+
+	is_empty(mp2);
+	mp2 = mp;
+	is_empty(mp2);
+
+	it = mp.begin();
+	for (unsigned long int i = 3; i < mp.size(); ++i)
+		it++->second = i * 7;
+
+	printSize(mp);
+	printSize(mp2);
+
+	mp2.clear();
+	is_empty(mp2);
+	printSize(mp2);
+	return (0);
+}
+

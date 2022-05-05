@@ -121,19 +121,19 @@ namespace ft {
 			return false;
 		}
 
-		bool find(const value_type & val, node_pointer cur) const {
+		node_pointer find(const value_type & val, node_pointer cur) const {
 			if (!origin)
-				return false;
+				return node_pointer();
 			if (cur == node_pointer())
 				cur = origin;
 			if (!_comp(val, cur->data)
 			&& !_comp(cur->data, val))
-				return true;
+				return cur;
 
-			int nextPos = this->evalNextPos(val);
-			if (!this->isSideEmpty(nextPos))
+			int nextPos = this->evalNextPos(cur, val);
+			if (cur->getChild(nextPos))
 				return this->find(val, cur->getChild(nextPos));
-			return false ;
+			return node_pointer();
 		}
 
 		bool empty() const {
@@ -171,6 +171,12 @@ namespace ft {
 	private:
 		int evalNextPos(const value_type & val) const {
 			if (_comp(val, current->data))
+				return _left;
+			return _right;
+		}
+
+		int evalNextPos(node_pointer cur, const value_type & val) const {
+			if (_comp(val, cur->data))
 				return _left;
 			return _right;
 		}
