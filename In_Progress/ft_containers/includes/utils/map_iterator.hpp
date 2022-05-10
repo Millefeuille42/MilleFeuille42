@@ -9,7 +9,6 @@
 #include "Tree.hpp"
 
 namespace ft {
-	// TODO Make iterator constructed on node instead of value_type
 	template<class _t, class _tcp = _t>
 	class map_iterator : public normal_bidirectional_iterator<_t> {
 	private:

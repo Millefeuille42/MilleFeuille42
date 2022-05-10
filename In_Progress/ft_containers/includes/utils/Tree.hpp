@@ -10,7 +10,6 @@
 #include "../libs/utility.hpp"
 #include "../libs/functional.hpp"
 
-// TODO Delete operation
 namespace ft {
 	template <class T, class Compare = ft::less<T>, class Alloc = std::allocator<T> >
 	class Tree {
@@ -166,6 +165,75 @@ namespace ft {
 
 		void resetCurrent() {
 			current = origin;
+		}
+
+		void deleteNode() {
+			node_pointer successor = NULL;
+
+			// Si le node current n'a pas d'enfants
+			if (!current->getChild(_left) && !current->getChild(_right)) {
+				// Supprimer la reference au node supprimé dans le parent
+				if (current->parent)
+					current->parent->setChildAddr(node_pointer(), current->at);
+			}
+
+			// Si le node current n'a qu'un enfant
+			else if (!current->getChild(_left) || !current->getChild(_right)) {
+				successor = current->getChild(_left);
+				if (!successor)
+					successor = current->getChild(_right);
+
+				// Assigner les enfants de current a son parent
+				if (current->parent) {
+					current->parent->setChildAddr(successor, current->at);
+					successor->parent = current->parent;
+				}
+			}
+
+			else {
+				// Prendre le NEXT de current
+				successor = current->next();
+
+				// Si NEXT n'est pas l'enfant imminent de current, l'enfant droite de next prend la place de next
+				if (current->getChild(_right) != successor) {
+					if (successor->getChild(_right))
+						successor->parent->setChildAddr(successor->getChild(_right), successor->at);
+					if (successor->parent) {
+						successor->parent->setChildAddr(node_pointer(), successor->at);
+					}
+				}
+
+				// Mettre NEXT a la place de current
+				// Assigner le NEXT en tant qu'enfant du parent de current
+				if (current->parent) {
+					current->parent->setChildAddr(successor, current->at);
+				}
+
+				// Assigner les enfants de current a NEXT
+				if (current->getChild(_left) != successor)
+					successor->setChildAddr(current->getChild(_left), _left);
+				if (current->getChild(_right) != successor)
+					successor->setChildAddr(current->getChild(_right), _right);
+			}
+
+
+			// Delete reference to current's children and parent
+			if (current->parent && current->parent->getChild(current->at) == current)
+				current->parent->setChildAddr(node_pointer(), current->at);
+			if (!current->parent) {
+				origin = successor;
+				if (successor) {
+					successor->parent = node_pointer();
+					successor->at = -1;
+				}
+			}
+			current->setChildAddr(node_pointer(), _left);
+			current->setChildAddr(node_pointer(), _right);
+			current->parent = node_pointer();
+			current->at = -3;
+			_nodeAllocator.destroy(current);
+			_nodeAllocator.deallocate(current, 1);
+			current = node_pointer();
 		}
 
 	private:

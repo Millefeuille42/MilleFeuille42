@@ -148,6 +148,16 @@ namespace ft {
 			_children[index]->at = index;
 		}
 
+		void setChildAddr(Node *addr, int index) {
+			if (index > _right || index < _left)
+				throw std::out_of_range("out of range");
+			_children[index] = addr;
+			if (addr) {
+				addr->at = index;
+				addr->parent = this;
+			}
+		}
+
 		node_pointer parent;
 		value_type data;
 		int at;

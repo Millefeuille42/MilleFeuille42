@@ -6,15 +6,15 @@
 #define INC_42_MAP_HPP
 
 #include <memory>
-#include "libs/functional.hpp"
-#include "libs/utility.hpp"
-#include "libs/stddef.hpp"
-#include "libs/algorithm.hpp"
+#include "includes/libs/functional.hpp"
+#include "includes/libs/utility.hpp"
+#include "includes/libs/stddef.hpp"
+#include "includes/libs/algorithm.hpp"
 
-#include "iterators/normal_iterators.hpp"
-#include "iterators/reverse_iterator.hpp"
+#include "includes/iterators/normal_iterators.hpp"
+#include "includes/iterators/reverse_iterator.hpp"
 
-#include "utils/map_iterator.hpp"
+#include "includes/utils/map_iterator.hpp"
 
 namespace ft {
 	template <class Key, class Type,
@@ -146,7 +146,8 @@ namespace ft {
 				ret.isPastTheEnd = true;
 				return ret;
 			}
-			ret = ++iterator(_data->getRightmost());
+			ret = iterator(_data->getRightmost());
+			ret++;
 			return ret;
 		}
 
@@ -218,11 +219,25 @@ namespace ft {
 				insert(*first);
 		}
 
-		void erase (iterator position);
+		void erase (iterator position) {
+			erase(position->first);
+		}
 
-		size_type erase (const key_type& k);
+		size_type erase (const key_type& k) {
+			_data->resetCurrent();
+			if (!_data->find(ft::make_pair(k, mapped_type())))
+				return 0;
+			_data->deleteNode();
+			_size--;
+			return 1;
+		}
 
-		void erase (iterator first, iterator last);
+		void erase (iterator first, iterator last) {
+			for (iterator next = first; first != last; first = next) {
+				next++;
+				erase(first);
+			}
+		}
 
 		void swap (map& x) {
 			_tree_type *tmpData = _data;
@@ -272,19 +287,51 @@ namespace ft {
 			return 1;
 		}
 
-		// TODO Accessors
+		iterator lower_bound (const key_type& k) {
+			iterator it = begin();
+			while (it != end() && _k_comp(it->first, k))
+				it++;
+			return it;
+		}
 
-		iterator lower_bound (const key_type& k);
+		const_iterator lower_bound (const key_type& k) const {
+			const_iterator it = begin();
+			while (it != end() && _k_comp(it->first, k))
+				it++;
+			return it;
+		}
 
-		const_iterator lower_bound (const key_type& k) const;
+		iterator upper_bound (const key_type& k) {
+			iterator it = begin();
 
-		iterator upper_bound (const key_type& k);
+			while (it != end())
+			{
+				if (_k_comp(k, it->first))
+					return it;
+				it++;
+			}
+			return it;
+		}
 
-		const_iterator upper_bound (const key_type& k) const;
+		const_iterator upper_bound (const key_type& k) const {
+			const_iterator it = begin();
 
-		pair<const_iterator,const_iterator> equal_range (const key_type& k) const;
+			while (it != end())
+			{
+				if (_k_comp(k, it->first))
+					return it;
+				it++;
+			}
+			return it;
+		}
 
-		pair<iterator,iterator>             equal_range (const key_type& k);
+		pair<const_iterator,const_iterator> equal_range (const key_type& k) const {
+			return (ft::make_pair(lower_bound(k), upper_bound(k)));
+		}
+
+		pair<iterator,iterator>             equal_range (const key_type& k) {
+			return (ft::make_pair(lower_bound(k), upper_bound(k)));
+		}
 
 		/// Allocator
 		allocator_type get_allocator() const {
@@ -304,6 +351,12 @@ namespace ft {
 		key_compare _k_comp;
 		value_compare _val_comp;
 	};
+
+	template <class Key, class T, class Compare, class Alloc>
+	void swap (map<Key,T,Compare,Alloc>& x, map<Key,T,Compare,Alloc>& y) {
+		x.swap(y);
+	}
+
 
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator== ( const map<Key,T,Compare,Alloc>& lhs,
