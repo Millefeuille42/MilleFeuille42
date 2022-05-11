@@ -1,5 +1,6 @@
 // ### INCLUDES ### //
 #include <iostream>
+#include <cstdlib>
 
 #ifdef NAMESPACE
 
@@ -31,9 +32,16 @@
 	typedef TESTED_KEY_TYPE keyType;
 #endif
 
+#ifndef SEED
+# define SEED time(NULL)
+#endif
+
+#define R_NUM rand() % 1250 + 1
+#define R_CHAR rand()%('z'-'a' + 1) + 'a'
+
 // ### TYPEDEF ### //
 
-typedef NAMESPACE::pair<keyType, testedType> pairType;
+typedef NAMESPACE::pair<const keyType, testedType> CPairType;
 typedef NAMESPACE::map<keyType, testedType> mapType;
 __attribute__((unused)) typedef NAMESPACE::vector<testedType> vectorType;
 typedef NAMESPACE::stack<testedType> stackType;
@@ -44,7 +52,7 @@ template <class val> void printValue(const val value) {
 	std::cout << value << std::endl;
 }
 
-template <> void printValue(const pairType value) {
+template <> void printValue<CPairType>(CPairType value) {
 	std::cout << value.first << " -> " << value.second << std::endl;
 }
 
@@ -108,119 +116,58 @@ template <class container> void printContainer(const container & ctr) {
 	}
 }
 
+void doTestsOnVector(vectorType & myVector) {
+	myVector.push_back(R_NUM);
+	myVector.push_back(R_NUM);
+	myVector.push_back(R_NUM);
+	myVector.push_back(R_NUM);
+	myVector.push_back(R_NUM);
+	printValue( *myVector.insert(myVector.begin() + 2, R_NUM) );
+	myVector.insert(myVector.begin() + 2, 42, R_NUM);
+	myVector.insert(myVector.begin() + 2, myVector.begin(),myVector.end());
+	printValue( *myVector.erase(myVector.begin() + 2) );
+	printValue( *myVector.erase(myVector.begin() + 5, myVector.end() - 2) );
+	printValue( myVector.at(5) );
+	printValue( myVector[5] );
+	myVector.pop_back();
+	myVector.pop_back();
+	myVector.push_back(R_NUM);
+	myVector.push_back(R_NUM);
+	printValue(myVector.front());
+	printValue(myVector.back());
+	myVector.assign(42, R_NUM);
+	vectorType a = vectorType(454, R_NUM);
+	myVector.assign(a.begin(), a.end());
+}
+
 void vectorTest() {
 	vectorType myVoidVector;
 	vectorType myDefaultVector = vectorType();
 	vectorType myAllocatedVector(12);
-	vectorType myFillVector(12, 42);
+	vectorType myFillVector(12, R_NUM);
 
-	std::cout << "### I/O ###" << std::endl;
-
-	myVoidVector.push_back(1);
-	myVoidVector.push_back(2);
-	myVoidVector.push_back(3);
-	myVoidVector.push_back(4);
-	myVoidVector.push_back(5);
-	printValue( *myVoidVector.insert(myVoidVector.begin() + 2, 42) );
-	myVoidVector.insert(myVoidVector.begin() + 2, 42, 12);
-	myVoidVector.insert(myVoidVector.begin() + 2, myVoidVector.begin(),myVoidVector.end());
-	printValue( *myVoidVector.erase(myVoidVector.begin() + 2) );
-	printValue( *myVoidVector.erase(myVoidVector.begin() + 5, myVoidVector.end() - 2) );
-	printValue( myVoidVector.at(5) );
-	printValue( myVoidVector[5] );
-	printValue( myVoidVector.capacity() );
-	myVoidVector.pop_back();
-	myVoidVector.pop_back();
-	myVoidVector.push_back(4);
-	myVoidVector.push_back(5);
-	myVoidVector.assign(42, 76);
-	{
-		vectorType a = vectorType(454, 42);
-		myVoidVector.assign(a.begin(), a.end());
-	}
-
-	myDefaultVector.push_back(1);
-	myDefaultVector.push_back(2);
-	myDefaultVector.push_back(3);
-	myDefaultVector.push_back(4);
-	myDefaultVector.push_back(5);
-	printValue( *myDefaultVector.insert(myDefaultVector.begin() + 2, 42) );
-	myDefaultVector.insert(myDefaultVector.begin() + 2, 42, 12);
-	myDefaultVector.insert(myDefaultVector.begin() + 2, myDefaultVector.begin(),myDefaultVector.end());
-	printValue( *myDefaultVector.erase(myDefaultVector.begin() + 2) );
-	printValue( *myDefaultVector.erase(myDefaultVector.begin() + 5, myDefaultVector.end() - 2) );
-	printValue( myDefaultVector.at(5) );
-	printValue( myDefaultVector[5] );
-	printValue( myDefaultVector.capacity() );
-	myDefaultVector.pop_back();
-	myDefaultVector.pop_back();
-	myDefaultVector.push_back(4);
-	myDefaultVector.push_back(5);
-	myDefaultVector.assign(42, 76);
-	{
-		vectorType a = vectorType(454, 42);
-		myDefaultVector.assign(a.begin(), a.end());
-	}
-
-	myAllocatedVector.push_back(1);
-	myAllocatedVector.push_back(2);
-	myAllocatedVector.push_back(3);
-	myAllocatedVector.push_back(4);
-	myAllocatedVector.push_back(5);
-	printValue( *myAllocatedVector.insert(myAllocatedVector.begin() + 2, 42) );
-	myAllocatedVector.insert(myAllocatedVector.begin() + 2, 42, 12);
-	myAllocatedVector.insert(myAllocatedVector.begin() + 2, myAllocatedVector.begin(),myAllocatedVector.end());
-	printValue( *myAllocatedVector.erase(myAllocatedVector.begin() + 2) );
-	printValue( *myAllocatedVector.erase(myAllocatedVector.begin() + 5, myAllocatedVector.end() - 2) );
-	printValue( myAllocatedVector.at(5) );
-	printValue( myAllocatedVector[5] );
-	printValue( myAllocatedVector.capacity() );
-	myAllocatedVector.pop_back();
-	myAllocatedVector.pop_back();
-	myAllocatedVector.push_back(4);
-	myAllocatedVector.push_back(5);
-	myAllocatedVector.assign(42, 76);
-	{
-		vectorType a = vectorType(454, 42);
-		myAllocatedVector.assign(a.begin(), a.end());
-	}
-
-	myFillVector.push_back(1);
-	myFillVector.push_back(2);
-	myFillVector.push_back(3);
-	myFillVector.push_back(4);
-	myFillVector.push_back(5);
-	printValue( *myFillVector.insert(myFillVector.begin() + 2, 42) );
-	myFillVector.insert(myFillVector.begin() + 2, 42, 12);
-	myFillVector.insert(myFillVector.begin() + 2, myFillVector.begin(),myFillVector.end());
-	printValue( *myFillVector.erase(myFillVector.begin() + 2) );
-	printValue( *myFillVector.erase(myFillVector.begin() + 5, myFillVector.end() - 2) );
-	printValue( myFillVector.at(5) );
-	printValue( myFillVector[5] );
-	printValue( myFillVector.capacity() );
-	myFillVector.pop_back();
-	myFillVector.pop_back();
-	myFillVector.push_back(4);
-	myFillVector.push_back(5);
-	myFillVector.assign(42, 76);
-	{
-		vectorType a = vectorType(454, 42);
-		myFillVector.assign(a.begin(), a.end());
-	}
+	doTestsOnVector(myVoidVector);
+	doTestsOnVector(myDefaultVector);
+	doTestsOnVector(myAllocatedVector);
+	doTestsOnVector(myFillVector);
 
 	vectorType myCopyVector = vectorType(myVoidVector);
-	myCopyVector.push_back(5);
+	myCopyVector.push_back(R_NUM);
 	vectorType myEmptyVector = vectorType();
+	vectorType myRangeVector = vectorType(myVoidVector.begin(), myVoidVector.end());
 
 	std::cout << "### Rel. Op. ###" << std::endl;
 	std::cout << "# Testing when == #" << std::endl;
-	printRel(myVoidVector, myFillVector);
+	printRel(myVoidVector, myRangeVector);
 
 	std::cout << "# Testing when != #" << std::endl;
 	printRel(myVoidVector, myCopyVector);
 
 	std::cout << "# Testing when one is empty #" << std::endl;
 	printRel(myEmptyVector, myFillVector);
+
+	swap(myCopyVector, myAllocatedVector);
+	myVoidVector.resize(5, R_NUM);
 
 	printContainer(myVoidVector);
 	printContainer(myDefaultVector);
@@ -230,50 +177,101 @@ void vectorTest() {
 	printContainer(myEmptyVector);
 }
 
+void doTestsOnMap(mapType & myMap) {
+	printValue( *myMap.insert(ft::make_pair('c', R_NUM)).first );
+	printValue( *myMap.insert(myMap.begin(), ft::make_pair(R_CHAR, 4)) );
+	printValue( *myMap.insert(ft::make_pair('c', R_NUM)).first);
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	myMap.insert(myMap.begin(), myMap.end());
+	myMap.insert(myMap.begin(), --myMap.end());
+	printValue(myMap.count('c'));
+	printValue(myMap.count('r'));
+	printValue(myMap.count('G'));
+	printValue(*myMap.find('c'));
+	printValue(*myMap.find('r'));
+	printValue(*myMap.find('G'));
+	myMap.erase('c');
+	myMap.erase(--myMap.end());
+	myMap.erase(myMap.begin(), myMap.end());
+	printValue( *myMap.insert(ft::make_pair('c', R_NUM)).first);
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	myMap.clear();
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	myMap.insert(myMap.begin(), myMap.end());
+	printValue( (myMap['W'] = R_NUM) );
+	printValue( myMap[R_CHAR] );
+	printValue( *myMap.upper_bound(R_CHAR) );
+	printValue( *myMap.upper_bound(R_CHAR) );
+	printValue( *myMap.lower_bound(R_CHAR) );
+	printValue( *myMap.lower_bound(R_CHAR) );
+	printValue( *myMap.equal_range(R_CHAR).first );
+	printValue( *myMap.equal_range(R_CHAR).first );
+	printValue( *myMap.equal_range(R_CHAR).second );
+	printValue( *myMap.equal_range(R_CHAR).second );
+}
+
 void mapTest() {
 	mapType myVoidMap;
 	mapType myDefaultMap = mapType();
 
-	std::cout << "### I/O ###" << std::endl;
+	doTestsOnMap(myVoidMap);
+	doTestsOnMap(myDefaultMap);
 
 	mapType myCopyMap = mapType(myVoidMap);
 	mapType myEmptyMap = mapType();
+	mapType myRangeMap = mapType(myVoidMap.begin(), myVoidMap.end());
+	doTestsOnMap(myCopyMap);
+	doTestsOnMap(myRangeMap);
+	myCopyMap.erase(myCopyMap.begin()++);
 
 	std::cout << "### Rel. Op. ###" << std::endl;
 	std::cout << "# Testing when == #" << std::endl;
+	printRel(myVoidMap, myDefaultMap);
 
 	std::cout << "# Testing when != #" << std::endl;
+	printRel(myVoidMap, myCopyMap);
 
 	std::cout << "# Testing when one is empty #" << std::endl;
+	printRel(myEmptyMap, myDefaultMap);
+
+	printContainer(myVoidMap);
+	printContainer(myDefaultMap);
+	printContainer(myCopyMap);
+	printContainer(myRangeMap);
+	printContainer(myEmptyMap);
+}
+
+void doTestsOnStack(stackType & myStack) {
+	myStack.push(R_NUM);
+	myStack.push(R_NUM);
+	myStack.push(R_NUM);
+	myStack.push(R_NUM);
+	myStack.push(R_NUM);
+	myStack.pop();
+	myStack.pop();
+	myStack.push(R_NUM);
 }
 
 void stackTest() {
 	stackType myVoidStack;
 	stackType myDefaultStack = stackType();
 
-	std::cout << "### I/O ###" << std::endl;
-	myDefaultStack.push(1);
-	myDefaultStack.push(2);
-	myDefaultStack.push(3);
-	myDefaultStack.push(4);
-	myDefaultStack.push(5);
-
-	myVoidStack.push(1);
-	myVoidStack.push(2);
-	myVoidStack.push(3);
-	myVoidStack.push(4);
-	myVoidStack.push(5);
-
-	myDefaultStack.pop();
-	myDefaultStack.pop();
-	myDefaultStack.push(4);
-
-	myVoidStack.pop();
-	myVoidStack.pop();
-	myVoidStack.push(4);
+	doTestsOnStack(myVoidStack);
+	doTestsOnStack(myDefaultStack);
 
 	stackType myCopyStack = stackType(myVoidStack);
-	myCopyStack.push(5);
+	myCopyStack.push(R_NUM);
 	stackType myEmptyStack = stackType();
 
 	std::cout << "### Rel. Op. ###" << std::endl;
@@ -293,8 +291,10 @@ void stackTest() {
 }
 
 int main() {
+	srand(SEED);
+
 	vectorTest();
-	//mapTest();
-	//stackTest();
+	mapTest();
+	stackTest();
 	return 0;
 }
