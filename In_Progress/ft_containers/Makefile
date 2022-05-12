@@ -24,15 +24,14 @@ HEADERS_DIRECTORIES	=	includes/iterators/ includes/libs/ includes/utils/
 
 ######### Details #########
 
-NAME	=	ft_containers
-TEST_NAME = ft_containers_test
+FT_NAME		=	ft_containers
+STD_NAME	=	std_containers
+
 SOURCES_EXTENSION = cpp
-LIB_EXTENSION	= a
 
 ######### Compilation #########
 
 COMPILE		=	c++
-LIB			=	ar rc
 DELETE		=	rm -f
 
 FLAGS		=	-Wall -Werror -Wextra --pedantic --std=c++98
@@ -45,18 +44,48 @@ vpath	%.h $(HEADERS_DIRECTORIES)
 #        DO NOT ALTER FURTHER!        #
 # ################################### #
 
+export SEED
+
+ifdef SEED
+DEFINE_SEED	= -D SEED=$(SEED)
+endif
+
+DEFINES		= $(DEFINE_SEED) $(DEFINE_VAL) $(DEFINE_KEY)
+
 #########  Rules  #########
 
-all		: $(TEST_NAME)
+all		: $(FT_NAME) $(STD_NAME)
 
-$(NAME) :
-			$(LIB) lib$(NAME).$(LIB_EXTENSION) $(HEADERS)
-			ranlib lib$(NAME).$(LIB_EXTENSION)
+$(FT_NAME) : $(SOURCES)
+	$(COMPILE) $(FLAGS) $(DEFINES) $^ -o $@
 
-$(TEST_NAME): $(NAME) $(SOURCES)
-			$(COMPILE) $(FLAGS) -L./ -l$(NAME) $(SOURCES) -o $@
+$(STD_NAME) : $(SOURCES)
+	$(COMPILE) $(FLAGS) -D NAMESPACE=std $(DEFINES) $^ -o $@
+
+
+test	:
+			@make --no-print-directory $(FT_NAME)
+			@make --no-print-directory $(STD_NAME)
+			./$(FT_NAME) > .$(FT_NAME).log
+			./$(STD_NAME) > .$(STD_NAME).log
+
+help	:
+		@echo "Syntax: make std_containers SEED=45454"
+		@echo
+		@echo "- make                           -> To compile both binaries at once"
+		@echo "- make <namespace>_containers    -> To compile a select binary"
+		@echo "- make test                      -> To run the tests"
+		@echo "- make clean                     -> To delete test outputs"
+		@echo "- make fclean                    -> To delete test outputs and both binaries"
+		@echo "- make re                        -> fclean then all"
+		@echo "- make help                      -> To print this message"
+		@echo
+		@echo "Flag: SEED=<15445>"
+		@echo "    SEED=<15445>     -> Define a seed for the RNG"
 
 clean	:
+		$(DELETE) .$(FT_NAME).log
+		$(DELETE) .$(STD_NAME).log
 
 fclean	:	clean clean_bin
 
@@ -65,13 +94,7 @@ re		:	fclean
 
 #########  Sub Rules  #########
 
-objs	:	$(OBJS_DIR) $(OBJS)
-
 clean_bin:
-			$(DELETE) $(NAME)
+			$(DELETE) $(FT_NAME) $(STD_NAME)
 
-.PHONY	:	all clean fclean re
-
-#########  Includes  #########
-
--include $(DEPS)
+.PHONY	:	all clean fclean re help test

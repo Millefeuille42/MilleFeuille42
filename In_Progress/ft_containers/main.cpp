@@ -20,17 +20,8 @@
 
 // ### DEFINE ### //
 
-#ifndef TESTED_VAL_TYPE
-	typedef int testedType;
-#else
-	typedef TESTED_VAL_TYPE keyType;
-#endif
-
-#ifndef TESTED_KEY_TYPE
-	typedef char keyType;
-#else
-	typedef TESTED_KEY_TYPE keyType;
-#endif
+typedef int testedType;
+typedef char keyType;
 
 #ifndef SEED
 # define SEED time(NULL)
@@ -84,9 +75,9 @@ template <class container> void printContent(const container & ctr) {
 
 template <> void printContent<stackType>(const stackType & stack) {
 	stackType cpy = stack;
-	for (testedType val = cpy.top(); !cpy.empty(); val = cpy.top()) {
+	for (testedType val = cpy.top(); !cpy.empty(); cpy.pop()) {
+		val = cpy.top();
 		std::cout << val << std::endl;
-		cpy.pop();
 	}
 }
 
@@ -178,15 +169,15 @@ void vectorTest() {
 }
 
 void doTestsOnMap(mapType & myMap) {
-	printValue( *myMap.insert(ft::make_pair('c', R_NUM)).first );
-	printValue( *myMap.insert(myMap.begin(), ft::make_pair(R_CHAR, 4)) );
-	printValue( *myMap.insert(ft::make_pair('c', R_NUM)).first);
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair('c', R_NUM)).first );
+	printValue( *myMap.insert(myMap.begin(), NAMESPACE::make_pair(R_CHAR, 4)) );
+	printValue( *myMap.insert(NAMESPACE::make_pair('c', R_NUM)).first);
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
 	myMap.insert(myMap.begin(), myMap.end());
 	myMap.insert(myMap.begin(), --myMap.end());
 	printValue(myMap.count('c'));
@@ -198,16 +189,16 @@ void doTestsOnMap(mapType & myMap) {
 	myMap.erase('c');
 	myMap.erase(--myMap.end());
 	myMap.erase(myMap.begin(), myMap.end());
-	printValue( *myMap.insert(ft::make_pair('c', R_NUM)).first);
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair('c', R_NUM)).first);
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
 	myMap.clear();
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
-	printValue( *myMap.insert(ft::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
+	printValue( *myMap.insert(NAMESPACE::make_pair(R_CHAR, R_NUM)).first );
 	myMap.insert(myMap.begin(), myMap.end());
 	printValue( (myMap['W'] = R_NUM) );
 	printValue( myMap[R_CHAR] );
@@ -293,8 +284,11 @@ void stackTest() {
 int main() {
 	srand(SEED);
 
+	std::cout << "/// VECTOR ///" << std::endl;
 	vectorTest();
+	std::cout << "/// MAP ///" << std::endl;
 	mapTest();
+	std::cout << "/// STACK ///" << std::endl;
 	stackTest();
 	return 0;
 }
