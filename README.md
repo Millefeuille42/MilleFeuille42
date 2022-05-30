@@ -1,8 +1,6 @@
-<center>
  
 # 💫About Me :
-</center>
-🎲 <b>Centers of interest:</b> <br>
+ ### 🎲 <b>Centers of interest:</b> <br>
  -  Programmation
  -  Video Games
  -  Music
@@ -10,13 +8,13 @@
  -  Photography
  -  Design <br>
  
- 🧠 <b>I’m currently studying:</b><br>
+ ### 🧠 <b>I’m currently studying:</b><br>
   - C <br>
   - CPP <br>
   - Golang
   - DevOps (VCS, CI, Docker, Ansible, Kubernetes...)
 
-📫 <b>Contact:</b> mlabouri@student.42.fr	
+ ### 📫 <b>Contact:</b> mlabouri@student.42.fr	
 
 
 # 💻Tech Stack
