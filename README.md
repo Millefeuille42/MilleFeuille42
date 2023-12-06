@@ -1,40 +1,41 @@
- 
-# 💫About Me :
- ### 🎲 <b>Centers of interest:</b> <br>
- -  Programmation
- -  Video Games
- -  Music
- -  Music making
- -  Photography
- -  Design <br>
- 
- ### 🧠 <b>I’m currently studying:</b><br>
-  - C <br>
-  - C++ <br>
-  - Golang
-  - Rust
-  - JS
-  - Python
-  - Docker
+Hello there! 
+No time for long speeches, here is a quick peek of who I am:
 
- ### 📫 <b>Contact:</b> mlabouri@student.42.fr	
+👨‍💻 C++, Python, C, Go, Rust | 🐋 Docker Fanatic | 🏡 Self-Hoster | 🤔 Curious and Stubborn | ⏰ Achiever of the Impossible | 🦊 Fox Enthusiast | 🎵 Music Creator and Lover | 🎮 Gaming Enthusiast | 📸 Photography Hobbyist | 💡 Responsible for Solutions... And problems | 🌐 Open-Source Software Advocate | 🔧 Tinkering with Everything | 🐧 Master of Linux and Windows
 
-# Main projects
+Want to know more about me ? Hit me up, let's have a chat!
+- email: millefeuille42@proton.me
+- Discord: millefeuille
+- IRC: millefy on libera.chat
 
-[Github list of my main projects](https://github.com/stars/Millefeuille42/lists/1st-place-medal-main-projects)
+I am currently doing the Advent Of Code 2023 but with a twist ! Learn more [here](https://github.com/Millefeuille42/advent_of_code_2023)
 
-# 💻Tech Stack
-![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white) ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![p5js](https://img.shields.io/badge/p5.js-ED225D?style=for-the-badge&logo=p5.js&logoColor=FFFFFF) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Adobe Illustrator](https://img.shields.io/badge/adobeillustrator-%23FF9A00.svg?style=for-the-badge&logo=adobeillustrator&logoColor=white) ![Adobe Lightroom](https://img.shields.io/badge/Adobe%20Lightroom-31A8FF.svg?style=for-the-badge&logo=Adobe%20Lightroom&logoColor=white) ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) ![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)
+## My top projects
+All of the projects mentioned are, unless explicitly specified otherwise, are under the MIT License (If it is missing the license, consider it as it has one).
 
-# 📊GitHub Stats :
-![](https://github-readme-stats.vercel.app/api?username=Millefeuille42&theme=chartreuse-dark&hide_border=false&include_all_commits=true&count_private=false)<br/>
-![](https://github-readme-streak-stats.herokuapp.com/?user=Millefeuille42&theme=chartreuse-dark&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=Millefeuille42&theme=chartreuse-dark&hide_border=false&include_all_commits=true&count_private=false&layout=compact)
+Code repositories can be found on Github in my profile, unless specified otherwise.
 
-## 🏆GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=Millefeuille42&theme=matrix&no-frame=false&no-bg=false&margin-w=4)
+- A :warning: sign indicates that the project is currently in progress.
+- A ❌ sign indicates that the source code is not available on Github for legal or specific reasons.
+- A 🧑‍🎓 sign indicates that the project is or started as a school project.
 
+### Huge/cool projects
+- piscibot (Golang): A Discord bot to track your and your friends progress at 42 officially. Actually it was more of a way to a secret pool where we would gamble fake internet points on the people doing the "piscine". I swear v3 will come someday, and it will be awesome
+- 🧑‍🎓 ft_irc (C++98): A not so fully-compliant ultra basic IRC server (missing all the federation stuff). So stable the school computer crashed before the server could when I was running stress tests (even if it doesn't poll on write-ready but hey, we were learning)
+- :warning: mercury (Rust): My very first project in Rust. It's a full suite of tools and libs to write server/clients for IRC. It will include some example projects, such as a TUI client.
+- :warning: VulTracks (Golang + JS): All-In-One music library manager, has Golang as the main brain and REST API, the UI is made in JS and Bootstrap, using a Golang templating engine. Lacks some features to make it actually interesting though
+- ❌ :warning: Mischief (Golang): A full private server (with even more features) for [REDACTED] game, because always-online gaming is bad and should be banned ! This involved a LOT of new stuff for me, such as: reverse engineering, UDP and HTTPS snooping, creating the documentation of their API...  (Code available on demand for specific persons, for legal reasons)
 
-## 🌐Socials
-[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.com/users/268431730967314435) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mathieu-labourier-1901621a2/) 
+### Smaller project (still cool, but way less huge)
+- TracimDaemon (Golang): A daemon that will listen to Server-Sent Events of a remote tracim and spread them locally using UNIX sockets, this is to limit bandwidth usage by only having a single subscriber
+	- TracimDaemonSDK (Golang, Python): A Python and a Golang SDK to write consumer apps for TracimDaemon. This could be used to create a consumer/producer service to chain several daemons and thus produce a complex local event pipeline for a remote tracim
+- libtraceX (C99): A in-code wrapper to produce the same output as `strace`, useful for debugging since it can be used to run on specific subsets of code
+- libft_enhanced (C99): My own implementation of some forbidden-by-school `libc` functions among other personal libs (strings, linked list, buffered print, logging, error management...)
+- DiabloIVTool (Golang): A fully featured Discord bot that will interact with several community APIs to provided information about Diablo IV in game events and unique items (among other things)
+- Telecord (Golang): "Driver" based bridge for Discord and Telegram
+- Daemonize (Golang): A toolkit to daemonize Golang code. This is not really POSIX compliant yet. I did it because someone on the internet told me it was not possible... (and because I actually needed it)
+- normiNet (Golang): A http client/server bundle that I designed to run the 42 norm lint tool on a remote server. This was ONLY made so I did not have to install Python on my PC
+- ❌ SpotifyParty (Node JS): A (ahead of it's time) POC of the current Spotify Jam feature, this got me into some kind of trouble and this is why I don't have any code to show 
 
+### Other projects
+You can find all of my other projects, such as most of my school projects (malloc, ls, strace, lem-ipc, piscine_cybersecurity...). They are worth a look the time but did not deserved to be put here in my opinion.
