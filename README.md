@@ -20,7 +20,7 @@ Code repositories can be found on Github in my profile, unless specified otherwi
 - A 🧑‍🎓 sign indicates that the project is or started as a school project.
 
 ### Huge/cool projects
-- [piscibot](https://github.com/Millefeuille42/piscibotReloaded) (Golang): A Discord bot to track your and your friends progress at 42 officially. Actually it was more of a way to organize a secret pool where we would gamble fake internet points on the people doing the "piscine". I swear v3 will come someday, and it will be awesome
+- [piscibot](https://github.com/Millefeuille42/piscibotReloaded) (Golang): A Discord bot to track your and your friends progress at 42, at least that is what's official. Actually it was more of a way to organize a secret pool where we would gamble fake internet points on the people doing the "piscine". I swear v3 will come someday, and it will be awesome
 - 🧑‍🎓 [ft_irc](https://github.com/Millefeuille42/ft_irc) (C++98): A not so fully-compliant ultra basic IRC server (missing all the federation stuff). So stable the school computer crashed before the server could when I was running stress tests (even if it doesn't poll on write-ready but hey, we were learning)
 - :warning: [mercury](https://github.com/Millefeuille42/mercury) (Rust): My very first project in Rust. It's a full suite of tools and libs to write server/clients for IRC. It will include some example projects, such as a TUI client.
 - :warning: [VulTracks](https://github.com/Millefeuille42/VulTracks) (Golang + JS): All-In-One music library manager, has Golang as the main brain and REST API, the UI is made in JS and Bootstrap, using a Golang templating engine. Lacks some features to make it actually interesting though
