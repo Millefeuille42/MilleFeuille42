@@ -26,7 +26,7 @@ Code repositories can be found on Github in my profile, unless specified otherwi
 - :warning: [VulTracks](https://github.com/Millefeuille42/VulTracks) (Golang + JS): All-In-One music library manager, has Golang as the main brain and REST API, the UI is made in JS and Bootstrap, using a Golang templating engine. Lacks some features to make it actually interesting though
 - ❌ :warning: Mischief (Golang): A full private server (with even more features) for [REDACTED] game, because always-online gaming is bad and should be banned! This involved a LOT of new stuff for me, such as: reverse engineering, UDP and HTTPS snooping, trust poisoning, creating the documentation of their API...  (Code available on demand for specific requesters, for legal reasons)
 
-### Smaller project (still cool, but way less huge)
+### Smaller projects (still cool, but way less huge)
 - [TracimDaemon](https://github.com/Millefeuille42/TracimDaemon) (Golang): A daemon that will listen to Server-Sent Events of a remote tracim and spread them locally using UNIX sockets, this is to limit bandwidth usage by only having a single subscriber
 	- [TracimDaemonSDK](https://github.com/Millefeuille42/TracimDaemon_QuickStart) (Golang, Python): A Python and a Golang SDK to write consumer apps for TracimDaemon. This could be used to create a consumer/producer service to chain several daemons and thus produce a complex local event pipeline for a (or several) remote tracim
 - [libtraceX](https://github.com/Millefeuille42/libtraceX) (C99): A in-code wrapper to produce the same output as `strace`, useful for debugging since it can be used to run on specific subsets of code
