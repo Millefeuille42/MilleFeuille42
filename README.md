@@ -28,7 +28,7 @@ Code repositories can be found on Github in my profile, unless specified otherwi
 
 ### Smaller projects (still cool, but way less huge)
 - [TracimDaemon](https://github.com/Millefeuille42/TracimDaemon) (Golang): A daemon that will listen to Server-Sent Events of a remote tracim and spread them locally using UNIX sockets, this is to limit bandwidth usage by only having a single subscriber
-	- [TracimDaemonSDK](https://github.com/Millefeuille42/TracimDaemon_QuickStart) (Golang, Python): A Python and a Golang SDK to write consumer apps for TracimDaemon. This could be used to create a consumer/producer service to chain several daemons and thus produce a complex local event pipeline for a (or several) remote tracim
+	- [TracimDaemonSDK](https://github.com/Millefeuille42/TracimDaemon_QuickStart) (Golang, Python): A Python and a Golang SDK to write consumer apps for TracimDaemon. This can also (and mostly) be used to create a consumer/producer service to chain several daemons and thus produce a complex local event pipeline for a (or several) remote tracim
 - [libtraceX](https://github.com/Millefeuille42/libtraceX) (C99): A in-code wrapper to produce the same output as `strace`, useful for debugging since it can be used to run on specific subsets of code
 - [libft_enhanced](https://github.com/Millefeuille42/libft_enhanced) (C99): My own implementation of some forbidden-by-school `libc` functions among other personal libs (strings, linked list, buffered print, logging, error management...)
 - [DiabloIVTool](https://github.com/Millefeuille42/DiabloIVTool) (Golang): A fully featured Discord bot that will interact with several community APIs to provided information about Diablo IV in game events and unique items (among other things)
