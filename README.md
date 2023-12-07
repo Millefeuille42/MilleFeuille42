@@ -8,7 +8,7 @@ Want to know more about me ? Hit me up, let's have a chat!
 - Discord: millefeuille
 - IRC: millefy on libera.chat
 
-I am currently doing the Advent Of Code 2023 but with a twist! Learn more [here](https://github.com/Millefeuille42/advent_of_code_2023)
+I am currently doing the Advent Of Code 2023 but with a twist! Learn more aboute it [here](https://github.com/Millefeuille42/advent_of_code_2023)!
 
 ## My top projects
 All of the projects mentioned are, unless explicitly specified otherwise, under the MIT License (If it is missing the license, consider it as it has one).
