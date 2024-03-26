@@ -8,6 +8,8 @@ Want to know more about me ? Hit me up, let's have a chat!
 - Discord: millefeuille
 - IRC: millefy on libera.chat
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L3L4W4TQN)
+
 ## My top projects
 All of the projects mentioned are, unless explicitly specified otherwise, under the MIT License (If it is missing the license, consider it as it has one).
 
