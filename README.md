@@ -38,4 +38,6 @@ Code repositories can be found on Github in my profile, unless specified otherwi
 - ❌ SpotifyParty (Node JS): A (ahead of it's time) POC of the current Spotify Jam feature, this got me into some kind of trouble and this is why I don't have any code to show 
 
 ### Other projects
-You can find all of my other projects, such as most of my school projects ([malloc](https://github.com/Millefeuille42/ft_malloc), [nm](https://github.com/Millefeuille42/ft_nm), [ls](https://github.com/Millefeuille42/ft_ls), [strace](https://github.com/Millefeuille42/ft_strace), [lem-ipc](https://github.com/Millefeuille42/lem-ipc), [piscine_cybersecurity](https://github.com/Millefeuille42/Piscine_Cybersecurity)...). They are worth a look the time but did not deserved to be put here in my opinion.
+You can find all of my other projects, such as most of my school projects ([malloc](https://github.com/Millefeuille42/ft_malloc), [nm](https://github.com/Millefeuille42/ft_nm), [ls](https://github.com/Millefeuille42/ft_ls), [strace](https://github.com/Millefeuille42/ft_strace), [lem-ipc](https://github.com/Millefeuille42/lem-ipc), [piscine_cybersecurity](https://github.com/Millefeuille42/Piscine_Cybersecurity)...). They are worth a look the time but did not deserved to be put here in my opinion
+
+<a rel="me" href="https://furry.engineer/@millie"></a>
