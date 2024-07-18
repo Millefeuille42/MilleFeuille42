@@ -39,5 +39,3 @@ Code repositories can be found on Github in my profile, unless specified otherwi
 
 ### Other projects
 You can find all of my other projects, such as most of my school projects ([malloc](https://github.com/Millefeuille42/ft_malloc), [nm](https://github.com/Millefeuille42/ft_nm), [ls](https://github.com/Millefeuille42/ft_ls), [strace](https://github.com/Millefeuille42/ft_strace), [lem-ipc](https://github.com/Millefeuille42/lem-ipc), [piscine_cybersecurity](https://github.com/Millefeuille42/Piscine_Cybersecurity)...). They are worth a look the time but did not deserved to be put here in my opinion
-
-<a rel="me" href="https://furry.engineer/@millie"></a>
