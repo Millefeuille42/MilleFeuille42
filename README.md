@@ -6,7 +6,7 @@ No time for long speeches, here is a quick peek of who I am:
 Want to know more about me ? Hit me up, let's have a chat!
 - email: millefeuille42@proton.me
 - Discord: millefeuille
-- IRC: millefy@oftc.net
+- IRC: mille@oftc.net
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L3L4W4TQN)
 
