@@ -21,10 +21,3 @@ I love building things from scratch, understanding how systems work under the ho
 * **Matrix:** [@millefeuille:udev.cc](https://matrix.to/#/@millefeuille:udev.cc)
 
 ☕ **Support me on Ko-Fi** [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L3L4W4TQN)
-
-<br>
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Millefeuille42&theme=transparent&hide_border=true&title_color=white&text_color=white" alt="Millefeuille42's Stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Millefeuille42&theme=transparent&hide_border=true&title_color=white&text_color=white&layout=compact" alt="Top Langs" />
-</div>
